@@ -13,7 +13,7 @@ char errbuf[PCAP_ERRBUF_SIZE];
 class HDR{
     public:
         // abstract method
-       virtual u_char *set_fields(const u_char *pkt_data) = 0;
+       virtual const u_char* set_fields(const u_char *pkt_hdr) = 0;
 };
 
 class EthHDR: public HDR{
@@ -21,37 +21,43 @@ class EthHDR: public HDR{
         std::string dest;
         std::string src;
         std::string type;
+        static const uint16_t ARP_TYPE = 0x0806;
+        static const uint16_t IPV4_TYPE = 0x0800;
 
-        void findType(uint8_t raw_type[2]){
-            if(raw_type[0] == 0x08 && raw_type[1] == 0x00){
-                type="IP";
+        void findType(uint16_t raw_type){
+            uint16_t type = ntohs(raw_type);
+            if(type == ARP_TYPE){
+                this->type = "ARP";
+            }else if(type == IPV4_TYPE){
+                this->type = "IP";
             }else{
-                type="ARP";
+                this->type = "DNE";
             }
         }
     public:        
 
-        static const int LENGTH = 14;
+
         /**
-         * @par: pkt_data the raw pkt data
-         * @return: a ptr to pkt_data that we are reading
+         * @par: pkt_data the raw pkt hdr
+         * @return: A cursor that points to the payload
          */
-        u_char *set_fields(const u_char *pkt_data){
+        const u_char *set_fields(const u_char *pkt_hdr){
             struct ether_addr dest_ether, src_ether;
-            uint8_t raw_type[3];
-            memcpy(dest_ether.ether_addr_octet, pkt_data, ETHER_ADDR_LEN);
-            memcpy(src_ether.ether_addr_octet, pkt_data+ETHER_ADDR_LEN, ETHER_ADDR_LEN);
-            memcpy(raw_type, pkt_data+2*ETHER_ADDR_LEN, 2);
+            uint16_t raw_type;
+            memcpy(dest_ether.ether_addr_octet, pkt_hdr, ETHER_ADDR_LEN);
+            memcpy(src_ether.ether_addr_octet, pkt_hdr+ETHER_ADDR_LEN, ETHER_ADDR_LEN);
+            memcpy(&raw_type, pkt_hdr+2*ETHER_ADDR_LEN, 2);
 
-            this->src = ether_ntoa(&src_ether);
+            // ether_ntoa 
             this->dest = ether_ntoa(&dest_ether);
+            this->src = ether_ntoa(&src_ether);
             findType(raw_type);
-            return (u_char*)pkt_data + 2*ETHER_ADDR_LEN + 2;
+            return pkt_hdr+2*ETHER_ADDR_LEN + 2;
+        }
+        inline std::string getType(){
+            return this->type;
         }
 
-        std::string getType(){
-            return type;
-        }
         friend std::ostream &operator<<(std::ostream &out, const EthHDR & hdr){
             out << "\tEthernet Header" << std::endl;
             out << "\t\tDest MAC: " << hdr.dest << std::endl;
@@ -62,46 +68,49 @@ class EthHDR: public HDR{
         }
 
 };
-/*
+
+
 class ArpHDR: public HDR{
     private:
-        static const int LENGTH = 28;
-        char request[10];
-        char senderMAC, senderIP;
-        char destMAC, destIP;
+        // static const int LENGTH = 28;
+        std::string opcode;
+        std::string senderMAC, senderIP;
+        std::string destMAC, destIP;
     public:
-        u_char *set_fields(u_char *pkt_data){
-            
-            memccpy()  
-            memcpy(dest_ether.ether_addr_octet, (void*)pkt_data, 21);
-            memcpy(src_ether.ether_addr_octet, (void*)pkt_data+ETHER_ADDR_LEN, ETHER_ADDR_LEN);
+        const u_char *set_fields(const u_char *pkt_hdr){
+            int offset = 6; // offset to first relevant field in the hdr
+            #define IP_ADDR_LEN 4
+            struct ether_addr target_ether, sender_ether;
+            struct in_addr target_ip, sender_ip;
+            memcpy(sender_ether.ether_addr_octet, pkt_hdr + offset, ETHER_ADDR_LEN);
+            memcpy(&sender_ip.s_addr, pkt_hdr + offset+ETHER_ADDR_LEN, IP_ADDR_LEN);
+        
+            memcpy(dest_ether.ether_addr_octet, pkt_hdr+offset, 21);
             memcpy(raw_type, (void*)pkt_data+2*ETHER_ADDR_LEN, 2);
             this->src = ether_ntoa(&src_ether);
             this->dest = ether_ntoa(&dest_ether);
 
         }
 };
-*/
 
 
-void print_HDR(HDR *hdr){
-
-}
 
 
 int main(int argc, char *argv[]){
-    pcap_t *pcap;
+    pcap_t *pcap_sess;
+    int next;
     struct pcap_pkthdr *pkt_hdr;
     const u_char *pkt_data;
+    int cursor;
     
-    // usage
+    // Step 1 - check usage
     if(argc != 2){
         std::cerr << "usage: trace <file>" << std::endl;
         exit(EXIT_FAILURE);
     }
 
-    // else do the program
-    if ((pcap = pcap_open_offline(argv[1], errbuf)) == NULL){
+    // Step 2 - open file
+    if ((pcap_sess = pcap_open_offline(argv[1], errbuf)) == NULL){
         std::cerr << errbuf << std::endl;
         exit(EXIT_FAILURE);
     }
@@ -111,25 +120,24 @@ int main(int argc, char *argv[]){
     // for every packet in our pcap file
     int pkt_num = 1;
     std::cout << std::endl;
-    while(pcap_next_ex(pcap, &pkt_hdr, &pkt_data) != PCAP_ERROR_BREAK){
-        // go through each field of the packet
-        u_char *curr_spot = (u_char*)pkt_data;
-        EthHDR eth;
-        curr_spot = eth.set_fields(curr_spot);
+    EthHDR eth;
+    ArpHDR arp;
+    while((next=pcap_next_ex(pcap_sess, &pkt_hdr, &pkt_data)) != PCAP_ERROR_BREAK || next != PCAP_ERROR){
+
+        eth.set_fields(pkt_data);
+
         // check at the end pkt_data - curr_spot == pkt_hdr->len
 
         std::cout << "Packet number: " << pkt_num++ << " Frame Len: " << pkt_hdr->len 
                   << std::endl << std::endl;
 
         std::cout << eth << std::endl;
-        /*
-        if(strcmp(eth.getType(), "ARP") == 0){
-        // ipv4
-        }else{
-            //IpHDR ip;
-            ;
+
+        if(eth.getType().compare("ARP") == 0){
+            
+        }else if (eth.getType().compare("IP") == 0){
+
         }
-        */
 
     }
 

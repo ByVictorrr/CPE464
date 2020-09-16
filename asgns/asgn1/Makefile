@@ -12,7 +12,7 @@ trace: trace.cpp
 	$(CC) $(CFLAGS) -o trace trace.cpp -lpcap 
 
 debug: trace
-	gdb -tui --args trace largeMix2.pcap
+	gdb --args trace ArpTest.pcap
 
 clean:
 	rm -f trace
