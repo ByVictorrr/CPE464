@@ -38,6 +38,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <sys/types.h>
+#include "checksum.h"
 
 /*
  * in_cksum --
