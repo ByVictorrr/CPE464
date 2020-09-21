@@ -1,41 +1,15 @@
-==121801== Memcheck, a memory error detector
-==121801== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==121801== Using Valgrind-3.16.1 and LibVEX; rerun with -h for copyright info
-==121801== Command: ./trace in_files/Http.pcap
-==121801== Parent PID: 121778
-==121801== 
-==121801== Invalid read of size 2
-==121801==    at 0x10C38C: operator<<(std::ostream&, TcpHDR const&) (trace.cpp:274)
-==121801==    by 0x10A72D: main (trace.cpp:401)
-==121801==  Address 0x51aaaba is 10 bytes inside a block of size 12 free'd
-==121801==    at 0x483CD7B: realloc (vg_replace_malloc.c:834)
-==121801==    by 0x10C364: operator<<(std::ostream&, TcpHDR const&) (trace.cpp:270)
-==121801==    by 0x10A72D: main (trace.cpp:401)
-==121801==  Block was alloc'd at
-==121801==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
-==121801==    by 0x10B66F: IpHDR::_getPseduoHDR() (trace.cpp:185)
-==121801==    by 0x10B7E8: IpHDR::getPseduoHDR() (trace.cpp:206)
-==121801==    by 0x10A701: main (trace.cpp:400)
-==121801== 
-==121801== Invalid read of size 2
-==121801==    at 0x10C3C1: operator<<(std::ostream&, TcpHDR const&) (trace.cpp:277)
-==121801==    by 0x10A72D: main (trace.cpp:401)
-==121801==  Address 0x51aaaba is 10 bytes inside a block of size 12 free'd
-==121801==    at 0x483CD7B: realloc (vg_replace_malloc.c:834)
-==121801==    by 0x10C364: operator<<(std::ostream&, TcpHDR const&) (trace.cpp:270)
-==121801==    by 0x10A72D: main (trace.cpp:401)
-==121801==  Block was alloc'd at
-==121801==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
-==121801==    by 0x10B66F: IpHDR::_getPseduoHDR() (trace.cpp:185)
-==121801==    by 0x10B7E8: IpHDR::getPseduoHDR() (trace.cpp:206)
-==121801==    by 0x10A701: main (trace.cpp:400)
-==121801== 
-==121801== 
-==121801== HEAP SUMMARY:
-==121801==     in use at exit: 0 bytes in 0 blocks
-==121801==   total heap usage: 595 allocs, 595 frees, 375,934 bytes allocated
-==121801== 
-==121801== All heap blocks were freed -- no leaks are possible
-==121801== 
-==121801== For lists of detected and suppressed errors, rerun with: -s
-==121801== ERROR SUMMARY: 588 errors from 2 contexts (suppressed: 0 from 0)
+==122936== Memcheck, a memory error detector
+==122936== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==122936== Using Valgrind-3.16.1 and LibVEX; rerun with -h for copyright info
+==122936== Command: ./trace in_files/Http.pcap
+==122936== Parent PID: 122916
+==122936== 
+==122936== 
+==122936== HEAP SUMMARY:
+==122936==     in use at exit: 0 bytes in 0 blocks
+==122936==   total heap usage: 595 allocs, 595 frees, 375,934 bytes allocated
+==122936== 
+==122936== All heap blocks were freed -- no leaks are possible
+==122936== 
+==122936== For lists of detected and suppressed errors, rerun with: -s
+==122936== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
