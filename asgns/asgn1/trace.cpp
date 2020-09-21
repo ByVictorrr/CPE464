@@ -61,6 +61,21 @@ struct tcp_hdr{
     uint16_t urgent_ptr;
 }__attribute__((packed));
 
+struct udp_hdr{
+    uint16_t src_port;
+    uint16_t dest_port;
+    uint16_t pdu_len;
+    uint16_t check_sum;
+}__attribute__((packed));
+
+struct icmp_hdr{
+    uint8_t type;
+    uint8_t code;
+    uint16_t checksum;
+    uint16_t identifier;
+    uint16_t sequence_num;
+}__attribute__((packed));
+
 
 
 // Interface HDR
@@ -197,14 +212,14 @@ class IpHDR: public HDR{
             
             out << "\tIp Header" << std::endl;
             out << "\t\tHeader Len: " << (ip.hdr->ip_ver_hdrlen & 0x0f)*4  << " (bytes)" << std::endl;
-            out << "\t\tTOS: " << std::hex << ip.hdr->tos << std::endl;
-            out << "\t\tTTL: " << std::dec << ip.hdr->time_live << std::endl;
+            out << "\t\tTOS: " << std::hex << std::showbase << ((int)ip.hdr->tos) << std::endl;
+            out << "\t\tTTL: " << std::dec << (int)ip.hdr->time_live << std::endl;
             out << "\t\tIP PDU Len: " << ntohs(ip.hdr->datagram_len)  << " (bytes)" << std::endl;
             out << "\t\tProtocol: " << ip.getUpperLayer(ip.hdr->upper_layer) << std::endl;
             if(in_cksum((unsigned short *)ip.hdr, sizeof(struct ip_hdr)) == 0){
-              out << "\t\tChecksum: " << "Correct" << " (" << std::hex  << std::showbase << ip.hdr->hdr_chksum << ")" << std::endl;
+              out << "\t\tChecksum: " << "Correct" << " (" << std::hex  << std::showbase << ntohs(ip.hdr->hdr_chksum) << ")" << std::endl;
             }else{
-              out << "\t\tChecksum: " << "Incorrect" << " (" << std::hex  << std::showbase << ip.hdr->hdr_chksum << ")" << std::endl;
+              out << "\t\tChecksum: " << "Incorrect" << " (" << std::hex  << std::showbase << ntohs(ip.hdr->hdr_chksum) << ")" << std::endl;
             }
             out << "\t\tSender IP: " << inet_ntoa(sender_ip) << std::endl;
             out << "\t\tDest IP: " << inet_ntoa(dest_ip) << std::endl;
@@ -229,14 +244,14 @@ class TcpHDR : public HDR{
         inline const u_char *getPayload(){
             return (const u_char *)this->tcp_hdr + sizeof(struct tcp_hdr);
         }
-    friend std::ostream &operator<<(std::ostream &out, TcpHDR & tcp){
+    friend std::ostream &operator<<(std::ostream &out, const TcpHDR & tcp){
             struct pseduo_hdr *p_hdr;
             void *combined_hdr;
             struct tcp_hdr *tcp_hdr = tcp.tcp_hdr;
 
             out << "\tTCP Header" << std::endl;
-            out << "\t\tSource Port: " << std::dec << (ntohs(tcp_hdr->src_port) == tcp.HTTP ? "HTTP" : std::to_string(ntohs(tcp_hdr->src_port))) << std::endl;
-            out << "\t\tDest Port: " << (ntohs(tcp_hdr->dest_port) == tcp.HTTP ? "HTTP" : std::to_string(ntohs(tcp_hdr->dest_port))) << tcp_hdr->dest_port << std::endl;
+            out << "\t\tSource Port: " << (ntohs(tcp_hdr->src_port) == tcp.HTTP ? "HTTP" : std::to_string(ntohs(tcp_hdr->src_port))) << std::endl;
+            out << "\t\tDest Port: " << (ntohs(tcp_hdr->dest_port) == tcp.HTTP ? "HTTP" : std::to_string(ntohs(tcp_hdr->dest_port))) << std::endl;
             out << "\t\tSequence Number: " << std::dec << ntohl(tcp_hdr->seq_num) << std::endl;
             out << "\t\tACK Number: " << std::dec << ntohl(tcp_hdr->ack_num)  << std::endl;
             out << "\t\tACK Flag: " << (ntohs(tcp_hdr->hdr_len_res_flags) & 0b010000 ? "Yes" : "No") << std::endl;
@@ -257,6 +272,7 @@ class TcpHDR : public HDR{
             }else{
               out << "\t\tChecksum: " << "Incorrect" << " (" << std::hex << std::showbase << ntohs(tcp_hdr->checksum) << ")" << std::endl;
             }
+            free(combined_hdr);
 
             return out;
 
@@ -264,6 +280,59 @@ class TcpHDR : public HDR{
 
 
 };
+
+class UdpHDR : public HDR{
+    private:
+        struct udp_hdr *hdr;
+ 
+    public:
+        UdpHDR(const u_char *pkt_hdr){
+            this->hdr = (struct udp_hdr *)pkt_hdr;
+        }
+        inline const u_char *getPayload(){
+            return (const u_char *)this->hdr + sizeof(struct udp_hdr);
+        }
+        friend std::ostream &operator<<(std::ostream &out, const UdpHDR & udp){
+                struct udp_hdr *hdr = udp.hdr;
+                out << "\tUDP Header" << std::endl;
+                out << "\t\tSource Port: " << std::dec << ntohs(hdr->src_port) << std::endl;
+                out << "\t\tDest Port: " << std::dec << ntohs(hdr->dest_port) << std::endl;
+                return out;
+        }
+
+};
+
+class IcmpHDR : public HDR{
+    private:
+        struct icmp_hdr *hdr;
+        static const uint8_t REQUEST_TYPE = 8;
+        static const uint8_t REPLY_TYPE = 0;
+        std::string getType(uint8_t type) const{
+            if(type == REQUEST_TYPE)
+                return "Request";
+            else if(type == REPLY_TYPE)
+                return "Reply";
+            return "DNE";
+        }
+ 
+    public:
+        IcmpHDR(const u_char *pkt_hdr){
+            this->hdr = (struct icmp_hdr *)pkt_hdr;
+        }
+        inline const u_char *getPayload(){
+            return (const u_char *)this->hdr + sizeof(struct icmp_hdr);
+        }
+        friend std::ostream &operator<<(std::ostream &out, const IcmpHDR & icmp){
+                struct icmp_hdr *hdr = icmp.hdr;
+                out << "\tICMP Header" << std::endl;
+                out << "\t\tType: " << icmp.getType(hdr->type) << std::endl;
+
+                return out;
+
+        }
+
+};
+
 
 
 
@@ -326,7 +395,8 @@ int main(int argc, char *argv[]){
             }else if(ip.getUpperLayer().compare("UDP") == 0){
 
             }else if(ip.getUpperLayer().compare("ICMP")){
-
+                IcmpHDR icmp(cursor);
+                std::cout << icmp << std::endl;
             }
         }
 
