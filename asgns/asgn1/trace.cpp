@@ -163,14 +163,17 @@ class IpHDR: public HDR{
     private:
         struct ip_hdr *hdr;
         struct pseduo_hdr *p_hdr;
-        static const int TCP_TYPE = 6;
-        static const int UDP_TYPE = 17;
+        static const uint8_t TCP_TYPE = 6;
+        static const uint8_t UDP_TYPE = 17;
+        static const uint8_t ICMP_TYPE = 1;
 
         std::string getUpperLayer(uint8_t upperLayer){
             if(upperLayer == TCP_TYPE){
                 return "TCP";
             }else if (upperLayer == UDP_TYPE){
                 return "UDP";
+            }else if(upperLayer == ICMP_TYPE){
+                return "ICMP";
             }else{
                 return "DNE";
             }
@@ -217,9 +220,9 @@ class IpHDR: public HDR{
             out << "\t\tIP PDU Len: " << std::dec << ntohs(ip.hdr->datagram_len)  << " (bytes)" << std::endl;
             out << "\t\tProtocol: " << ip.getUpperLayer(ip.hdr->upper_layer) << std::endl;
             if(in_cksum((unsigned short *)ip.hdr, sizeof(struct ip_hdr)) == 0){
-              out << "\t\tChecksum: " << "Correct" << " (0x" << std::hex << ntohs(ip.hdr->hdr_chksum) << ")" << std::endl;
+              out << "\t\tChecksum: " << "Correct" << " (0x" << std::hex << std::noshowbase << ntohs(ip.hdr->hdr_chksum) << ")" << std::endl;
             }else{
-              out << "\t\tChecksum: " << "Incorrect" << " (0x" << std::hex << ntohs(ip.hdr->hdr_chksum) << ")" << std::endl;
+              out << "\t\tChecksum: " << "Incorrect" << " (0x" << std::hex << std::noshowbase << ntohs(ip.hdr->hdr_chksum) << ")" << std::endl;
             }
             out << "\t\tSender IP: " << inet_ntoa(sender_ip) << std::endl;
             out << "\t\tDest IP: " << inet_ntoa(dest_ip) << std::endl;
@@ -376,7 +379,7 @@ int main(int argc, char *argv[]){
         cursor = eth.getPayload();
 
 
-        std::cout << "Packet number: " << pkt_num++ << " Frame Len: " << pkt_hdr->len 
+        std::cout << "Packet number: " << std::dec << pkt_num++ << " Frame Len: " << pkt_hdr->len 
                   << std::endl << std::endl;
 
         std::cout << eth << std::endl;
@@ -399,7 +402,7 @@ int main(int argc, char *argv[]){
                 UdpHDR udp(cursor);
                 std::cout << udp << std::endl;
 
-            }else if(ip.getUpperLayer().compare("ICMP")){
+            }else if(ip.getUpperLayer().compare("ICMP") == 0){
                 IcmpHDR icmp(cursor);
                 std::cout << icmp << std::endl;
             }
