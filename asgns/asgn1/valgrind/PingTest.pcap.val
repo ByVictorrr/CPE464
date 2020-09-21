@@ -1,15 +1,15 @@
-==122951== Memcheck, a memory error detector
-==122951== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==122951== Using Valgrind-3.16.1 and LibVEX; rerun with -h for copyright info
-==122951== Command: ./trace in_files/PingTest.pcap
-==122951== Parent PID: 122916
-==122951== 
-==122951== 
-==122951== HEAP SUMMARY:
-==122951==     in use at exit: 0 bytes in 0 blocks
-==122951==   total heap usage: 7 allocs, 7 frees, 84,117 bytes allocated
-==122951== 
-==122951== All heap blocks were freed -- no leaks are possible
-==122951== 
-==122951== For lists of detected and suppressed errors, rerun with: -s
-==122951== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==4948== Memcheck, a memory error detector
+==4948== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==4948== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==4948== Command: ./trace in_files/PingTest.pcap
+==4948== Parent PID: 4908
+==4948== 
+==4948== 
+==4948== HEAP SUMMARY:
+==4948==     in use at exit: 0 bytes in 0 blocks
+==4948==   total heap usage: 5 allocs, 5 frees, 139,458 bytes allocated
+==4948== 
+==4948== All heap blocks were freed -- no leaks are possible
+==4948== 
+==4948== For lists of detected and suppressed errors, rerun with: -s
+==4948== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

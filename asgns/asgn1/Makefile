@@ -14,7 +14,7 @@ FILE =
 all:  trace
 
 trace.o: trace.cpp checksum.h
-	gcc $(CFLAGS) -c $< -o $@
+	$(CC) $(CPPFLAGS) -c $< -o $@
 
 
 checksum.o: checksum.c checksum.h

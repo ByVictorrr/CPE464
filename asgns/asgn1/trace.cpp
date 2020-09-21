@@ -3,6 +3,7 @@
 #include <ostream>
 #include <cstdlib>
 #include <string.h>
+#include <arpa/inet.h>
 #include <netinet/ether.h>
 #include "checksum.h"
 
@@ -180,7 +181,6 @@ class IpHDR: public HDR{
         }
        struct pseduo_hdr *_getPseduoHDR(){
             struct pseduo_hdr *p_hdr;
-            uint32_t src_ip, dst_ip;
             struct ip_hdr * hdr = this->hdr;
             if(!(p_hdr=(struct pseduo_hdr *)malloc(sizeof(struct pseduo_hdr)))){
                 return NULL;
@@ -249,7 +249,7 @@ class TcpHDR : public HDR{
             return (const u_char *)this->tcp_hdr + sizeof(struct tcp_hdr);
         }
     friend std::ostream &operator<<(std::ostream &out, const TcpHDR & tcp){
-            void *combined_hdr;
+            u_char *combined_hdr;
             struct pseduo_hdr *p_hdr = tcp.p_hdr;
             struct tcp_hdr *tcp_hdr = tcp.tcp_hdr;
             int ack_valid = ntohs(tcp_hdr->hdr_len_res_flags) & 0b010000 ;
@@ -267,7 +267,7 @@ class TcpHDR : public HDR{
             if(p_hdr == NULL)
                 exit(EXIT_FAILURE);
 
-            if(!(combined_hdr = malloc(sizeof(struct pseduo_hdr)+ntohs(p_hdr->protocol_len)+2)))
+            if(!(combined_hdr = (u_char*)malloc(sizeof(struct pseduo_hdr)+ntohs(p_hdr->protocol_len)+2)))
                 exit(EXIT_FAILURE);
 
             memcpy(combined_hdr, p_hdr, sizeof(struct pseduo_hdr));
@@ -372,8 +372,6 @@ int main(int argc, char *argv[]){
     // for every packet in our pcap file
     int pkt_num = 1;
     std::cout << std::endl;
-    uint32_t p = 0x1234;
-    uint8_t *p1 = (uint8_t*)(&p);
 
     while((next=pcap_next_ex(pcap_sess, &pkt_hdr, &pkt_data)) == 1){
 
