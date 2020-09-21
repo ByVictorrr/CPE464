@@ -212,14 +212,14 @@ class IpHDR: public HDR{
             
             out << "\tIp Header" << std::endl;
             out << "\t\tHeader Len: " << (ip.hdr->ip_ver_hdrlen & 0x0f)*4  << " (bytes)" << std::endl;
-            out << "\t\tTOS: " << std::hex << std::showbase << ((int)ip.hdr->tos) << std::endl;
+            out << "\t\tTOS: 0x" << std::hex << ((int)ip.hdr->tos) << std::endl;
             out << "\t\tTTL: " << std::dec << (int)ip.hdr->time_live << std::endl;
-            out << "\t\tIP PDU Len: " << ntohs(ip.hdr->datagram_len)  << " (bytes)" << std::endl;
+            out << "\t\tIP PDU Len: " << std::dec << ntohs(ip.hdr->datagram_len)  << " (bytes)" << std::endl;
             out << "\t\tProtocol: " << ip.getUpperLayer(ip.hdr->upper_layer) << std::endl;
             if(in_cksum((unsigned short *)ip.hdr, sizeof(struct ip_hdr)) == 0){
-              out << "\t\tChecksum: " << "Correct" << " (" << std::hex  << std::showbase << ntohs(ip.hdr->hdr_chksum) << ")" << std::endl;
+              out << "\t\tChecksum: " << "Correct" << " (0x" << std::hex << ntohs(ip.hdr->hdr_chksum) << ")" << std::endl;
             }else{
-              out << "\t\tChecksum: " << "Incorrect" << " (" << std::hex  << std::showbase << ntohs(ip.hdr->hdr_chksum) << ")" << std::endl;
+              out << "\t\tChecksum: " << "Incorrect" << " (0x" << std::hex << ntohs(ip.hdr->hdr_chksum) << ")" << std::endl;
             }
             out << "\t\tSender IP: " << inet_ntoa(sender_ip) << std::endl;
             out << "\t\tDest IP: " << inet_ntoa(dest_ip) << std::endl;
@@ -245,35 +245,38 @@ class TcpHDR : public HDR{
             return (const u_char *)this->tcp_hdr + sizeof(struct tcp_hdr);
         }
     friend std::ostream &operator<<(std::ostream &out, const TcpHDR & tcp){
-            struct pseduo_hdr *p_hdr;
             void *combined_hdr;
+            struct pseduo_hdr *p_hdr = tcp.p_hdr;
             struct tcp_hdr *tcp_hdr = tcp.tcp_hdr;
+            int ack_valid = ntohs(tcp_hdr->hdr_len_res_flags) & 0b010000 ;
 
             out << "\tTCP Header" << std::endl;
             out << "\t\tSource Port: " << (ntohs(tcp_hdr->src_port) == tcp.HTTP ? "HTTP" : std::to_string(ntohs(tcp_hdr->src_port))) << std::endl;
             out << "\t\tDest Port: " << (ntohs(tcp_hdr->dest_port) == tcp.HTTP ? "HTTP" : std::to_string(ntohs(tcp_hdr->dest_port))) << std::endl;
             out << "\t\tSequence Number: " << std::dec << ntohl(tcp_hdr->seq_num) << std::endl;
-            out << "\t\tACK Number: " << std::dec << ntohl(tcp_hdr->ack_num)  << std::endl;
-            out << "\t\tACK Flag: " << (ntohs(tcp_hdr->hdr_len_res_flags) & 0b010000 ? "Yes" : "No") << std::endl;
+            out << "\t\tACK Number: " << (ack_valid ? std::to_string(tcp_hdr->ack_num) : "<not valid>") << std::endl;
+            out << "\t\tACK Flag: " << (ack_valid ? "Yes" : "No") << std::endl;
             out << "\t\tSYN Flag: " << (ntohs(tcp_hdr->hdr_len_res_flags) & 0b000010 ? "Yes" : "No") << std::endl;
             out << "\t\tRST Flag: " << (ntohs(tcp_hdr->hdr_len_res_flags) & 0b000100 ? "Yes" : "No") << std::endl;
             out << "\t\tFIN Flag: " << (ntohs(tcp_hdr->hdr_len_res_flags) & 0b000001 ? "Yes" : "No") << std::endl;
             out << "\t\tWindow Size: " << std::dec << ntohs(tcp_hdr->advertise_window) << std::endl;
-            if((p_hdr = tcp.p_hdr) == NULL){
+            if(p_hdr == NULL)
                 exit(EXIT_FAILURE);
-            }
-            combined_hdr = malloc(sizeof(struct pseduo_hdr)+ntohs(p_hdr->protocol_len));
-            memcpy(combined_hdr, p_hdr, sizeof(struct pseduo_hdr));
-            memcpy(combined_hdr+sizeof(struct pseduo_hdr), tcp.tcp_hdr, ntohs(tcp.p_hdr->protocol));
+
+            if(!(combined_hdr = realloc(p_hdr,sizeof(struct pseduo_hdr)+ntohs(p_hdr->protocol_len))))
+                exit(EXIT_FAILURE);
+
+            //memcpy(combined_hdr, p_hdr, sizeof(struct pseduo_hdr));
+            memcpy(combined_hdr+sizeof(struct pseduo_hdr), tcp_hdr, ntohs(p_hdr->protocol_len));
 
 
-            if(in_cksum((unsigned short *)combined_hdr, sizeof(struct pseduo_hdr) + ntohs(tcp.p_hdr->protocol_len)) == 0){
+            if(in_cksum((unsigned short *)combined_hdr, sizeof(struct pseduo_hdr) + ntohs(p_hdr->protocol_len)) == 0){
               out << "\t\tChecksum: " << "Correct" << " (" << std::hex << std::showbase << ntohs(tcp_hdr->checksum) << ")" << std::endl;
             }else{
               out << "\t\tChecksum: " << "Incorrect" << " (" << std::hex << std::showbase << ntohs(tcp_hdr->checksum) << ")" << std::endl;
             }
-            free(combined_hdr);
 
+            free(combined_hdr);
             return out;
 
         }
@@ -393,6 +396,8 @@ int main(int argc, char *argv[]){
                 std::cout << tcp << std::endl;
 
             }else if(ip.getUpperLayer().compare("UDP") == 0){
+                UdpHDR udp(cursor);
+                std::cout << udp << std::endl;
 
             }else if(ip.getUpperLayer().compare("ICMP")){
                 IcmpHDR icmp(cursor);
