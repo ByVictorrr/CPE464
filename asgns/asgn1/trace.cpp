@@ -267,7 +267,7 @@ class TcpHDR : public HDR{
             if(p_hdr == NULL)
                 exit(EXIT_FAILURE);
 
-            if(!(combined_hdr = realloc(p_hdr,sizeof(struct pseduo_hdr)+ntohs(p_hdr->protocol_len))))
+            if(!(combined_hdr = realloc(p_hdr,sizeof(struct pseduo_hdr)+ntohs(p_hdr->protocol_len)+2)))
                 exit(EXIT_FAILURE);
 
             //memcpy(combined_hdr, p_hdr, sizeof(struct pseduo_hdr));

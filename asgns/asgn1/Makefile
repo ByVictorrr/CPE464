@@ -27,5 +27,8 @@ trace: $(OBJS)
 debug: trace
 	gdb --args trace $(FILE)
 
+valgrind: trace
+	valgrind --leak-check=full ./trace $(FILE)
+
 clean:
 	rm -f trace *.o
