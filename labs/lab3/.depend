@@ -1,7 +1,5 @@
 gethostbyname6.o: gethostbyname6.c gethostbyname6.h
-myClient.o: myClient.c networks.h
 server.o: server.c readLongLine.h networks.h
-myServer.o: myServer.c networks.h
 readLongLine.o: readLongLine.c readLongLine.h
 networks.o: networks.c networks.h gethostbyname6.h
 cclient.o: cclient.c networks.h readLongLine.h

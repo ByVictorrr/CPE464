@@ -58,7 +58,6 @@ int main(int argc, char * argv[])
 
 char *sendToServer(int socketNum)
 {
-	char aChar = 0;
 	int sendLen = 0;        //amount of data to send
 	int inputLen = 0;
 	int sent = 0;            //actual amount of data sent/* get the data and send it   */

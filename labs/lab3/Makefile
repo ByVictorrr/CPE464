@@ -29,4 +29,4 @@ include .depend
 	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ 
 
 clean:
-	rm -f $(OBJS) .depend
+	rm -f $(OBJS) .depend server cclient

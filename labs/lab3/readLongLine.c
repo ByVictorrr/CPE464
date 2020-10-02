@@ -39,7 +39,6 @@ char *read_long_line(int inFd, int max_chars)
 	int num_resizes=1;
 	char c; /*temp is for moving allong pbuff*/
 
-	int onebuff = 0;
 	
 	pbuff = (char*)safe_calloc(MAXCHAR, sizeof(char));
 	memset(pbuff, '\0', MAXCHAR);

@@ -8,10 +8,12 @@
 #define __NETWORKS_H__
 
 #define BACKLOG 10
-#define MAXBUF 1024
+#define HDR_LEN 2 // bytes
+#define MAX_INPUT (1 << (HDR_LEN*8)) // number of positions psso
 #define TIME_IS_NULL 1
 #define TIME_IS_NOT_NULL 2
 
+#define MAXBUF 1024
 // for the server side
 int tcpServerSetup(int portNumber);
 int tcpAccept(int server_socket, int debugFlag);
