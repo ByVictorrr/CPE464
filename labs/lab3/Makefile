@@ -1,28 +1,32 @@
 # Makefile for CPE464 tcp test code
 # written by Hugh Smith - April 2019
+# Assignment 1 - Template Makefile
+SHELL := /bin/bash
+CC = gcc
+LDFLAGS = 
+CFLAGS =  -g -Wall
+# need a way to input all c files and headers
+C_FILES = $(shell find . -name "*.c")
+OBJS = $(C_FILES:.c=.o)
 
-CC= gcc
-CFLAGS= -g -Wall
-LIBS = 
+all: .depend cclient server
 
+server:  server.o networks.o gethostbyname6.o readLongLine.o
+cclient:  cclient.o networks.o gethostbyname6.o readLongLine.o
 
-all:   cclient server
+# This is to get the depencies of all the c files
 
-cclient: myClient.c networks.o gethostbyname6.o
-	$(CC) $(CFLAGS) -o cclient myClient.c networks.o gethostbyname6.o $(LIBS)
+.depend: $(C_FILES)
+	rm -f ./.depend
+	$(CC) -MM $^ > ./.depend;
 
-server: myServer.c networks.o gethostbyname6.o
-	$(CC) $(CFLAGS) -o server myServer.c networks.o gethostbyname6.o $(LIBS)
+include .depend
 
-.c.o:
-	gcc -c $(CFLAGS) $< -o $@ $(LIBS)
+%.o: %.c
+	$(CC) $(CFLAGS)  -c -o $@ $<
 
-cleano:
-	rm -f *.o
+%: %.o
+	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ 
 
 clean:
-	rm -f server cclient *.o
-
-
-
-
+	rm -f $(OBJS) .depend
