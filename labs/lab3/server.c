@@ -107,7 +107,7 @@ char *recvFromClient(int clientSocket)
 
 	pduLen=strlen(data)+1+HDR_LEN;
 
-	printf("Message received, Recv len %d, Header Len: %d, Message: %s\n", pduLen, HDR_LEN, data);
+	printf("Message received, Recv len %d, Header Len: %d, Message: %s\n", pduLen, pduLen, data);
 
 	return data;
 }
