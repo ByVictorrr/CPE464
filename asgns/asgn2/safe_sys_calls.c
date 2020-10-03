@@ -103,7 +103,7 @@ ssize_t safe_recv(int skt, void *buf, size_t len, int flags){
 	}
 	return recv_len;
 }
-int select(int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds, struct timeval *timeout){
+int safe_select(int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds, struct timeval *timeout){
 	int numReady;
 	if ((numReady = select(nfds, readfds, writefds, exceptfds, timeout)) < 0)
 	{

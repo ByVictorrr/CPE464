@@ -1,4 +1,5 @@
 #include "NetworkNodes.hpp"
+#include "Server.hpp"
 
 
 /* Server class */

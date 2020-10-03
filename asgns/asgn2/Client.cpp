@@ -1,13 +1,45 @@
-
 #include "NetworkNodes.hpp"
-/* Client functions */
+#include "Client.hpp"
+
+void checkArgs(int argc, char * argv[])
+{
+/* check command line arguments  */
+    if (argc != 4)
+    {
+        printf("usage: %s handle server-name server-port \n", argv[0]);
+        exit(EXIT_SUCCESS);
+    }
+
+}
+int main(int argc, char * argv[])
+{
+	int socketNum = 0;         //socket descriptor
+	
+    #define DEBUG_FLAG 1
+	checkArgs(argc, argv);
+
+	/* set up the TCP Client socket  */
+    TCPClient client(argv[1], argv[2], argv[3]);
+
+    client.connect(DEBUG_FLAG);
+    // Take out busy wait ask if whenever somethings sent if it gets a recv
+    while(1){
+        client.send();
+        client.recv();
+    }
+    // May need select on client for recv or else would be blocked
+    client.close();
+	
+	return 0;
+}
+/***************** Client functions ****************************/
 // Like the send helper
-int Client::createPacket(int fd){
+int Client::processStdIn(){
     uint8_t c;
     int place = (HDR_LEN+FLAG_LEN-1);
     int len;
     // get input
-    while((read(fd, &c, sizeof(uint8_t))) > 0){
+    while((read(STDIN_FILENO, &c, sizeof(uint8_t))) > 0){
         // Case 1 - user enters 'enter' or if we ran out of space
         if(c == '\n' || place >= MAX_BUFF-1); // TODO maybe take out null
             break;
@@ -20,6 +52,10 @@ int Client::createPacket(int fd){
     // TODO : get the flag 
     return len;
 }
+int Client::processSocket(){
+    return safe_recv(this->skt, this->recvBuff, MAX_BUFF, 0);
+}
+
 
 Client::Client(char *handle, char *server_name, char *port, int type, int protocol=0)  
 : handle(handle), serverName(server_name), port(port)
@@ -34,7 +70,7 @@ Client::~Client(){
 
 
 
-TCPClient::TCPClient(char *handle, char *server_name, char *port, int type, int protocol=0)  
+TCPClient::TCPClient(char *handle, char *server_name, char *port, int protocol=0)  
 : Client(handle, server_name, port, SOCK_STREAM, protocol){
     safe_close(&this->skt);
 }
@@ -73,27 +109,42 @@ void TCPClient::connect(int debugFlag){
         safe_send(this->skt, pkt, len, 0);
         printf("read: %s string len: %d (including null)\n", (char*)pkt, len);
     }
-    void TCPClient::recv(){
-        ssize_t len;
-        // recv message
-        // the server disconnected
-        if((len=safe_recv(this->skt, this->recvBuff, MAX_BUFF, 0)) == 0){
-            exit(EXIT_FAILURE);
-        }
-    }
-
     void TCPClient::close(){
         safe_close(&this->skt);
     }
 
 
-void checkArgs(int argc, char * argv[])
-{
-/* check command line arguments  */
-if (argc != 4)
-{
-    printf("usage: %s handle server-name servername \n", argv[0]);
-    exit(1);
-}
+    void TCPClient::loop(){
 
-}
+        ssize_t recv_len;
+        ssize_t stdin_len;
+        fd_set input;
+
+start:
+        FD_ZERO(&input);
+        FD_SET(STDIN_FILENO, &input);
+        FD_SET(this->skt, &input);
+        memset(this->recvBuff, 0, MAX_BUFF);
+        memset(this->transBuff, 0, MAX_BUFF);
+        std::cout << "$: ";
+        selectCall(this->skt, 0, 0,TIME_IS_NOT_NULL);
+        // Case 1 - something has been writen to the socket
+        if(FD_ISSET(this->skt, &input)){
+            // if recv a end aka recv_len = 0
+            if((recv_len = processSocket()) == 0)
+                goto end;
+            else{
+                // print out message
+                std::cout << "\n" << this->recvBuff << std::endl;
+            }
+        }
+        // Case 2 - something has been writen to stdin
+        if(FD_ISSET(STDIN_FILENO, &input)){
+           stdin_len = processStdIn(); 
+           safe_send(this->skt, this->transBuff, sizeof(transBuff), 0);
+        }
+        goto start;
+end:
+    }
+   
+
