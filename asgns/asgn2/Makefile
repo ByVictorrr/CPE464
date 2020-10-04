@@ -7,12 +7,12 @@ LDFLAGS =
 CFLAGS =  -g -Wall
 # need a way to input all c files and headers
 C_FILES = $(shell find . -name "*.c*")
-OBJS = $(C_FILES:.c=.o)
 
 all: .depend cclient server
 
-server:  server.o networks.o gethostbyname6.o 
-cclient:  cclient.o networks.o gethostbyname6.o readLongLine.o
+server:  server.o Server.o gethostbyname6.o NetworkNodes.o safe_sys_calls.o
+cclient:  cclient.o Client.o gethostbyname6.o NetworkNodes.o safe_sys_calls.o
+
 
 # This is to get the depencies of all the c files
 
@@ -25,12 +25,12 @@ include .depend
 %.o: %.c
 	$(CC) $(CFLAGS)  -c -o $@ $<
 
-#%.o: %.cpp
-#	$(CC) $(CFLAGS)  -c -o $@ $<
+%.o: %.cpp
+	$(CC) $(CFLAGS)  -c -o $@ $<
 
 
 %: %.o
 	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ 
 
 clean:
-	rm -f $(OBJS) .depend server cclient
+	rm -f *.o .depend server cclient

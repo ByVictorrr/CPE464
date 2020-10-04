@@ -2,23 +2,25 @@
 #include "Server.hpp"
 
 
+
+
 /* Server class */
-Server::Server(int max_clients, int port, int type, int protocol=0)  
+Server::Server(int port, int type, int protocol=0)  
 : port(port)
 {
     this->skt=safe_socket(AF_INET6, type, protocol);
-    this->client_sks = new int[max_clients];
+    this->clients = new std::map<std::string, int>;
 }
 Server::~Server(){
-    delete [] this->client_sks;
+    delete this->clients;
     safe_close(&this->skt);
 }
 
 
 
 /* TCP server calss */
-TCPServer::TCPServer(int max_clients, int port, int protocol=0)  
-: Server(max_clients, port, SOCK_STREAM, protocol){}
+TCPServer::TCPServer(int port, int protocol=0)  
+: Server(port, SOCK_STREAM, protocol){}
 
 void TCPServer::config(){
     struct sockaddr_in6 server;      /* socket address for local side  */

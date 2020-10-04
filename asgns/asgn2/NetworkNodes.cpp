@@ -16,8 +16,8 @@
 #include <netinet/in.h>
 #include <netdb.h>
 
-#include "networks.h"
 #include "gethostbyname6.h"
+#include "NetworkNodes.hpp"
 #include "safe_sys_calls.h"
 
 

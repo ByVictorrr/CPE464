@@ -1,47 +1,17 @@
 #include "NetworkNodes.hpp"
 #include "Client.hpp"
 
-void checkArgs(int argc, char * argv[])
-{
-/* check command line arguments  */
-    if (argc != 4)
-    {
-        printf("usage: %s handle server-name server-port \n", argv[0]);
-        exit(EXIT_SUCCESS);
-    }
-
-}
-int main(int argc, char * argv[])
-{
-	int socketNum = 0;         //socket descriptor
-	
-    #define DEBUG_FLAG 1
-	checkArgs(argc, argv);
-
-	/* set up the TCP Client socket  */
-    TCPClient client(argv[1], argv[2], argv[3]);
-
-    client.connect(DEBUG_FLAG);
-    // Take out busy wait ask if whenever somethings sent if it gets a recv
-    while(1){
-        client.send();
-        client.recv();
-    }
-    // May need select on client for recv or else would be blocked
-    client.close();
-	
-	return 0;
-}
 /***************** Client functions ****************************/
-// Like the send helper
-int Client::processStdIn(){
+// TODO : work on processing flag
+uint16_t Client::processStdIn(){
     uint8_t c;
-    int place = (HDR_LEN+FLAG_LEN-1);
+    //int place = (HDR_LEN+FLAG_LEN-1);
+    int place = 0;
     int len;
     // get input
     while((read(STDIN_FILENO, &c, sizeof(uint8_t))) > 0){
         // Case 1 - user enters 'enter' or if we ran out of space
-        if(c == '\n' || place >= MAX_BUFF-1); // TODO maybe take out null
+        if(c == '\n' || place >= (MAX_BUFF+HDR_LEN+FLAG_LEN-1)); // TODO maybe take out null
             break;
         this->transBuff[place++] = c;
     }
@@ -52,8 +22,16 @@ int Client::processStdIn(){
     // TODO : get the flag 
     return len;
 }
-int Client::processSocket(){
-    return safe_recv(this->skt, this->recvBuff, MAX_BUFF, 0);
+size_t Client::processSocket(){
+    return (size_t)safe_recv(this->skt, this->recvBuff, MAX_BUFF, 0);
+}
+
+// Assume data doesnt include header 
+void TCPClient::createPacket(uint8_t *data, uint16_t len, uint8_t flag){
+    this->transBuff[0] = len >> 8;
+    this->transBuff[1] = (uint8_t)len;
+    this->transBuff[2] = flag;
+    memcpy(this->transBuf+3, data, len);
 }
 
 
@@ -67,7 +45,9 @@ Client::Client(char *handle, char *server_name, char *port, int type, int protoc
 Client::~Client(){
     safe_close(&this->skt);
 }
-
+void Client::close(){
+    safe_close(&this->skt);
+}
 
 
 TCPClient::TCPClient(char *handle, char *server_name, char *port, int protocol=0)  
@@ -94,24 +74,15 @@ void TCPClient::connect(int debugFlag){
     printf("server ip address: %s\n", getIPAddressString(ipAddress));
     safe_connect(this->skt, (struct sockaddr*)&server, sizeof(server));
 
+    // TODO: create packet check to see if handle is taken
+    safe_send(this->skt, this->handle, );
+
     if (debugFlag)
     {
         printf("Connected to %s IP: %s Port Number: %d\n", serverName, getIPAddressString(ipAddress), atoi(this->port));
     }
 }
-    /* need to create methods for reading and writing */
-    void TCPClient::send(){
-        int len;
-        uint8_t *pkt;
-        memset(this->transBuff, 0, MAX_BUFF);
-        len = this->createPacket(STDIN_FILENO);
-        pkt = this->transBuff;
-        safe_send(this->skt, pkt, len, 0);
-        printf("read: %s string len: %d (including null)\n", (char*)pkt, len);
-    }
-    void TCPClient::close(){
-        safe_close(&this->skt);
-    }
+
 
 
     void TCPClient::loop(){
@@ -127,6 +98,7 @@ start:
         memset(this->recvBuff, 0, MAX_BUFF);
         memset(this->transBuff, 0, MAX_BUFF);
         std::cout << "$: ";
+
         selectCall(this->skt, 0, 0,TIME_IS_NOT_NULL);
         // Case 1 - something has been writen to the socket
         if(FD_ISSET(this->skt, &input)){
@@ -141,6 +113,7 @@ start:
         // Case 2 - something has been writen to stdin
         if(FD_ISSET(STDIN_FILENO, &input)){
            stdin_len = processStdIn(); 
+           std::cout << std::endl;
            safe_send(this->skt, this->transBuff, sizeof(transBuff), 0);
         }
         goto start;

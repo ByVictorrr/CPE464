@@ -15,16 +15,13 @@ class Client{
 
         // Fd_set var so we can use two function's below
         int processStdIn(); // helper of recv
-        int processSocket(); // helper of recv
+        size_t processSocket(); // helper of recv
+        int 
 
     public:
         Client(char *handle, char *server_name, char *port, int type, int protocol=0);
         ~Client();
-        virtual void send()=0;
-        virtual void recv()=0;
-        virtual void close()=0;
-   
-
+        void close();
 };
 
 class TCPClient: public Client{
@@ -32,12 +29,6 @@ class TCPClient: public Client{
     public:
         TCPClient(char *handle, char *server_name, char *port, int protocol=0);
         void connect(int debugFlag);
-
-        void getInput();
-        void send();
-        void recv();
-        void close();
-
         // like main
         void loop();
     
