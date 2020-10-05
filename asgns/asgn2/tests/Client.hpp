@@ -4,46 +4,69 @@
 #include <iostream>
 #include <regex>
 class TCPClient;
+//typedef uint16_t hdr_t;
 
 class UserParser{
     private:
-
-        const char *M_REGEX = "^\s{0,}%M\s{1,}[1-9]\s{1,}[^\s]{1,100}(:?\s{1,}[^\s]{1,100}){0,9}?$";
-        const char *B_REGEX = "^\s{0,}%B\s{0,}[^\s]{1,}";
-
-       public:
-            // Assumed that input is trimed
-            static bool validateInput(std::string &input){
-                static const char *COMMAND_FORMAT = "%(M\s{1,}[1-9]\s{1,}[^\s]{1,100}(:?\s{1,}[^\s]{1,100}){0,8}?(:?\s{1,}[^\s]{1,}){0,}?|B(\s{1,}[^\s]{0,}){0,}?|L\s{0,}|E\s{0,}?)?$";
-                std::regex cmd_format(COMMAND_FORMAT);
-                char cmd = input[1];
-                // Step 1 - see if input matches one of the commands format
-                if(!std::regex_match(input, cmd_format)){
-                    switch (std::toupper(cmd))
-                    {
-                    case 'M':
-                        std::cout << "usage: %[M|m] num-handles(1-9) handle1 [handle2[..[handle9]]] [message]" << std::endl;
-                        return false;
-                        break;
-                    
-                    default:
-                        std::cout << "command " << cmd << " Not found" << std::endl;
-                        return false;
-                        break;
-                    }
+    public:
+        // Assumed that input is trimed
+        static bool validateInput(std::string &input){
+            static const char *COMMAND_FORMAT = "%([M|m]\\s{1,}[1-9]\\s{1,}[^\\s]{1,100}(:?\\s{1,}[^\\s]{1,100}){0,8}?(:?\\s{1,}[^\\s]{1,}){0,}?|[B|b](\\s{1,}[^\\s]{0,}){0,}?|[L|l]\\s{0,}|[E|e]\\s{0,}?)?$";
+            std::regex cmd_format(COMMAND_FORMAT);
+            char cmd = input[1];
+            // Step 1 - see if input matches one of the commands format
+            if(!std::regex_match(input, cmd_format)){
+                switch (std::toupper(cmd))
+                {
+                case 'M':
+                    std::cout << "usage: %[M|m] num-handles(1-9) handle1 [handle2[..[handle9]]] [message]" << std::endl;
+                    return false;
+                    break;
+                
+                default:
+                    std::cout << "command " << cmd << " Not found" << std::endl;
+                    return false;
+                    break;
                 }
-                // step 2 - matches one of the commands
-                return true;
             }
-    
-            static std::vector<std::string> parse(std::string &validated){
-                // Also sets it
-                std::vector<std::string> result; 
-                std::istringstream iss(validated); 
-                for(std::string s; iss >> s; ) 
-                    result.push_back(s); 
-                return result;
-            }
+            // step 2 - matches one of the commands
+            return true;
+        }
+            
+        static std::vector<std::string> parse(std::string &str){
+            // Also sets it
+            std::vector<std::string> result; 
+            std::istringstream iss(str); 
+            for(std::string s; iss >> s; ) 
+                result.push_back(s); 
+            return result;
+        }
+        //
+        //Left trim
+        //
+        static std::string trim_left(const std::string& str)
+        {
+        const std::string pattern = " \f\n\r\t\v";
+        return str.substr(str.find_first_not_of(pattern));
+        }
+
+        //
+        //Right trim
+        //
+        static std::string trim_right(const std::string& str)
+        {
+        const std::string pattern = " \f\n\r\t\v";
+        return str.substr(0,str.find_last_not_of(pattern) + 1);
+        }
+
+        //
+        //Left and Right trim
+        //
+        static std::string trim(const std::string& str)
+        {
+        return trim_left(trim_right(str));
+        }
+
 
 };
 
@@ -57,24 +80,14 @@ class PacketBuilder{
             'L',
             'E',
         };
-        bool inCommnds(char c){
-            for(int i=0; i <NUM_COMMANDS; i++){
-                if(toupper(c) == COMMANDS[i]){
-                    return true;
-                }
-            }
-            return false;
-        }
-        /**
-         * Assume input[0] = % and input[1] = [M|m]
-         * 
-         */
-        uint16_t formatMPacket(std::string &args, TCPClient &client);
-
+        uint16_t formatMPacket(std::vector<std::string> &args, TCPClient &client);
+        uint16_t formatBPacket(std::vector<std::string> &args, TCPClient &client);
+        uint16_t PacketBuilder::formatLPacket(TCPClient &client);
+        uint16_t PacketBuilder::formatEPacket(TCPClient &client);
 
     public:
-        // For client to format stdinput
-        uint16_t formatPacket(std::string &input, TCPClient &client);
+        // For client to format stdinput returns size of bytes the full pdu is
+        uint16_t formatPacket(const std::string &input, TCPClient &client);
           
 
 };
@@ -121,7 +134,7 @@ typedef enum FLAGS{
     HANDLE_DNE,
     HANDLE_EXISTS,
     BROADCAST,
-    MESSAGE,
+    MULTICAST,
     UN_USED,
     MESSAGE_HANDLE_DNE,
     CLIENT_EXIT,

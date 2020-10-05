@@ -1,21 +1,24 @@
 #include "Utils.hpp"
 #include "Client.hpp"
+#include <numeric>
+
 
 /***************** Client functions ****************************/
 /**
- * Gets input from a user and then returns the length of the input
+ * Requirements:
+ *  0.) No more than 1400 bytes including everything
+ *  1.) msg must be at most 200 bytes in length
+ *  2.) If msg is more than 200 bytes make sure to break it up into multiple packets
+ *  3.) if no msg is given include just a new line as the message
  */
+#define MAX_USER_INPUT 1400
 std::string Client::readUserInput(){
     uint8_t c;
     std::string input;
-    
-    //int place = (HDR_LEN+FLAG_LEN-1);
-    int place = 0;
-    int len;
-    // get input
     std::getline(std::cin, input);
-    if(input.size() >= MAX_BUFF+HDR_LEN+FLAG_LEN-1)
-        return nullptr;
+    // Case 1 - user didnt enter in anything
+    if(input.size() >= MAX_USER_INPUT-1)
+        throw "Max input!";
     return input;
 }
 size_t Client::processSocket(){
@@ -111,98 +114,145 @@ start:
            safe_send(this->skt, this->transBuff, pkt_len, 0);
         }
         */
-           std::string input = readUserInput();
-           std::string parsed_input = std::regex_replace(input, std::regex("^ +| +$|( ) +"), "$1");
-           uint16_t pkt_len = this->pb.formatPacket(input, *this);
-           safe_send(this->skt, this->transBuff, pkt_len, 0);
+           std::string input;
+           try{
+               input = readUserInput();
+               input = UserParser::trim(input);
+                if(UserParser::validateInput(input)){
+                    uint16_t pkt_len = this->pb.formatPacket(input, *this);
+                    safe_send(this->skt, this->transBuff, pkt_len, 0);
+                }
+           }catch(const char *msg){
+               std::cerr << msg << std::endl;
+           }
 
-        goto start;
+         
+           goto start;
 
     }
 
    
 
-uint16_t PacketBuilder::formatMPacket(std::string &args, TCPClient &client){
+uint16_t PacketBuilder::formatMPacket(std::vector<std::string> &args, TCPClient &client){
     
-    int num_handles;
+    int num_handles = std::stoi(args[0]);
     int cursor=0;
     /* args format: <num-dests> <dest-handle1> ... [dest-handlen] [text] */
-    std::vector<std::string> parsed = splitWhitespace(args);
 
-    std::vector<uint8_t> handle_lens;
     std::vector<std::string> handles;
     std::string msg;
 
-    // Step 1 - check to see if num-handles is there 
-    if(!(num_handles = std::atoi(parsed[0].c_str())) || num_handles < 0 || num_handles > 9){
-        std::cerr << "Usage: %[m|M] num-handles(1-9) dest-handle1 .. [dest-handle9] [text]" << std::endl;
-        return false;
-    }
     // Step 2 - find the handles (assumed to be inex [1,size-2])
     for (size_t i = 1; i < num_handles+1; i++){
-        handles.push_back(parsed[i]);
-        handle_lens.push_back(handles[i-1].length());
+        handles.push_back(args[i]);
     }
 
     // Step 3 - get msg pased[size-1] 
     // Case to see if a msg exists
-    if(2*num_handles+1 < parsed.size()){
-        // msg = parsed.substr();
+    if(num_handles+1 < args.size()){
+       msg = std::accumulate(args.begin()+1+num_handles, args.end(), std::string(""),
+            [&](std::string &a, std::string &b){ 
+                if(a.size()==0)
+                    return b;
+                return a+ " " +b; 
+               });
     }else{
         msg = "\n";
     }
     char *src_handle = client.handle;
     uint8_t *transBuff = client.transBuff;
-    uint16_t pkt_len = HDR_LEN+FLAG_LEN;
+    uint16_t pkt_len = HDR_LEN+FLAG_LEN + 1 + strlen(src_handle);
 
-    for(uint8_t handle_len: handle_lens){
+    for(std::string handle: handles){
+        uint8_t handle_len = handle.size(); 
         pkt_len += (handle_len+1);
     }
     pkt_len+=msg.size()+1; // plus one for the null
 
-    // Done with the length
-    transBuff[cursor++] = pkt_len >> 8;
-    transBuff[cursor++] = pkt_len;
-    transBuff[cursor++] = MESSAGE;
+    // TODO: no shifts Done with the length
+    memcpy(transBuff+cursor, &pkt_len ,2);
+    cursor+=2;
+
+    transBuff[cursor++] = MULTICAST;
     transBuff[cursor++] = strlen(client.handle);
     // Step 2 - get the handles in the field s
     memcpy(transBuff+cursor, client.handle, strlen(client.handle));
     cursor+= strlen(client.handle);
     // Do the destination handles
     for(int i =0; i< num_handles; i++){
-        transBuff[cursor++] = handle_lens[i];
+        transBuff[cursor++] = handles[i].size();
         memcpy(transBuff+cursor, &(handles[i]), handles[i].size());
         cursor+=handles[i].size();
     }
 
     // DO the msg
-    memcpy(transBuff+cursor, &msg, msg.size()+1);
+    memcpy(transBuff+cursor, msg.c_str(), msg.size()+1);
 
+    return pkt_len;
+}
+
+uint16_t PacketBuilder::formatBPacket(std::vector<std::string> &args, TCPClient &client){
+    uint16_t pkt_len;
+    uint8_t flag = BROADCAST;
+    uint8_t *transBuff = client.transBuff;
+    uint8_t hand_len = strlen(client.handle);
+    // args = text
+    // pkt = <hdr(3)|src-len(1)|src-name|text>
+    std::string message = args[0];
+    pkt_len = HDR_LEN+FLAG_LEN+1+hand_len+message.size()+1;
+    
+    memcpy(transBuff, &pkt_len, 2);
+    memcpy(transBuff+2, &flag, 1);
+    memcpy(transBuff+3, &hand_len, 1);
+    memcpy(transBuff+4, message.c_str(), message.size()+1);
+    return pkt_len;
+}
+
+
+uint16_t PacketBuilder::formatLPacket(TCPClient &client){
+    uint8_t *transBuff = client.transBuff;
+    uint8_t flag = LIST_HANDLES;
+    uint16_t pkt_len = HDR_LEN+FLAG_LEN;
+    memcpy(transBuff, &pkt_len, 2);
+    memcpy(transBuff+2, &flag, 1);
+    return pkt_len;
+}
+
+uint16_t PacketBuilder::formatEPacket(TCPClient &client){
+    uint8_t *transBuff = client.transBuff;
+    uint8_t flag = CLIENT_EXIT;
+    uint16_t pkt_len = HDR_LEN+FLAG_LEN;
+    memcpy(transBuff, &pkt_len, 2);
+    memcpy(transBuff+2, &flag, 1);
     return pkt_len;
 }
 
 
 // Assume input has no trailing or front whitespaces
-uint16_t PacketBuilder::formatPacket(std::string &input, TCPClient &client){
+uint16_t PacketBuilder::formatPacket(const std::string &input, TCPClient &client){
     uint16_t pkt_len;
     uint8_t flag;
     char cmd = input[1];
-    std::string args;
+    std::string str_args = input.substr(2, input.size());
+    std::vector<std::string> args = UserParser::parse(str_args);
 
-    // Case 2 - stdin has a command
-    if( input.size() < 2 || input[0] != '%' || !inCommnds(input[1])){
-        std::cout << "Not a valid command" << std::endl;
-        return NULL;
-    }
-    args = input.substr(2, input.size());
     // Step 1 - parse to get all the fields then get size
-    switch (toupper(cmd))
+    switch (std::toupper(cmd))
     {
     case 'M':
         pkt_len = formatMPacket(args, client);
         break;
-    
+    case 'B':
+        pkt_len = formatBPacket(args, client);
+        break;
+    case 'L':
+        pkt_len = formatLPacket(client);
+        break;
+    case 'E':
+        pkt_len = formatEPacket(client);
+        break;
     default:
+        return 0;
         break;
     }
     return pkt_len;

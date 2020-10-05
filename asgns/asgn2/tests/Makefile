@@ -33,5 +33,8 @@ include .depend
 %: %.o
 	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ 
 
+debug: cclient
+	gdb -ex 'b Client.cpp:166' --args ./cclient handle1 localhost 20212
+
 clean:
 	rm -f *.o .depend server cclient
