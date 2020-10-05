@@ -1,9 +1,11 @@
-#include "NetworkNodes.hpp"
+#include "Utils.hpp"
 #include "Client.hpp"
 
 /***************** Client functions ****************************/
-// TODO : work on processing flag
-uint16_t Client::processStdIn(){
+/**
+ * Gets input from a user and then returns the length of the input
+ */
+uint16_t Client::processUserInput(){
     uint8_t c;
     //int place = (HDR_LEN+FLAG_LEN-1);
     int place = 0;
@@ -15,12 +17,7 @@ uint16_t Client::processStdIn(){
             break;
         this->transBuff[place++] = c;
     }
-    // Set the size of msg
-    len=place+1;
-    transBuff[0] = len >> 8;
-    transBuff[1] = (uint8_t)len;
-    // TODO : get the flag 
-    return len;
+    return place+1;
 }
 size_t Client::processSocket(){
     return (size_t)safe_recv(this->skt, this->recvBuff, MAX_BUFF, 0);

@@ -4,7 +4,7 @@
 SHELL := /bin/bash
 CC = g++
 LDFLAGS = 
-CFLAGS =  -g -Wall
+CFLAGS =  -g -std=c++11 -ggdb -Wall -D_GLIBCXX_DEBUG 
 # need a way to input all c files and headers
 C_FILES = $(shell find . -name "*.c*")
 

@@ -1,0 +1,10 @@
+gethostbyname6.o: gethostbyname6.c gethostbyname6.h
+Server.o: Server.cpp NetworkNodes.hpp safe_sys_calls.h gethostbyname6.h \
+ Server.hpp
+server.o: server.cpp Server.hpp NetworkNodes.hpp safe_sys_calls.h \
+ gethostbyname6.h
+safe_sys_calls.o: safe_sys_calls.c safe_sys_calls.h
+NetworkNodes.o: NetworkNodes.cpp gethostbyname6.h NetworkNodes.hpp \
+ safe_sys_calls.h
+Client.o: Client.cpp NetworkNodes.hpp safe_sys_calls.h gethostbyname6.h \
+ Client.hpp

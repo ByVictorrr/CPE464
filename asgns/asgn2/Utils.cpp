@@ -17,7 +17,7 @@
 #include <netdb.h>
 
 #include "gethostbyname6.h"
-#include "NetworkNodes.hpp"
+#include "Utils.hpp"
 #include "safe_sys_calls.h"
 
 
