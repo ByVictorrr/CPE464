@@ -18,7 +18,7 @@ std::string Client::readUserInput(){
     std::getline(std::cin, input);
     // Case 1 - user didnt enter in anything
     if(input.size() >= MAX_USER_INPUT-1)
-        throw "Max input!";
+        throw "Max input! - Please enter in less than 1400 chars";
     return input;
 }
 size_t Client::processSocket(){
@@ -97,58 +97,49 @@ start:
         memset(this->transBuff, 0, MAX_BUFF);
         std::cout << "$: ";
 
-        //TODO UN BLOCK : selectCall(this->skt, 0, 0, 1);
-        // Case 1 - something has been writen to the socket
-        /*
-        if(FD_ISSET(this->skt, &fd_inputs)){
-            // if recv a end aka recv_len = 0
-            if((recv_len = processSocket()) == 0)
-                return;
-            else
-                std::cout << "\n" << this->recvBuff << std::endl;
-        }
-        // Case 2 - something has been writen to stdin
-        if(FD_ISSET(STDIN_FILENO, &fd_inputs)){
-           std::string fd_inputs = readUserInput();
-           uint16_t pkt_len = this->pb.formatPacket(input, *this);
-           safe_send(this->skt, this->transBuff, pkt_len, 0);
-        }
-        */
-           std::string input;
-           try{
-               input = readUserInput();
-               input = UserParser::trim(input);
+        std::string input;
+        std::string nextInput;
+        uint16_t pkt_len;
+        int msg_place;
+        std::string msg;
+        std::vector<std::string> parsed;
+        // Step 1 - get user input
+        try{
+                input = readUserInput();
+                input = UserParser::trim(input);
+                // Validate and make sure stdin has a command format
                 if(UserParser::validateInput(input)){
-                    uint16_t pkt_len = this->pb.formatPacket(input, *this);
-                    safe_send(this->skt, this->transBuff, pkt_len, 0);
-                }
-           }catch(const char *msg){
-               std::cerr << msg << std::endl;
-           }
+                    // What if we need to send another packet just with the changing msg
+                    while(input.size() > 0){
+                        nextInput = this->pb.formatPacket(input, *this);
+                        safe_recv(this->skt, this->transBuff, this->pkt_len, 0);
+                        input = nextInput;
+                    }
+                    this->pb.clear();
 
-         
+                }
+          }catch(const char *msg){
+            std::cerr << msg << std::endl;
+          }
            goto start;
 
     }
 
    
 
-uint16_t PacketBuilder::formatMPacket(std::vector<std::string> &args, TCPClient &client){
-    
+/* args format: <num-dests> <dest-handle1> ... [dest-handlen] [text] */
+std::string PacketBuilder::formatMPacket(std::vector<std::string> &args, TCPClient &client){
     int num_handles = std::stoi(args[0]);
     int cursor=0;
-    /* args format: <num-dests> <dest-handle1> ... [dest-handlen] [text] */
-
     std::vector<std::string> handles;
-    std::string msg;
+    std::string message;
 
-    // Step 2 - find the handles (assumed to be inex [1,size-2])
+    // Step 1 - find the handles (assumed to be inex [1,size-2])
     for (size_t i = 1; i < num_handles+1; i++){
         handles.push_back(args[i]);
     }
 
     // Step 3 - get msg pased[size-1] 
-    // Case to see if a msg exists
     if(num_handles+1 < args.size()){
        msg = std::accumulate(args.begin()+1+num_handles, args.end(), std::string(""),
             [&](std::string &a, std::string &b){ 
@@ -157,11 +148,20 @@ uint16_t PacketBuilder::formatMPacket(std::vector<std::string> &args, TCPClient 
                 return a+ " " +b; 
                });
     }else{
-        msg = "\n";
+        message = "\n";
     }
+    // Case where msg is over 200 bytes
+    if(message.size() >= MAX_MESSAGE-1){
+        int i=0;
+        while(message.size() > 0){
+            std::string max_msg =message.substr(0, MAX_MESSAGE-1);
+            message = message.substr(MAX_MESSAGE-1, 2*MAX_MESSAGE -1);
+        }
+    }
+
     char *src_handle = client.handle;
     uint8_t *transBuff = client.transBuff;
-    uint16_t pkt_len = HDR_LEN+FLAG_LEN + 1 + strlen(src_handle);
+    uint16_t pkt_len = HDR_LEN+FLAG_LEN + 1 + strlen(src_handle) + message.size();
 
     for(std::string handle: handles){
         uint8_t handle_len = handle.size(); 
@@ -185,14 +185,12 @@ uint16_t PacketBuilder::formatMPacket(std::vector<std::string> &args, TCPClient 
         cursor+=handles[i].size();
     }
 
-    // DO the msg
-    memcpy(transBuff+cursor, msg.c_str(), msg.size()+1);
-
-    return pkt_len;
+    return cursor;
 }
 
-uint16_t PacketBuilder::formatBPacket(std::vector<std::string> &args, TCPClient &client){
-    uint16_t pkt_len;
+
+std::string PacketBuilder::formatBPacket(std::vector<std::string> &args, TCPClient &client){
+    uint16_t msg_slot, pkt_len;
     uint8_t flag = BROADCAST;
     uint8_t *transBuff = client.transBuff;
     uint8_t hand_len = strlen(client.handle);
@@ -200,37 +198,46 @@ uint16_t PacketBuilder::formatBPacket(std::vector<std::string> &args, TCPClient 
     // pkt = <hdr(3)|src-len(1)|src-name|text>
     std::string message = args[0];
     pkt_len = HDR_LEN+FLAG_LEN+1+hand_len+message.size()+1;
+    msg_slot = 2+1+1-1;
     
     memcpy(transBuff, &pkt_len, 2);
     memcpy(transBuff+2, &flag, 1);
     memcpy(transBuff+3, &hand_len, 1);
     memcpy(transBuff+4, message.c_str(), message.size()+1);
-    return pkt_len;
+
+    return "";
 }
 
 
-uint16_t PacketBuilder::formatLPacket(TCPClient &client){
+std::string PacketBuilder::formatLPacket(TCPClient &client){
     uint8_t *transBuff = client.transBuff;
     uint8_t flag = LIST_HANDLES;
     uint16_t pkt_len = HDR_LEN+FLAG_LEN;
     memcpy(transBuff, &pkt_len, 2);
     memcpy(transBuff+2, &flag, 1);
-    return pkt_len;
+    client.pkt_len = pkt_len;
+    return "";
 }
 
-uint16_t PacketBuilder::formatEPacket(TCPClient &client){
+std::string PacketBuilder::formatEPacket(TCPClient &client){
     uint8_t *transBuff = client.transBuff;
     uint8_t flag = CLIENT_EXIT;
     uint16_t pkt_len = HDR_LEN+FLAG_LEN;
     memcpy(transBuff, &pkt_len, 2);
     memcpy(transBuff+2, &flag, 1);
-    return pkt_len;
+    client.pkt_len=pkt_len;
+    return ""
 }
 
 
 // Assume input has no trailing or front whitespaces
-uint16_t PacketBuilder::formatPacket(const std::string &input, TCPClient &client){
-    uint16_t pkt_len;
+/*
+* Formats a chat-packet so that it has all necessary fields besides msg
+* 
+*@return where the message should be inserted in the packet
+*/
+std::string PacketBuilder::formatPacket(const std::string &input, TCPClient &client){
+    std::string nextInput("");
     uint8_t flag;
     char cmd = input[1];
     std::string str_args = input.substr(2, input.size());
@@ -240,22 +247,22 @@ uint16_t PacketBuilder::formatPacket(const std::string &input, TCPClient &client
     switch (std::toupper(cmd))
     {
     case 'M':
-        pkt_len = formatMPacket(args, client);
+        nextInput = "M" +formatMPacket(args, client);
         break;
     case 'B':
-        pkt_len = formatBPacket(args, client);
+        nextInput = "B"+  formatBPacket(args, client);
         break;
     case 'L':
-        pkt_len = formatLPacket(client);
+        nextInput = "B" + formatLPacket(client);
         break;
     case 'E':
-        pkt_len = formatEPacket(client);
+        nextInput = "B" + formatLPacket(client);
         break;
     default:
-        return 0;
+        return "";
         break;
     }
-    return pkt_len;
+    return nextInput.size() == 1 ? "" : nextInput;
 }
 
 
