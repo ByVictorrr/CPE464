@@ -58,7 +58,9 @@ class TCPClient: public Client{
         void connect(int debugFlag);
         // like main
         void loop();
-    
+        int send(uin16_t pkt_len){
+            return safe_send(this->skt, this->transBuff, pkt_len, 0);
+        }
         friend class PacketBuilder;
 };
 

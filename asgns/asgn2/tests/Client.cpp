@@ -102,20 +102,46 @@ start:
         uint16_t pkt_len;
         int msg_place;
         std::string msg;
-        std::vector<std::string> parsed;
+        std::vector<std::string> parsedInput;
+        std::queue<std::string> msg;
+        char cmd;
         // Step 1 - get user input
         try{
-                input = readUserInput();
-                input = UserParser::trim(input);
+                input = UserParser::trim(readUserInput());
                 // Validate and make sure stdin has a command format
                 if(UserParser::validateInput(input)){
-                    // What if we need to send another packet just with the changing msg
-                    while(input.size() > 0){
-                        nextInput = this->pb.formatPacket(input, *this);
-                        safe_recv(this->skt, this->transBuff, this->pkt_len, 0);
-                        input = nextInput;
+                    // Step 1- check to see if M or B msg
+                    parsedInput = CommandPaser::parse(input);
+                    
+                    // Step 2 - see if it has a message
+                    switch (Command)
+                    {
+                    case /* constant-expression */:
+                        /* code */
+                        break;
+                    
+                    default:
+                        break;
                     }
-                    this->pb.clear();
+                    if((msg = CommandPaser::getMsg(parsedInput))){
+                        if(std::toupper(parsedInput[0][1]) == 'M'){
+                            msg = Comman
+                        }
+                    }
+
+                    uint16_t pkt_len;
+                    Command cmd = CommandFactory(input);
+                        // build packet
+                     PacketFactory::buildPacket(cmd, *this);
+                     memcpy(this->transBuff, &pkt_len, 2);
+                     send(pkt_len);
+                     while(cmd.nextMsg()){
+                            PacketFactory::buildPacket(cmd, *this);
+                            memcpy(this->transBuff, &pkt_len, 2);
+                            send(pkt_len);
+                     }
+                    
+                     }
 
                 }
           }catch(const char *msg){
