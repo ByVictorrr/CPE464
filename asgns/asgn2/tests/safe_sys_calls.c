@@ -114,3 +114,35 @@ int safe_select(int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds, 
 	// Will be either 0 (socket not ready) or 1 (socket is ready for read)
     return numReady;
 }
+int safe_selectCall(int socketNumber, int seconds, int microseconds, int timeNull)
+{
+	// Returns 1 if socket is ready, 0 if socket is not ready  
+	// set timeIsNotNull = TIME_IS_NOT_NULL when providing a time value
+	int numReady = 0;
+	fd_set fileDescriptorSet;  // the file descriptor set 
+	struct timeval timeout;
+	struct timeval * timeoutPtr;   // needed for the time = NULL case
+	
+	
+	// setup fileDescriptorSet (socket to select on)
+	  FD_ZERO(&fileDescriptorSet);
+	  FD_SET(socketNumber, &fileDescriptorSet);
+	
+	// Time can be NULL, 0 or a seconds/microseconds 
+	if (!timeNull)
+	{
+		timeout.tv_sec = seconds;  
+		timeout.tv_usec = microseconds; 
+		timeoutPtr = &timeout;
+    } else
+    {
+		timeoutPtr = NULL;  /* block forever - until input */
+    }
+
+	numReady = safe_select(socketNumber + 1, &fileDescriptorSet, NULL, NULL, timeoutPtr);
+	// We have to wait for a response after we send something
+  
+	// will only by 1 or 0
+    return numReady;
+}
+
