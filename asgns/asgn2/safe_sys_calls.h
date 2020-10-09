@@ -11,7 +11,7 @@
 void *safe_calloc(size_t nmemb, int size);
 void *safe_realloc(void *src, int size);
 void safe_free(char **buff);
-void safe_close(int *fd);
+void safe_close(int fd);
 int safe_socket(int domain, int type, int protocol);
 int safe_bind(int skt, struct sockaddr *addr, socklen_t addrlen);
 int safe_getsocketname(int skt, struct sockaddr *addr, socklen_t *addrlen);

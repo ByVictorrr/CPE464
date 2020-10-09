@@ -24,11 +24,11 @@ void safe_free(char **buff)
 	}
     return;
 }
-void safe_close(int *fd){
-	if(*fd >= 0){
-		close(*fd);
+void safe_close(int fd){
+	if(close(fd) < 0){
+		perror("close error");
+		exit(EXIT_FAILURE);
 	}
-	*fd = -1;
 }
 int safe_socket(int domain, int type, int protocol){
     int skt;
