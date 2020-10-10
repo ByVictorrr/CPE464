@@ -91,6 +91,7 @@ void TCPClient::processUserInput(){
                 break;
             case 'E':
                 break;
+            
             }
 
         }
@@ -104,23 +105,61 @@ void TCPClient::processSocket(){
     uint8_t flag;
     uint8_t *data;
     memset(recvBuff, 0, MAX_BUFF);
-    // If the server closes its port
-    if((safe_recv(this->skt, &pkt_len, HDR_LEN, MSG_WAITALL)) == 0){
-        std::cout << "Server terminated" << std::endl;
-        this->close();
-        exit(EXIT_SUCCESS);
-    }
-    if((safe_recv(this->skt, this->recvBuff, pkt_len-HDR_LEN, 0))==0){
-        std::cout << "Server terminated" << std::endl;
-        this->close();
-        exit(EXIT_SUCCESS);
-    }
+    pkt_len = read_pkt(this->skt, this->recvBuff);
+    switch((flag=recvBuff[2]))
+    {
 
-    PacketParser parser;
-    //parser.parse(this->recvBuff[0], pkt_len-(HDR_LEN+FLAG_LEN), this->recvBuff+1, this);
-    if(PacketParser::parse(flag, (pkt_len-HDR_LEN-FLAG_LEN), data)){
-        this->close();
-        exit(EXIT_SUCCESS);
+        case HANDLE_DNE:
+            std::cout << "Login sucessful" << std::endl;
+        break;
+        case HANDLE_EXISTS:
+            safe_close(this->skt);
+            exit(EXIT_FAILURE);
+        break;
+        case BROADCAST:
+        {
+            BroadcastPacketParser parser;
+            parser.parse(recvBuff);
+            std::cout << std::endl << parser.getSourceHandle() << ": " << parser.getMessage();
+        }
+        case MULTICAST:
+        {
+            MulticastPacketParser parser;
+            parser.parse(recvBuff);
+            std::cout << std::endl << parser.getSourceHandle() << ": " << parser.getMessage() << std::endl;
+        }
+        case MULTICAST_HANDLE_DNE:
+            // make a parser (and throw error )
+        break;
+        case CLIENT_EXIT_ACK:
+        {
+            safe_close(this->skt);
+            exit(EXIT_SUCCESS);
+        }
+        break;
+        case NUM_HANDLES:
+        {
+            int numHandles;
+            // print out the number
+            memcpy(&numHandles, &recvBuff[3], 4);
+            std::cout << "Number of handles: " << numHandles << std::endl;
+        }
+        break;
+        case LIST_HANDLE_NAME:
+        {
+            uint8_t handSize = recvBuff[3];
+            std::string &&handName = std::string(recvBuff+4, (recvBuff+4)+handSize);
+            std::cout << handSize << std::endl;
+        }
+        break;
+        case FINISHED_LIST_HANDLES:
+        {
+            std::cout << "done listing handles" <<  std::endl;
+        }
+        break;
+        default:
+            std::cout << "Non existing flag" << std::endl;
+        break;
     }
 
 }

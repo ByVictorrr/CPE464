@@ -32,7 +32,7 @@ class LoginPacketParser: public PacketParser{
 class BroadcastPacketParser: public PacketParser{
     private:
         std::string message;
-        std::string handName;
+        std::string srcHandle;
     public:
         void parse(uint8_t *pkt){
             // (1 byte containing the length of sending client | send client)/ then message
@@ -40,10 +40,10 @@ class BroadcastPacketParser: public PacketParser{
             uint16_t len = getPacketLen(pkt);
             uint8_t handLen = pkt[3];
             this->message = std::string(pkt+3, pkt+3+handLen);
-            handName = std::string(pkt+3+handLen, pkt+len);
+            this->srcHandle = std::string(pkt+3+handLen, pkt+len);
         }
         std::string &getMessage(){this->message;}
-        std::string &getHandName(){this->handName;}
+        std::string &getSourceHandle(){this->srcHandle;}
 
 };
 
@@ -51,6 +51,7 @@ class MulticastPacketParser: public PacketParser{
     private:
         std::vector<std::string> destHandles;
         std::string message;
+        std::string srcHandle;
         uint8_t numHandles;// only 1-9
         
     public:
@@ -60,7 +61,7 @@ class MulticastPacketParser: public PacketParser{
             uint16_t pkt_len = getPacketLen(pkt);
             //uint8_t flag = 
             uint8_t srcHandleLen = pkt[3];
-            std::string &&srcHandle = std::string(pkt+3, (pkt+3)+srcHandleLen);
+            this->srcHandle = std::string(pkt+3, (pkt+3)+srcHandleLen);
             // step 2 - get the message
             this->numHandles = pkt[srcHandle.size()+3];
             int start = srcHandle.size()+4;
@@ -76,5 +77,6 @@ class MulticastPacketParser: public PacketParser{
         }
         std::vector<std::string> &getDestHandles(){this->destHandles;};
         std::string &getMessage(){this->message;}
+        std::string &getSourceHandle(){this->srcHandle;}
         uint8_t &getNumHandles(){return this->numHandles;}
 };

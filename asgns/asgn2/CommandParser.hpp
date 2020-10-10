@@ -17,7 +17,7 @@ class CommandValidator{
 
 class CommandParser{
     protected:
-        char cmd;
+        char flag;
     public:
         static char getCommand(std::string &input){
            std::string tr = trim(input);
@@ -27,20 +27,16 @@ class CommandParser{
 };
 
 class MCommandParser: public CommandParser{
-    static const std::string COMMAND_FORMAT = "\\s*%[M|m]\\s+[1-9]((\\s+[^\\s]{1,100}){0})(.*)$";
     private:
-        /**
-         * Variables of McommandParser
-         */
         std::queue<std::string> messages;
         std::vector<std::string> destHandles;
         uint8_t numHandles;// only 1-9
-       
     public:
         void parse(std::string &input)throw (const char *){
-            int numHandles = getFirstDigit(input);
+            this->numHandles = getFirstDigit(input);
+            this->flag = getCommand(input);
             const std::string format = "^\\s*%[M|m]\\s+[1-9]((\\s+[^\\s]{1,100}){"
-                                      +std::to_string(numHandles)+"})(.*)$";
+                                      +std::to_string(this->numHandles)+"})(.*)$";
             std::regex rgx(format);
             std::smatch match;
             if (std::regex_search(input, match, rgx)){
@@ -50,54 +46,43 @@ class MCommandParser: public CommandParser{
                 // step 2 - get dest handles
                 std::string message = trim_left(match[3]);
                 this->messages = split(message, 200);
+            }else{
+                throw "MCommandParser.parse: not able to parse";
             }
         }
         // Getters
         std::queue<std::string> &getMessages(){return this->messages;};
         uint8_t &getNumHandles(){return this->numHandles;}
         std::vector<std::string> &getDestHandles(){return this->destHandles;}
+};
+
+class BCommandParser: public CommandParser{
+    private:
+        std::queue<std::string> messages;
+    public:
+        void parse(std::string &input)throw (const char *){
+            int numHandles = getFirstDigit(input);
+            const std::string format = "^\\s*%[B|b]\\s+(.*)$";
+            std::regex rgx(format);
+            std::smatch match;
+            if (std::regex_search(input, match, rgx)){
+                // step 1 - get messages 
+                std::string message = trim_left(match[1]);
+                this->messages = split(message, 200);
+            }else{
+                throw "BCommandParser.parse: not able to parse";
+            }
+        }
+        // Getters
+        std::queue<std::string> &getMessages(){return this->messages;};
+};
+
+
+class LCommandParser: public CommandParser{
+    private:
+
+    public:
+
 
 };
- /**
-         * Helper functions for main parse function
-         */
-        uint8_t parseNumHandles(std::string &input)throw(const char *){
-            uint8_t numHandles;
-            std::regex rgx("\\s{0,}%[M|m]\\s{0,}([1-9])");
-            std::smatch match;
-            if (std::regex_search(input, match, rgx)){
-                std::string handles = match[1];
-                numHandles = std::stoi(handles.c_str());
-                return numHandles;
-            }
-            throw "parseNumHandles: Couldn't find the number of handles";
-        }
-        std::vector<std::string> parseDestHandles(std::string &input, uint8_t handles) throw(const char*){
-            std::string format = "\\s*%[M|m]\\s+[1-9]((\\s+[^\\s]{1,100}){"+std::to_string(handles)+"})";
-            std::vector<std::string> ret;
-            std::regex rgx(format);
-            std::smatch match;
-            if (std::regex_search(input, match, rgx)){
-                std::string handles = trim_left(match[1]);
-                ret = splitByWhiteSpace(handles);
-                return ret;
-            }
-        throw "parseDestHandles: The digit 1-9 has to match the number of handles given";
-    }
 
-    std::queue<std::string> parseMessages(std::string &input, uint8_t handles){
-
-            std::string format = "\\s*%[M|m]\\s+[1-9]((\\s+[^\\s]{1,100}){"+std::to_string(handles)+"})(.*)";
-            std::queue<std::string> ret;
-            std::regex rgx(format);
-
-            std::smatch match;
-            if (std::regex_search(input, match, rgx)){
-                std::string message = trim_left(match[3]);
-                ret = split(message, 200);
-                return ret;
-            }
-            // There is no message
-            ret.push("\n");
-        return ret;
-    }
