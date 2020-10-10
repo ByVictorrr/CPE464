@@ -1,10 +1,6 @@
 #include "Client.hpp"
-#include <numeric>
-#include <queue>
-#include "Utils.hpp"
-#include "CommandParser.hpp"
-#include "PacketParser.hpp"
-#include "PacketFactory.hpp"
+
+
 
 /***************** Client functions ****************************/
 /**
@@ -16,7 +12,6 @@
  */
 
 
-
 Client::Client(char *handle, char *server_name, char *port, int type, int protocol)  
 : handle(handle), serverName(server_name), port(port)
 {
@@ -25,6 +20,9 @@ Client::Client(char *handle, char *server_name, char *port, int type, int protoc
     memset(transBuff, 0, MAX_BUFF);
 }
 Client::~Client(){
+    safe_close(this->skt);
+}
+void Client::close(){
     safe_close(this->skt);
 }
 

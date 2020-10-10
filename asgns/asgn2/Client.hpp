@@ -4,16 +4,17 @@
 #include <regex>
 #include <queue>
 #include "safe_sys_calls.h"
+#include "Utils.hpp"
 //typedef uint16_t hdr_t;
-
-class PacketFactory;
-class PacketParser;
-class CommandParser;
+/*************** Forward classes ********************************/
+#include "Parsers.hpp"
+#include "PacketFactory.hpp"
 class CommandValidator;
-#define HDR_LEN 2
-#define FLAG_LEN 1
-#define MAX_BUFF (1 << (HDR_LEN*8)) // TODO : ask if i can use bit shift in macro
-#define BACKLOG 10
+class CommandParser;
+class MCommandParser;
+class BCommandParser;
+
+
 
 // usually used in the client to print out the message
 
@@ -34,6 +35,7 @@ class Client{
         void close();
         char * getHandle(){return this->handle;};
         uint8_t * getTransBuff(){return this->transBuff;};
+        int getSocket(){return this->skt;}
 };
 
 class TCPClient: public Client{
@@ -46,8 +48,6 @@ class TCPClient: public Client{
         void connect(int debugFlag);
         void loop();
       
-        friend class PacketFactory;
-        friend class PacketParser;
 };
 
 

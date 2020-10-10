@@ -1,13 +1,7 @@
 #ifndef SAFE_SYS_CALLS_H
 #define SAFE_SYS_CALLS_H
-#include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <string.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <sys/select.h>
+
+#include "Utils.hpp"
 void *safe_calloc(size_t nmemb, int size);
 void *safe_realloc(void *src, int size);
 void safe_free(char **buff);

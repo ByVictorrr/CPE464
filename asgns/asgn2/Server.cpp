@@ -1,13 +1,9 @@
-#include "Utils.hpp"
 #include "Server.hpp"
-#include <algorithm>
-#include "safe_sys_calls.h"
-#include "PacketParser.hpp"
 
 
 
 
-Server::Server(int port, int type, int protocol=0)  
+Server::Server(int port, int type, int protocol)  
 : port(port)
 {
     this->skt=safe_socket(AF_INET6, type, protocol);
@@ -21,7 +17,7 @@ Server::~Server(){
 
 
 /* TCP server calss */
-TCPServer::TCPServer(int port, int protocol=0)  
+TCPServer::TCPServer(int port, int protocol)  
 : Server(port, SOCK_STREAM, protocol){}
 
 void TCPServer::config(){
@@ -87,7 +83,7 @@ void TCPServer::processClient(int clientSocket){
         BroadcastPacketParser parser;
         parser.parse(this->recvBuff);
         for(const auto &client: clients)
-            if(client.second.compare(parser.getHandName()))
+            if(client.second.compare(parser.getSourceHandle()))
                 send_pkt(client.first, recvBuff, pkt_len);
     }
         break;
@@ -104,7 +100,7 @@ void TCPServer::processClient(int clientSocket){
                     // creat a error pkt and send
                     uint16_t err_len = 3+dest.size()+1;
                     memcpy(transBuff, &err_len, 2);
-                    transBuff[2] = MESSAGE_HANDLE_DNE;
+                    transBuff[2] = MULTICAST_HANDLE_DNE;
                     memcpy(transBuff, dest.c_str(), dest.size());
                     send_pkt(clientSocket, transBuff, err_len);
                 }
@@ -117,6 +113,7 @@ void TCPServer::processClient(int clientSocket){
 
         break;
     case LIST_HANDLES:
+    {
         int numHandles = this->clients.size();
         uint16_t len = 3 + numHandles;
         // step 1 - send the num of packets (with flag=11) 4 byte num
@@ -141,8 +138,10 @@ void TCPServer::processClient(int clientSocket){
         memcpy(transBuff, &len, 2);
         transBuff[2] = FINISHED_LIST_HANDLES;
         safe_send(clientSocket, transBuff, len, 0);
+    }
         break;
     default:
+        std::cout  << "Undefined flag" << std::endl;
         break;
     }
     
