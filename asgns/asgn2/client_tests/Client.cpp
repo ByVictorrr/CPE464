@@ -2,6 +2,9 @@
 #include <numeric>
 #include <queue>
 #include "Utils.hpp"
+#include "CommandParser.hpp"
+#include "PacketParser.hpp"
+
 /***************** Client functions ****************************/
 /**
  * Requirements:

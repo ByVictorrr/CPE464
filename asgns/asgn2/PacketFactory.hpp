@@ -1,3 +1,4 @@
+#include "Utils.hpp"
 
 // used by server plus + client
 class PacketFactory{

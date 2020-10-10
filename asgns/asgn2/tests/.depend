@@ -1,7 +1,0 @@
-gethostbyname6.o: gethostbyname6.c gethostbyname6.h
-safe_sys_calls.o: safe_sys_calls.c safe_sys_calls.h
-Utils.o: Utils.cpp gethostbyname6.h Utils.hpp safe_sys_calls.h
-cclient.o: cclient.cpp Client.hpp Utils.hpp safe_sys_calls.h \
- gethostbyname6.h
-Client.o: Client.cpp Utils.hpp safe_sys_calls.h gethostbyname6.h \
- Client.hpp

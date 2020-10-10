@@ -147,7 +147,7 @@ int safe_selectCall(int socketNumber, int seconds, int microseconds, int timeNul
     return numReady;
 }
 
-uint16_t full_recv(int skt, uint8_t *buff){
+uint16_t read_pkt(int skt, uint8_t *buff){
     uint16_t pkt_len;
     if(safe_recv(skt, &pkt_len, 2, MSG_WAITALL) < 0){
         safe_close(skt);

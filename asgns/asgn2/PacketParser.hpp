@@ -44,7 +44,6 @@ class BroadcastPacketParser: public PacketParser{
         }
         std::string &getMessage(){this->message;}
         std::string &getHandName(){this->handName;}
-}
 
 };
 

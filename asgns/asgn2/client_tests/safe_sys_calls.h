@@ -22,5 +22,5 @@ int safe_send(int skt, const void *buf, size_t len, int flags);
 ssize_t safe_recv(int skt, void *buf, size_t len, int flags);
 int safe_select(int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds, struct timeval *timeout);
 int safe_selectCall(int socketNumber, int seconds, int microseconds, int timeNull);
-uint16_t full_recv(int skt, uint8_t *buff);
+uint16_t read_pkt(int skt, uint8_t *buff);
 #endif
