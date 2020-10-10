@@ -4,6 +4,7 @@
 #include "Utils.hpp"
 #include "CommandParser.hpp"
 #include "PacketParser.hpp"
+#include "PacketFactory.hpp"
 
 /***************** Client functions ****************************/
 /**
@@ -85,13 +86,39 @@ void TCPClient::processUserInput(){
                 }
                 break;
             case 'B':
+            {
+                    BCommandParser parser;
+                    parser.parse(input);
+                    while(!parser.getMessages().empty()){
+                        uint8_t *pkt = PacketFactory::buildBPacket(parser, this);
+                        safe_send(this->skt, pkt, PacketFactory::getPacketLen(pkt), 0);
+                        parser.getMessages().pop();
+                    }
+ 
+            }
                 
                 break;
             case 'L':
+            {
+                    uint16_t len = 3;
+                    uint8_t *pkt = this->transBuff;
+                    memcpy(pkt, &len, 2);
+                    pkt[2] = LIST_HANDLES;
+                    safe_send(this->skt, pkt, 3, 0);
+            }
                 break;
             case 'E':
-                break;
-            
+            {
+                    uint16_t len = 3;
+                    uint8_t *pkt = this->transBuff;
+                    memcpy(pkt, &len, 2);
+                    pkt[2]  = CLIENT_EXIT;
+                    safe_send(this->skt, pkt, 3, 0);
+            }
+            break;
+            default:
+                std::cout << "Non existing flag" << std::endl;
+            break;
             }
 
         }

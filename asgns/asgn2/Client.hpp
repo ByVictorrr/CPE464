@@ -8,6 +8,8 @@
 
 class PacketFactory;
 class PacketParser;
+class CommandParser;
+class CommandValidator;
 #define HDR_LEN 2
 #define FLAG_LEN 1
 #define MAX_BUFF (1 << (HDR_LEN*8)) // TODO : ask if i can use bit shift in macro
@@ -26,7 +28,6 @@ class Client{
         /* Chat-protocol Buffers */
         uint8_t recvBuff[MAX_BUFF];
         uint8_t transBuff[MAX_BUFF];
-        std::string readUserInput() throw (const char *);
     public:
         Client(char *handle, char *server_name, char *port, int type, int protocol=0);
         ~Client();

@@ -1,5 +1,5 @@
-#ifndef NETWORK_NODES_H
-#define NETWORK_NODES_H
+#ifndef UTILS_H
+#define UTILS_H
 #include <iostream>
 #include <sys/socket.h>
 #include "safe_sys_calls.h"
@@ -8,7 +8,6 @@
 #include <vector>
 #include <sstream>
 #include <regex>
-#include <Client.hpp>
 
 #define HDR_LEN 2
 #define FLAG_LEN 1

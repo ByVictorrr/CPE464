@@ -1,6 +1,7 @@
 #include <string>
 #include "CommandParser.hpp"
 /* ================CommandValidator================================ */
+
 const int CommandValidator::MAX_INPUT = 1400;
 const std::string CommandValidator::COMMAND_FORMATS = "^\\s{0,}%("
                                                       "[M|m]\\s{1,}[1-9](\\s{1,}[^\\s]{1,100}){1,9}?(\\s{1,}[^\\s]{1,}){0,}"

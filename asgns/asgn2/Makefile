@@ -4,14 +4,14 @@
 SHELL := /bin/bash
 CC = g++
 LDFLAGS = 
-CFLAGS =  -g -Wall
+CFLAGS =  -g -Wall -std=c++11
 # need a way to input all c files and headers
-C_FILES = $(shell find . -name "*.c*")
+C_FILES = $(shell find . -maxdepth 1 -name "*.c*")
 
 all: .depend cclient server
 
-server:  server.o Server.o gethostbyname6.o Utils.o safe_sys_calls.o
-cclient:  cclient.o Client.o gethostbyname6.o Utils.o safe_sys_calls.o
+server:  server.o Server.o gethostbyname6.o Utils.o safe_sys_calls.o PacketFactory.o CommandParser.o PacketParser.o
+cclient:  cclient.o Client.o gethostbyname6.o Utils.o safe_sys_calls.o PacketFactory.o CommandParser.o PacketParser.o
 
 
 

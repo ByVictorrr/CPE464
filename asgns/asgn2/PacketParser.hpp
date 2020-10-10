@@ -1,3 +1,5 @@
+#ifndef PACKET_PARSER_H
+#define PACKET_PARSER_H
 #include "Utils.hpp"
 #include <map>
 
@@ -80,3 +82,5 @@ class MulticastPacketParser: public PacketParser{
         std::string &getSourceHandle(){this->srcHandle;}
         uint8_t &getNumHandles(){return this->numHandles;}
 };
+
+#endif

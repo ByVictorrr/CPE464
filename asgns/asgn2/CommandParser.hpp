@@ -1,3 +1,5 @@
+#ifdef COMMAND_PARSER_H
+#define COMMAND_PARSER_H
 
 #include <iostream>
 #include <vector>
@@ -17,7 +19,7 @@ class CommandValidator{
 
 class CommandParser{
     protected:
-        char flag;
+        char cmd;
     public:
         static char getCommand(std::string &input){
            std::string tr = trim(input);
@@ -34,7 +36,7 @@ class MCommandParser: public CommandParser{
     public:
         void parse(std::string &input)throw (const char *){
             this->numHandles = getFirstDigit(input);
-            this->flag = getCommand(input);
+            this->cmd = CommandParser::getCommand(input);
             const std::string format = "^\\s*%[M|m]\\s+[1-9]((\\s+[^\\s]{1,100}){"
                                       +std::to_string(this->numHandles)+"})(.*)$";
             std::regex rgx(format);
@@ -54,6 +56,7 @@ class MCommandParser: public CommandParser{
         std::queue<std::string> &getMessages(){return this->messages;};
         uint8_t &getNumHandles(){return this->numHandles;}
         std::vector<std::string> &getDestHandles(){return this->destHandles;}
+        char &getCommand(){return this->cmd;}
 };
 
 class BCommandParser: public CommandParser{
@@ -61,7 +64,7 @@ class BCommandParser: public CommandParser{
         std::queue<std::string> messages;
     public:
         void parse(std::string &input)throw (const char *){
-            int numHandles = getFirstDigit(input);
+            this->cmd = CommandParser::getCommand(input);
             const std::string format = "^\\s*%[B|b]\\s+(.*)$";
             std::regex rgx(format);
             std::smatch match;
@@ -75,14 +78,19 @@ class BCommandParser: public CommandParser{
         }
         // Getters
         std::queue<std::string> &getMessages(){return this->messages;};
+        char &getCommand(){return this->cmd;}
 };
 
 
+/*
 class LCommandParser: public CommandParser{
     private:
-
+        
     public:
 
 
 };
 
+
+*/
+#endif

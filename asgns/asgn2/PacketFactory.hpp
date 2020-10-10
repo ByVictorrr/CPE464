@@ -1,17 +1,16 @@
+#ifndef PACKET_FACTORY_H
+#define PACKET_FACTORY_H
+
 #include "Utils.hpp"
 #include "CommandParser.hpp"
 
 // used by server plus + client
 class PacketFactory{
-        std::map<char, flags_t>cmdToFlag = {
-            {'M', MULTICAST},
-            {'B', BROADCAST},
-            {'L', LIST_HANDLES},
-            {'E', CLIENT_EXIT}
-        };
+       static std::map<char, flags_t>cmdToFlag;
     public:
         /* Format <hdr len (2) | 1 byte flag | 1 byte src-han-len | src-han | dest-han1-len | dest-han1 | ... | msg */
         static uint8_t *buildMPacket(MCommandParser &cmd, TCPClient *client){
+            uint8_t flag = cmdToFlag[cmd.getCommand()];
             uint8_t *transBuff = client->getTransBuff();
             char *srcHand = client->getHandle();
             uint8_t src_handle_len = std::strlen(srcHand);
@@ -47,5 +46,35 @@ class PacketFactory{
             memcpy(transBuff+cursor, cmd.getMessages().front().c_str(), cmd.getMessages().front().size());
             return transBuff;
         }
+
+        // format <hdr|1byte src-han-len | src-hand | message>
+        static uint8_t *buildBPacket(BCommandParser &cmd, TCPClient *client){
+            uint8_t flag = cmdToFlag[cmd.getCommand()];
+            uint16_t pkt_len = 3;
+            uint8_t *transBuff = client->getTransBuff();
+            char *srcHand = client->handle;
+            uint8_t srcHandLen = std::strlen(srcHand);
+            int cursor = 0;
+            pkt_len+=(1+srcHandLen)+cmd.getMessages().front().size()+1;
+            memcpy(transBuff, &pkt_len ,2);
+            cursor+=2;
+            transBuff[cursor++] = flag;
+            transBuff[cursor++] = srcHandLen;
+            memcpy(transBuff+cursor, srcHand ,srcHandLen);
+            cursor+=srcHandLen;
+            memcpy(transBuff+cursor, cmd.getMessages().front().c_str(), cmd.getMessages().front().size());
+            return transBuff;
+
+        }
+
+
+
+        static uint16_t getPacketLen(uint8_t *pkt){
+            uint16_t len;
+            memcpy(&len, pkt, 2);
+            return len;
+        }
+
         
 };
+#endif
