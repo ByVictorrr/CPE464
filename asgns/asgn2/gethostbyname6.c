@@ -70,3 +70,4 @@ uint8_t * getIPAddress6(const char * hostName, struct sockaddr_in6 * aSockaddr6)
 
   return returnValue;    // Either Null or IP address
 }
+

@@ -58,6 +58,7 @@ void TCPClient::connect(int debugFlag){
     {
         printf("Connected to %s IP: %s Port Number: %d\n", serverName, getIPAddressString(ipAddress), atoi(this->port));
     }
+
 }
 
 void TCPClient::processUserInput(){
@@ -132,6 +133,7 @@ void TCPClient::processSocket(){
     uint8_t *data;
     memset(recvBuff, 0, MAX_BUFF);
     if((pkt_len = read_pkt(this->skt, this->recvBuff)) == 0){
+        std::cout << std::endl << "Successfully Exiting!" << std::endl;
         safe_close(this->skt);
         exit(EXIT_FAILURE);
     }
@@ -163,12 +165,13 @@ void TCPClient::processSocket(){
             uint16_t len = PacketFactory::getPacketLen(recvBuff);
             uint8_t err_len = recvBuff[3];
             std::string err_han = std::string(recvBuff+4, recvBuff+4+err_len);
-            std::cout << std::endl << err_han << " not found on the server" << std::endl;
+            std::cout << std::endl << "The handle " << err_han << " not found on the server" << std::endl;
 
         }
         break;
         case CLIENT_EXIT_ACK:
         {
+            std::cout << std::endl << "Successfully Exiting!" << std::endl;
             safe_close(this->skt);
             exit(EXIT_SUCCESS);
         }
@@ -178,23 +181,23 @@ void TCPClient::processSocket(){
             int numHandles;
             // print out the number
             memcpy(&numHandles, &recvBuff[3], 4);
-            std::cout << "Number of handles: " << numHandles << std::endl;
+            std::cout << std::endl << "Number of handles: " << numHandles << std::endl;
         }
         break;
         case LIST_HANDLE_NAME:
         {
             uint8_t handSize = recvBuff[3];
             std::string &&handName = std::string(recvBuff+4, (recvBuff+4)+handSize);
-            std::cout << handSize << std::endl;
+            std::cout << std::endl << handName << std::endl;
         }
         break;
         case FINISHED_LIST_HANDLES:
         {
-            std::cout << "done listing handles" <<  std::endl;
+            std::cout << std::endl << "Done listing handles" <<  std::endl;
         }
         break;
         default:
-            std::cout << "Non existing flag" << std::endl;
+            std::cout << std::endl << "Non existing flag" << std::endl;
         break;
     }
 

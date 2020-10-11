@@ -198,9 +198,11 @@ start:
         this->clients.insert({new_client, ""});
     }
     // Step 4 - check the file descriptors (clients)
-    for(const auto &item: this->clients){
-        if(FD_ISSET(item.first, &fd_inputs))
-            processClient(item.first);
+    for(std::map<int,std::string>::iterator it = this->clients.begin(); it != this->clients.end();){
+        int clientSocket = it.operator*().first;
+        it++;
+        if(FD_ISSET(clientSocket, &fd_inputs))
+            processClient(clientSocket);
     }
  
     goto start;

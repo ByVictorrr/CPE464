@@ -17,7 +17,7 @@ void *safe_realloc(void *src, int size){
 	}
 	return ret;
 }
-void safe_free(char **buff)
+void safe_free(void **buff)
 {
     if(*buff != NULL){
         free(*buff);
