@@ -11,11 +11,19 @@ class CommandValidator{
         static bool validate(std::string &input);
 };
 
+class MCommandValidator{
+    private:
+        static const std::string COMMAND_FORMAT;
+    public:
+        static bool validate(std::string &minput);
+};
+
 class CommandParser{
     protected:
         char cmd;
     public:
         static char getCommand(std::string &input);
+        static uint16_t getPacketLen(uint8_t *pkt);
         virtual void parse(std::string &input) = 0;
 };
 
@@ -42,28 +50,18 @@ class BCommandParser: public CommandParser{
 };
 
 
-/*
-class LCommandParser: public CommandParser{
-    private:
-        
-    public:
-
-
-};
-
-*/
 
 /*======================== Packet Parsers================================================*/
 
 
 class PacketParser{
-    protected:
-        uint16_t getPacketLen(uint8_t *pkt){
+    public:
+        static uint16_t getPacketLen(uint8_t *pkt){
             uint16_t len;
             memcpy(&len, pkt, 2);
             return len;
         }
-    public:
+
         virtual void parse(uint8_t *pkt) = 0;
 };
 class LoginPacketParser: public PacketParser{

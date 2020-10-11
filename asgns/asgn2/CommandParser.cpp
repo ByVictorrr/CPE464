@@ -13,25 +13,23 @@ const std::string CommandValidator::COMMAND_FORMATS = "^\\s*%("
                                                       ")$";
 bool CommandValidator::validate(std::string &input){
             std::regex cmd_formats(COMMAND_FORMATS);
-            char cmd = CommandParser::getCommand(input);
-            if(input.size() > MAX_INPUT){
+            if(input.empty()){
+                return false;
+            }else if(input.size() > MAX_INPUT){
                 std::cout << "Cant exceed more than 1400 characters!" << std::endl;
                 return false;
             }
             else if(!std::regex_match(input, cmd_formats)){
-                switch (std::toupper(cmd))
+                switch (std::toupper(CommandParser::getCommand(input)))
                 {
                 case 'M':
-                    std::cout << "Usage: %<M|m> num-handles(1-9) handle1 [handle2[..[handle9]]] [message]" << std::endl;
+                    MCommandValidator::validate(input);
                     break;
                 case 'B':
-                    std::cout << "Usage: %<B|b> [message]" << std::endl;
                     break;
                 case 'L':
-                    std::cout << "Usage: %<L|l>" << std::endl;
                     break;
                 case 'E':
-                    std::cout << "Usage: %<E|e>" << std::endl;
                     break;
                 default:
                     std::cout << "Usage: %<M|m> num-handles(1-9) handle1 [handle2[..[handle9]]] [message]\n"

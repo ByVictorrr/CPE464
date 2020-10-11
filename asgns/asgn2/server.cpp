@@ -1,7 +1,6 @@
 #include "Server.hpp"
 #include <iostream>
 
-#define DEBUG_FLAG 1
 
 int checkArgs(int argc, char *argv[])
 {
@@ -24,16 +23,13 @@ int checkArgs(int argc, char *argv[])
 
 int main(int argc, char *argv[])
 {
-	int serverSocket = 0;   //socket descriptor for the server socket
-	int clientSocket = 0;   //socket descriptor for the client socket
 	int portNumber = 0;
-	char *data=NULL;
-	// Configuration	
 	portNumber = checkArgs(argc, argv);
     TCPServer server(portNumber);
 	// wait for client to connect
 	server.config();
-    server.loop();
+    server.run();
+	server.shutdown();
 
 	
 	return 0;

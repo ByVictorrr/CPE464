@@ -17,4 +17,6 @@ ssize_t safe_recv(int skt, void *buf, size_t len, int flags);
 int safe_select(int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds, struct timeval *timeout);
 uint16_t read_pkt(int skt, uint8_t *buff);
 int send_pkt(int skt, const void *buf, size_t len);
+int safe_accept_client(int server_socket, int debugFlag);
+
 #endif

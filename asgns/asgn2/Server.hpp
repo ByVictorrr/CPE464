@@ -17,12 +17,10 @@ class Server{
 
     public:
 
-        bool inClients(const std::string &handle);
-        int getSocket(const std::string &handle);
         Server(int port, int type, int protocol=0) ;
-        ~Server();
         virtual void config() = 0;
-
+        virtual void run() = 0;
+        virtual void shutdown() = 0;
 
 };
 
@@ -30,13 +28,26 @@ class Server{
 
 class TCPServer: public Server{
 
-    void processClient(int fd);
+    private:
+        void forwardListHandles(int client);
+        void forwardCheckHandle(int client);
+        void forwardExit(int client);
+        void forwardBroadcast(int client, uint16_t pkt_len);
+        void forwardMulticast(int client, uint16_t pkt_len);
+        void processClient(int fd);
+
+        /* Utility functions for the map */
+        bool inClients(const std::string &handle);
+        int getSocket(const std::string &handle);
+
+        int acceptClient(int server_socket, int debugFlag);
+
     public:
         TCPServer(int port, int protocol=0);
+        ~TCPServer();
         void config();
-        int acceptClient(int server_socket, int debugFlag);
-        void loop();
-
+        void run();
+        void shutdown();
 };
 
 

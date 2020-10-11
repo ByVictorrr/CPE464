@@ -26,7 +26,9 @@ void safe_free(void **buff)
     return;
 }
 void safe_close(int fd){
-	if(close(fd) < 0){
+	if(fd < 0){
+		return;	
+	}else if(close(fd) < 0){
 		perror("close error");
 		exit(EXIT_FAILURE);
 	}
@@ -98,6 +100,7 @@ ssize_t safe_recv(int skt, void *buf, size_t len, int flags){
 	ssize_t recv_len;	
 	if((recv_len=recv(skt, buf, len, flags)) < 0)
 	{
+		safe_close(skt);
 		perror("recv call");
 		exit(EXIT_FAILURE);
 	
@@ -117,12 +120,10 @@ int safe_select(int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds, 
 }
 uint16_t read_pkt(int skt, uint8_t *buff){
     uint16_t pkt_len;
-    if(safe_recv(skt, &pkt_len, 2, MSG_WAITALL) < 0){
-        safe_close(skt);
-        return 0;
-    }
-    if(safe_recv(skt, buff+2, pkt_len-2, 0) < 0){
-        safe_close(skt);
+    if(safe_recv(skt, &pkt_len, 2, MSG_WAITALL) == 0){
+		return 0;
+	}
+    if(safe_recv(skt, buff+2, pkt_len-2, 0) == 0){
         return 0;
     }
     memcpy(buff, &pkt_len, 2);
@@ -131,4 +132,21 @@ uint16_t read_pkt(int skt, uint8_t *buff){
 }
 int send_pkt(int skt, const void *buf, size_t len){
 	return safe_send(skt, buf, len, 0);
+}
+
+int safe_accept_client(int server_socket, int debugFlag)
+{
+    struct sockaddr_in6 clientInfo;   
+    int clientInfoSize = sizeof(clientInfo);
+    int client_socket= 0;
+    client_socket = safe_accept(server_socket, (struct sockaddr*) &clientInfo, (socklen_t *) &clientInfoSize);
+    
+    if (debugFlag)
+    {
+        // TODO change to std::cout
+        printf("Client accepted.  Client IP: %s Client Port Number: %d\n",  
+                getIPAddressString(clientInfo.sin6_addr.s6_addr), ntohs(clientInfo.sin6_port));
+    }
+    
+    return(client_socket);
 }

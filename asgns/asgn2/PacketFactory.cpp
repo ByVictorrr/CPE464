@@ -46,7 +46,6 @@ uint8_t *PacketFactory::buildMPacket(MCommandParser &cmd, TCPClient *client){
     }
     // set message
     memcpy(transBuff+cursor, cmd.getMessages().front().c_str(), cmd.getMessages().front().size());
-    std::cout << "flag: " + std::to_string(transBuff[2]) << std::endl;
     return transBuff;
 }
 

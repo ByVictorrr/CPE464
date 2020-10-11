@@ -31,8 +31,6 @@ class Client{
         uint8_t transBuff[MAX_BUFF];
     public:
         Client(char *handle, char *server_name, char *port, int type, int protocol=0);
-        ~Client();
-        void close();
         char * getHandle(){return this->handle;};
         uint8_t * getTransBuff(){return this->transBuff;};
         int getSocket(){return this->skt;}
@@ -40,13 +38,19 @@ class Client{
 
 class TCPClient: public Client{
     private:
-        void processUserInput();
+        void forwardMCommand(std::string &input);
+        void forwardBCommand(std::string &input);
+        void forwardLCommand();
+        void forwardECommand();
+        void forwardUserInput(std::string &input);
         void processSocket();
         uint32_t numHandles;
     public:
         TCPClient(char *handle, char *server_name, char *port, int protocol=0);
-        void connect(int debugFlag);
-        void loop();
+        ~TCPClient();
+        void login(int debugFlag);
+        void chat();
+        void logout();
       
 };
 

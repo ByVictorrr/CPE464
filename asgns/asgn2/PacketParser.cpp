@@ -12,8 +12,8 @@ void BroadcastPacketParser::parse(uint8_t *pkt){
     // step 1 - get the size
     uint16_t len = getPacketLen(pkt);
     uint8_t handLen = pkt[3];
-    this->message = std::string(pkt+3, pkt+3+handLen);
-    this->srcHandle = std::string(pkt+3+handLen, pkt+len);
+    this->srcHandle = std::string(pkt+4, pkt+4+handLen);
+    this->message = std::string((char*)(pkt+4+handLen));
 }
 
 void MulticastPacketParser::parse(uint8_t *pkt){

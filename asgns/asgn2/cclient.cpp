@@ -20,9 +20,9 @@ int main(int argc, char * argv[])
 	/* set up the TCP Client socket  */
     TCPClient client(argv[1], argv[2], argv[3]);
 
-    client.connect(DEBUG_FLAG);
+    client.login(DEBUG_FLAG);
     // Take out busy wait ask if whenever somethings sent if it gets a recv
-    client.loop();
-    client.close();
+    client.chat();
+    client.logout();
 	return 0;
 }
