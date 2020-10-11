@@ -16,15 +16,12 @@ class Server{
         uint8_t transBuff[MAX_BUFF];
 
     public:
+
+        bool inClients(const std::string &handle);
+        int getSocket(const std::string &handle);
         Server(int port, int type, int protocol=0) ;
         ~Server();
         virtual void config() = 0;
-        bool inClients(std::string &handle){
-            for(const auto & p: this->clients)
-                if(p.second.compare(handle))
-                    return true;
-            return false;
-        }
 
 
 };

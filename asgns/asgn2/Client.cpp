@@ -50,8 +50,9 @@ void TCPClient::connect(int debugFlag){
     printf("server ip address: %s\n", getIPAddressString(ipAddress));
     safe_connect(this->skt, (struct sockaddr*)&server, sizeof(server));
 
-    // TODO: create packet check to see if handle is taken
-    safe_send(this->skt, this->handle, strlen(this->handle)+1,0);
+    // Login
+    uint8_t *login_pkt = PacketFactory::buildLoginPacket(this);
+    safe_send(this->skt, login_pkt, PacketFactory::getPacketLen(login_pkt),0);
 
     if (debugFlag)
     {
@@ -130,12 +131,15 @@ void TCPClient::processSocket(){
     uint8_t flag;
     uint8_t *data;
     memset(recvBuff, 0, MAX_BUFF);
-    pkt_len = read_pkt(this->skt, this->recvBuff);
+    if((pkt_len = read_pkt(this->skt, this->recvBuff)) == 0){
+        safe_close(this->skt);
+        exit(EXIT_FAILURE);
+    }
     switch((flag=recvBuff[2]))
     {
 
         case HANDLE_DNE:
-            std::cout << "Login sucessful" << std::endl;
+            std::cout << std::endl << "Login sucessful" << std::endl;
         break;
         case HANDLE_EXISTS:
             safe_close(this->skt);
@@ -153,8 +157,15 @@ void TCPClient::processSocket(){
             parser.parse(recvBuff);
             std::cout << std::endl << parser.getSourceHandle() << ": " << parser.getMessage() << std::endl;
         }
+        break;
         case MULTICAST_HANDLE_DNE:
-            // make a parser (and throw error )
+        {
+            uint16_t len = PacketFactory::getPacketLen(recvBuff);
+            uint8_t err_len = recvBuff[3];
+            std::string err_han = std::string(recvBuff+4, recvBuff+4+err_len);
+            std::cout << std::endl << err_han << " not found on the server" << std::endl;
+
+        }
         break;
         case CLIENT_EXIT_ACK:
         {

@@ -4,7 +4,7 @@ void LoginPacketParser::parse(uint8_t *pkt){
     uint16_t len = getPacketLen(pkt);
     uint8_t flag = pkt[2];
     uint8_t handLen = pkt[3];
-    this->handName = std::string(pkt+3, pkt+3+handLen);
+    this->handName = std::string(pkt+4, pkt+4+handLen);
 }
 /* Client and Server both use */
 void BroadcastPacketParser::parse(uint8_t *pkt){
@@ -21,10 +21,10 @@ void MulticastPacketParser::parse(uint8_t *pkt){
     uint16_t pkt_len = getPacketLen(pkt);
     //uint8_t flag = 
     uint8_t srcHandleLen = pkt[3];
-    this->srcHandle = std::string(pkt+3, (pkt+3)+srcHandleLen);
+    this->srcHandle = std::string(pkt+4, (pkt+4)+srcHandleLen);
     // step 2 - get the message
-    this->numHandles = pkt[srcHandle.size()+3];
-    int start = srcHandle.size()+4;
+    this->numHandles = pkt[srcHandle.size()+4];
+    int start = srcHandle.size()+5;
     int i=start, numHan=0;
     while(i < pkt_len+start && numHan < numHandles){
         int hanLen = pkt[i];

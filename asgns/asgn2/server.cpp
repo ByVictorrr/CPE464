@@ -31,12 +31,10 @@ int main(int argc, char *argv[])
 	// Configuration	
 	portNumber = checkArgs(argc, argv);
     TCPServer server(portNumber);
-accept:
-	clientSocket = server.acceptClient(serverSocket, DEBUG_FLAG);
 	// wait for client to connect
+	server.config();
     server.loop();
 
-	goto accept;
 	
 	return 0;
 }

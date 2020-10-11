@@ -15,6 +15,22 @@ Server::~Server(){
     safe_close(this->skt);
 }
 
+bool Server::inClients(const std::string &handle){
+    for(const auto & p: this->clients){
+        std::string client = p.second;
+        if(client.compare(handle) == 0)
+            return true;
+    }
+    return false;
+}
+int Server::getSocket(const std::string &handle){
+    for(const auto & p: this->clients){
+        std::string client = p.second;
+        if(client.compare(handle) == 0)
+            return p.first;
+    }
+    return -1;
+}
 
 /* TCP server calss */
 TCPServer::TCPServer(int port, int protocol)  
@@ -58,7 +74,12 @@ void TCPServer::processClient(int clientSocket){
     uint16_t pkt_len;
     memset(this->transBuff, 0, MAX_BUFF);
     memset(this->recvBuff, 0, MAX_BUFF);
-    pkt_len = read_pkt(clientSocket, this->recvBuff);
+    // Case where client disconnects (async)
+    if(!(pkt_len = read_pkt(clientSocket, this->recvBuff))){
+        safe_close(clientSocket);
+        this->clients.erase(clientSocket);
+        return;
+    }
     // once we have the packet what do we do ? (parse it look for destination or flags)
     switch ((flag=recvBuff[2]))
     {
@@ -93,24 +114,26 @@ void TCPServer::processClient(int clientSocket){
         parser.parse(this->recvBuff);
         
         for(const auto &dest: parser.getDestHandles())
-            for(const auto &client: this->clients)
-                if(dest.compare(client.second) != 0)
-                    safe_send(client.first, recvBuff, pkt_len, 0);
-                else{
-                    // creat a error pkt and send
-                    uint16_t err_len = 3+dest.size()+1;
-                    memcpy(transBuff, &err_len, 2);
-                    transBuff[2] = MULTICAST_HANDLE_DNE;
-                    memcpy(transBuff, dest.c_str(), dest.size());
-                    send_pkt(clientSocket, transBuff, err_len);
-                }
+            if(this->inClients(dest)){
+                safe_send(this->getSocket(dest), recvBuff, pkt_len, 0);
+            }else{
+                // creat a error pkt and send
+                uint16_t err_len = 3+dest.size()+1;
+                memcpy(transBuff, &err_len, 2);
+                transBuff[2] = MULTICAST_HANDLE_DNE;
+                transBuff[3] = dest.size();
+                memcpy(transBuff+4, dest.c_str(), dest.size());
+                send_pkt(clientSocket, transBuff, err_len);
+            }
 
     }
         break;
     case CLIENT_EXIT:
+    {
             recvBuff[2] = CLIENT_EXIT_ACK;
             safe_send(clientSocket, recvBuff, pkt_len, 0);
-
+            this->clients.erase(clientSocket);
+    }
         break;
     case LIST_HANDLES:
     {
@@ -152,7 +175,7 @@ void TCPServer::loop(){
      ssize_t recv_len;
      ssize_t stdin_len;
      fd_set fd_inputs;
-     int max_fd;
+     int max_fd = this->skt;
 start:
     // step 1 - clear fd_inputs
     FD_ZERO(&fd_inputs);
@@ -162,8 +185,11 @@ start:
     }
     // Step 2 - get the max file descriptor and call select
     max_fd = (*std::max_element(this->clients.begin(), this->clients.end(), 
-        [](auto p1, auto p2){ return p1.second < p2.second; })).first;
+        [](auto p1, auto p2){ return p1.second > p2.second; })).first;
 
+    if(max_fd < this->skt){
+        max_fd = this->skt;
+    }
     safe_select(max_fd+1, &fd_inputs, NULL, NULL, NULL);
     // Step 3 - check to see if a new client wants to connect
     if(FD_ISSET(this->skt, &fd_inputs)){

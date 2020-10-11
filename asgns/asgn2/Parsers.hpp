@@ -66,9 +66,6 @@ class PacketParser{
     public:
         virtual void parse(uint8_t *pkt) = 0;
 };
-/**
- *  For just the server
- */
 class LoginPacketParser: public PacketParser{
     private:
         std::string handName;

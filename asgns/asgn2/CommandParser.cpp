@@ -60,10 +60,14 @@ void MCommandParser::parse(std::string &input)throw (const char *){
         std::string dests = trim_left(match[1]);
         this->destHandles = splitByWhiteSpace(dests);
         // step 2 - get dest handles
-        std::string message = trim_left(match[3]);
-        this->messages = split(message, 200);
+        if(match[3].str().empty()){
+            this->messages.push("\n");
+        }else{
+            std::string message =trim_left(match[3].str());
+            this->messages = split(message, 200);
+        }
     }else{
-        throw "MCommandParser.parse: not able to parse";
+        throw "MCommandParser.parse: Not correct format";
     }
 }
 

@@ -46,6 +46,7 @@ uint8_t *PacketFactory::buildMPacket(MCommandParser &cmd, TCPClient *client){
     }
     // set message
     memcpy(transBuff+cursor, cmd.getMessages().front().c_str(), cmd.getMessages().front().size());
+    std::cout << "flag: " + std::to_string(transBuff[2]) << std::endl;
     return transBuff;
 }
 
@@ -67,4 +68,17 @@ uint8_t *PacketFactory::buildBPacket(BCommandParser &cmd, TCPClient *client){
     memcpy(transBuff+cursor, cmd.getMessages().front().c_str(), cmd.getMessages().front().size());
     return transBuff;
 
+}
+
+uint8_t *PacketFactory::buildLoginPacket(TCPClient *client){
+    flags_t flag = CHECK_HANDLE;
+    uint16_t pkt_len = 3;
+    char *handle = client->getHandle();
+    uint8_t *pkt  = client->getTransBuff();
+    pkt_len+=(strlen(handle)+1);
+    memcpy(pkt, &pkt_len, 2);
+    pkt[2] = flag;
+    pkt[3] = strlen(handle);
+    memcpy(pkt+4, handle, strlen(handle));
+    return pkt; 
 }

@@ -31,7 +31,7 @@ std::queue<std::string> split(const std::string str, int splitLen){
 int getFirstDigit(std::string &str)throw(const char *){
     for(auto c: str){
         if(std::isdigit(c)){
-            return 48 - c;
+            return c - '0';
         }
     }
     throw "No digit in this string";

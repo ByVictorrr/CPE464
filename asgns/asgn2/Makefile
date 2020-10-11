@@ -5,14 +5,19 @@ SHELL := /bin/bash
 CC = g++
 LDFLAGS = 
 CFLAGS =  -g -Wall  -std=c++1y
+BUILD=build
+PORT=45679
+PORT_PID = $(lsof -t -i tcp:45679)
+
+
 
 # need a way to input all c files and headers
 C_FILES = $(shell find . -maxdepth 1 -name "*.c*")
 
 all: .depend cclient server
 
-server:  server.o Server.o Utils.o gethostbyname6.o safe_sys_calls.o PacketFactory.o CommandParser.o PacketParser.o
-cclient:  cclient.o Client.o Utils.o gethostbyname6.o safe_sys_calls.o PacketFactory.o CommandParser.o PacketParser.o
+server:  $(BUILD)/server.o $(BUILD)/Server.o $(BUILD)/Utils.o $(BUILD)/gethostbyname6.o $(BUILD)/safe_sys_calls.o $(BUILD)/PacketFactory.o $(BUILD)/CommandParser.o $(BUILD)/PacketParser.o
+cclient:  $(BUILD)/cclient.o $(BUILD)/Client.o $(BUILD)/Utils.o $(BUILD)/gethostbyname6.o $(BUILD)/safe_sys_calls.o $(BUILD)/PacketFactory.o $(BUILD)/CommandParser.o $(BUILD)/PacketParser.o
 
 
 
@@ -24,15 +29,32 @@ cclient:  cclient.o Client.o Utils.o gethostbyname6.o safe_sys_calls.o PacketFac
 
 include .depend
 
-%.o: %.c
+$(BUILD)/%.o: %.c
 	$(CC) $(CFLAGS)  -c -o $@ $<
 
-%.o: %.cpp
+$(BUILD)/%.o: %.cpp
 	$(CC) $(CFLAGS)  -c -o $@ $<
 
 
-%: %.o
+%: $(BUILD)/%.o
 	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ 
+
 
 clean:
 	rm -f *.o .depend server cclient
+
+debug_server: server
+	gdb --args $(PORT) ./server
+
+run_server: server 
+	sudo lsof -i tcp:$(PORT); ./server $(PORT)
+
+debug_server: server
+	sudo lsof -i tcp:$(PORT); gdb --args ./server $(PORT) 
+
+run_client: cclient
+	./cclient handle1 localhost $(PORT)
+
+debug_client: cclient
+	gdb --args ./cclient handle1 localhost $(PORT) 
+
