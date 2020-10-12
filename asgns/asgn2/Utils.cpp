@@ -13,6 +13,9 @@ std::string trim(const std::string& str){
 }
 
 
+/* case 1: Input = just spaces ; returns a vector of size 0
+*  case 2: Input = space before character; just trims (doesnt worry how many spaces);
+*/
 std::vector<std::string> splitByWhiteSpace(std::string &input){
     std::vector<std::string> result; 
     std::istringstream iss(input); 

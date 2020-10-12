@@ -13,10 +13,34 @@ class CommandValidator{
 
 class MCommandValidator{
     private:
-        static const std::string COMMAND_FORMAT;
+        static const std::string FORMAT_MESSAGE;
     public:
+
+        static int findNumHandles(std::string &input);
         static bool validate(std::string &minput);
 };
+class BCommandValidator{
+    private:
+        static const std::string FORMAT_MESSAGE;
+    public:
+        static bool validate(std::string &binput);
+};
+class LCommandValidator{
+   private:
+        static const std::string FORMAT_MESSAGE;
+    public:
+        static bool validate(std::string &Linput);
+
+};
+class ECommandValidator{
+   private:
+        static const std::string FORMAT_MESSAGE;
+    public:
+        static bool validate(std::string &Einput);
+
+};
+
+
 
 class CommandParser{
     protected:
@@ -33,6 +57,7 @@ class MCommandParser: public CommandParser{
         std::vector<std::string> destHandles;
         uint8_t numHandles;// only 1-9
     public:
+
         void parse(std::string &input)throw (const char *);
         inline std::queue<std::string> &getMessages(){return this->messages;};
         inline uint8_t &getNumHandles(){return this->numHandles;}

@@ -155,7 +155,7 @@ void TCPClient::processSocket(){
         {
             BroadcastPacketParser parser;
             parser.parse(recvBuff);
-            std::cout << std::endl << parser.getSourceHandle() << ": " << parser.getMessage();
+            std::cout << std::endl << parser.getSourceHandle() << ": " << parser.getMessage() << std::endl;
         }
         break;
         case MULTICAST:
@@ -170,7 +170,7 @@ void TCPClient::processSocket(){
             uint16_t len = PacketParser::getPacketLen(recvBuff);
             uint8_t err_len = recvBuff[3];
             std::string err_han = std::string(recvBuff+4, recvBuff+4+err_len);
-            std::cout << std::endl << "The handle " << err_han << " not found on the server" << std::endl;
+            std::cout << std::endl << "The handle  \"" << err_han << "\" not found on the server" << std::endl;
 
         }
         break;
