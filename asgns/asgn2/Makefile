@@ -4,7 +4,7 @@
 SHELL := /bin/bash
 CC = g++
 LDFLAGS = 
-CFLAGS =  -g -Wall  -std=c++1y
+CFLAGS =  -g -Wall -Werror -std=c++1y
 BUILD=build
 PORT=45679
 PORT_PID = $(lsof -t -i tcp:45679)
@@ -39,7 +39,7 @@ $(BUILD)/%.o: %.cpp
 
 
 clean:
-	rm -f *.o .depend server cclient
+	rm -f $(BUILD)/*.o .depend server cclient
 
 debug_server: server
 	gdb --args $(PORT) ./server

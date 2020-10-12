@@ -1,8 +1,6 @@
 #include "Parsers.hpp"
 
 void LoginPacketParser::parse(uint8_t *pkt){
-    uint16_t len = getPacketLen(pkt);
-    uint8_t flag = pkt[2];
     uint8_t handLen = pkt[3];
     this->handName = std::string(pkt+4, pkt+4+handLen);
 }
@@ -10,7 +8,6 @@ void LoginPacketParser::parse(uint8_t *pkt){
 void BroadcastPacketParser::parse(uint8_t *pkt){
     // (1 byte containing the length of sending client | send client)/ then message
     // step 1 - get the size
-    uint16_t len = getPacketLen(pkt);
     uint8_t handLen = pkt[3];
     this->srcHandle = std::string(pkt+4, pkt+4+handLen);
     this->message = std::string((char*)(pkt+4+handLen));

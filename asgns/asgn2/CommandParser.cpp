@@ -34,7 +34,7 @@ bool MCommandValidator::validate(std::string &input){
     }
     // if digitsHandles are valid
     std::vector<std::string> args = splitByWhiteSpace(input); // maybe test args size
-    if((2+digitHandles) > args.size()){
+    if((2+digitHandles) > (int)args.size()){
         std::cout << "Need digits (number of handles) to match arguments count for handles" << std::endl;
         return false;
     }
@@ -131,7 +131,7 @@ char CommandParser::getCommand(std::string &input){
         return std::toupper(tr[1]);
 }
 
-void MCommandParser::parse(std::string &input)throw (const char *){
+void MCommandParser::parse(std::string &input){
     this->numHandles = getFirstDigit(input);
     this->cmd = CommandParser::getCommand(input);
     const std::string format = "^\\s*%[M|m]\\s+[1-9]((\\s+[^\\s]{1,100}){"
@@ -150,11 +150,11 @@ void MCommandParser::parse(std::string &input)throw (const char *){
             this->messages = split(message, 200);
         }
     }else{
-        throw "(1)Can only 1-100 characters/handle\n(2)Number of handles need to match the number of arguments following";
+        std::cout << "MCommandParseer: Not able to parser\n";
     }
 }
 
- void BCommandParser::parse(std::string &input)throw (const char *){
+ void BCommandParser::parse(std::string &input){
             this->cmd = CommandParser::getCommand(input);
             const std::string format = "^\\s*%[B|b]\\s*(.*)$";
             std::regex rgx(format);
@@ -167,6 +167,6 @@ void MCommandParser::parse(std::string &input)throw (const char *){
                     this->messages = split(message, 200);
                 }
             }else{
-                throw "BCommandParser.parse: Not correct format(should never get here)";
+                std::cout << "BCommandParser.parse: Not correct format\n";
             }
         }

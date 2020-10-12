@@ -23,7 +23,7 @@ uint8_t *PacketFactory::buildMPacket(MCommandParser &cmd, TCPClient *client){
     // Step 1 - src-handle length
     pkt_len+=(src_handle_len+1);
     // Step 2- - all destinations-handles length 
-    for(int i = 0; i < cmd.getDestHandles().size(); i++){
+    for(size_t i = 0; i < cmd.getDestHandles().size(); i++){
         pkt_len+=(1+cmd.getDestHandles()[i].size());
     }
     pkt_len += cmd.getMessages().front().size()+1; // +1 for including the null char

@@ -49,6 +49,6 @@ std::string trim_right(const std::string& str);
 std::string trim(const std::string& str);
 std::vector<std::string> splitByWhiteSpace(std::string &input);
 std::queue<std::string> split(const std::string str, int splitLen);
-int getFirstDigit(std::string &str)throw(const char *);
+int getFirstDigit(std::string &str);
 
 #endif

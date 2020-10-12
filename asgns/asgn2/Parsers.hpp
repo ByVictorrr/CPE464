@@ -58,7 +58,7 @@ class MCommandParser: public CommandParser{
         uint8_t numHandles;// only 1-9
     public:
 
-        void parse(std::string &input)throw (const char *);
+        void parse(std::string &input);
         inline std::queue<std::string> &getMessages(){return this->messages;};
         inline uint8_t &getNumHandles(){return this->numHandles;}
         inline std::vector<std::string> &getDestHandles(){return this->destHandles;}
@@ -69,7 +69,7 @@ class BCommandParser: public CommandParser{
     private:
         std::queue<std::string> messages;
     public:
-        void parse(std::string &input)throw (const char *);
+        void parse(std::string &input);
         std::queue<std::string> &getMessages(){return this->messages;};
         char &getCommand(){return this->cmd;}
 };

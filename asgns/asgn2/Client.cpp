@@ -133,7 +133,6 @@ void TCPClient::forwardUserInput(std::string &input){
 void TCPClient::processSocket(){
     uint16_t pkt_len;
     uint8_t flag;
-    uint8_t *data;
     memset(recvBuff, 0, MAX_BUFF);
     if((pkt_len = read_pkt(this->skt, this->recvBuff)) == 0){
         std::cout << std::endl << "Server closed: Exiting!" << std::endl;
@@ -167,10 +166,9 @@ void TCPClient::processSocket(){
         break;
         case MULTICAST_HANDLE_DNE:
         {
-            uint16_t len = PacketParser::getPacketLen(recvBuff);
             uint8_t err_len = recvBuff[3];
             std::string err_han = std::string(recvBuff+4, recvBuff+4+err_len);
-            std::cout << std::endl << "The handle  \"" << err_han << "\" not found on the server" << std::endl;
+            std::cout << std::endl << "The handle \"" << err_han << "\" not found on the server" << std::endl;
 
         }
         break;
@@ -212,18 +210,11 @@ void TCPClient::processSocket(){
 
 void TCPClient::chat(){
 
-    ssize_t recv_len;
-    ssize_t stdin_len;
-
     fd_set fd_inputs;
 start:
     FD_ZERO(&fd_inputs);
     FD_SET(STDIN_FILENO, &fd_inputs);
     FD_SET(this->skt, &fd_inputs);
-    uint16_t pkt_len;
-    std::vector<std::string> parsedInput;
-    std::queue<std::string> messages;
-    // Step 1 - get user input
     
     safe_select(this->skt + 1, &fd_inputs, NULL, NULL, NULL);
     // Case 1 - something has been writen to the socket

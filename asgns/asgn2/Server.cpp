@@ -174,8 +174,6 @@ void TCPServer::shutdown(){
 }
 
 void TCPServer::run(){
-     ssize_t recv_len;
-     ssize_t stdin_len;
      fd_set fd_inputs;
      int max_fd = this->skt;
 start:

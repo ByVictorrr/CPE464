@@ -31,7 +31,7 @@ std::queue<std::string> split(const std::string str, int splitLen){
         ret.push(str.substr(i, splitLen));
     return ret;
 }
-int getFirstDigit(std::string &str)throw(const char *){
+int getFirstDigit(std::string &str){
     for(auto c: str){
         if(std::isdigit(c)){
             return c - '0';

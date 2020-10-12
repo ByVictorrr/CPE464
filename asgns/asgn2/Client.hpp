@@ -21,11 +21,10 @@ class BCommandParser;
 class Client{
     protected:
         /* Data that is needed as client */
-        int skt; 
-        char *port;
         char *handle;
         char *serverName;
-
+        char *port;
+        int skt; 
         /* Chat-protocol Buffers */
         uint8_t recvBuff[MAX_BUFF];
         uint8_t transBuff[MAX_BUFF];
