@@ -2,15 +2,6 @@
 /* ================CommandValidator================================ */
 
 const int CommandValidator::MAX_INPUT = 1400;
-const std::string CommandValidator::COMMAND_FORMATS = "^\\s*%("
-                                                      "[M|m]\\s+([1-9]+)((\\s+[^\\s]+){1,})\\s*(.*)"
-                                                      "|"
-                                                      "[B|b]\\s*(.*)"
-                                                      "|"
-                                                      "[L|l]\\s*"
-                                                      "|"
-                                                      "[E|e]\\s*"
-                                                      ")$";
 
 
 const std::string MCommandValidator::FORMAT_MESSAGE ="Usage: %<M|m> num-handles(1-9) handle1 [handle2[..[handle9]]] [message]\n";
@@ -85,40 +76,37 @@ bool ECommandValidator::validate(std::string &einput){
 
 
 
-bool CommandValidator::validate(std::string &input){
-            std::regex cmd_formats(COMMAND_FORMATS);
-            // Step 1 - check to see if empty string
+bool CommandValidator::validate(std::string &input, int actualSize){
             if(input.empty()){
                 return false;
-            // Step 2 - is the input greater than MAX_INPUT 
-            }else if(input.size() > MAX_INPUT){
+            }else if(actualSize > MAX_INPUT){
                 std::cout << "Cant exceed more than 1400 characters!" << std::endl;
                 return false;
             }
-                switch (std::toupper(CommandParser::getCommand(input)))
+            switch (std::toupper(CommandParser::getCommand(input)))
+            {
+                case 'M':
                 {
-                    case 'M':
-                    {
-                        return MCommandValidator::validate(input);
-                    }
-                        break;
-                    case 'B':
-                        return BCommandValidator::validate(input);
-                        break;
-                    case 'L':
-                        return LCommandValidator::validate(input);
-                        break;
-                    case 'E':
-                        return ECommandValidator::validate(input);
-                        break;
-                    default:
-                        std::cout << "Usage: %<M|m> num-handles(1-9) handle1 [handle2[..[handle9]]] [message]\n"
-                                "Usage: %<B|b> [message]\n"
-                                "Usage: %<L|l>\n"
-                                "Usage: %<E|e>" << std::endl;
-                        return false;
-                    break;
+                    return MCommandValidator::validate(input);
                 }
+                    break;
+                case 'B':
+                    return BCommandValidator::validate(input);
+                    break;
+                case 'L':
+                    return LCommandValidator::validate(input);
+                    break;
+                case 'E':
+                    return ECommandValidator::validate(input);
+                    break;
+                default:
+                    std::cout << "Usage: %<M|m> num-handles(1-9) handle1 [handle2[..[handle9]]] [message]\n"
+                            "Usage: %<B|b> [message]\n"
+                            "Usage: %<L|l>\n"
+                            "Usage: %<E|e>" << std::endl;
+                    return false;
+                break;
+            }
         return true;
  }
 
@@ -144,9 +132,9 @@ void MCommandParser::parse(std::string &input){
         this->destHandles = splitByWhiteSpace(dests);
         // step 2 - get dest handles
         if(!match[3].length()){
-            this->messages.push("\n");
+            this->messages.push("");
         }else{
-            std::string message = trim(match[3]); // may need to trim right
+            std::string message = match[3]; // may need to trim right
             this->messages = split(message, 200);
         }
     }else{
@@ -161,9 +149,9 @@ void MCommandParser::parse(std::string &input){
             std::smatch match;
             if (std::regex_search(input, match, rgx)){
                 if(!match[1].length()){
-                    this->messages.push("\n");
+                    this->messages.push("");
                 }else{
-                    std::string message = trim(match[1].str()); // No need to split due to the regex (if no space then it work)
+                    std::string message = match[1].str(); // No need to split due to the regex (if no space then it work)
                     this->messages = split(message, 200);
                 }
             }else{

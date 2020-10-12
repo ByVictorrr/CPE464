@@ -9,19 +9,19 @@ void checkArgs(int argc, char * argv[])
         printf("usage: %s handle server-name server-port \n", argv[0]);
         exit(EXIT_SUCCESS);
     }
+    /* check to see if handle.size()*/
+    if(strlen(argv[1]) > 100){
+        printf("Handle name is too long\n");
+        exit(EXIT_FAILURE);
+    }
 }
 
+/* argv[1] = handle, argv[2] = serverName, argv[3] = port*/
 int main(int argc, char * argv[])
 {
-	
-    #define DEBUG_FLAG 1
 	checkArgs(argc, argv);
-
-	/* set up the TCP Client socket  */
-    TCPClient client(argv[1], argv[2], argv[3]);
-
-    client.login(DEBUG_FLAG);
-    // Take out busy wait ask if whenever somethings sent if it gets a recv
+    TCPClient client(argv[1]);
+    client.login(argv[2], argv[3]);
     client.chat();
     client.logout();
 	return 0;

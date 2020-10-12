@@ -50,5 +50,6 @@ std::string trim(const std::string& str);
 std::vector<std::string> splitByWhiteSpace(std::string &input);
 std::queue<std::string> split(const std::string str, int splitLen);
 int getFirstDigit(std::string &str);
+int getUserInput(char *buff, int max_input);
 
 #endif

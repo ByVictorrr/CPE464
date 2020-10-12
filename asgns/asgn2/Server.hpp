@@ -12,8 +12,7 @@ class Server{
         int skt; 
         std::map<int, std::string> clients;
         int port; // maybe remove
-        uint8_t recvBuff[MAX_BUFF];
-        uint8_t transBuff[MAX_BUFF];
+        uint8_t Buff[MAX_BUFF];
 
     public:
 
@@ -30,7 +29,7 @@ class TCPServer: public Server{
 
     private:
         void forwardListHandles(int client);
-        void forwardCheckHandle(int client);
+        void forwardCheckHandle(int client, uint16_t pkt_len);
         void forwardExit(int client);
         void forwardBroadcast(int client, uint16_t pkt_len);
         void forwardMulticast(int client, uint16_t pkt_len);

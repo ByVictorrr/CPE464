@@ -3,7 +3,9 @@
 #include <string>
 #include <regex>
 #include <map>
+#include <netinet/in.h>
 using namespace std;
+
 
 std::vector<std::string> splitByWhiteSpace(std::string &input){
     std::vector<std::string> result; 
@@ -37,6 +39,7 @@ int main(){
        std::cout << "hi" << first << " with size: " << v.size() << std::endl;
    }
    */
+  /*
  
   std::string str = "               %M     12132       adfaadfffffffff     ";
   std::string str1 = "";
@@ -52,6 +55,12 @@ int main(){
   }
   
  std::cout << v1.size() << std::endl;
+
+*/
+using namespace std;
+    uint16_t some_short = 0x4578;
+    if(some_short == ntohs(htons(some_short)))
+        cout << "our computer to small endian";
 
    
 

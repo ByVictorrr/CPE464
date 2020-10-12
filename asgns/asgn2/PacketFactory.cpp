@@ -10,16 +10,16 @@ std::map<char, flags_t> PacketFactory::cmdToFlag = {
 
 
 /* Format <hdr len (2) | 1 byte flag | 1 byte src-han-len | src-han | dest-han1-len | dest-han1 | ... | msg */
-uint8_t *PacketFactory::buildMPacket(MCommandParser &cmd, TCPClient *client){
+uint16_t PacketFactory::buildMPacket(MCommandParser &cmd, TCPClient *client){
     //flags_t flag = PacketFactory::getCmdToFlag()[cmd.getCommand()];
     flags_t flag = cmdToFlag[cmd.getCommand()];
-    uint8_t *transBuff = client->getTransBuff();
+    uint8_t *transBuff = client->getBuff();
     char *srcHand = client->getHandle();
     uint8_t src_handle_len = std::strlen(srcHand);
     int cursor = 0;
-    memset(transBuff,0 ,MAX_BUFF);
     /** Get pkt_size first */
     uint16_t pkt_len = HDR_LEN+FLAG_LEN+1;
+    uint16_t net_len;
     // Step 1 - src-handle length
     pkt_len+=(src_handle_len+1);
     // Step 2- - all destinations-handles length 
@@ -30,7 +30,8 @@ uint8_t *PacketFactory::buildMPacket(MCommandParser &cmd, TCPClient *client){
     /** Done getting the pkt_size */
 
     /** Time to fill the trans buff */
-    memcpy(transBuff, &pkt_len, 2);
+    net_len = htons(pkt_len);
+    memcpy(transBuff, &net_len, 2);
     cursor=2;
     memcpy(transBuff+cursor, &flag, 1);
     cursor++;
@@ -46,38 +47,40 @@ uint8_t *PacketFactory::buildMPacket(MCommandParser &cmd, TCPClient *client){
     }
     // set message
     memcpy(transBuff+cursor, cmd.getMessages().front().c_str(), cmd.getMessages().front().size());
-    return transBuff;
+    return pkt_len;
 }
 
 // format <hdr|1byte src-han-len | src-hand | message>
-uint8_t *PacketFactory::buildBPacket(BCommandParser &cmd, TCPClient *client){
+uint16_t PacketFactory::buildBPacket(BCommandParser &cmd, TCPClient *client){
     uint8_t flag = cmdToFlag[cmd.getCommand()];
-    uint16_t pkt_len = 3;
-    uint8_t *transBuff = client->getTransBuff();
+    uint16_t pkt_len = 3, net_len;
+    uint8_t *transBuff = client->getBuff();
     char *srcHand = client->getHandle();
     uint8_t srcHandLen = std::strlen(srcHand);
     int cursor = 0;
     pkt_len+=(1+srcHandLen)+cmd.getMessages().front().size()+1;
-    memcpy(transBuff, &pkt_len ,2);
+    net_len = htons(pkt_len);
+    memcpy(transBuff, &net_len ,2);
     cursor+=2;
     transBuff[cursor++] = flag;
     transBuff[cursor++] = srcHandLen;
     memcpy(transBuff+cursor, srcHand ,srcHandLen);
     cursor+=srcHandLen;
     memcpy(transBuff+cursor, cmd.getMessages().front().c_str(), cmd.getMessages().front().size());
-    return transBuff;
+    return pkt_len;
 
 }
 
-uint8_t *PacketFactory::buildLoginPacket(TCPClient *client){
+uint16_t PacketFactory::buildLoginPacket(TCPClient *client){
     flags_t flag = CHECK_HANDLE;
-    uint16_t pkt_len = 3;
+    uint16_t pkt_len = 3, net_len;
     char *handle = client->getHandle();
-    uint8_t *pkt  = client->getTransBuff();
+    uint8_t *pkt  = client->getBuff();
     pkt_len+=(strlen(handle)+1);
-    memcpy(pkt, &pkt_len, 2);
+    net_len=htons(pkt_len);
+    memcpy(pkt, &net_len, 2);
     pkt[2] = flag;
     pkt[3] = strlen(handle);
     memcpy(pkt+4, handle, strlen(handle));
-    return pkt; 
+    return pkt_len; 
 }

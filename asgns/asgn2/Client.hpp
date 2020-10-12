@@ -22,16 +22,13 @@ class Client{
     protected:
         /* Data that is needed as client */
         char *handle;
-        char *serverName;
-        char *port;
         int skt; 
         /* Chat-protocol Buffers */
-        uint8_t recvBuff[MAX_BUFF];
-        uint8_t transBuff[MAX_BUFF];
+        uint8_t Buff[MAX_BUFF];
     public:
-        Client(char *handle, char *server_name, char *port, int type, int protocol=0);
+        Client(char *handle, int type, int protocol=0);
         char * getHandle(){return this->handle;};
-        uint8_t * getTransBuff(){return this->transBuff;};
+        uint8_t * getBuff(){return this->Buff;};
         int getSocket(){return this->skt;}
 };
 
@@ -41,13 +38,15 @@ class TCPClient: public Client{
         void forwardBCommand(std::string &input);
         void forwardLCommand();
         void forwardECommand();
-        void forwardUserInput(std::string &input);
+        void forwardUserInput();
+
+        uint16_t readSocket();
         void processSocket();
-        uint32_t numHandles;
+        
     public:
-        TCPClient(char *handle, char *server_name, char *port, int protocol=0);
+        TCPClient(char *handle, int protocol=0);
         ~TCPClient();
-        void login(int debugFlag);
+        void login(char *serverName, char *port);
         void chat();
         void logout();
       

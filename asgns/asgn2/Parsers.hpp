@@ -4,11 +4,9 @@
 
 /*=====================CommandValidator===========================*/
 class CommandValidator{
-    private:
-        static const int MAX_INPUT;
-        static const std::string COMMAND_FORMATS;
     public:
-        static bool validate(std::string &input);
+        static const int MAX_INPUT;
+        static bool validate(std::string &input, int actualSize);
 };
 
 class MCommandValidator{
@@ -81,20 +79,14 @@ class BCommandParser: public CommandParser{
 
 class PacketParser{
     public:
-        static uint16_t getPacketLen(uint8_t *pkt){
-            uint16_t len;
-            memcpy(&len, pkt, 2);
-            return len;
-        }
-
-        virtual void parse(uint8_t *pkt) = 0;
+        virtual void parse(uint8_t *pkt, uint16_t len) = 0;
 };
 class LoginPacketParser: public PacketParser{
     private:
         std::string handName;
     public:
         // Format: <hdr, 1byte handle lenght then handle no padding/nulls
-        void parse(uint8_t *pkt);
+        void parse(uint8_t *pkt, uint16_t len);
         std::string & getHandName(){return this->handName;}
 
 };
@@ -104,7 +96,7 @@ class BroadcastPacketParser: public PacketParser{
         std::string message;
         std::string srcHandle;
     public:
-        void parse(uint8_t *pkt);
+        void parse(uint8_t *pkt, uint16_t len);
         std::string &getMessage(){return this->message;}
         std::string &getSourceHandle(){return this->srcHandle;}
 
@@ -119,7 +111,7 @@ class MulticastPacketParser: public PacketParser{
         
     public:
     /* Expand to class for server and client to shar */
-        void parse(uint8_t *pkt);
+        void parse(uint8_t *pkt, uint16_t len);
         std::vector<std::string> &getDestHandles(){return this->destHandles;};
         std::string &getMessage(){return this->message;}
         std::string &getSourceHandle(){return this->srcHandle;}

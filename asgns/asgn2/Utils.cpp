@@ -39,3 +39,17 @@ int getFirstDigit(std::string &str){
     }
     throw "No digit in this string";
 }
+int getUserInput(char *buff, int max_input)
+{
+    int c;
+    int typedLen = 0;
+    int i = 0;
+    while((c=std::getchar()) != '\n'){
+        if(i < max_input){
+            buff[i++] = c;
+        }
+        typedLen++;
+
+    }
+    return typedLen;
+}

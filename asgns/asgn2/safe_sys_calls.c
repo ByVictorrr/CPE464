@@ -118,18 +118,19 @@ int safe_select(int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds, 
 	// Will be either 0 (socket not ready) or 1 (socket is ready for read)
     return numReady;
 }
-uint16_t read_pkt(int skt, uint8_t *buff){
-    uint16_t pkt_len;
-    if(safe_recv(skt, &pkt_len, 2, MSG_WAITALL) == 0){
+uint16_t readPacket(int skt, uint8_t *buff){
+    uint16_t pkt_len, net_len;
+    if(safe_recv(skt, &net_len, 2, MSG_WAITALL) == 0){
 		return 0;
 	}
-    if(safe_recv(skt, buff+2, pkt_len-2, 0) == 0){
+    pkt_len = ntohs(net_len);
+    if(safe_recv(skt, buff+2, pkt_len-2, MSG_WAITALL) == 0){
         return 0;
     }
     memcpy(buff, &pkt_len, 2);
     return pkt_len;
- 
 }
+
 int send_pkt(int skt, const void *buf, size_t len){
 	return safe_send(skt, buf, len, 0);
 }

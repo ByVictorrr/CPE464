@@ -48,79 +48,95 @@ int TCPServer::getSocket(const std::string &handle){
     return -1;
 }
 
+
 /********************Forwarder functions***************/
 void TCPServer::forwardListHandles(int clientSocket){
-        int numHandles = this->clients.size();
-        uint16_t len = 3 + numHandles;
         // step 1 - send the num of packets (with flag=11) 4 byte num
-        memcpy(transBuff, &len, 2);
-        transBuff[2] = NUM_HANDLES;
-        memcpy(&transBuff[3], &numHandles, sizeof(int));
-        safe_send(clientSocket, transBuff, len, 0);
+        int numHandles = (int)this->clients.size();
+        int numNetHandles = htonl(numHandles);
+        uint16_t len = 3 + sizeof(uint32_t);
+        uint16_t net_len = htons(len);
+        memcpy(Buff, &net_len, 2);
+        Buff[2] = NUM_HANDLES;
+        memcpy(&Buff[3], &numNetHandles, sizeof(int));
+        safe_send(clientSocket, Buff, len, 0);
+        // Step 2 - send destinations
         len=0;
-        memset(transBuff, 0, MAX_BUFF);
+        memset(Buff, 0, MAX_BUFF);
         // step 2 - send the name of each packet (hdr flag=12, 1 byte handle length, handle data)
         for(const auto & client: clients){
             len = (3 + 1+1) + client.second.size();
-            memcpy(transBuff, &len, 2);
-            transBuff[2] = LIST_HANDLE_NAME;
-            transBuff[3] = client.second.size();
-            memcpy(transBuff+4, client.second.c_str() ,client.second.size()+1);
-            safe_send(clientSocket, transBuff, len, 0);
-            memset(transBuff, 0, MAX_BUFF);
+            net_len = htons(len);
+            memcpy(Buff, &net_len, 2);
+            Buff[2] = LIST_HANDLE_NAME;
+            Buff[3] = client.second.size();
+            memcpy(Buff+4, client.second.c_str() ,client.second.size()+1);
+            safe_send(clientSocket, Buff, len, 0);
+            memset(Buff, 0, MAX_BUFF);
         }
         // Step 3 - send packet with flag = 13 know that its finished listing
         len = 3;
-        memcpy(transBuff, &len, 2);
-        transBuff[2] = FINISHED_LIST_HANDLES;
-        safe_send(clientSocket, transBuff, len, 0);
+        net_len = htons(len);
+        memcpy(Buff, &net_len, 2);
+        Buff[2] = FINISHED_LIST_HANDLES;
+        safe_send(clientSocket, Buff, len, 0);
  
 }
 
-void TCPServer::forwardCheckHandle(int clientSocket){
+void TCPServer::forwardCheckHandle(int clientSocket, uint16_t l){
     LoginPacketParser parser;
-    parser.parse(this->recvBuff);
-    uint16_t len=3;
-    memcpy(transBuff, &len, 2);
+    parser.parse(this->Buff, l);
+    uint16_t len=htons(3);
+    memcpy(Buff, &len, 2);
     if(this->inClients(parser.getHandName())){
-        transBuff[2] = HANDLE_EXISTS;
+        Buff[2] = HANDLE_EXISTS;
     }else{
-        transBuff[2] = HANDLE_DNE;
+        Buff[2] = HANDLE_DNE;
         this->clients[clientSocket] = parser.getHandName();
     }
-    send_pkt(clientSocket, transBuff, 3);
+    send_pkt(clientSocket, Buff, 3);
 }
 void TCPServer::forwardBroadcast(int clientSocket, uint16_t pkt_len){
     BroadcastPacketParser parser;
-    parser.parse(this->recvBuff);
+    parser.parse(this->Buff, pkt_len);
+    uint16_t net_len;
+    net_len = htons(pkt_len);
+    memcpy(Buff, &net_len, 2);
     for(const auto &client: clients)
         if(client.second.compare(parser.getSourceHandle()) != 0)
-            send_pkt(client.first, recvBuff, pkt_len);
+            send_pkt(client.first, Buff, pkt_len);
 
 }
 
 void TCPServer::forwardMulticast(int clientSocket, uint16_t pkt_len){
     MulticastPacketParser parser;
-    parser.parse(this->recvBuff);
-    
-    for(const auto &dest: parser.getDestHandles())
+    uint16_t net_len;
+    uint8_t err_buf[MAX_BUFF];
+    parser.parse(this->Buff, pkt_len);
+    for(const auto &dest: parser.getDestHandles()){
         if(this->inClients(dest)){
-            safe_send(this->getSocket(dest), recvBuff, pkt_len, 0);
+            net_len = htons(pkt_len);
+            memcpy(Buff, &net_len, 2);
+            safe_send(this->getSocket(dest), Buff, pkt_len, 0);
         }else{
             // creat a error pkt and send
+            memset(err_buf, 0, MAX_BUFF);
             uint16_t err_len = 3+dest.size()+1;
-            memcpy(transBuff, &err_len, 2);
-            transBuff[2] = MULTICAST_HANDLE_DNE;
-            transBuff[3] = dest.size();
-            memcpy(transBuff+4, dest.c_str(), dest.size());
-            send_pkt(clientSocket, transBuff, err_len);
+            net_len=htons(err_len);
+            memcpy(err_buf, &net_len, 2);
+            err_buf[2] = MULTICAST_HANDLE_DNE;
+            err_buf[3] = dest.size();
+            memcpy(err_buf+4, dest.c_str(), dest.size());
+            send_pkt(clientSocket, err_buf, err_len);
         }
-
+    }
 }
 
 void TCPServer::forwardExit(int clientSocket){
-    recvBuff[2] = CLIENT_EXIT_ACK;
-    safe_send(clientSocket, recvBuff, 3, 0);
+    uint16_t len = htons(3);
+    memcpy(Buff,&len,2);
+    Buff[2] = CLIENT_EXIT_ACK;
+    safe_send(clientSocket, Buff, 3, 0);
     this->clients.erase(clientSocket);
  
 }
@@ -130,19 +146,19 @@ void TCPServer::processClient(int clientSocket){
     // something has been sent to the server
     uint8_t flag;
     uint16_t pkt_len;
-    memset(this->transBuff, 0, MAX_BUFF);
-    memset(this->recvBuff, 0, MAX_BUFF);
+    memset(this->Buff, 0, MAX_BUFF);
+    memset(this->Buff, 0, MAX_BUFF);
     // Case where client disconnects (async)
-    if(!(pkt_len = read_pkt(clientSocket, this->recvBuff))){
+    if(!(pkt_len = readPacket(clientSocket, this->Buff))){
         safe_close(clientSocket);
         this->clients.erase(clientSocket);
         return;
     }
     // once we have the packet what do we do ? (parse it look for destination or flags)
-    switch ((flag=recvBuff[2]))
+    switch ((flag=Buff[2]))
     {
     case CHECK_HANDLE:
-        forwardCheckHandle(clientSocket);
+        forwardCheckHandle(clientSocket, pkt_len);
     break;
     case BROADCAST:
         forwardBroadcast(clientSocket, pkt_len);

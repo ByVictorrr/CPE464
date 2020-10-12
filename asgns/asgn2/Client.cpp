@@ -12,12 +12,11 @@
  */
 
 
-Client::Client(char *handle, char *server_name, char *port, int type, int protocol)  
-: handle(handle), serverName(server_name), port(port)
+Client::Client(char *handle, int type, int protocol)  
+: handle(handle)
 {
     this->skt = safe_socket(AF_INET6, type, protocol);
-    memset(recvBuff, 0, MAX_BUFF);
-    memset(transBuff, 0, MAX_BUFF);
+    memset(Buff, 0, MAX_BUFF);
 }
 TCPClient::~TCPClient(){
     safe_close(this->skt);
@@ -28,19 +27,17 @@ void TCPClient::logout(){
 }
 
 
-TCPClient::TCPClient(char *handle, char *server_name, char *port, int protocol)  
-: Client(handle, server_name, port, SOCK_STREAM, protocol){
+TCPClient::TCPClient(char *handle, int protocol)  
+: Client(handle,SOCK_STREAM, protocol){
 }
 
-void TCPClient::login(int debugFlag){
+void TCPClient::login(char* serverName, char *port){
     uint8_t * ipAddress = NULL;
+    uint16_t loginLen;
     struct sockaddr_in6 server; 
-    if(debugFlag)
-        printf("Connecting to server on port number %s\n", port);
-
     // setup the server structure
     server.sin6_family = AF_INET6;
-    server.sin6_port = htons(atoi(this->port));
+    server.sin6_port = htons(atoi(port));
 
     // get the address of the server 
     if ((ipAddress = getIPAddress6(serverName, &server)) == NULL)
@@ -48,17 +45,12 @@ void TCPClient::login(int debugFlag){
         exit(EXIT_FAILURE);
     }
 
-    printf("server ip address: %s\n", getIPAddressString(ipAddress));
     safe_connect(this->skt, (struct sockaddr*)&server, sizeof(server));
 
     // Login
-    uint8_t *login_pkt = PacketFactory::buildLoginPacket(this);
-    safe_send(this->skt, login_pkt, PacketParser::getPacketLen(login_pkt),0);
 
-    if (debugFlag)
-    {
-        printf("Connected to %s IP: %s Port Number: %d\n", serverName, getIPAddressString(ipAddress), atoi(this->port));
-    }
+    loginLen = PacketFactory::buildLoginPacket(this);
+    safe_send(this->skt, this->Buff, loginLen,0);
 
 }
 void TCPClient::forwardMCommand(std::string &input){
@@ -66,8 +58,8 @@ void TCPClient::forwardMCommand(std::string &input){
     parser.parse(input);
     while(!parser.getMessages().empty()){
         // this below could possibly be a static function class (returns uin8t_t)
-        uint8_t *pkt = PacketFactory::buildMPacket(parser, this);
-        safe_send(this->skt, pkt, PacketParser::getPacketLen(pkt), 0);
+        uint16_t len = PacketFactory::buildMPacket(parser, this);
+        safe_send(this->skt, this->Buff, len, 0);
         parser.getMessages().pop();
     }
 }
@@ -76,14 +68,15 @@ void TCPClient::forwardBCommand(std::string &input){
         BCommandParser parser;
         parser.parse(input);
         while(!parser.getMessages().empty()){
-            uint8_t *pkt = PacketFactory::buildBPacket(parser, this);
-            safe_send(this->skt, pkt, PacketParser::getPacketLen(pkt), 0);
+            uint16_t len = PacketFactory::buildBPacket(parser, this);
+            safe_send(this->skt, this->Buff, len, 0);
             parser.getMessages().pop();
         }
 }
 void TCPClient::forwardLCommand(){
     uint16_t len = 3;
-    uint8_t *pkt = this->transBuff;
+    uint8_t *pkt = this->Buff;
+    len = htons(len);
     memcpy(pkt, &len, 2);
     pkt[2] = LIST_HANDLES;
     safe_send(this->skt, pkt, 3, 0);
@@ -91,17 +84,22 @@ void TCPClient::forwardLCommand(){
 
 void TCPClient::forwardECommand(){
     uint16_t len = 3;
-    uint8_t *pkt = this->transBuff;
+    uint8_t *pkt = this->Buff;
+    len = htons(len);
     memcpy(pkt, &len, 2);
     pkt[2]  = CLIENT_EXIT;
     safe_send(this->skt, pkt, 3, 0);
 }
 
-void TCPClient::forwardUserInput(std::string &input){
-    try{
+void TCPClient::forwardUserInput(){
+        char buff[CommandValidator::MAX_INPUT+1];
+        memset(buff, 0, CommandValidator::MAX_INPUT+1);
+        int enteredLen = getUserInput(buff, CommandValidator::MAX_INPUT+1);
+        std::string input = buff;
         // Step 1 - read and validate input
-        if(CommandValidator::validate(input)){
+        if(CommandValidator::validate(input, enteredLen)){
             // Step 2 - see if it has a message
+            memset(Buff, 0, MAX_BUFF);
             switch (CommandParser::getCommand(input))
             {
             case 'M':
@@ -122,24 +120,26 @@ void TCPClient::forwardUserInput(std::string &input){
             }
 
         }
-    }catch(const char *msg){
-        std::cerr << msg << std::endl;
-    }
 
     std::cout << "$: " << std::flush;
     return;
 }
-
-void TCPClient::processSocket(){
+uint16_t TCPClient::readSocket(){
     uint16_t pkt_len;
-    uint8_t flag;
-    memset(recvBuff, 0, MAX_BUFF);
-    if((pkt_len = read_pkt(this->skt, this->recvBuff)) == 0){
-        std::cout << std::endl << "Server closed: Exiting!" << std::endl;
+    if((pkt_len = readPacket(this->skt, this->Buff)) == 0){
+        std::cout << std::endl << "Server Terminated" << std::endl;
         safe_close(this->skt);
         exit(EXIT_FAILURE);
     }
-    switch((flag=recvBuff[2]))
+    return pkt_len;
+}
+
+
+void TCPClient::processSocket(){
+    uint8_t flag;
+    memset(this->Buff, 0, MAX_BUFF);
+    uint16_t len = readSocket(); 
+    switch((flag=this->Buff[2]))
     {
 
         case HANDLE_DNE:
@@ -153,22 +153,22 @@ void TCPClient::processSocket(){
         case BROADCAST:
         {
             BroadcastPacketParser parser;
-            parser.parse(recvBuff);
+            parser.parse(Buff, len);
             std::cout << std::endl << parser.getSourceHandle() << ": " << parser.getMessage() << std::endl;
         }
         break;
         case MULTICAST:
         {
             MulticastPacketParser parser;
-            parser.parse(recvBuff);
+            parser.parse(Buff, len);
             std::cout << std::endl << parser.getSourceHandle() << ": " << parser.getMessage() << std::endl;
         }
         break;
         case MULTICAST_HANDLE_DNE:
         {
-            uint8_t err_len = recvBuff[3];
-            std::string err_han = std::string(recvBuff+4, recvBuff+4+err_len);
-            std::cout << std::endl << "The handle \"" << err_han << "\" not found on the server" << std::endl;
+            uint8_t err_len = Buff[3];
+            std::string err_han = std::string(Buff+4, Buff+4+err_len);
+            std::cout << std::endl << "Client with handle " << err_han << " does not exist" << std::endl;
 
         }
         break;
@@ -183,14 +183,15 @@ void TCPClient::processSocket(){
         {
             int numHandles;
             // print out the number
-            memcpy(&numHandles, &recvBuff[3], 4);
+            memcpy(&numHandles, &Buff[3], 4);
+            numHandles=ntohl(numHandles);
             std::cout << std::endl << "Number of handles: " << numHandles << std::endl;
         }
         break;
         case LIST_HANDLE_NAME:
         {
-            uint8_t handSize = recvBuff[3];
-            std::string &&handName = std::string(recvBuff+4, (recvBuff+4)+handSize);
+            uint8_t handSize = Buff[3];
+            std::string &&handName = std::string(Buff+4, (Buff+4)+handSize);
             std::cout << "\t" << handName << std::endl;
         }
         break;
@@ -215,18 +216,13 @@ start:
     FD_ZERO(&fd_inputs);
     FD_SET(STDIN_FILENO, &fd_inputs);
     FD_SET(this->skt, &fd_inputs);
-    
     safe_select(this->skt + 1, &fd_inputs, NULL, NULL, NULL);
-    // Case 1 - something has been writen to the socket
     if(FD_ISSET(this->skt, &fd_inputs)){
-        // if recv a end aka recv_len = 0
         processSocket();
     }
     if(FD_ISSET(STDIN_FILENO, &fd_inputs)){
-        std::string input;
-        std::getline(std::cin, input);
-        forwardUserInput(input);
-    }
+        forwardUserInput();
+     }
 
         goto start;
 
