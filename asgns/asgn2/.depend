@@ -1,10 +1,18 @@
 gethostbyname6.o: gethostbyname6.c gethostbyname6.h
-Server.o: Server.cpp NetworkNodes.hpp safe_sys_calls.h gethostbyname6.h \
- Server.hpp
-server.o: server.cpp Server.hpp NetworkNodes.hpp safe_sys_calls.h \
+PacketParser.o: PacketParser.cpp Parsers.hpp Utils.hpp safe_sys_calls.h \
  gethostbyname6.h
-safe_sys_calls.o: safe_sys_calls.c safe_sys_calls.h
-NetworkNodes.o: NetworkNodes.cpp gethostbyname6.h NetworkNodes.hpp \
- safe_sys_calls.h
-Client.o: Client.cpp NetworkNodes.hpp safe_sys_calls.h gethostbyname6.h \
- Client.hpp
+PacketFactory.o: PacketFactory.cpp PacketFactory.hpp Utils.hpp \
+ safe_sys_calls.h gethostbyname6.h Parsers.hpp Client.hpp
+Server.o: Server.cpp Server.hpp Parsers.hpp Utils.hpp safe_sys_calls.h \
+ gethostbyname6.h
+server.o: server.cpp Server.hpp Parsers.hpp Utils.hpp safe_sys_calls.h \
+ gethostbyname6.h
+safe_sys_calls.o: safe_sys_calls.c safe_sys_calls.h Utils.hpp \
+ gethostbyname6.h
+Utils.o: Utils.cpp Utils.hpp safe_sys_calls.h gethostbyname6.h
+CommandParser.o: CommandParser.cpp Parsers.hpp Utils.hpp safe_sys_calls.h \
+ gethostbyname6.h
+cclient.o: cclient.cpp Client.hpp safe_sys_calls.h Utils.hpp \
+ gethostbyname6.h Parsers.hpp PacketFactory.hpp
+Client.o: Client.cpp Client.hpp safe_sys_calls.h Utils.hpp \
+ gethostbyname6.h Parsers.hpp PacketFactory.hpp

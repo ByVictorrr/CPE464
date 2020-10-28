@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
 	int clientSocket = 0;   //socket descriptor for the client socket
 	int portNumber = 0;
 	char *data=NULL;
-	// Configuration	
+	// Configuration
 	portNumber = checkArgs(argc, argv);
 	serverSocket = tcpServerSetup(portNumber);
 	signal(SIGINT, LAMBDA(void _(int sig_num){
@@ -61,9 +61,9 @@ accept:
 		safe_free(&data);
 	}
 
-	
+
 	goto accept;
-	
+
 	return 0;
 }
 
@@ -99,7 +99,7 @@ char *recvFromClient(int clientSocket)
 	{
 		printf("Select timed out waiting for client to send data\n");
 	}
-	
+
 	//now get the data from the client_socket (message includes null)
 	if((data = recvTwoBytesPlusMsg(clientSocket)) == NULL){
 		return NULL;
@@ -122,12 +122,11 @@ int checkArgs(int argc, char *argv[])
 		fprintf(stderr, "Usage %s [optional port number]\n", argv[0]);
 		exit(-1);
 	}
-	
+
 	if (argc == 2)
 	{
 		portNumber = atoi(argv[1]);
 	}
-	
+
 	return portNumber;
 }
-
