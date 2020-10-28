@@ -33,7 +33,7 @@ int RCopyPacketBuilder::setPacket(uint8_t *packet, uint8_t *payload, struct RCop
 
  std::pair<int,uint8_t*> RCopyPacketBuilder::buildPacket(uint32_t seqNum, uint8_t flag, uint8_t *payload, int payloadLen){
     struct RCopyHeader hdr;
-    int packetLen;
+    int packetLen = payloadLen+HDR_LEN;
     if(MAX_PAYLOAD_LEN < payloadLen){
         std::cerr << "Payload too big" << std::endl;
         exit(EXIT_FAILURE);
@@ -51,10 +51,12 @@ void RCopyPacketParser::outputPDU(uint8_t *PDU){
     RCopyHeader hdr;
     memcpy(&hdr, PDU, HDR_LEN);
     std::string payload = std::string((char*)(HDR_LEN+PDU));
+    std::cout << "+++++++++++++++++" << std::endl;
     std::cout <<  "Sequence Number: " << ntohl(hdr.sequenceNum) << std::endl;
-    std::cout <<  "Flag: " << hdr.flag << std::endl;
+    std::cout <<  "Flag: " << std::to_string(hdr.flag) << std::endl;
     std::cout <<  "Payload: " << payload << std::endl;
-    std::cout <<  "Payload Len: " << payload.size() << std::endl;
+    std::cout <<  "Payload Len: " << payload.size()+1 << std::endl;
+    std::cout << "+++++++++++++++++" << std::endl;
 
 }
 

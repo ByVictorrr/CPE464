@@ -75,6 +75,7 @@ void talkToServer(int socketNum, struct sockaddr_in6 * server)
 
 		dataLen = getData(buffer);
 
+
         std::pair<int,uint8_t*> packet = RCopyPacketBuilder::buildPacket(seqNum++, flag, (uint8_t*)buffer, dataLen);
 		
 
@@ -87,23 +88,10 @@ void talkToServer(int socketNum, struct sockaddr_in6 * server)
 		// print out bytes received
 		//ipString = ipAddressToString(server);
 		//printf("Server with ip: %s and port %d said it received %s\n", ipString, ntohs(server->sin6_port), buffer);
+		memset(buffer, 0, MAXBUF);
 	      
 	}
 } 
-/*
-uint8_t *createPDU(uint32_t sequenceNumber, uint8_t flag, uint8_t *payload, int dataLen){
-	static uint8_t pduBuffer[HDR_LEN+MAXBUF+1];
-	
-	memset(pduBuffer, 0, HDR_LEN+MAXBUF+1);
-	// seq (32 bits)
-	sequenceNumber = htonl(sequenceNumber);
-	memcpy(pduBuffer, sequenceNumber, sizeof(u_int32_t));
-	// checksum
-	
-	return pduBuffer;	
-
-}
-*/
 
 
 int getData(char * buffer)
