@@ -3,26 +3,34 @@
 
 CC = g++
 CFLAGS= -g -Wall --std=c++11 -fPIE
-LIBS+= libcpe464.2.20.a -lstdc++ -ldl
+LIBS+= libcpe464.2.20.a 
 
-SRC = networks.c  networks.h gethostbyname.c gethostbyname.h Packet.cpp Packet.hpp
+C_FILES = $(shell find . -maxdepth 1 -name "*.c*")
 OBJS = networks.o gethostbyname.o Packet.o
 
-all:  udpClient udpServer
+all: .depend rcopy server
 
-udpClient: udpClient.c $(OBJS) 
-	$(CC) $(CFLAGS) -o udpClient udpClient.c $(OBJS) $(LIBS)
+rcopy: rcopy.o $(OBJS)
 
-udpServer$(FILE): udpServer.c $(OBJS)
-	$(CC) $(CFLAGS) -o udpServer udpServer.c  $(OBJS) $(LIBS)
+server: server.o $(OBJS)
 
-	
-.c.o: $SRC
-	$(CC) -c $(CFLAGS) $< -o $@ $(LIBS)
+.depend: $(C_FILES)
+	rm -f ./.depend
+	$(CC) -MM $^ > ./.depend;
 
-cleano:
-	rm -f *.o
+include .depend
+
+%.o: %.c
+	$(CC) $(CFLAGS)  -c -o $@ $<
+
+%.o: %.cpp
+	$(CC) $(CFLAGS)  -c -o $@ $<
+
+
+%: %.o
+	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ $(LIBS)
+
 
 clean:
-	rm -f udpServer udpClient *.o
+	rm -f server rcopy *.o
 
