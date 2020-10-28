@@ -1,17 +1,19 @@
 #ifndef PACKET_H_
 #define PACKET_H_
 #include <iostream>
+#include <utility>
 
+#define HDR_LEN 7
+#define MAX_PAYLOAD_LEN 1400
 
-class RCopyPacketBuilder{
-    private:
-        // Defintions
+class RCopyPacket{
+    protected:
         struct RCopyHeader;
-        // constants var
-        #define MAX_HDR 11
-        #define MAX_PAYLOAD 1400
+        static uint8_t packet[HDR_LEN+MAX_PAYLOAD_LEN];
+};
 
-        static uint8_t packet[MAX_HDR+MAX_PAYLOAD];
+class RCopyPacketBuilder: public RCopyPacket{
+    private:
         // Helper functions
         static int setHeader(RCopyHeader *hdr, uint32_t seqNum, uint8_t flag);
         static int setPacket(uint8_t *packet, uint8_t *payload, struct RCopyHeader *hdr, int payloadLen);
@@ -21,4 +23,12 @@ class RCopyPacketBuilder{
         static std::pair<int,uint8_t*> buildPacket(uint32_t seqNum, uint8_t flag, uint8_t *payload, int payloadLen);
 };
 
+class RCopyPacketParser: public RCopyPacket{
+    private:
+        // isError() : checksum
+    public:
+        // get fields
+        void outputPDU(uint8_t *PDU);
+
+};
 #endif

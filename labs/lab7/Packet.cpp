@@ -1,17 +1,19 @@
 #include "Packet.hpp"
 #include <iostream>
 #include <utility>
-#include "checksum.h"
 #include "networks.h"
+#include "cpe464.h"
 
-// Private
-struct RCopyPacketBuilder::RCopyHeader{
+/**************RCopyPacket******************/
+struct RCopyPacket::RCopyHeader{
     uint32_t sequenceNum;
     uint16_t checksum;
     uint8_t flag;
 };
 
+uint8_t RCopyPacket::packet[HDR_LEN+MAX_PAYLOAD_LEN];
 
+/************RCopyPacketBuilder*****************/
 int RCopyPacketBuilder::setHeader(RCopyHeader *hdr, uint32_t seqNum, uint8_t flag){
     hdr->sequenceNum = htonl(seqNum);
     hdr->checksum = 0;
@@ -21,8 +23,7 @@ int RCopyPacketBuilder::setHeader(RCopyHeader *hdr, uint32_t seqNum, uint8_t fla
 int RCopyPacketBuilder::setPacket(uint8_t *packet, uint8_t *payload, struct RCopyHeader *hdr, int payloadLen){
     int cursor = 0;
     uint16_t checksum;
-    memset(packet, 0, MAX_PAYLOAD+sizeof(*hdr));
-    memcpy(packet, hdr, (cursor=sizeof(*hdr)));
+    memcpy(packet, hdr, (cursor=HDR_LEN));
     memcpy(packet+cursor, payload, payloadLen);
     checksum = (uint16_t)in_cksum((unsigned short *)packet, cursor+payloadLen);
     memcpy(packet+4, &checksum, sizeof(checksum));
@@ -30,22 +31,31 @@ int RCopyPacketBuilder::setPacket(uint8_t *packet, uint8_t *payload, struct RCop
     return cursor+payloadLen;
 }
 
-
-
-// public
-
  std::pair<int,uint8_t*> RCopyPacketBuilder::buildPacket(uint32_t seqNum, uint8_t flag, uint8_t *payload, int payloadLen){
     struct RCopyHeader hdr;
     int packetLen;
-    if(MAX_PAYLOAD < payloadLen){
+    if(MAX_PAYLOAD_LEN < payloadLen){
         std::cerr << "Payload too big" << std::endl;
         exit(EXIT_FAILURE);
     }
-    memset(packet, 0, MAX_PAYLOAD+MAX_HDR);
+    memset(packet, 0, MAX_PAYLOAD_LEN+HDR_LEN);
     setHeader(&hdr, seqNum, flag);
     setPacket(packet, payload, &hdr, payloadLen);
 
     return std::make_pair(packetLen, packet); ///size, packet
+}
+
+
+/**********************RCopyPacketParser*************************/
+void RCopyPacketParser::outputPDU(uint8_t *PDU){
+    RCopyHeader hdr;
+    memcpy(&hdr, PDU, HDR_LEN);
+    std::string payload = std::string((char*)(HDR_LEN+PDU));
+    std::cout <<  "Sequence Number: " << ntohl(hdr.sequenceNum) << std::endl;
+    std::cout <<  "Flag: " << hdr.flag << std::endl;
+    std::cout <<  "Payload: " << payload << std::endl;
+    std::cout <<  "Payload Len: " << payload.size() << std::endl;
+
 }
 
 

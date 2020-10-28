@@ -1,12 +1,14 @@
 # udpCode makefile
 # written by Hugh Smith - April 2017
-
+SHELL := /bin/bash
 CC = g++
-CFLAGS= -g -Wall --std=c++11 -fPIE
+CFLAGS= -g -Wall --std=c++11 
 LIBS+= libcpe464.2.20.a 
 
 C_FILES = $(shell find . -maxdepth 1 -name "*.c*")
-OBJS = networks.o gethostbyname.o Packet.o
+OBJS = Packet.o gethostbyname.o networks.o 
+
+
 
 all: .depend rcopy server
 
@@ -30,7 +32,8 @@ include .depend
 %: %.o
 	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ $(LIBS)
 
-
 clean:
-	rm -f server rcopy *.o
+	rm -f server rcopy *.o .depend
 
+debug_rcopy: rcopy
+	gdb --args ./rcopy localhost 60144 .9
