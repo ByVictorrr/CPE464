@@ -6,7 +6,7 @@
 # Usage (assume its called Makefile): make  (makes all for a particular machine architecture)
 # note - if you are moving between machine architectures you must first delete your .o files
 
-CC = gcc
+CC = g++
 CFLAGS = -g -Wall -Werror 
 
 LIBS += -lstdc++ -ldl

@@ -1,91 +1,39 @@
-# Makefile for CPE464 library 
-# Can link with 32, 64 and Mac versions of the library 
-#
-# Use if you want - you do NOT need to use this - provided to help only
-#
-# Usage (assume its called Makefile): make  (makes all for a particular machine architecture)
-# note - if you are moving between machine architectures you must first delete your .o files
+# udpCode makefile
+# written by Hugh Smith - April 2017
+SHELL := /bin/bash
+CC = g++
+CFLAGS= -g -Wall --std=c++11
+LIBS+= libcpe464.2.20.a
 
-CC = gcc
-CFLAGS = -g -Wall -Werror 
+C_FILES = $(shell find . -maxdepth 1 -name "*.c*")
+OBJS = Packet.o gethostbyname.o networks.o
 
-LIBS += -lstdc++ -ldl
-SRCS = $(shell ls *.cpp *.c 2> /dev/null | grep -v rcopy.c | grep -v server.c | grep -v rcopy.cpp | grep -v server.cpp )
-OBJS = $(shell ls *.cpp *.c 2> /dev/null | grep -v rcopy.c | grep -v server.c | grep -v rcopy.cpp | grep -v server.cpp | sed s/\.c[p]*$$/\.o/ )
-HFILES = $(shell ls *.h 2> /dev/null)
-LIBNAME = $(shell ls *cpe464*.a 2> /dev/null | tail -n 1)
 
-#use the unique library names for each architecture
-ARCH = $(shell arch)
-OS = $(shell uname -s)
-ifeq ("$(OS)", "Linux")
-	LIBS1 = -lstdc++
-endif
 
-#handle macs
-ifeq ("$(OS)", "Darwin")
-	LIBNAME = $(shell ls *cpe464*.a 2> .dev.null | tail -n 1)
-endif
+all: .depend rcopy server
 
-ALL = check_lib rcopy server
+rcopy: rcopy.o $(OBJS)
 
-all:  $(OBJS) $(ALL)
+server: server.o $(OBJS)
 
-lib:
-	make -f lib.mk
+.depend: $(C_FILES)
+	rm -f ./.depend
+	$(CC) -MM $^ > ./.depend;
 
-check_lib: 
-	@if [ "$(LIBNAME)" = "" ]; then \
-		echo " ";  \
-		echo "Library missing: libcpe464.X.Y.a";  \
-		echo "Need to install the CPE464 library - see polyLearn"; \
-		echo ""; \
-		exit -1; fi
+include .depend
 
-	
-echo:
-	@echo "CFLAGS: " $(CFLAGS)  
-	@echo "SRCS: $(SRCS)"
-	@echo "Objects: $(OBJS)"
-	@echo "HFILES: $(HFILES)"
-	@echo "LIBNAME: $(LIBNAME)"
+%.o: %.c
+	$(CC) $(CFLAGS)  -c -o $@ $<
 
-%.o: %.cpp $(HFILES)
-	@echo "-------------------------------"
-	@echo "*** Building $@"
-	$(CC) -c $(CFLAGS)  $< -o $@ $(LIBS1)
+%.o: %.cpp
+	$(CC) $(CFLAGS)  -c -o $@ $<
 
-%.o: %.c $(HFILES) 
-	@echo "-------------------------------"
-	@echo "*** Building $@"
-	$(CC) -c $(CFLAGS) $< -o $@ $(LIBS1)
 
-rcopy: rcopy.o  $(HFILES) $(OBJS)
-	@echo "-------------------------------"
-	@echo "*** Linking $@ with library: $(LIBNAME)... "
-	$(CC) $(CFLAGS) -o $@ rcopy.o $(OBJS) $(LIBNAME) $(LIBS)
-	@echo "*** Linking Complete!"
-	@echo "-------------------------------"
+%: %.o
+	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ $(LIBS)
 
-server: server.o $(HFILES) $(OBJS)
-	@echo "-------------------------------"
-	@echo "*** Linking $@ with library: $(LIBNAME)... "
-	$(CC) $(CFLAGS) -o $@ server.o $(OBJS) $(LIBNAME) $(LIBS)
-	@echo "*** Linking Complete!"
-	@echo "-------------------------------"
+clean:
+	rm -f server rcopy *.o .depend
 
-# clean .o
-cleano: 
-	@echo "-------------------------------"
-	@echo "*** Cleaning Files..."
-	@echo "Deleting *.o's only"
-	rm -f *.o 
-	@echo "-------------------------------"
-	
-# clean targets
-clean: 
-	@echo "-------------------------------"
-	@echo "*** Cleaning Files..."
-	@echo "Deleting *.o's and rcopy and server"
-	rm -f *.o $(ALL)
-	@echo "-------------------------------"
+debug_rcopy: rcopy
+	gdb --args ./rcopy localhost 60144 .9
