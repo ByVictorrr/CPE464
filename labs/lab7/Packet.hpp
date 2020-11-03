@@ -26,6 +26,10 @@ class RCopyPacketBuilder: public RCopyPacket{
 class RCopyPacketParser: public RCopyPacket{
     private:
         // isError() : checksum
+        inline int getPDULen(uint8_t *PDU){
+            return std::string((const char*)PDU+HDR_LEN).size();
+        }
+
     public:
         // get fields
         void outputPDU(uint8_t *PDU);

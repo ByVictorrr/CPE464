@@ -48,9 +48,13 @@ int RCopyPacketBuilder::setPacket(uint8_t *packet, uint8_t *payload, struct RCop
 
 /**********************RCopyPacketParser*************************/
 void RCopyPacketParser::outputPDU(uint8_t *PDU){
+
+    std::string payload = std::string((char*)(HDR_LEN+PDU));
+    if(in_cksum((unsigned short*)PDU, payload.size()+HDR_LEN+1) != 0){
+        return;
+    }
     RCopyHeader hdr;
     memcpy(&hdr, PDU, HDR_LEN);
-    std::string payload = std::string((char*)(HDR_LEN+PDU));
     std::cout << "+++++++++++++++++" << std::endl;
     std::cout <<  "Sequence Number: " << ntohl(hdr.sequenceNum) << std::endl;
     std::cout <<  "Flag: " << std::to_string(hdr.flag) << std::endl;
