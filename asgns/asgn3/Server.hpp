@@ -117,7 +117,6 @@ class SelectiveReject{
         SelectiveReject(int windowSize)
             : window(windowSize){}
         
-        
         CircularQueue <RCopyPacket> &getWindow(){
             return this->window;
         }
@@ -148,10 +147,9 @@ class ServerThread{
             sendtoErr_init(errPercent, DROP_ON, FLIP_ON, DEBUG_ON, RSEED_OFF);
 
 
-            
             // Step 1 - try to open it
 
-            flowControl.getWindow().
+            flowControl.getWindow().enQueue();
             while (buffer[0] != '.')
             {
 

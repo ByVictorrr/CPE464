@@ -5,23 +5,18 @@
 #include "cpe464.h"
 
 /**************RCopyPacket******************/
-struct RCopyPacket::RCopyHeader{
-    uint32_t sequenceNum;
-    uint16_t checksum;
-    uint8_t flag;
-};
 
-uint8_t RCopyPacket::packet[HDR_LEN+MAX_PAYLOAD_LEN];
+
+uint8_t RCopyPacket::payload[MAX_PAYLOAD_LEN];
 
 /************RCopyPacketBuilder*****************/
 int RCopyPacketBuilder::setHeader(RCopyHeader *hdr, uint32_t seqNum, uint8_t flag){
-    hdr->sequenceNum = htonl(seqNum);
-    hdr->checksum = 0;
-    hdr->flag = flag;
+    hdr->setChecksum(0);
+    hdr->setSequenceNumber(seqNum);
+    hdr->setFlag(flag);
     return sizeof(*hdr);
 }
-int RCopyPacketBuilder::setPacket(uint8_t *packet, uint8_t *payload, struct RCopyHeader *hdr, int payloadLen){
-    int cursor = 0;
+int RCopyPacketBuilder::setPayload(uint8_t *packet, uint8_t *payload, struct RCopyHeader *hdr, int payloadLen){
     uint16_t checksum;
     memcpy(packet, hdr, (cursor=HDR_LEN));
     memcpy(packet+cursor, payload, payloadLen);
@@ -32,7 +27,7 @@ int RCopyPacketBuilder::setPacket(uint8_t *packet, uint8_t *payload, struct RCop
 }
 
  std::pair<int,uint8_t*> RCopyPacketBuilder::buildPacket(uint32_t seqNum, uint8_t flag, uint8_t *payload, int payloadLen){
-    struct RCopyHeader hdr;
+    h
     int packetLen = payloadLen+HDR_LEN;
     if(MAX_PAYLOAD_LEN < payloadLen){
         std::cerr << "Payload too big" << std::endl;
