@@ -87,6 +87,9 @@ class RCopyPacket{
             memcpy(rawPacket+sizeof(uint32_t)+sizeof(uint16_t)+sizeof(uint8_t), payload, payloadSize);
             return rawPacket;
         }
+        inline int getPacketLen(){
+            return this->payloadSize+HDR_LEN;
+        }
 
 
 };
@@ -97,16 +100,19 @@ class RCopyPacketBuilder{
         RCopyPacketBuilder(){}
     public:
         // <size, packet>
-        static RCopyPacket buildPacket(uint8_t *packet, int payloadLen){
-            uint32_t seqNum;
-            uint8_t flag;
-            uint8_t *payload;
-            memcpy(&seqNum, packet, sizeof(seqNum));
-            // TODO : DO i have to convert host<->netowrk for flag
-            memcpy(&flag, packet+sizeof(seqNum)+sizeof(uint16_t), sizeof(flag));
-            payload = packet + HDR_LEN;
+        static RCopyPacket buildPacket(uint32_t seqNum, uint8_t flag, uint8_t *payload, int payloadLen){
             return RCopyPacket(htonl(seqNum), flag, payload, payloadLen);
         }
+        static RCopyPacket buildFileNameRequestPacket(uint32_t seqNum, uint8_t flag, 
+                                                      uint32_t buffSize, uint32_t windowSize, const char *fileName){
+           uint8_t payload[MAX_PAYLOAD_LEN];
+           memset(payload, 0, MAX_PAYLOAD_LEN);
+           memcpy(payload, &buffSize, sizeof(buffSize));
+           memcpy(payload+sizeof(buffSize), &windowSize, sizeof(windowSize));
+           memcpy(payload+sizeof(buffSize)+sizeof(windowSize), fileName, strlen(fileName));
+           return RCopyPacket(htonl(seqNum), flag, payload, 2*sizeof(uint32_t)+strlen(fileName));
+        }
+
 };
 
 class RCopyPacketParser{
