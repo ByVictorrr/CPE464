@@ -6,6 +6,18 @@
 #define HDR_LEN 7
 #define MAX_PAYLOAD_LEN 1400
 
+enum FLAGS{
+    NOT_USED,
+    OPTIONAL1,
+    OPTIONAL2,
+    DATA_PACKET,
+    NOT_USED2,
+    RR_PACKET,
+    SREJ_PACKET,
+    FILENAME_PACKET,
+    FILNAME_RESPONSE_PACKET,
+    EOF_PACKET
+};
 
 class RCopyHeader{
     private:
@@ -50,7 +62,6 @@ class RCopyPacket{
             memcpy(temp+cursor, &header.getFlag(), sizeof(header.getFlag()));
             cursor+=sizeof(header.getFlag());
             memcpy(temp+cursor, payload, payloadSize);
-
             cksum = in_cksum((unsigned short *)temp, payloadSize+HDR_LEN);
             return cksum;
         }

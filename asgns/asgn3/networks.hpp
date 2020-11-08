@@ -16,40 +16,106 @@
 #include <arpa/inet.h>
 #include <netdb.h>
 #include "cpe464.h"
+#include "Args.hpp"
 
+#include "gethostbyname.h"
 
 #define BACKLOG 10
 
 
 class Connection{
-	private:
-		uint32_t socketNumber;
+	protected:
+		int socketNumber;
 		struct sockaddr_in6 remote;
 	public:
-		inline uint32_t getSocketNumber(){return this->socketNumber; }
+		inline int getSocketNumber(){return this->socketNumber; }
 		inline struct sockaddr_in6 *getRemote(){return &this->remote;}
-		// neeed set functions
-
-};
-
-class Gateway{
-	private:
-	public:
-		// TODO : after filename packet we know the buffer-size
-		int recvFrom(int sktNum, RCopyPacket &packet, Connection &con){
-			int ret;
-			// Step 1 - recieve the packet, it also changes conn to the correct port
-			if(safeRecvfrom(sktNum, packet.packet, 1 /*TODO: len of*/ , 0, con.getRemote(), sizeof(*con.getRemote()) < 0){
-				perror("recvFrom error");
-				exit(EXIT_FAILURE);
-			}
-			// Step 2 - check crc value
-			if(in_cksum(packet.packet, ) == 0){
-				return -1; //CRC error;
-			}
+		inline in_port_t getPort(){return this->remote.sin6_port;}
+		inline void setSocketNumber(int sock){ this->socketNumber = sock;}
+		inline void setPort(in_port_t port){
+			this->remote.sin6_port = port; 
 		}
+
 };
 
+class RCopyConnection: public Connection{
+	private:
+		public:
+		RCopyConnection(RCopyArgs &args){
+			this->socketNumber = setupConnection(&this->remote, args.getRemoteMachine(), args.getPort());
+		}
+		int setupConnection(struct sockaddr_in6 *server, const char *hostName, int portNumber)
+		{
+			// currently only setup for IPv4
+			int socketNum = 0;
+			char ipString[INET6_ADDRSTRLEN];
+			uint8_t * ipAddress = NULL;
+
+			// create the socket
+			if ((socketNum = socket(AF_INET6, SOCK_DGRAM, 0)) < 0)
+			{
+				perror("socket() call error");
+				exit(-1);
+			}
+
+			if ((ipAddress = gethostbyname6(hostName, server)) == NULL)
+			{
+				exit(-1);
+			}
+
+			server->sin6_port = ntohs(portNumber);
+			server->sin6_family = AF_INET6;
+
+			inet_ntop(AF_INET6, ipAddress, ipString, sizeof(ipString));
+			printf("Server info - IP: %s Port: %d \n", ipString, portNumber);
+
+			return socketNum;
+		}
+
+
+	
+
+};
+
+
+class ServerConnection: public Connection{
+	private: 
+		int udpServerSetup(int portNumber)
+		{
+			struct sockaddr_in6 server;
+			int socketNum = 0;
+			int serverAddrLen = 0;
+
+			// create the socket
+			if ((socketNum = socket(AF_INET6,SOCK_DGRAM,0)) < 0)
+			{
+				perror("socket() call error");
+				exit(-1);
+			}
+
+			// set up the socket
+			server.sin6_family = AF_INET6;    		// internet (IPv6 or IPv4) family
+			server.sin6_addr = in6addr_any ;  		// use any local IP address
+			server.sin6_port = htons(portNumber);   // if 0 = os picks
+
+			// bind the name (address) to a port
+			if (bind(socketNum,(struct sockaddr *) &server, sizeof(server)) < 0)
+			{
+				perror("bind() call error");
+				exit(-1);
+			}
+
+			/* Get the port number */
+			serverAddrLen = sizeof(server);
+			getsockname(socketNum,(struct sockaddr *) &server,  (socklen_t *) &serverAddrLen);
+			printf("Server using Port #: %d\n", ntohs(server.sin6_port));
+
+			return socketNum;
+
+		}
+
+
+};
 
 //Safe sending and receiving
 int safeRecv(int socketNum, void * buf, int len, int flags);

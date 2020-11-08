@@ -20,6 +20,7 @@
 #include "cpe464.h"
 
 #include "Packet.hpp"
+#include "Args.hpp"
 #include <iostream>
 
 #define HDR_LEN 7
@@ -30,7 +31,6 @@
 
 void talkToServer(int socketNum, struct sockaddr_in6 * server);
 int getData(char * buffer);
-int checkArgs(int argc, char * argv[]);
 
 
 
@@ -39,26 +39,17 @@ int main (int argc, char *argv[])
  {
 	int socketNum = 0;				
 	struct sockaddr_in6 server;		// Supports 4 and 6 but requires IPv6 struct
-	int portNumber = 0;
-	float errRate;
-	portNumber = checkArgs(argc, argv);
-	// Step 1 - get error rate
-	errRate = atof(argv[3]);
-	// Step 2 - call sendtoErr_init()
+
+	RCopyArgs args = RCopyArgsParser::parse(argc, argv);
 	sendtoErr_init(errRate, DROP_ON, FLIP_ON, DEBUG_ON, RSEED_OFF);
-
-
-	
-	socketNum = setupUdpClientToServer(&server, argv[1], portNumber);
-	
+	socketNum = setupUdpClientToServer(&server, args.getRemoteMachine(), args.getPort());
 	talkToServer(socketNum, &server);
-	
 	close(socketNum);
 
 	return 0;
 }
 
-void talkToServer(int socketNum, struct sockaddr_in6 * server)
+void talkToServer(int socketNum, struct sockaddr_in6 * server, RCopyArgs &args)
 {
 	int serverAddrLen = sizeof(struct sockaddr_in6);
 	char * ipString = NULL;
@@ -76,12 +67,10 @@ void talkToServer(int socketNum, struct sockaddr_in6 * server)
 		dataLen = getData(buffer);
 
 
-        std::pair<int,uint8_t*> packet = RCopyPacketBuilder::buildPacket(seqNum++, flag, (uint8_t*)buffer, dataLen);
+        std::pair<int,uint8_t*> packet = RCopyPacketBuilder::buildPacket(seqNum++, flag, (uint8_t*)buffer, args.getBufferSize());
 		
 
-		//printf("Sending: %s with len: %d\n", buffer,dataLen);
 		parser.outputPDU(packet.second);
-	
 		sendtoErr(socketNum, packet.second, packet.first, 0, (struct sockaddr *) server, serverAddrLen);
 		//safeRecvfrom(socketNum, buffer, MAXBUF, 0, (struct sockaddr *) server, &serverAddrLen);
 		
@@ -105,23 +94,8 @@ int getData(char * buffer)
 	return (strlen(buffer)+ 1);
 }
 
-int checkArgs(int argc, char * argv[])
-{
-	/* check command line arguments  */
-	if (argc != 4)
-	{
-		printf("usage: %s host-name port-number error-rate\n", argv[0]);
-		exit(1);
-	}
-	
-	// Checks args and returns port number
-	int portNumber = 0;
 
-	
-	portNumber = atoi(argv[2]);
-		
-	return portNumber;
-}
+
 
 
 
