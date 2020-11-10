@@ -3,6 +3,7 @@
 #include <list>
 #include "networks.hpp"
 #include "Packet.hpp"
+#include "safe_sys_calls.h"
 
 class Server{
     private:
@@ -21,7 +22,10 @@ class Server{
         void serve(){
             start:
                 // Step 1 - see if a new client is trying to connect
-	            select_call(socketNum, 1, 0 , 0);
+                if(safeSelectTimeout(this->socketNum, 1, 0) == true){
+                    
+                }
+                safe_select(this->socketNum+1, 1, NULL, NULL, )
                 // Step 2 - wait and read that packet 
                 // getFileName(windowSize, buffSize, fileName) 
                 // Step 3 - pass those values to the client threads

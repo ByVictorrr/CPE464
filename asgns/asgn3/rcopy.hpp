@@ -2,6 +2,7 @@
 #include "Args.hpp"
 #include "Utils.hpp"
 #include "networks.hpp"
+#include "Exception.hpp"
 
 typedef enum RCOPY_STATES{FILENAME, FILENAME_OK, RECV_DATA, DONE} state_t;
 
@@ -22,7 +23,7 @@ class RCopy{
             }
             return sendLen;
        }
-       RCopyPacket recievePacket(){
+       RCopyPacket recievePacket() throw (CorruptPacketException){
            uint8_t temp[MAX_PAYLOAD_LEN+HDR_LEN];
            socklen_t remoteLen = sizeof(*server.getRemote());
            ssize_t recvLen;
@@ -33,27 +34,38 @@ class RCopy{
                 exit(EXIT_FAILURE);
            }
            // check crc in RCopyPacket Parseer
-           return RCopyPacketParser::parsePacket(temp, args.getBufferSize());
+           try{
+               return RCopyPacketParser::parsePacket(temp, args.getBufferSize());
+           }catch(CorruptPacketException &e){
+               throw e;
+           }
        }
 
        state_t sendFileName(){
 
+           uint8_t flag;
+           state_t ret;
            RCopyPacket &&builtPacket = RCopyPacketBuilder::buildFileNameRequestPacket(0, FILENAME_PACKET, args.getBufferSize(), 
                                                          args.getWindowSize(), args.getFromFileName());
+           RCopyPacket recievedPacket;
            sendPacket(builtPacket);
 
            if(select(socket, 1, 0, 0) == 1){
                // read the packet and check crc
                try{
-                    RCopyPacket recv = recievePacket();
-               }catch(const char *){
-                    // crc return filename
-                    // file not found return DONE
+                    recievedPacket = recievePacket();
+                    if((flag=recievedPacket.getHeader().getFlag()) == FILENAME_PACKET_BAD){
+                        std::cerr << "File " + std::string(args.getFromFileName()) + "Not found" << std::endl;
+                        ret = DONE;
+                    }else if(flag == FILENAME_PACKET_OK){
+                        ret = FILENAME_OK;
+                    }else{
+                        ret = FILENAME;
+                    }
+               }catch(CorruptPacketException &e){
+                    ret = FILENAME;
                }
-
-               return FILENAME_OK;
-           }
-           return FILENAME;
+           return ret;
        }
 
 
@@ -86,12 +98,22 @@ class RCopy{
                     break;
                     case FILENAME_OK:
                     {
+                        static int count = 0;
+                        FILE *toFile;
+                        // open file
+                        // change state to recv data
+                        if((toFile = fopen(args.getToFileName(), "w+"))){
+                            perror("cant open to-file");
+                            state = DONE;
+                        }else{
+                            state = RECV_DATA;
+                        }
 
                     } 
                     break;
                     case RECV_DATA:
                     {
-
+                        state = recv_data();
                     }
                     break;
                     case DONE:

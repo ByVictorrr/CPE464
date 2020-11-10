@@ -2,6 +2,7 @@
 #define PACKET_H_
 #include <iostream>
 #include <utility>
+#include "Exception.hpp"
 
 #define HDR_LEN 7
 #define MAX_PAYLOAD_LEN 1400
@@ -15,7 +16,8 @@ enum FLAGS{
     RR_PACKET,
     SREJ_PACKET,
     FILENAME_PACKET,
-    FILNAME_RESPONSE_PACKET,
+    FILENAME_PACKET_OK,
+    FILENAME_PACKET_BAD,
     EOF_PACKET
 };
 
@@ -72,10 +74,14 @@ class RCopyPacket{
             memcpy(this->payload, payload, payloadSize);
             header.setChecksum(computeChecksum(header, payload, payloadSize));
         }
+        RCopyPacket(){}
 
         inline void clearPacket(){
             memset(payload, 0, MAX_PAYLOAD_LEN);
             header.clear();
+        }
+        inline RCopyHeader &getHeader(){
+            return this->header;
         }
         inline uint8_t *getRawPacket(){
             uint16_t checksum;
@@ -119,19 +125,48 @@ class RCopyPacketParser{
     private:
         RCopyPacketParser(){}
     public:
-        static RCopyPacket parsePacket(uint8_t *packet, int payloadLen){
+        static RCopyPacket parsePacket(uint8_t *packet, int payloadLen) throw(CorruptPacketException){
             uint32_t seqNum;
             uint8_t flag;
             uint8_t *payload;
             // step 1 - extract fields and tests checksum
             if(in_cksum((unsigned short *)packet, payloadLen+HDR_LEN)!=0)
-                throw "Packet bits flipped";
+                throw CorruptPacketException("CRC error");
             // step 2 - fill the RcopyPacket (assume correct)
             memcpy(&seqNum, payload, sizeof(seqNum));
             memcpy(&flag, packet+sizeof(seqNum)+sizeof(uint16_t), sizeof(flag));
             payload = packet + HDR_LEN;
             return RCopyPacket(ntohl(seqNum), flag, payload, payloadLen);
         }
+
+};
+
+class RCopyPacketReciever{
+    private:
+        RCopyPacketReciever(){}
+    public:
+        static RCopyPacket recieveRCopyPacket(int skt, int payloadLen, struct sockaddr *srcAddr, int *addrLen) throw(CorruptPacketException){
+            static uint8_t temp[MAX_PAYLOAD_LEN+HDR_LEN];
+            memset(temp, 0, MAX_PAYLOAD_LEN+HDR_LEN);
+            // Step 1 - recv packet
+            safeRecvfrom(skt, temp, payloadLen+HDR_LEN, (struct sockaddr*)srcAddr, (socklen_t*)addrLen);
+            // Step 2 - parse packet
+            try{
+               return RCopyPacketParser::parsePacket(temp, payloadLen);
+            }catch(CorruptPacketException &e){
+                throw e;
+            }
+        }
+
+};
+
+
+class RCopyPacketSender{
+    private:
+        RCopyPacketSender(){}
+    public:
+        static RCopyPacket sendRCopyPacket
+
 
 };
 #endif

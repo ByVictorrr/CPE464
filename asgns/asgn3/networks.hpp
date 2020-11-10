@@ -117,6 +117,10 @@ class ServerConnection: public Connection{
 
 };
 
+
+bool safeSelectTimeout(int socketNum, uint32_t sec, int32_t usec);
+
+
 //Safe sending and receiving
 int safeRecv(int socketNum, void * buf, int len, int flags);
 int safeSend(int socketNum, void * buf, int len, int flags);
