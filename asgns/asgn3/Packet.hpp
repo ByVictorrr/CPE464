@@ -76,7 +76,7 @@ class RCopyPacket{
         }
         RCopyPacket(){}
 
-        inline void clearPacket(){
+        inline void clear(){
             memset(payload, 0, MAX_PAYLOAD_LEN);
             header.clear();
         }
@@ -100,32 +100,51 @@ class RCopyPacket{
 
 };
 
+/*==================sender/builder===========================================*/
 class RCopyPacketBuilder{
     private:
-        // Helper functions
         RCopyPacketBuilder(){}
     public:
-        // <size, packet>
-        static RCopyPacket buildPacket(uint32_t seqNum, uint8_t flag, uint8_t *payload, int payloadLen){
+        static RCopyPacket Build(uint32_t seqNum, uint8_t flag, uint8_t *payload, int payloadLen){
             return RCopyPacket(htonl(seqNum), flag, payload, payloadLen);
         }
-        static RCopyPacket buildFileNameRequestPacket(uint32_t seqNum, uint8_t flag, 
-                                                      uint32_t buffSize, uint32_t windowSize, const char *fileName){
+        static RCopyPacket BuildSetupPacket(uint32_t seqNum, uint8_t flag, 
+                                            uint32_t buffSize, uint32_t windowSize, 
+                                            const char *fileName){
+
            uint8_t payload[MAX_PAYLOAD_LEN];
            memset(payload, 0, MAX_PAYLOAD_LEN);
            memcpy(payload, &buffSize, sizeof(buffSize));
            memcpy(payload+sizeof(buffSize), &windowSize, sizeof(windowSize));
            memcpy(payload+sizeof(buffSize)+sizeof(windowSize), fileName, strlen(fileName));
            return RCopyPacket(htonl(seqNum), flag, payload, 2*sizeof(uint32_t)+strlen(fileName));
+            
         }
+};
+
+class RCopyPacketSender{
+    private:
+        RCopyPacketSender(){}
+    public:
+        static ssize_t Send(int socketNum, RCopyPacket &packet, Connection &con){
+            return safeSendToErr(socketNum, 
+                                 packet.getRawPacket(), 
+                                 packet.getPacketLen(), 
+                                 0, 
+                                 (struct sockaddr*)con.getRemote(),
+                                 *con.getRemoteLen()
+                                 );
+       }
 
 };
+
+/*===========================parser/recv========================================*/
 
 class RCopyPacketParser{
     private:
         RCopyPacketParser(){}
     public:
-        static RCopyPacket parsePacket(uint8_t *packet, int payloadLen) throw(CorruptPacketException){
+        static RCopyPacket Parse(uint8_t *packet, int payloadLen) throw(CorruptPacketException){
             uint32_t seqNum;
             uint8_t flag;
             uint8_t *payload;
@@ -145,14 +164,14 @@ class RCopyPacketReciever{
     private:
         RCopyPacketReciever(){}
     public:
-        static RCopyPacket recieveRCopyPacket(int skt, int payloadLen, struct sockaddr *srcAddr, int *addrLen) throw(CorruptPacketException){
+        static RCopyPacket Recieve(int skt, int payloadLen, Connection &con) throw(CorruptPacketException){
             static uint8_t temp[MAX_PAYLOAD_LEN+HDR_LEN];
             memset(temp, 0, MAX_PAYLOAD_LEN+HDR_LEN);
             // Step 1 - recv packet
-            safeRecvfrom(skt, temp, payloadLen+HDR_LEN, (struct sockaddr*)srcAddr, (socklen_t*)addrLen);
+            safeRecvfrom(skt, temp, payloadLen+HDR_LEN, 0,(struct sockaddr*)con.getRemote(), con.getRemoteLen());
             // Step 2 - parse packet
             try{
-               return RCopyPacketParser::parsePacket(temp, payloadLen);
+               return RCopyPacketParser::Parse(temp, payloadLen);
             }catch(CorruptPacketException &e){
                 throw e;
             }
@@ -161,12 +180,4 @@ class RCopyPacketReciever{
 };
 
 
-class RCopyPacketSender{
-    private:
-        RCopyPacketSender(){}
-    public:
-        static RCopyPacket sendRCopyPacket
-
-
-};
 #endif

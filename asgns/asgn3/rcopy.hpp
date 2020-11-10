@@ -3,54 +3,45 @@
 #include "Utils.hpp"
 #include "networks.hpp"
 #include "Exception.hpp"
+#include "safe_sys_calls.h"
 
 typedef enum RCOPY_STATES{FILENAME, FILENAME_OK, RECV_DATA, DONE} state_t;
 
 
 class RCopy{
     private:
-       CircularQueue<RCopyPacket> window;
-       RCopyConnection server;
+       Window window;
+       RCopyConnection gateway;
        RCopyArgs args;
        int socket;
-       // Helper functions
+       // ================Two main functions===========================//
        ssize_t sendPacket(RCopyPacket &packet){
-            ssize_t sendLen;
-            if((sendLen = sendtoErr(this->socket, packet.getRawPacket(), packet.getPacketLen(), 0, 
-                        (struct sockaddr *)this->server.getRemote(), sizeof(*this->server.getRemote()))) < 0){
-                    perror("ERROR from sendtoErr");
-                    exit(EXIT_FAILURE);
-            }
-            return sendLen;
+           return RCopyPacketSender::Send(this->socket, packet, this->gateway);
        }
        RCopyPacket recievePacket() throw (CorruptPacketException){
-           uint8_t temp[MAX_PAYLOAD_LEN+HDR_LEN];
-           socklen_t remoteLen = sizeof(*server.getRemote());
-           ssize_t recvLen;
-           memset(temp, 0, MAX_PAYLOAD_LEN+HDR_LEN);
-           if((recvLen = recvfromErr(this->socket, temp, args.getBufferSize()+HDR_LEN, 0, 
-                              (struct sockaddr *)server.getRemote(), &remoteLen)) < 0){
-                perror("ERROR from recievePacket");
-                exit(EXIT_FAILURE);
-           }
-           // check crc in RCopyPacket Parseer
            try{
-               return RCopyPacketParser::parsePacket(temp, args.getBufferSize());
+               // Step 1 - recv the packet
+               RCopyPacketReciever::Recieve(this->socket, this->args.getBufferSize(), this->gateway);
+               // Step 2 - put in the window
+
            }catch(CorruptPacketException &e){
                throw e;
            }
        }
 
+    //============= State functions ===============//
        state_t sendFileName(){
-
            uint8_t flag;
            state_t ret;
-           RCopyPacket &&builtPacket = RCopyPacketBuilder::buildFileNameRequestPacket(0, FILENAME_PACKET, args.getBufferSize(), 
-                                                         args.getWindowSize(), args.getFromFileName());
+           RCopyPacket &&builtPacket = RCopyPacketBuilder::BuildSetupPacket(0, 
+                                                                 FILENAME_PACKET, 
+                                                                 args.getBufferSize(), 
+                                                                 args.getWindowSize(), 
+                                                                 args.getFromFileName()
+                                                                 );
            RCopyPacket recievedPacket;
-           sendPacket(builtPacket);
-
-           if(select(socket, 1, 0, 0) == 1){
+           this->sendPacket(builtPacket);
+           if(safeSelectTimeout(socket, 1, 0)){
                // read the packet and check crc
                try{
                     recievedPacket = recievePacket();
@@ -65,35 +56,35 @@ class RCopy{
                }catch(CorruptPacketException &e){
                     ret = FILENAME;
                }
+           }
+
            return ret;
        }
 
 
     public:
         RCopy(RCopyArgs & cmdArgs)
-        :   args(cmdArgs), window(cmdArgs.getWindowSize()), server(args)
-        {
-        }
+        : args(cmdArgs), window(cmdArgs.getWindowSize()), 
+          gateway(args.getRemoteMachine(), args.getPort()){}
 
         void start(){
 
             state_t state = FILENAME;
-            while(1){
+            while(state != DONE){
                 switch (state)
                 {
                     case FILENAME:
                     {
                         static int count=0;
                         // open sockets
-                        server.setSocketNumber(server.setupConnection(server.getRemote(), args.getRemoteMachine(), args.getPort()));
+                        gateway.setSocketNumber(gateway.setup(gateway.getRemote(), args.getRemoteMachine(), args.getPort()));
                         // send filename
                         if((state = sendFileName()) == FILENAME){
-                            close(server.getSocketNumber());
+                            safe_close(*gateway.getSocketNumber());
+                            count++;
                         }
-
-                        if(count++ > 9)
+                        if(count > 9)
                             state = DONE;
-
                     }
                     break;
                     case FILENAME_OK:

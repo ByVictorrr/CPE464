@@ -1,0 +1,5 @@
+Packet.o: Packet.cpp Packet.hpp networks.h cpe464.h
+server.o: server.cpp gethostbyname.h networks.h Packet.hpp
+gethostbyname.o: gethostbyname.c gethostbyname.h
+networks.o: networks.c networks.h gethostbyname.h
+rcopy.o: rcopy.cpp gethostbyname.h networks.h cpe464.h Packet.hpp

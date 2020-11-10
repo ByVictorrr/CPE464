@@ -16,7 +16,7 @@
 #include <netdb.h>
 
 #include "gethostbyname.h"
-#include "networks.h"
+#include "networks.hpp"
 #include "cpe464.h"
 
 #include "Packet.hpp"

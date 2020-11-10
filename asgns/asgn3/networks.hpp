@@ -27,10 +27,12 @@ class Connection{
 	protected:
 		int socketNumber;
 		struct sockaddr_in6 remote;
+		int remoteLen;
 	public:
-		inline int getSocketNumber(){return this->socketNumber; }
+		inline int *getSocketNumber(){return &this->socketNumber; }
 		inline struct sockaddr_in6 *getRemote(){return &this->remote;}
-		inline in_port_t getPort(){return this->remote.sin6_port;}
+		inline in_port_t *getPort(){return &this->remote.sin6_port;}
+		inline int *getRemoteLen(){return &this->remoteLen;}
 		inline void setSocketNumber(int sock){ this->socketNumber = sock;}
 		inline void setPort(in_port_t port){
 			this->remote.sin6_port = port; 
@@ -41,10 +43,11 @@ class Connection{
 class RCopyConnection: public Connection{
 	private:
 		public:
-		RCopyConnection(RCopyArgs &args){
-			this->socketNumber = setupConnection(&this->remote, args.getRemoteMachine(), args.getPort());
+		RCopyConnection(const char *remoteMachine, int portNumber){
+			this->socketNumber = setup(&this->remote, remoteMachine, portNumber);
+			this->remoteLen = sizeof(this->remote);
 		}
-		int setupConnection(struct sockaddr_in6 *server, const char *hostName, int portNumber)
+		int setup(struct sockaddr_in6 *remote, const char *hostName, int portNumber)
 		{
 			// currently only setup for IPv4
 			int socketNum = 0;
@@ -55,16 +58,16 @@ class RCopyConnection: public Connection{
 			if ((socketNum = socket(AF_INET6, SOCK_DGRAM, 0)) < 0)
 			{
 				perror("socket() call error");
-				exit(-1);
+				exit(EXIT_FAILURE);
 			}
 
-			if ((ipAddress = gethostbyname6(hostName, server)) == NULL)
+			if ((ipAddress = gethostbyname6(hostName, remote)) == NULL)
 			{
-				exit(-1);
+				exit(EXIT_FAILURE);
 			}
 
-			server->sin6_port = ntohs(portNumber);
-			server->sin6_family = AF_INET6;
+			remote->sin6_port = ntohs(portNumber);
+			remote->sin6_family = AF_INET6;
 
 			inet_ntop(AF_INET6, ipAddress, ipString, sizeof(ipString));
 			printf("Server info - IP: %s Port: %d \n", ipString, portNumber);
@@ -72,17 +75,18 @@ class RCopyConnection: public Connection{
 			return socketNum;
 		}
 
-
-	
-
 };
 
 
 class ServerConnection: public Connection{
-	private: 
-		int udpServerSetup(int portNumber)
+	public:
+		ServerConnection(int portNum){
+			this->socketNumber = setup(&this->remote, portNum);
+			this->remoteLen = sizeof(struct sockaddr_in6);
+		}
+
+		int setup(struct sockaddr_in6 *remote, int portNumber)
 		{
-			struct sockaddr_in6 server;
 			int socketNum = 0;
 			int serverAddrLen = 0;
 
@@ -94,21 +98,20 @@ class ServerConnection: public Connection{
 			}
 
 			// set up the socket
-			server.sin6_family = AF_INET6;    		// internet (IPv6 or IPv4) family
-			server.sin6_addr = in6addr_any ;  		// use any local IP address
-			server.sin6_port = htons(portNumber);   // if 0 = os picks
+			remote->sin6_family = AF_INET6;    		// internet (IPv6 or IPv4) family
+			remote->sin6_addr = in6addr_any ;  		// use any local IP address
+			remote->sin6_port = htons(portNumber);   // if 0 = os picks
 
 			// bind the name (address) to a port
-			if (bind(socketNum,(struct sockaddr *) &server, sizeof(server)) < 0)
+			if (bind(socketNum,(struct sockaddr *) remote, remoteLen) < 0)
 			{
 				perror("bind() call error");
 				exit(-1);
 			}
 
 			/* Get the port number */
-			serverAddrLen = sizeof(server);
-			getsockname(socketNum,(struct sockaddr *) &server,  (socklen_t *) &serverAddrLen);
-			printf("Server using Port #: %d\n", ntohs(server.sin6_port));
+			getsockname(socketNum,(struct sockaddr *) remote,  (socklen_t *) remoteLen);
+			printf("Server using Port #: %d\n", ntohs(remote->sin6_port));
 
 			return socketNum;
 
@@ -119,22 +122,7 @@ class ServerConnection: public Connection{
 
 
 bool safeSelectTimeout(int socketNum, uint32_t sec, int32_t usec);
-
-
-//Safe sending and receiving
-int safeRecv(int socketNum, void * buf, int len, int flags);
-int safeSend(int socketNum, void * buf, int len, int flags);
+ssize_t safeSendToErr(int socketNum, void * buf, int len, int flags, struct sockaddr *srcAddr, int addrLen);
 int safeRecvfrom(int socketNum, void * buf, int len, int flags, struct sockaddr *srcAddr, int * addrLen);
-int safeSendto(int socketNum, void * buf, int len, int flags, struct sockaddr *srcAddr, int addrLen);
-
-// for the server side
-int tcpServerSetup(int portNumber);
-int tcpAccept(int server_socket, int debugFlag);
-int udpServerSetup(int portNumber);
-
-// for the client side
-int tcpClientSetup(char * serverName, char * port, int debugFlag);
-int setupUdpClientToServer(struct sockaddr_in6 *server, char * hostName, int portNumber);
-
 
 #endif
