@@ -1,5 +1,7 @@
 #include "safe_sys_calls.h"
 #include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 void *safe_calloc(size_t nmemb, int size){
 	void *ret;
@@ -150,4 +152,20 @@ int safe_accept_client(int server_socket, int debugFlag)
     }
     
     return(client_socket);
+}
+
+FILE *safe_fopen(const char *filename, const char *mode){
+	FILE *fp;
+	if((fp=safe_fopen(filename, mode)) == NULL){
+		fprintf(stderr, "Error opening: %s", filename)
+		return NULL;
+	}
+	return fp;
+}
+int safe_fclose(FILE *stream){
+    if(fclose(stream) == EOF){
+        fprintf(stderr, "Error: unable to close");
+        return EOF;
+    }
+    return 1;
 }

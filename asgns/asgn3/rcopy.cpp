@@ -21,6 +21,7 @@
 
 #include "Packet.hpp"
 #include "Args.hpp"
+#include "RCopy.hpp"
 #include <iostream>
 
 #define HDR_LEN 7
@@ -39,65 +40,12 @@ int main (int argc, char *argv[])
  {
 	int socketNum = 0;				
 	struct sockaddr_in6 server;		// Supports 4 and 6 but requires IPv6 struct
-
 	RCopyArgs args = RCopyArgsParser::parse(argc, argv);
-	sendtoErr_init(errRate, DROP_ON, FLIP_ON, DEBUG_ON, RSEED_OFF);
-	socketNum = setupUdpClientToServer(&server, args.getRemoteMachine(), args.getPort());
-	talkToServer(socketNum, &server);
-	close(socketNum);
+	sendtoErr_init(args.getErrorPercent(), DROP_ON, FLIP_ON, DEBUG_ON, RSEED_OFF);
+	RCopy rcopy(args);
+	rcopy.start();	
 
 	return 0;
 }
-
-void talkToServer(int socketNum, struct sockaddr_in6 * server, RCopyArgs &args)
-{
-	int serverAddrLen = sizeof(struct sockaddr_in6);
-	char * ipString = NULL;
-	int packetLen, dataLen;
-	char buffer[MAXBUF+1];
-	uint32_t seqNum=0;
-	int flag = 1;
-	
-	RCopyPacketParser parser;
-	
-	buffer[0] = '\0';
-	while (buffer[0] != '.')
-	{
-
-		dataLen = getData(buffer);
-
-
-        std::pair<int,uint8_t*> packet = RCopyPacketBuilder::buildPacket(seqNum++, flag, (uint8_t*)buffer, args.getBufferSize());
-		
-
-		parser.outputPDU(packet.second);
-		sendtoErr(socketNum, packet.second, packet.first, 0, (struct sockaddr *) server, serverAddrLen);
-		//safeRecvfrom(socketNum, buffer, MAXBUF, 0, (struct sockaddr *) server, &serverAddrLen);
-		
-		// print out bytes received
-		//ipString = ipAddressToString(server);
-		//printf("Server with ip: %s and port %d said it received %s\n", ipString, ntohs(server->sin6_port), buffer);
-		memset(buffer, 0, MAXBUF);
-	      
-	}
-} 
-
-
-int getData(char * buffer)
-{
-	// Read in the data
-	buffer[0] = '\0';
-	printf("Enter the data to send: ");
-	scanf("%" xstr(MAXBUF) "[^\n]%*[^\n]", buffer);
-	getc(stdin);  // eat the \n
-		
-	return (strlen(buffer)+ 1);
-}
-
-
-
-
-
-
 
 

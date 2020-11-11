@@ -14,11 +14,12 @@ class RCopy{
        RCopyConnection gateway;
        RCopyArgs args;
        int socket;
+       FILE *toFile;
        // ================Two main functions===========================//
-       ssize_t sendPacket(RCopyPacket &packet){
+        ssize_t sendPacket(RCopyPacket &packet){
            return RCopyPacketSender::Send(this->socket, packet, this->gateway);
-       }
-       RCopyPacket recievePacket() throw (CorruptPacketException){
+        }
+        RCopyPacket recievePacket() throw (CorruptPacketException){
            try{
                // Step 1 - recv the packet
                RCopyPacketReciever::Recieve(this->socket, this->args.getBufferSize(), this->gateway);
@@ -27,7 +28,27 @@ class RCopy{
            }catch(CorruptPacketException &e){
                throw e;
            }
-       }
+        }
+        RCopyPacket buildRR(uint32_t seqNum){
+            return RCopyPacketBuilder::Build(seqNum, RR_PACKET, NULL, args.getBufferSize());
+        }
+        RCopyPacket buildSEJ(uint32_t seqNum){
+            return RCopyPacketBuilder::Build(seqNum, SREJ_PACKET, NULL, args.getBufferSize());
+        }
+
+        size_t writePacketToFile(RCopyPacket &p){
+            size_t len;
+            if((len=fwrite((void*)p.getPayload(), 
+                            (size_t)sizeof(uint8_t),
+                            p.getPayloadLen(), 
+                            this->toFile)) != p.getPayloadLen()){
+                                std::cerr << "problem writing " << std::endl;
+                                return NULL;
+                            }
+                return len;
+        }
+
+
 
     //============= State functions ===============//
        state_t sendFileName(){
@@ -61,6 +82,50 @@ class RCopy{
            return ret;
        }
 
+        state_t recvData(){
+            state_t ret;
+            uint8_t flag;
+            uint32_t seqNum;
+            
+            // Step 1 - get the first packet
+            if(safeSelectTimeout(this->socket, 10, 0) == false)
+                return DONE;
+
+            try{
+                RCopyPacket recvPacket = recievePacket();
+                seqNum = recvPacket.getHeader().getSequenceNumber();
+
+                // Case 1 - if the packet is eof
+                if((flag=recvPacket.getHeader().getFlag()) == (uint8_t)EOF_PACKET){
+                    RCopyPacket &&rr = buildRR(seqNum);
+                    sendPacket(rr);
+                    return DONE;
+                }
+                // Case 2 - see if the packet is a duplicate packet 
+                if(window.getLower() < seqNum){
+                    RCopyPacket &&rr = buildRR(seqNum+1);
+                    sendPacket(rr);
+                    return RECV_DATA;
+                // Case 3 - out of window packet 
+                }else if(window.getUpper() < seqNum){
+                    std::cout << "out of window" << std::endl;
+                    return RECV_DATA;
+                // Case 4 - expected packet
+                }else if(window.getLower() == seqNum){
+                    // write to disk and slide window
+                    window.slide(seqNum+1);
+                    writePacketToFile(recievePacket);
+                    return RECV_DATA;
+                // Case 5 - out of order packet
+                }else{
+                    window.insert(recievePacket);
+                    return RECV_DATA;
+                }
+            }catch(CorruptPacketException &e){
+                return RECV_DATA;
+            }
+        }
+
 
     public:
         RCopy(RCopyArgs & cmdArgs)
@@ -70,31 +135,26 @@ class RCopy{
         void start(){
 
             state_t state = FILENAME;
-            while(state != DONE){
+            while(1){
                 switch (state)
                 {
                     case FILENAME:
                     {
                         static int count=0;
                         // open sockets
-                        gateway.setSocketNumber(gateway.setup(gateway.getRemote(), args.getRemoteMachine(), args.getPort()));
                         // send filename
                         if((state = sendFileName()) == FILENAME){
                             safe_close(*gateway.getSocketNumber());
-                            count++;
+                            gateway.setSocketNumber(gateway.setup(gateway.getRemote(), args.getRemoteMachine(), args.getPort()));
+                            state = count++ > 9 ? DONE: state;
                         }
-                        if(count > 9)
-                            state = DONE;
                     }
                     break;
                     case FILENAME_OK:
                     {
-                        static int count = 0;
-                        FILE *toFile;
                         // open file
-                        // change state to recv data
                         if((toFile = fopen(args.getToFileName(), "w+"))){
-                            perror("cant open to-file");
+                            perror("cant open <to-file>");
                             state = DONE;
                         }else{
                             state = RECV_DATA;
@@ -104,12 +164,15 @@ class RCopy{
                     break;
                     case RECV_DATA:
                     {
-                        state = recv_data();
+                        
+                        state = recvData();
                     }
                     break;
                     case DONE:
                     {
-
+                        safe_fclose(toFile);
+                        safe_close(this->socket);
+                        return;
                     }
                     break;
                     default:

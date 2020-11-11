@@ -14,9 +14,8 @@ class RCopyArgs{
         const char *remoteMachine;
         int port;
     public:
-        RCopyArgs(RCopyArgs &args){
-            this = args;
-        }
+        RCopyArgs(){}
+
         RCopyArgs(const char *fromFileName, const char *toFileName, int ws, int bs, 
                   float erPer, const char *remoteMachine, int port)
                   : fromFileName(fromFileName), toFileName(toFileName), windowSize(ws), bufferSize(bs),

@@ -7,7 +7,7 @@
 
 class Server{
     private:
-        int socketNum;
+        ServerConnection gateway;
         std::list<ServerThread> clients;
         int portNumber;
         float errPercent;

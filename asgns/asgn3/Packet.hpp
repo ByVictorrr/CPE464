@@ -7,7 +7,7 @@
 #define HDR_LEN 7
 #define MAX_PAYLOAD_LEN 1400
 
-enum FLAGS{
+typedef enum FLAGS{
     NOT_USED,
     OPTIONAL1,
     OPTIONAL2,
@@ -19,7 +19,7 @@ enum FLAGS{
     FILENAME_PACKET_OK,
     FILENAME_PACKET_BAD,
     EOF_PACKET
-};
+}flag_t;
 
 class RCopyHeader{
     private:
@@ -37,6 +37,10 @@ class RCopyHeader{
         inline uint32_t &getSequenceNumber(){return this->sequenceNum;}
         inline uint16_t &getChecksum(){return this->checksum;}
         inline uint8_t &getFlag(){return this->flag;}
+        inline int getLen(){
+            return sizeof(sequenceNum)+sizeof(checksum)+sizeof(flag);
+        }
+
         /* Utility functions */
         inline void clear(){ 
             this->sequenceNum = 0;
@@ -71,7 +75,8 @@ class RCopyPacket{
         RCopyPacket(uint32_t seqNum, uint8_t flag, uint8_t *payload, int payloadSize) 
         : header(seqNum, 0, flag), payloadSize(payloadSize){
             memset(this->payload, 0, MAX_PAYLOAD_LEN);
-            memcpy(this->payload, payload, payloadSize);
+            if(payload != NULL)
+                memcpy(this->payload, payload, payloadSize);
             header.setChecksum(computeChecksum(header, payload, payloadSize));
         }
         RCopyPacket(){}
@@ -83,6 +88,7 @@ class RCopyPacket{
         inline RCopyHeader &getHeader(){
             return this->header;
         }
+        inline uint8_t *getPayload(){return this->payload;}
         inline uint8_t *getRawPacket(){
             uint16_t checksum;
             static uint8_t rawPacket[MAX_PAYLOAD_LEN+HDR_LEN];
@@ -93,8 +99,11 @@ class RCopyPacket{
             memcpy(rawPacket+sizeof(uint32_t)+sizeof(uint16_t)+sizeof(uint8_t), payload, payloadSize);
             return rawPacket;
         }
+        inline int getPayloadLen(){
+            return this->payloadSize;
+        }
         inline int getPacketLen(){
-            return this->payloadSize+HDR_LEN;
+            return this->payloadSize+header.getLen();
         }
 
 
