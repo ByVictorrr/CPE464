@@ -70,10 +70,14 @@ class ServerThread{
                 RCopyPacket p = this->window->getPacket(this->window->getLower());
                 sendPacket(p);
                 this->window->setCurrent(this->window->getLower());
-
                 if(safeSelectTimeout(this->gateway.getSocketNumber(), 1, 0) ){                        
+                    try{
+                        *recvd = RCopyPacketReciever::Recieve(this->bufferSize, 
+                                                              this->gateway);
+                    }catch(CorruptPacketException &e){
+                        return SEND_DATA;
+                    }
                      // if something waiting 
-                    *recvd = RCopyPacketReciever::Recieve(this->bufferSize, this->gateway);
                     return RECV_DATA;
                 }
             }
@@ -84,7 +88,11 @@ class ServerThread{
             start:
             if(safeSelectTimeout(this->gateway.getSocketNumber(), 1, 0)){
                 // recieved message
-                *recvd = RCopyPacketReciever::Recieve(this->bufferSize, this->gateway);
+                try{
+                    *recvd = RCopyPacketReciever::Recieve(this->bufferSize, this->gateway);
+                }catch(CorruptPacketException &e){
+                    return WAITING;
+                }
                 return RECV_DATA;
             }else{
                 //timeout
@@ -101,17 +109,16 @@ class ServerThread{
             }
             goto start;
         }
-        state_t receiveData(RCopyPacket &p){
+        state_t receiveData(RCopyPacket &recvd){
             flag_t flag;
-            if((flag=(flag_t)p.getHeader().getFlag()) == SREJ_PACKET){
 
-                sendData();
-                p
+            if((flag=(flag_t)recvd.getHeader().getFlag()) == SREJ_PACKET){
+                RCopyPacket p = this->window->getPacket(recvd.getHeader().getSequenceNumber());
+                sendPacket(p);
             }else if(flag == RR_PACKET){
-                this->window->slide(p.getHeader().getSequenceNumber()+1);
-
+                this->window->slide(recvd.getHeader().getSequenceNumber()+1);
             }else if(flag == EOF_PACKET_ACK){
-
+                return DONE;
             }
             return SEND_DATA;
         }
@@ -125,7 +132,7 @@ class ServerThread{
             fileName = setup.getFileName();
             bufferSize = setup.getBufferSize();
             this->window = new Window(setup.getWindowSize());
-            RCopyPacket revd;
+            RCopyPacket recvd;
             // Step 2 - go through the process
             while(1){
                 switch (state)
@@ -156,17 +163,20 @@ class ServerThread{
                     break;
                     case WAITING:
                     {
-                        state = waiting(&revd);
+                        state = waiting(&recvd);
                     }
                     break;
                     case RECV_DATA:
                     {
+                        state = receiveData(recvd);
 
                     }
                     break;
                     case DONE:
                     {
-
+                        safe_close(gateway.getSocketNumber());
+                        safe_fclose(file);
+                        return;
                     }
                     break;
                     

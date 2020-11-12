@@ -60,7 +60,7 @@ extern "C" {
     // Select
     #include <sys/select.h>
 
-	int forkMod(void);
+	//int forkMod(void);
 
 	int socketMod(int doman, int type, int protocol);
 

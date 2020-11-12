@@ -1,5 +1,6 @@
 #include "RCopy.hpp"
 #include "Packet.hpp"
+#include "networks.hpp"
 
 class RCopyPacketBuilder;
 /********* Constructor/destructor***********/
@@ -10,7 +11,7 @@ RCopy::RCopy(RCopyArgs & cmdArgs)
 
 
 ssize_t RCopy::sendPacket(RCopyPacket &packet){
-    return RCopyPacketSender::Send(this->gateway.getSocketNumber(), packet, this->gateway);
+    return RCopyPacketSender::Send(packet, this->gateway);
 }
 
 /**
@@ -35,8 +36,8 @@ size_t RCopy::writePacketToFile(RCopyPacket &p){
     size_t len;
     if((len=fwrite((void*)p.getPayload(), 
                     (size_t)sizeof(uint8_t),
-                    p.getPayloadLen(), 
-                    this->toFile)) != p.getPayloadLen()){
+                    p.getPayloadSize(), 
+                    this->toFile)) != p.getPayloadSize()){
                         std::cerr << "problem writing " << std::endl;
                         return NULL;
                     }
@@ -167,7 +168,8 @@ void RCopy::start(){
             }
             break;
             default:
-
+                return;
+            break;
 
         }
     }

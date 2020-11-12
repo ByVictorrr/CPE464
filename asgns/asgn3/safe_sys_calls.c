@@ -1,6 +1,15 @@
 #include <stdint.h>
 #include <stdio.h>
+#include <stddef.h>
 #include <stdlib.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <sys/select.h>
+#include <unistd.h>
+#include <string.h>
+#include "gethostbyname.h"
 #include "safe_sys_calls.h"
 
 void *safe_calloc(size_t nmemb, int size){
@@ -148,7 +157,7 @@ int safe_accept_client(int server_socket, int debugFlag)
     {
         // TODO change to std::cout
         printf("Client accepted.  Client IP: %s Client Port Number: %d\n",  
-                getIPAddressString(clientInfo.sin6_addr.s6_addr), ntohs(clientInfo.sin6_port));
+                getIPAddressString6(clientInfo.sin6_addr.s6_addr), ntohs(clientInfo.sin6_port));
     }
     
     return(client_socket);
@@ -157,7 +166,7 @@ int safe_accept_client(int server_socket, int debugFlag)
 FILE *safe_fopen(const char *filename, const char *mode){
 	FILE *fp;
 	if((fp=safe_fopen(filename, mode)) == NULL){
-		fprintf(stderr, "Error opening: %s", filename)
+		fprintf(stderr, "Error opening: %s", filename);
 		return NULL;
 	}
 	return fp;

@@ -15,6 +15,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netdb.h>
+#include "cpe464.h"
 
 #include "networks.hpp"
 #include "gethostbyname.h"
@@ -43,7 +44,7 @@ int safeRecvfrom(int socketNum, void * buf, int len, int flags, struct sockaddr_
 								(socklen_t *) addrLen)) < 0)
 	{
 		perror("recvfrom: ");
-		exit(-1);
+		exit(EXIT_FAILURE);
 	}
 
 	return returnValue;
@@ -96,7 +97,6 @@ int RCopyConnection::setup(struct sockaddr_in6 *remote, const char *hostName, in
 int ServerConnection::setup(struct sockaddr_in6 *remote, int portNumber)
 {
 	int socketNum = 0;
-	int serverAddrLen = 0;
 
 	// create the socket
 	if ((socketNum = socket(AF_INET6,SOCK_DGRAM,0)) < 0)
