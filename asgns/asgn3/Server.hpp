@@ -106,7 +106,6 @@ class ServerThread{
             if((flag=(flag_t)p.getHeader().getFlag()) == SREJ_PACKET){
 
                 sendData();
-                p
             }else if(flag == RR_PACKET){
                 this->window->slide(p.getHeader().getSequenceNumber()+1);
 
@@ -150,7 +149,7 @@ class ServerThread{
 
                         // send first data packet
 
-                        state = sendData(&recvd);
+                        state = sendData(&recv);
 
                     }
                     break;

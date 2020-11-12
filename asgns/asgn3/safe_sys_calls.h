@@ -1,7 +1,6 @@
 #ifndef SAFE_SYS_CALLS_H
 #define SAFE_SYS_CALLS_H
 #include <stdio.h>
-#include "Utils.hpp"
 void *safe_calloc(size_t nmemb, int size);
 void *safe_realloc(void *src, int size);
 void safe_free(void **buff);

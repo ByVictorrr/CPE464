@@ -1,7 +1,7 @@
-#include "safe_sys_calls.h"
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "safe_sys_calls.h"
 
 void *safe_calloc(size_t nmemb, int size){
 	void *ret;

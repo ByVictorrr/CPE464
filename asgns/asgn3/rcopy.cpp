@@ -30,16 +30,11 @@
 #define str(a) #a
 #define FLAG 1
 
-void talkToServer(int socketNum, struct sockaddr_in6 * server);
-int getData(char * buffer);
-
 
 
 
 int main (int argc, char *argv[])
  {
-	int socketNum = 0;				
-	struct sockaddr_in6 server;		// Supports 4 and 6 but requires IPv6 struct
 	RCopyArgs args = RCopyArgsParser::parse(argc, argv);
 	sendtoErr_init(args.getErrorPercent(), DROP_ON, FLIP_ON, DEBUG_ON, RSEED_OFF);
 	RCopy rcopy(args);
