@@ -36,7 +36,7 @@ bool safeSelectTimeout(int socketNum, uint32_t sec, int32_t usec){
 		return false;
 	}
 }
-int safeRecvfrom(int socketNum, void * buf, int len, int flags, struct sockaddr_in *srcAddr, int * addrLen)
+int safeRecvfrom(int socketNum, void * buf, int len, int flags, struct sockaddr_in6 *srcAddr, int * addrLen)
 {
 	int returnValue = 0;
 	if ((returnValue = recvfrom(socketNum, buf, (size_t) len, 
@@ -50,7 +50,8 @@ int safeRecvfrom(int socketNum, void * buf, int len, int flags, struct sockaddr_
 	return returnValue;
 }
 
-ssize_t safeSendToErr(int socketNum, void * buf, int len, int flags, struct sockaddr_in *srcAddr, int addrLen)
+
+ssize_t safeSendToErr(int socketNum, void * buf, int len, int flags, struct sockaddr_in6 *srcAddr, int addrLen)
 {
 	ssize_t sendLen;
 	if((sendLen = sendtoErr(socketNum, buf, len, flags, (struct sockaddr*)srcAddr, addrLen)) < 0){

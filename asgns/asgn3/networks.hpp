@@ -66,7 +66,7 @@ class ServerConnection: public Connection{
 
 
 bool safeSelectTimeout(int socketNum, uint32_t sec, int32_t usec);
-ssize_t safeSendToErr(int socketNum, void * buf, int len, int flags, struct sockaddr *srcAddr, int addrLen);
-int safeRecvfrom(int socketNum, void * buf, int len, int flags, struct sockaddr *srcAddr, int * addrLen);
+ssize_t safeSendToErr(int socketNum, void * buf, int len, int flags, struct sockaddr_in6 *srcAddr, int addrLen);
+int safeRecvfrom(int socketNum, void * buf, int len, int flags, struct sockaddr_in6 *srcAddr, int * addrLen);
 
 #endif

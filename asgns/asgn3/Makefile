@@ -6,15 +6,17 @@ CFLAGS= -g -Wall --std=c++11
 LIBS+= libcpe464.2.20.a
 
 C_FILES = $(shell find . -maxdepth 1 -name "*.c*")
-OBJS = Packet.o gethostbyname.o networks.o safe_sys_calls.o Args.o
+OBJS = Packet.o gethostbyname.o networks.o safe_sys_calls.o Args.o Utils.o
 
+rcopy: rcopy.o RCopy.o Packet.o gethostbyname.o networks.o safe_sys_calls.o Args.o Utils.o 
+server: server.o Server.o Packet.o gethostbyname.o networks.o safe_sys_calls.o Args.o Utils.o 
 
 
 all: .depend rcopy server
 
-rcopy: rcopy.o RCopy.o $(OBJS)
+#rcopy: rcopy.o RCopy.o $(OBJS)
 
-server: server.o Server.o $(OBJS)
+#server: server.o Server.o $(OBJS)
 
 .depend: $(C_FILES)
 	rm -f ./.depend
@@ -35,5 +37,3 @@ include .depend
 clean:
 	rm -f server rcopy *.o .depend
 
-debug_rcopy: rcopy
-	gdb --args ./rcopy localhost 60144 .9

@@ -7,6 +7,7 @@
 #ifndef GETHOSTBYNAME_H
 #define GETHOSTBYNAME_H
 
+extern "C"{
 
 unsigned char * gethostbyname6(const char * hostName, struct sockaddr_in6 * aSockaddr6);
 unsigned char * gethostbyname4(const char * hostName, struct sockaddr_in * aSockaddr);
@@ -20,4 +21,5 @@ void gethostbyname_test_lookup(char * hostname);
 // Just for printout out address info
 void printIPInfo(struct sockaddr_in6 * ipAddressStruct);
 char * ipAddressToString(struct sockaddr_in6 * ipAddressStruct);
+}
 #endif

@@ -13,29 +13,8 @@ class Server{
         ServerArgs args;
 
     public:
-        Server(ServerArgs &args)
-        : gateway(args.getPortNumber()), args(args){}
-
-        void serve(){
-            start:
-                // Step 1 - see if a new client is trying to connect
-                if(safeSelectTimeout(this->gateway.getSocketNumber(), 1, 0) == true){
-                    // create thread 
-                    try{
-                        RCopySetupPacket setup = RCopyPacketReciever::RecieveSetup(this->gateway);
-                        ServerThread t(setup, args);
-                        t.join();
-                    }catch(CorruptPacketException &e){
-                        ; // kill thread
-                    }
-                }
-
-            goto start;
-
-        }
-
-
-
+        Server(ServerArgs &args);
+        void serve();
 };
 
 typedef enum STATES{FILENAME, SEND_DATA, WAITING, RECV_DATA, DONE} state_t;
@@ -48,135 +27,18 @@ class ServerThread{
         Window *window;
         ServerArgs args;
         ServerConnection gateway;
-        ssize_t sendPacket(RCopyPacket &packet){
-            return RCopyPacketSender::Send(this->gateway.getSocketNumber(), 
-                                           packet, 
-                                           this->gateway);
-        }
 
-        
+        ssize_t sendPacket(RCopyPacket &packet);
+        /* State functions */
+        state_t sendData(RCopyPacket *recvd);
+        state_t waiting(RCopyPacket *recvd);
+        state_t receiveData(RCopyPacket &p);
 
         
     public:
-        ServerThread(RCopySetupPacket &setup, ServerArgs &args)
-        : thread(processRCopy, setup), args(args), gateway(args.getPortNumber()){}
-        
-        state_t sendData(RCopyPacket *recvd){
-
-            if(this->window->isClosed()){
-                return WAITING;
-            }else{                    
-
-                RCopyPacket p = this->window->getPacket(this->window->getLower());
-                sendPacket(p);
-                this->window->setCurrent(this->window->getLower());
-
-                if(safeSelectTimeout(this->gateway.getSocketNumber(), 1, 0) ){                        
-                     // if something waiting 
-                    *recvd = RCopyPacketReciever::Recieve(this->bufferSize, this->gateway);
-                    return RECV_DATA;
-                }
-            }
-        }
-        state_t waiting(RCopyPacket *recvd){
-
-            int count = 0;
-            start:
-            if(safeSelectTimeout(this->gateway.getSocketNumber(), 1, 0)){
-                // recieved message
-                *recvd = RCopyPacketReciever::Recieve(this->bufferSize, this->gateway);
-                return RECV_DATA;
-            }else{
-                //timeout
-                if(count > 9){
-                   return DONE; 
-                }else{
-                    // TODO: look for lowest unacked packet
-                    RCopyPacket p = this->window->getPacket(this->window->getLower());
-                    sendPacket(p);
-                    count++;
-                    return WAITING;
-                }
-
-            }
-            goto start;
-        }
-        state_t receiveData(RCopyPacket &p){
-            flag_t flag;
-            if((flag=(flag_t)p.getHeader().getFlag()) == SREJ_PACKET){
-
-                sendData();
-            }else if(flag == RR_PACKET){
-                this->window->slide(p.getHeader().getSequenceNumber()+1);
-
-            }else if(flag == EOF_PACKET_ACK){
-
-            }
-            return SEND_DATA;
-        }
-        void processRCopy(RCopySetupPacket &setup)
-        {
-            char *fileName;
-            state_t state = FILENAME;
-
-
-            // step 1 - parse setup packet
-            fileName = setup.getFileName();
-            bufferSize = setup.getBufferSize();
-            this->window = new Window(setup.getWindowSize());
-            RCopyPacket revd;
-            // Step 2 - go through the process
-            while(1){
-                switch (state)
-                {
-                    case FILENAME:
-                    {
-                        if((file = safe_fopen(fileName, "r+")) == NULL){
-                            RCopyPacket p = RCopyPacketBuilder::Build(0, FILENAME_PACKET_BAD, NULL, bufferSize);
-                            // send bad filename 
-                            sendPacket(p);
-                            state = DONE;
-                        }else{
-                            RCopyPacket p = RCopyPacketBuilder::Build(0, FILENAME_PACKET_OK, NULL, bufferSize);
-                            sendPacket(p);
-                            state=SEND_DATA;
-                        }
-
-                    }
-                    break;
-                    case SEND_DATA:
-                    {
-
-                        // send first data packet
-
-                        state = sendData(&recv);
-
-                    }
-                    break;
-                    case WAITING:
-                    {
-                        state = waiting(&revd);
-                    }
-                    break;
-                    case RECV_DATA:
-                    {
-
-                    }
-                    break;
-                    case DONE:
-                    {
-
-                    }
-                    break;
-                    
-                    default:
-                        break;
-                    }
-            }
-            
-        }
-
-        void join(){thread.join();}
+        ServerThread(RCopySetupPacket &setup, ServerArgs &args);
+        void processRCopy(RCopySetupPacket &setup);
+        void join();
 
 
 

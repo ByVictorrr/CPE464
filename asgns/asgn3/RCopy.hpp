@@ -12,12 +12,14 @@ typedef enum RCOPY_STATES{FILENAME, FILENAME_OK, RECV_DATA, DONE} state_t;
 
 class RCopy{
     private:
+        RCopyArgs args;
+
         Window window;
         RCopyConnection gateway;
-        RCopyArgs args;
         FILE *toFile;
         //================Two main functions===========================//
         ssize_t sendPacket(RCopyPacket &packet);
+        ssize_t sendSetupPacket(RCopySetupPacket &packet);
         RCopyPacket recievePacket() throw (CorruptPacketException);
         RCopyPacket buildRR(uint32_t seqNum);
         RCopyPacket buildSEJ(uint32_t seqNum);

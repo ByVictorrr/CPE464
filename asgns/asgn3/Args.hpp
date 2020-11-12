@@ -23,11 +23,11 @@ class RCopyArgs{
 
         inline const char *getFromFileName(){return this->fromFileName;}
         inline const char *getToFileName(){return this->toFileName;}
-        inline int &getWindowSize(){return this->windowSize;}
-        inline int &getBufferSize(){return this->bufferSize;}
-        inline float &getErrorPercent(){return this->errorPercent;}
+        inline int getWindowSize(){return this->windowSize;}
+        inline int getBufferSize(){return this->bufferSize;}
+        inline float getErrorPercent(){return this->errorPercent;}
         inline const char *getRemoteMachine(){return this->remoteMachine;}
-        inline int &getPort(){return this->port;}
+        inline int getPort(){return this->port;}
 };
 
 class RCopyArgsParser{

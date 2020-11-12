@@ -1,8 +1,14 @@
 #include "RCopy.hpp"
+/*
 #include "Packet.hpp"
 #include "networks.hpp"
 
 class RCopyPacketBuilder;
+class RCopyPacketSender;
+class RCopyPacketSender;
+class RCopyPacket;
+class RCopySetupPacket;
+*/
 /********* Constructor/destructor***********/
 RCopy::RCopy(RCopyArgs & cmdArgs)
 : args(cmdArgs), window(cmdArgs.getWindowSize()), 
@@ -12,6 +18,9 @@ RCopy::RCopy(RCopyArgs & cmdArgs)
 
 ssize_t RCopy::sendPacket(RCopyPacket &packet){
     return RCopyPacketSender::Send(packet, this->gateway);
+}
+ssize_t RCopy::sendSetupPacket(RCopySetupPacket &p){
+    return RCopyPacketSender::SendSetup(p, this->gateway);
 }
 
 /**
@@ -39,7 +48,7 @@ size_t RCopy::writePacketToFile(RCopyPacket &p){
                     p.getPayloadSize(), 
                     this->toFile)) != p.getPayloadSize()){
                         std::cerr << "problem writing " << std::endl;
-                        return NULL;
+                        return 0;
                     }
         return len;
 }
@@ -50,13 +59,13 @@ size_t RCopy::writePacketToFile(RCopyPacket &p){
 state_t RCopy::sendFileName(){
     uint8_t flag;
     state_t ret;
-    RCopyPacket &&builtPacket = RCopyPacketBuilder::BuildSetupPacket( 
-                                                            args.getBufferSize(), 
-                                                            args.getWindowSize(), 
+    RCopySetupPacket builtPacket = RCopyPacketBuilder::BuildSetup( 
+                                                            (uint32_t)args.getBufferSize(), 
+                                                            (uint32_t)args.getWindowSize(), 
                                                             args.getFromFileName()
                                                             );
     RCopyPacket recievedPacket;
-    this->sendPacket(builtPacket);
+    this->sendSetupPacket(builtPacket);
     if(safeSelectTimeout(this->gateway.getSocketNumber(), 1, 0)){
         // read the packet and check crc
         try{

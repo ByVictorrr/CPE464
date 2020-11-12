@@ -1,12 +1,13 @@
-#include "Packet.hpp"
 #include <iostream>
 #include <utility>
 #include "networks.hpp"
 #include "cpe464.h"
-
-/*======================RCopyPacket Class============================/
+#include "Packet.hpp"
+#include "safe_sys_calls.h"
+/*======================RCopyPacket Class============================*/
 
 /*******RCopyHeader***************/
+
 /* Constructor/Destructors */
 RCopyHeader::RCopyHeader(uint32_t seqNum, uint16_t checksum, uint8_t flag)
 : sequenceNum(seqNum), checksum(checksum), flag(flag){}
@@ -91,20 +92,20 @@ uint16_t RCopyPacket::computeChecksum(RCopyHeader &header, uint8_t *payload, int
 
 
 /*******RCopySetupPacket***************/
-RCopySetupPacket::RCopySetupPacket(uint32_t bufferSize, uint32_t windowSize, const char *filename, uint8_t* payload)
+RCopySetupPacket::RCopySetupPacket(uint32_t bufferSize, uint32_t windowSize, const char *fileName, uint8_t* payload)
 : RCopyPacket(0, FILENAME_PACKET, payload, sizeof(bufferSize)+sizeof(windowSize)+strlen(fileName)+1), 
-  bufferSize(bufferSize), windowSize(windowSize), fileName(filename){}
+  bufferSize(bufferSize), windowSize(windowSize), fileName(fileName){}
 
 uint32_t RCopySetupPacket::getBufferSize(){return this->bufferSize;}
 uint32_t RCopySetupPacket::getWindowSize(){return this->windowSize;}
-const char *RCopySetupPacket::getFileName(){return this->fileName;}
+std::string &RCopySetupPacket::getFileName(){return this->fileName;}
 /**************RCopyPacket Utility Functions******************/
 
 RCopyPacket RCopyPacketBuilder::Build(uint32_t seqNum, uint8_t flag, uint8_t *payload, int payloadLen)
 {
     return RCopyPacket(seqNum, flag, payload, payloadLen);
 }
-RCopySetupPacket BuildSetup(uint32_t bufferSize, uint32_t windowSize, const char *fileName)
+RCopySetupPacket RCopyPacketBuilder::BuildSetup(uint32_t bufferSize, uint32_t windowSize, const char *fileName)
 {
     uint8_t payload[MAX_PAYLOAD_LEN];
     bufferSize = htonl(bufferSize);
@@ -122,7 +123,18 @@ ssize_t RCopyPacketSender::Send(RCopyPacket &packet, Connection &con)
                          packet.getRawPacket(), 
                          packet.size(), 
                          0, 
-                         (struct sockaddr*)con.getRemote(),
+                         con.getRemote(),
+                         *con.getRemoteLen()
+                         );
+}
+
+ssize_t RCopyPacketSender::SendSetup(RCopySetupPacket &packet, Connection &con)
+{
+    return safeSendToErr(con.getSocketNumber(),
+                         packet.getRawPacket(), 
+                         packet.size(), 
+                         0, 
+                         con.getRemote(),
                          *con.getRemoteLen()
                          );
 }
@@ -171,7 +183,7 @@ RCopyPacket RCopyPacketReciever::Recieve(int payloadLen, Connection &con) throw(
     static uint8_t temp[MAX_PAYLOAD_LEN+HDR_LEN];
     memset(temp, 0, MAX_PAYLOAD_LEN+HDR_LEN);
     // Step 1 - recv packet
-    safeRecvfrom(con.getSocketNumber(), temp, payloadLen+HDR_LEN, 0,(struct sockaddr*)con.getRemote(), con.getRemoteLen());
+    safeRecvfrom(con.getSocketNumber(), temp, payloadLen+HDR_LEN, 0,con.getRemote(), con.getRemoteLen());
     // Step 2 - parse packet
     try{
         return RCopyPacketParser::Parse(temp, payloadLen);
@@ -183,7 +195,7 @@ RCopySetupPacket RCopyPacketReciever::RecieveSetup(Connection &con) throw(Corrup
     static uint8_t temp[MAX_PAYLOAD_LEN+HDR_LEN];
     memset(temp, 0, MAX_PAYLOAD_LEN+HDR_LEN);
     // Step 1 - recv packet
-    safeRecvfrom(con.getSocketNumber(), temp, MAX_SETUP_PAYLOAD_LEN+HDR_LEN, 0,(struct sockaddr*)con.getRemote(), con.getRemoteLen());
+    safeRecvfrom(con.getSocketNumber(), temp, MAX_SETUP_PAYLOAD_LEN+HDR_LEN, 0,con.getRemote(), con.getRemoteLen());
     // Step 2 - parse packet
     try{
         return RCopyPacketParser::ParseSetup(temp);

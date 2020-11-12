@@ -1,5 +1,7 @@
 #ifndef SAFE_SYS_CALLS_H
 #define SAFE_SYS_CALLS_H
+extern "C"{
+    
 #include <stdio.h>
 void *safe_calloc(size_t nmemb, int size);
 void *safe_realloc(void *src, int size);
@@ -20,4 +22,5 @@ int safe_accept_client(int server_socket, int debugFlag);
 
 FILE *safe_fopen(const char *filename, const char *mode);
 int safe_fclose(FILE *stream);
+}
 #endif

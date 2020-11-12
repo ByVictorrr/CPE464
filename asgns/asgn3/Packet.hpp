@@ -36,6 +36,7 @@ class RCopyHeader{
     public:
         /* Constructors */
         RCopyHeader(uint32_t seqNum, uint16_t checksum, uint8_t flag);
+        RCopyHeader(){}
         /* Settters */
         void setSequenceNumber(uint32_t seqNum);
         void setChecksum(uint16_t checksum);
@@ -60,7 +61,7 @@ class RCopyPacket{
     public:
         /* Constructors */
         RCopyPacket(uint32_t seqNum, uint8_t flag, uint8_t *payload, int payloadSize);
-        RCopyPacket();
+        RCopyPacket(){}
 
         /* Getters */
         RCopyHeader &getHeader();
@@ -78,7 +79,7 @@ class RCopySetupPacket: public RCopyPacket{
     protected:
         uint32_t bufferSize;
         uint32_t windowSize;
-        const char *fileName;
+        std::string fileName;
     public:
         static const int MAX_PAYLOAD_SIZE = 108;
         /* Constructor */
@@ -86,30 +87,31 @@ class RCopySetupPacket: public RCopyPacket{
         /* Getters */
         uint32_t getBufferSize();
         uint32_t getWindowSize();
-        const char *getFileName();
+        std::string &getFileName();
 };
 
 /*==================sender/builder===========================================*/
 class RCopyPacketBuilder{
     private:
-        RCopyPacketBuilder();
+        //RCopyPacketBuilder();
     public:
         static RCopyPacket Build(uint32_t seqNum, uint8_t flag, uint8_t *payload, int payloadLen);
-        static RCopyPacket BuildSetupPacket(uint32_t buffSize, uint32_t windowSize, const char *fileName);
+        static RCopySetupPacket BuildSetup(uint32_t bufferSize, uint32_t windowSize, const char *fileName);
 };
 
 class RCopyPacketSender{
     private:
-        RCopyPacketSender();
+        //RCopyPacketSender();
     public:
         static ssize_t Send(RCopyPacket &packet, Connection &con);
+        static ssize_t SendSetup(RCopySetupPacket &packet, Connection &con);
 };
 
 /*===========================parser/recv========================================*/
 
 class RCopyPacketParser{
     private:
-        RCopyPacketParser();
+        //RCopyPacketParser();
     public:
         static RCopyPacket Parse(uint8_t *packet, int payloadLen)throw(CorruptPacketException);
         static RCopySetupPacket ParseSetup(uint8_t *packet) throw(CorruptPacketException);
@@ -118,7 +120,7 @@ class RCopyPacketParser{
 
 class RCopyPacketReciever{
     private:
-        RCopyPacketReciever(){}
+        //RCopyPacketReciever(){}
     public:
         static RCopyPacket Recieve(int payloadLen, Connection &con) throw(CorruptPacketException);
         static RCopySetupPacket RecieveSetup(Connection &con) throw(CorruptPacketException);
