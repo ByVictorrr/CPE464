@@ -2,21 +2,20 @@
 # written by Hugh Smith - April 2017
 SHELL := /bin/bash
 CC = g++
-CFLAGS= -g -Wall --std=c++11
+CFLAGS= -g -Wall --std=c++14 -pthread
 LIBS+= libcpe464.2.20.a
 
 C_FILES = $(shell find . -maxdepth 1 -name "*.c*")
 OBJS = Packet.o gethostbyname.o networks.o safe_sys_calls.o Args.o Utils.o
 
+
+all: .depend server rcopy
+
+
 rcopy: rcopy.o RCopy.o Packet.o gethostbyname.o networks.o safe_sys_calls.o Args.o Utils.o 
 server: server.o Server.o Packet.o gethostbyname.o networks.o safe_sys_calls.o Args.o Utils.o 
 
 
-all: .depend rcopy server
-
-#rcopy: rcopy.o RCopy.o $(OBJS)
-
-#server: server.o Server.o $(OBJS)
 
 .depend: $(C_FILES)
 	rm -f ./.depend
@@ -36,4 +35,16 @@ include .depend
 
 clean:
 	rm -f server rcopy *.o .depend
+
+run_rcopy: rcopy
+	./rcopy $(shell pwd)/tests/from_files/test1 $(shell pwd)/tests/to_files/test1 10 2 .1 localhost 45679
+
+run_server: server
+	./server .1 45679
+
+debug_rcopy: rcopy
+	gdb --args ./rcopy $(shell pwd)/tests/from_files/test1 $(shell pwd)/tests/to_files/test1 10 2 .1 localhost 45679
+
+debug_server: server
+	gdb --args ./server .1 45679
 

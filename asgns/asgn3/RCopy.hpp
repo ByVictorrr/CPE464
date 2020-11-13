@@ -21,13 +21,12 @@ class RCopy{
         ssize_t sendPacket(RCopyPacket &packet);
         ssize_t sendSetupPacket(RCopySetupPacket &packet);
         RCopyPacket recievePacket() throw (CorruptPacketException);
-        RCopyPacket buildRR(uint32_t seqNum);
-        RCopyPacket buildSEJ(uint32_t seqNum);
+        RCopyPacket buildPacket(uint32_t seqNum, uint8_t flag);
         size_t writePacketToFile(RCopyPacket &p);
 
         //============= State functions ===============//
         state_t sendFileName();
-        state_t recvData();
+        state_t receieveData();
     public:
         RCopy(RCopyArgs & cmdArgs);
         void start();

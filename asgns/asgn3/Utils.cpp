@@ -5,8 +5,8 @@ int Window::getIndex(uint32_t seqNum){
     return (seqNum - 1) % this->size;
 }
 Window::Window(int size){
-    this->lower = -1;
-    this->current = -1;
+    this->lower = 0;
+    this->current = 0;
     this->upper = size - 1;
     this->size = size;
     this->packets = new RCopyPacket[size];
@@ -17,14 +17,14 @@ Window::~Window(){
     delete [] valid;
 }
 /************Getters/Setters**************/
-int Window::getLower(){return this->lower;}
-int Window::getUpper(){return this->upper;}
-int Window::getCurrent(){return this->current;}
-void Window::setLower(int seqNum){this->lower=seqNum;}
-void Window::setUpper(int seqNum){this->upper=seqNum;}
-void Window::setCurrent(int seqNum){this->current=seqNum;}
+uint32_t Window::getLower(){return this->lower;}
+uint32_t Window::getUpper(){return this->upper;}
+uint32_t Window::getCurrent(){return this->current;}
+void Window::setLower(uint32_t seqNum){this->lower=seqNum;}
+void Window::setUpper(uint32_t seqNum){this->upper=seqNum;}
+void Window::setCurrent(uint32_t seqNum){this->current=seqNum;}
 
-        /*************Utility functions***********/
+/*************Utility functions***********/
 bool Window::inWindow(uint32_t seqNum){
     return this->valid[getIndex(seqNum)];
 }
@@ -36,7 +36,7 @@ void Window::insert(RCopyPacket &value){
     uint32_t seqNum;
     seqNum = value.getHeader().getSequenceNumber();
     index = getIndex(seqNum);
-    if(inWindow(seqNum)){
+    if(!inWindow(seqNum)){
         this->packets[index] = value;
         this->valid[index] = true;
     }else{
@@ -56,7 +56,7 @@ RCopyPacket &Window::getPacket(uint32_t seqNum){
 }
 bool Window::isClosed(){
     for(int i=this->lower; i < this->upper+1; i++)
-        if(inWindow(i))
+        if(!inWindow(i))
             return false;
     return true;
 }
@@ -71,4 +71,6 @@ void Window::slide(uint32_t toSeqNum){
     }
 }
 
-        
+int Window::getSize(){
+    return this->size;
+}        

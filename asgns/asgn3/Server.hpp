@@ -1,3 +1,5 @@
+#ifndef SERVER_H_
+#define SERVER_H_
 #include <thread>
 #include <string>
 #include <list>
@@ -5,11 +7,16 @@
 #include "Packet.hpp"
 #include "safe_sys_calls.h"
 #include "Utils.hpp"
+#include "Args.hpp"
+
+class ServerArgs;
+class ServerConnection;
+class RCopySetupPacket;
+class ReadEOFException;
 
 class Server{
     private:
         ServerConnection gateway;
-        std::list<ServerThread> clients;
         ServerArgs args;
 
     public:
@@ -21,25 +28,26 @@ typedef enum STATES{FILENAME, SEND_DATA, WAITING, RECV_DATA, DONE} state_t;
 
 class ServerThread{
     private:
-        std::thread thread;
-        FILE *file;
-        uint32_t bufferSize;
-        Window *window;
-        ServerArgs args;
+        float errorPercent;
         ServerConnection gateway;
+        std::thread *thread;
+        Window *window;
+        uint32_t bufferSize; 
+        FILE *file;
+
+        void readFile(uint8_t *payload) throw (ReadEOFException);
+        RCopyPacket buildDataPacket(uint32_t seqNum) throw (ReadEOFException);
 
         ssize_t sendPacket(RCopyPacket &packet);
         /* State functions */
-        state_t sendData(RCopyPacket *recvd);
-        state_t waiting(RCopyPacket *recvd);
-        state_t receiveData(RCopyPacket &p);
+        state_t sendData();
+        state_t waiting();
+        state_t receiveData();
 
         
     public:
-        ServerThread(RCopySetupPacket &setup, ServerArgs &args);
-        void processRCopy(RCopySetupPacket &setup);
+        ServerThread(RCopySetupPacket setup, ServerArgs &args);
+        void processRCopy(RCopySetupPacket setup);
         void join();
-
-
-
 };
+#endif

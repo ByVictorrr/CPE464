@@ -165,7 +165,7 @@ int safe_accept_client(int server_socket, int debugFlag)
 
 FILE *safe_fopen(const char *filename, const char *mode){
 	FILE *fp;
-	if((fp=safe_fopen(filename, mode)) == NULL){
+	if((fp=fopen(filename, mode)) == NULL){
 		fprintf(stderr, "Error opening: %s", filename);
 		return NULL;
 	}
@@ -178,3 +178,5 @@ int safe_fclose(FILE *stream){
     }
     return 1;
 }
+
+

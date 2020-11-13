@@ -1,14 +1,4 @@
 #include "RCopy.hpp"
-/*
-#include "Packet.hpp"
-#include "networks.hpp"
-
-class RCopyPacketBuilder;
-class RCopyPacketSender;
-class RCopyPacketSender;
-class RCopyPacket;
-class RCopySetupPacket;
-*/
 /********* Constructor/destructor***********/
 RCopy::RCopy(RCopyArgs & cmdArgs)
 : args(cmdArgs), window(cmdArgs.getWindowSize()), 
@@ -34,11 +24,8 @@ RCopyPacket RCopy::recievePacket() throw (CorruptPacketException){
     }
 }
 
-RCopyPacket RCopy::buildRR(uint32_t seqNum){
-    return RCopyPacketBuilder::Build(seqNum, RR_PACKET, NULL, args.getBufferSize());
-}
-RCopyPacket RCopy::buildSEJ(uint32_t seqNum){
-    return RCopyPacketBuilder::Build(seqNum, SREJ_PACKET, NULL, args.getBufferSize());
+RCopyPacket RCopy::buildPacket(uint32_t seqNum, uint8_t flag){
+    return RCopyPacketBuilder::Build(seqNum, flag, NULL, args.getBufferSize());
 }
 
 size_t RCopy::writePacketToFile(RCopyPacket &p){
@@ -58,13 +45,13 @@ size_t RCopy::writePacketToFile(RCopyPacket &p){
 //============= State functions ===============//
 state_t RCopy::sendFileName(){
     uint8_t flag;
-    state_t ret;
+    state_t ret = FILENAME;
+    RCopyPacket recievedPacket;
     RCopySetupPacket builtPacket = RCopyPacketBuilder::BuildSetup( 
                                                             (uint32_t)args.getBufferSize(), 
                                                             (uint32_t)args.getWindowSize(), 
                                                             args.getFromFileName()
                                                             );
-    RCopyPacket recievedPacket;
     this->sendSetupPacket(builtPacket);
     if(safeSelectTimeout(this->gateway.getSocketNumber(), 1, 0)){
         // read the packet and check crc
@@ -75,8 +62,6 @@ state_t RCopy::sendFileName(){
                 ret = DONE;
             }else if(flag == FILENAME_PACKET_OK){
                 ret = FILENAME_OK;
-            }else{
-                ret = FILENAME;
             }
         }catch(CorruptPacketException &e){
             ret = FILENAME;
@@ -86,31 +71,32 @@ state_t RCopy::sendFileName(){
     return ret;
 }
 
-state_t RCopy::recvData(){
+state_t RCopy::receieveData(){
     state_t ret;
     uint8_t flag;
     uint32_t seqNum;
     
-    // Step 1 - get the first packet
-    if(safeSelectTimeout(this->gateway.getSocketNumber(), 10, 0) == false)
+    // Case 1 - no data packet waiting
+    if(!safeSelectTimeout(this->gateway.getSocketNumber(), 10, 0))
         return DONE;
-
+    // Case 2 - data pacet waiting
     try{
         RCopyPacket recvPacket = recievePacket();
         seqNum = recvPacket.getHeader().getSequenceNumber();
 
-        // Case 1 - if the packet is eof
-        if((flag=recvPacket.getHeader().getFlag()) == (uint8_t)EOF_PACKET){
-            RCopyPacket &&rr = buildRR(seqNum);
-            sendPacket(rr);
+        // Case 2.1 - if we recieved an eof packet 
+        if((flag=recvPacket.getHeader().getFlag()) == EOF_PACKET){
+            RCopyPacket &&eof = this->buildPacket(seqNum+1, EOF_PACKET_ACK);
+            sendPacket(eof);
+            writePacketToFile(eof);
             return DONE;
         }
-        // Case 2 - see if the packet is a duplicate packet 
-        if(window.getLower() < seqNum){
-            RCopyPacket &&rr = buildRR(seqNum+1);
+        // Case 2.2 - see if the packet is a duplicate packet 
+        if(window.getLower() > seqNum){
+            RCopyPacket &&rr = this->buildPacket(seqNum, RR_PACKET);
             sendPacket(rr);
             return RECV_DATA;
-        // Case 3 - out of window packet 
+        // Case 2.3 - out of window packet 
         }else if(window.getUpper() < seqNum){
             std::cout << "out of window" << std::endl;
             return RECV_DATA;
@@ -147,7 +133,7 @@ void RCopy::start(){
                     gateway.setSocketNumber(gateway.setup(gateway.getRemote(), 
                                                           args.getRemoteMachine(), 
                                                           args.getPort()));
-                    state = count++ > 9 ? DONE: state;
+                    //state = count++ > 9 ? DONE: state;
                 }
             }
             break;
@@ -166,7 +152,8 @@ void RCopy::start(){
             case RECV_DATA:
             {
                 
-                state = recvData();
+                state = receieveData();
+
             }
             break;
             case DONE:

@@ -26,12 +26,9 @@ int main ( int argc, char *argv[]  )
 {
 	int socketNum = 0;
 	ServerArgs args = ServerArgsParser::parse(argc, argv);
-	socketNum = udpServerSetup(args.getPortNumber());
 
-	Server server(args.getPortNumber(), args.getErrorPercent());
-	server.connect();
+	Server server(args);
 	server.serve();
-	server.disconnect();
 
 	return 0;
 }

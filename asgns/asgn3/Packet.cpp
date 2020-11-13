@@ -40,7 +40,7 @@ RCopyPacket::RCopyPacket(uint32_t seqNum, uint8_t flag, uint8_t *payload, int pa
     memset(this->payload, 0, MAX_PAYLOAD_LEN);
     if(payload != NULL)
         memcpy(this->payload, payload, payloadSize);
-    header.setChecksum(computeChecksum(header, payload, payloadSize));
+    this->header.setChecksum(computeChecksum(this->header, this->payload, payloadSize));
 }
 
 /* Getters */
@@ -108,11 +108,11 @@ RCopyPacket RCopyPacketBuilder::Build(uint32_t seqNum, uint8_t flag, uint8_t *pa
 RCopySetupPacket RCopyPacketBuilder::BuildSetup(uint32_t bufferSize, uint32_t windowSize, const char *fileName)
 {
     uint8_t payload[MAX_PAYLOAD_LEN];
-    bufferSize = htonl(bufferSize);
-    windowSize = htonl(windowSize);
+    uint32_t rawBuffSize = htonl(bufferSize);
+    uint32_t rawWindSize = htonl(windowSize);
     memset(payload, 0, MAX_PAYLOAD_LEN);
-    memcpy(payload, &bufferSize, sizeof(bufferSize));
-    memcpy(payload+sizeof(bufferSize), &windowSize, sizeof(windowSize));
+    memcpy(payload, &rawBuffSize, sizeof(bufferSize));
+    memcpy(payload+sizeof(bufferSize), &rawWindSize, sizeof(windowSize));
     memcpy(payload+sizeof(bufferSize)+sizeof(windowSize), fileName, MAX_FILENAME_LEN); // todo make var for max filename 100
     return RCopySetupPacket(bufferSize, windowSize, fileName, payload);
 }

@@ -14,4 +14,15 @@ class CorruptPacketException : public std::exception{
         }
 };
 
+class ReadEOFException : public std::exception{
+     private:
+        std::string msg;
+    public:
+        ReadEOFException(const std::string& msg) : msg(msg){}
+        inline virtual const char* what() const noexcept override
+        {
+            return msg.c_str();
+        }
+
+};
 #endif

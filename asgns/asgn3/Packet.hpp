@@ -34,6 +34,7 @@ class RCopyHeader{
         uint16_t checksum;
         uint8_t flag;
     public:
+        static const int HEADER_SIZE = 7;
         /* Constructors */
         RCopyHeader(uint32_t seqNum, uint16_t checksum, uint8_t flag);
         RCopyHeader(){}
@@ -49,6 +50,15 @@ class RCopyHeader{
         /* Utility functions */
         void clear();
         int size();
+        friend std::ostream &operator<<(std::ostream &os, RCopyHeader &h) {
+            os << "{seqNum:" << h.sequenceNum 
+               << ",checksum:" << h.checksum
+               << ",flag:" << h.flag 
+               << "}";
+            return os;
+
+        }
+       
 };
 
 
@@ -72,6 +82,10 @@ class RCopyPacket{
         uint8_t *getRawPacket();
         int size();
         void clear();
+        friend std::ostream &operator<<(std::ostream &os, RCopyPacket &p) {
+            os << "packet={header:" << p.header << "}";
+            return os;
+        }
 };
 
 
@@ -84,10 +98,19 @@ class RCopySetupPacket: public RCopyPacket{
         static const int MAX_PAYLOAD_SIZE = 108;
         /* Constructor */
         RCopySetupPacket(uint32_t bufferSize, uint32_t windowSize, const char *filename, uint8_t* payload);
+        RCopySetupPacket(){}
         /* Getters */
         uint32_t getBufferSize();
         uint32_t getWindowSize();
         std::string &getFileName();
+        friend std::ostream &operator<<(std::ostream &os, RCopySetupPacket &p) {
+            os << "packet={header:" << p.header 
+               << ",bufferSize:" << p.bufferSize
+               << ",windowSize:" << p.windowSize
+               << ",fromFileName" << p.fileName << "}";
+            return os;
+        }
+
 };
 
 /*==================sender/builder===========================================*/

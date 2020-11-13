@@ -36,12 +36,13 @@ RCopyArgs RCopyArgsParser::parse(int argc, char *argv[]){
 ServerArgs ServerArgsParser::parse(int argc, char *argv[]){
     float errorPer;
     int port;
-    if(argc != 2+1 || argc != 3+1){
+    if(argc != 2 && argc != 3){
+
         std::cout << std::string(argv[0]) + " <error-percent> [port-number]" << std::endl;
         exit(EXIT_FAILURE);
     }
     errorPer = std::atof(argv[1]);
-    if(argc==2+1){
+    if(argc==2){
         port=0;
     }else{
         port=std::atoi(argv[2]);

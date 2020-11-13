@@ -43,12 +43,10 @@ class ServerArgs{
         float errorPercent;
         int portNumber;
     public:
-        ServerArgs(float erPer, int portNum){
-            this->errorPercent = erPer;
-            this->portNumber = portNum;
-        }
+        ServerArgs(float errorPercent, int portNum)
+        : errorPercent(errorPercent), portNumber(portNum){}
         inline float getErrorPercent(){return this->errorPercent;}
-        inline float getPortNumber(){return this->portNumber;}
+        inline int getPortNumber(){return this->portNumber;}
 
 };
 

@@ -6,7 +6,7 @@
 class RCopyPacket;
 class Window{
     private:
-        int upper, lower, current;
+        uint32_t upper, lower, current;
         int size;
         RCopyPacket *packets;
         bool *valid;
@@ -15,12 +15,12 @@ class Window{
         Window(int size);
         ~Window();
         /************Getters/Setters**************/
-        int getLower();
-        int getUpper();
-        int getCurrent();
-        void setLower(int seqNum);
-        void setUpper(int seqNum);
-        void setCurrent(int seqNum);
+        uint32_t getLower();
+        uint32_t getUpper();
+        uint32_t getCurrent();
+        void setLower(uint32_t seqNum);
+        void setUpper(uint32_t seqNum);
+        void setCurrent(uint32_t seqNum);
 
         /*************Utility functions***********/
         bool inWindow(uint32_t seqNum);
@@ -32,6 +32,7 @@ class Window{
         RCopyPacket &getPacket(uint32_t seqNum);
         bool isClosed();
         void slide(uint32_t toSeqNum);
+        int getSize();
 
         
 };

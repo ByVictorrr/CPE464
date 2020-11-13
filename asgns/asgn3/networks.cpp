@@ -98,12 +98,13 @@ int RCopyConnection::setup(struct sockaddr_in6 *remote, const char *hostName, in
 int ServerConnection::setup(struct sockaddr_in6 *remote, int portNumber)
 {
 	int socketNum = 0;
+	static int count=0;
 
 	// create the socket
 	if ((socketNum = socket(AF_INET6,SOCK_DGRAM,0)) < 0)
 	{
 		perror("socket() call error");
-		exit(-1);
+		exit(EXIT_FAILURE);
 	}
 
 	// set up the socket
@@ -112,7 +113,8 @@ int ServerConnection::setup(struct sockaddr_in6 *remote, int portNumber)
 	remote->sin6_port = htons(portNumber);   // if 0 = os picks
 
 	// bind the name (address) to a port
-	if (bind(socketNum,(struct sockaddr *) remote, remoteLen) < 0)
+
+	if (count == 0 && bind(socketNum,(struct sockaddr *) remote, remoteLen) < 0)
 	{
 		perror("bind() call error");
 		exit(-1);
@@ -121,6 +123,7 @@ int ServerConnection::setup(struct sockaddr_in6 *remote, int portNumber)
 	/* Get the port number */
 	getsockname(socketNum,(struct sockaddr *) remote,  (socklen_t *) remoteLen);
 	printf("Server using Port #: %d\n", ntohs(remote->sin6_port));
+	count++;
 
 	return socketNum;
 
