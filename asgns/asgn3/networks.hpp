@@ -44,8 +44,8 @@ class RCopyConnection: public Connection{
 	private:
 		public:
 		RCopyConnection(const char *remoteMachine, int portNumber){
-			this->socketNumber = setup(&this->remote, remoteMachine, portNumber);
 			this->remoteLen = sizeof(this->remote);
+			this->socketNumber = setup(&this->remote, remoteMachine, portNumber);
 		}
 		int setup(struct sockaddr_in6 *remote, const char *hostName, int portNumber);
 

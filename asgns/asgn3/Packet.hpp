@@ -53,7 +53,7 @@ class RCopyHeader{
         friend std::ostream &operator<<(std::ostream &os, RCopyHeader &h) {
             os << "{seqNum:" << h.sequenceNum 
                << ",checksum:" << h.checksum
-               << ",flag:" << h.flag 
+               << ",flag:" << std::to_string(h.flag)
                << "}";
             return os;
 
@@ -150,5 +150,17 @@ class RCopyPacketReciever{
 
 };
 
+class RCopyPacketDebugger{
+    private:
+    public:
+        inline static void println(RCopyPacket &p){
+            std::cout << p << std::endl;
+        }
+        inline static void println(RCopySetupPacket &p){
+            std::cout << p << std::endl;
+        }
 
+
+
+};
 #endif

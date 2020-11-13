@@ -14,7 +14,9 @@ class ServerArgs;
 
 Server::Server(ServerArgs &args)
 : gateway(args.getPortNumber()), args(args)
-{}
+{
+    sendtoErr_init(args.getErrorPercent(), DROP_ON, FLIP_ON, DEBUG_ON, RSEED_OFF);
+}
 
 void Server::serve(){
     start:
@@ -23,11 +25,11 @@ void Server::serve(){
             // create thread 
             try{
                 RCopySetupPacket setup = RCopyPacketReciever::RecieveSetup(this->gateway);
-                std::cout << setup << std::endl;
+                RCopyPacketDebugger::println(setup);
                 ServerThread t(setup, args);
                 t.join();
             }catch(CorruptPacketException &e){
-                ; // kill thread
+                ;
             }
         }
     goto start;
@@ -73,51 +75,108 @@ ssize_t ServerThread::sendPacket(RCopyPacket &packet){
 }
 
 
+
 /**************state func****************/
 state_t ServerThread::sendData(){
-
+    state_t ret;
     // Case 1 - window is closed (waiting on message/cant send anymore data)
     if(this->window->isClosed()){
         return WAITING;
     }else{                    
-    // Case 2 - window is open (still can send data)
-        flag_t flag;
+        // Case 2 - window is open (still can send data)
         uint32_t currSeqNum = this->window->getCurrent();
         RCopyPacket &&built = this->buildDataPacket(currSeqNum);
-        // Case 2.1 - check to see if the built packet is EOF packet
-        if((flag=(flag_t)built.getHeader().getFlag())==EOF_PACKET){
-            return WAITING;
-        // Case 2.2 - check to see if its a regulare data packet
-        }else if(flag == DATA_PACKET){
-            this->window->setCurrent(currSeqNum+1);
-            this->window->insert(built);
-            if(safeSelectTimeout(this->gateway.getSocketNumber(), 0, 0)) 
-                return RECV_DATA;
-            else
-                return SEND_DATA;
+        uint8_t flag = built.getHeader().getFlag();
+        this->window->insert(built); // put into the window
+
+
+        switch (flag)
+        {
+            // Case 2.1 - could be the last packet read
+            case EOF_PACKET:
+            {
+                this->sendPacket(built);
+                return WAITING; //
+            }
+            break;
+            // Case 2.2 - packet read was a data packet (not eof)
+            case DATA_PACKET:
+            {
+                this->sendPacket(built);
+                // Case 2.2.1 - see if we recvd any data(rr/srej)
+                if(safeSelectTimeout(this->gateway.getSocketNumber(), 0, 0)) 
+                    return RECV_DATA;
+                else
+                    return SEND_DATA;
+            }
+            break;        
+            default:
+                break;
         }
     }
 }
     
-
+/* Only called if select is called and its true */
 state_t ServerThread::receiveData(){
 
     RCopyPacket recvd;
-    flag_t flag;
+    uint8_t flag;
+    uint32_t seqNum;
     try{
         recvd = RCopyPacketReciever::Recieve(this->bufferSize, this->gateway);
     }catch(CorruptPacketException &e){
         return WAITING; 
     }
 
+    flag=recvd.getHeader().getFlag();
+    seqNum=recvd.getHeader().getSequenceNumber();
     // Case 1 - if the flag if srej, send pkt again and goto sendData
-    if((flag=(flag_t)recvd.getHeader().getFlag()) == SREJ_PACKET){
+    switch (flag)
+    {
+    case SREJ_PACKET:
+    {
         RCopyPacket &p = this->window->getPacket(recvd.getHeader().getSequenceNumber());
-        this->sendPacket(p);
-    }else if(flag == RR_PACKET){
-        this->window->slide(recvd.getHeader().getSequenceNumber()+1);
-    }else if(flag == EOF_PACKET_ACK){
+        this->sendPacket(p); // p is not acked yet
+        return SEND_DATA;
+        
+    }
+    break; 
+    case RR_PACKET:
+    {
+        /* Note: if all packets are in the window and the window is closed
+            from: 
+                The sliding of the window clears up the spot and {isAcked = false, inWindow=false}
+
+                Therefore the Window might open after this below segment
+                    If the seqNum is lower part of the window
+        */
+
+        // Case 1 - where left most packet is the revd one
+        if(this->window->getLower() == seqNum){
+            // Case 2 - check to see if any adjacent are acked
+            this->window->setIsAcked(seqNum); // packet with seqNum is acked
+            for(int i=this->window->getLower(); i<this->window->getUpper()+1; i++){                    
+                // Case 2.2 - if the adjacent isnt acked stop slidding
+                if(!this->window->isAcked(i)){
+                    break;
+                }
+                this->window->slide(i);
+            }
+        // Case 2 - where the packet recvd isnt the leftmost
+        }else{
+            this->window->setIsAcked(seqNum);
+        }
+        return SEND_DATA;
+    }
+    break;
+    case EOF_PACKET_ACK:
+    {
         return DONE;
+    }
+    break;
+    default:
+        ;
+        break;
     }
     return SEND_DATA;
 }
@@ -150,6 +209,7 @@ void ServerThread::processRCopy(RCopySetupPacket setup)
     state_t state = FILENAME;
 
 
+    std::cout << setup << std::endl; // debug
     // step 1 - parse setup packet
     this->bufferSize = setup.getBufferSize();
     this->window = new Window(setup.getWindowSize());
@@ -166,7 +226,8 @@ void ServerThread::processRCopy(RCopySetupPacket setup)
                     state = DONE;
                 }else{
                     RCopyPacket p = RCopyPacketBuilder::Build(0, FILENAME_PACKET_OK, NULL, bufferSize);
-                    sendPacket(p);
+                    RCopyPacketDebugger::println(p);
+                    this->sendPacket(p);
                     state=SEND_DATA;
                     // fill the window
                 }

@@ -113,7 +113,7 @@ RCopySetupPacket RCopyPacketBuilder::BuildSetup(uint32_t bufferSize, uint32_t wi
     memset(payload, 0, MAX_PAYLOAD_LEN);
     memcpy(payload, &rawBuffSize, sizeof(bufferSize));
     memcpy(payload+sizeof(bufferSize), &rawWindSize, sizeof(windowSize));
-    memcpy(payload+sizeof(bufferSize)+sizeof(windowSize), fileName, MAX_FILENAME_LEN); // todo make var for max filename 100
+    memcpy(payload+sizeof(bufferSize)+sizeof(windowSize), fileName, strlen(fileName)+1); // todo make var for max filename 100
     return RCopySetupPacket(bufferSize, windowSize, fileName, payload);
 }
 ssize_t RCopyPacketSender::Send(RCopyPacket &packet, Connection &con)
@@ -132,7 +132,7 @@ ssize_t RCopyPacketSender::SendSetup(RCopySetupPacket &packet, Connection &con)
 {
     return safeSendToErr(con.getSocketNumber(),
                          packet.getRawPacket(), 
-                         packet.size(), 
+                         packet.MAX_PAYLOAD_SIZE+HDR_LEN,
                          0, 
                          con.getRemote(),
                          *con.getRemoteLen()
@@ -144,12 +144,14 @@ RCopyPacket RCopyPacketParser::Parse(uint8_t *packet, int payloadLen)throw(Corru
 {
     uint32_t seqNum;
     uint8_t flag;
-    uint8_t *payload;
+    uint8_t *payload ;
     // step 1 - extract fields and tests checksum
-    if(in_cksum((unsigned short *)packet, payloadLen+HDR_LEN)!=0)
+    if(in_cksum((unsigned short *)packet, payloadLen+HDR_LEN)!=0){
+        std::cout << "bad crc" << std::endl;
         throw CorruptPacketException("CRC error");
+    }
     // step 2 - fill the RcopyPacket (assume correct)
-    memcpy(&seqNum, payload, sizeof(seqNum));
+    memcpy(&seqNum, packet, sizeof(seqNum));
     memcpy(&flag, packet+sizeof(seqNum)+sizeof(uint16_t), sizeof(flag));
     payload = packet + HDR_LEN;
     return RCopyPacket(ntohl(seqNum), flag, payload, payloadLen);
@@ -168,7 +170,7 @@ RCopySetupPacket RCopyPacketParser::ParseSetup(uint8_t *packet) throw(CorruptPac
         throw CorruptPacketException("CRC error");
     // step 2 - fill the RcopyPacket (assume correct)
     // TODO : check if setup packet
-    memcpy(&seqNum, payload, sizeof(seqNum));
+    memcpy(&seqNum, packet, sizeof(seqNum));
     memcpy(&flag, packet+sizeof(seqNum)+sizeof(uint16_t), sizeof(flag));
     payload = packet + HDR_LEN;
     memcpy(&bufferSize, payload, sizeof(bufferSize));

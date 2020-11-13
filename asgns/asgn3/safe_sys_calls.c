@@ -172,6 +172,9 @@ FILE *safe_fopen(const char *filename, const char *mode){
 	return fp;
 }
 int safe_fclose(FILE *stream){
+	if(stream == NULL){
+		return EOF;
+	}
     if(fclose(stream) == EOF){
         fprintf(stderr, "Error: unable to close");
         return EOF;

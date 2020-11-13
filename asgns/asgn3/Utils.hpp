@@ -9,7 +9,8 @@ class Window{
         uint32_t upper, lower, current;
         int size;
         RCopyPacket *packets;
-        bool *valid;
+        bool *_inWindow;
+        bool *_isAcked;
         int getIndex(uint32_t seqNum);
     public:
         Window(int size);
@@ -18,12 +19,16 @@ class Window{
         uint32_t getLower();
         uint32_t getUpper();
         uint32_t getCurrent();
+
+        bool isAcked(uint32_t seqNum);
+        bool inWindow(uint32_t seqNum);
+        /* Setters */
         void setLower(uint32_t seqNum);
         void setUpper(uint32_t seqNum);
+        void setIsAcked(uint32_t seqNum);
         void setCurrent(uint32_t seqNum);
 
         /*************Utility functions***********/
-        bool inWindow(uint32_t seqNum);
 
         /* Function to create Circular queue */
         void insert(RCopyPacket &value);

@@ -98,7 +98,7 @@ int RCopyConnection::setup(struct sockaddr_in6 *remote, const char *hostName, in
 int ServerConnection::setup(struct sockaddr_in6 *remote, int portNumber)
 {
 	int socketNum = 0;
-	static int count=0;
+	static int count = 0;
 
 	// create the socket
 	if ((socketNum = socket(AF_INET6,SOCK_DGRAM,0)) < 0)
@@ -106,7 +106,7 @@ int ServerConnection::setup(struct sockaddr_in6 *remote, int portNumber)
 		perror("socket() call error");
 		exit(EXIT_FAILURE);
 	}
-
+	printf("socket number: %d\n", socketNum);
 	// set up the socket
 	remote->sin6_family = AF_INET6;    		// internet (IPv6 or IPv4) family
 	remote->sin6_addr = in6addr_any ;  		// use any local IP address
@@ -117,7 +117,7 @@ int ServerConnection::setup(struct sockaddr_in6 *remote, int portNumber)
 	if (count == 0 && bind(socketNum,(struct sockaddr *) remote, remoteLen) < 0)
 	{
 		perror("bind() call error");
-		exit(-1);
+		exit(EXIT_FAILURE);
 	}
 
 	/* Get the port number */
@@ -129,5 +129,16 @@ int ServerConnection::setup(struct sockaddr_in6 *remote, int portNumber)
 
 }
 
+/*
+int ServerThreadConnection::setup(){
+	if ((socketNum = socket(AF_INET6,SOCK_DGRAM,0)) < 0)
+	{
+		perror("socket() call error");
+		exit(EXIT_FAILURE);
+	}
 
 
+
+}
+
+*/

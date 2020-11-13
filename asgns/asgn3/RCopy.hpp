@@ -7,7 +7,7 @@
 #include "Exception.hpp"
 #include "safe_sys_calls.h"
 
-typedef enum RCOPY_STATES{FILENAME, FILENAME_OK, RECV_DATA, DONE} state_t;
+typedef enum RCOPY_STATES{FILENAME, FILENAME_OK, RECV_DATA, OUT_OF_ORDER, DONE} state_t;
 
 
 class RCopy{
