@@ -18,7 +18,7 @@ ssize_t RCopy::sendSetupPacket(RCopySetupPacket &p){
  */
 RCopyPacket RCopy::recievePacket() throw (CorruptPacketException){
     try{
-        RCopyPacketReciever::Recieve(this->args.getBufferSize(), this->gateway);
+        return RCopyPacketReciever::Recieve(this->args.getBufferSize(), this->gateway);
     }catch(CorruptPacketException &e){
         throw e;
     }
@@ -27,6 +27,7 @@ RCopyPacket RCopy::recievePacket() throw (CorruptPacketException){
 RCopyPacket RCopy::buildPacket(uint32_t seqNum, uint8_t flag){
     return RCopyPacketBuilder::Build(seqNum, flag, NULL, args.getBufferSize());
 }
+
 
 size_t RCopy::writePacketToFile(RCopyPacket &p){
     size_t len;
@@ -81,7 +82,7 @@ state_t RCopy::receieveData(){
         return DONE;
     // Case 2 - data packet waiting
     try{
-        RCopyPacket recvPacket = recievePacket();
+        RCopyPacket &&recvPacket = recievePacket();
         seqNum = recvPacket.getHeader().getSequenceNumber();
         flag = recvPacket.getHeader().getFlag();
 
@@ -160,7 +161,7 @@ void RCopy::start(){
             case FILENAME_OK:
             {
                 // open file
-                if((toFile = fopen(args.getToFileName(), "w+"))){
+                if((toFile = fopen(args.getToFileName(), "w+")) == NULL){
                     perror("cant open <to-file>");
                     state = DONE;
                 }else{

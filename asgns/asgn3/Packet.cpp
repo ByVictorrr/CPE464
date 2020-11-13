@@ -71,7 +71,7 @@ void RCopyPacket::clear()
 
 uint16_t RCopyPacket::computeChecksum(RCopyHeader &header, uint8_t *payload, int payloadSize)
 {
-    int cursor;
+    int cursor = 0;
     uint8_t temp[MAX_PAYLOAD_LEN+HDR_LEN];
     // Header vars
     uint32_t seqNum = htonl(this->header.getSequenceNumber());
@@ -79,7 +79,8 @@ uint16_t RCopyPacket::computeChecksum(RCopyHeader &header, uint8_t *payload, int
     uint8_t flag = this->header.getFlag();
     memset(temp, 0, MAX_PAYLOAD_LEN+HDR_LEN);
     // step 1 - packet
-    memcpy(temp, &seqNum, cursor=sizeof(header.getSequenceNumber()));
+    memcpy(temp, &seqNum, sizeof(header.getSequenceNumber()));
+    cursor+=sizeof(seqNum);
     memcpy(temp+cursor, &cksum, sizeof(header.getChecksum()));
     cursor+=sizeof(cksum);
     memcpy(temp+cursor, &flag, sizeof(header.getFlag()));

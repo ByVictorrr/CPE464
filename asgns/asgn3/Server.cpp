@@ -241,8 +241,11 @@ void ServerThread::processRCopy(RCopySetupPacket setup)
                     state = DONE;
                 }else{
                     RCopyPacket p = RCopyPacketBuilder::Build(0, FILENAME_PACKET_OK, NULL, bufferSize);
+                    /*
+                    std::cout << "FLAG: " << std::to_string(p.getRawPacket()[6]) << std::endl;
+                    */
                     RCopyPacketDebugger::println(p);
-                    this->sendPacket(p);
+                    sendPacket(p);
                     state=SEND_DATA;
                     // fill the window
                 }
