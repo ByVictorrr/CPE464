@@ -19,19 +19,36 @@ Server::Server(ServerArgs &args)
 }
 
 void Server::serve(){
+    pid_t pid;
     start:
         // Step 1 - see if a new client is trying to connect
         if(safeSelectTimeout(this->gateway.getSocketNumber(), 1, 0) == true){
             // create thread 
             try{
                 RCopySetupPacket setup = RCopyPacketReciever::RecieveSetup(this->gateway);
-                RCopyPacketDebugger::println(setup);
-                ServerThread t(setup, args);
-                t.join();
+
+                /*
+                RCopyPacket p = RCopyPacketBuilder::Build(0, FILENAME_PACKET_OK, NULL, MAX_SETUP_PAYLOAD_LEN+HDR_LEN);
+                RCopyPacketSender::Send(p, gateway);
+                */
+                if((pid=safe_fork()) == 0){
+                    /*
+                    RCopyPacketDebugger::println(setup);                       
+                    RCopyPacket p = RCopyPacketBuilder::Build(0, FILENAME_PACKET_OK, NULL, MAX_SETUP_PAYLOAD_LEN+HDR_LEN);
+                    RCopyPacketSender::Send(p, gateway);
+                    */
+
+                    ServerThread t(setup, this->gateway);
+                    t.join();
+                }
             }catch(CorruptPacketException &e){
-                ;
+                goto start;
             }
         }
+        while(waitpid(-1, NULL, WNOHANG) > 0){
+            std::cout << "processed wait" << std::endl;
+        }
+        
     goto start;
 }
 
@@ -41,14 +58,11 @@ void Server::serve(){
 
 /*******************ServerThread****************/
 
-ServerThread::ServerThread(RCopySetupPacket setup, ServerArgs &args) 
-: errorPercent(args.getErrorPercent()), 
-  gateway(args.getPortNumber())
+ServerThread::ServerThread(RCopySetupPacket setup, ServerConnection &c) 
+: gateway(c)
 {
-
-    thread = new std::thread([this, setup]{this->processRCopy(setup);});
-
- }
+    this->processRCopy(setup);
+}
        
 /***util funcs****/
 void ServerThread::readFile(uint8_t *payload) throw (ReadEOFException){
@@ -213,6 +227,7 @@ void ServerThread::processRCopy(RCopySetupPacket setup)
     // step 1 - parse setup packet
     this->bufferSize = setup.getBufferSize();
     this->window = new Window(setup.getWindowSize());
+    
     // Step 2 - go through the process
     while(1){
         switch (state)
@@ -231,6 +246,7 @@ void ServerThread::processRCopy(RCopySetupPacket setup)
                     state=SEND_DATA;
                     // fill the window
                 }
+
               
             }
             break;
@@ -266,7 +282,7 @@ void ServerThread::processRCopy(RCopySetupPacket setup)
 
 void ServerThread::join()
 {
-    thread->join();
+    exit(EXIT_SUCCESS);
 }
 
 

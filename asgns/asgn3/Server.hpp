@@ -3,6 +3,8 @@
 #include <thread>
 #include <string>
 #include <list>
+#include <sys/types.h>
+#include <sys/wait.h>
 #include "networks.hpp"
 #include "Packet.hpp"
 #include "safe_sys_calls.h"
@@ -28,9 +30,7 @@ typedef enum STATES{FILENAME, SEND_DATA, WAITING, RECV_DATA, DONE} state_t;
 
 class ServerThread{
     private:
-        float errorPercent;
-        ServerConnection gateway;
-        std::thread *thread;
+        ServerThreadConnection gateway;
         Window *window;
         uint32_t bufferSize; 
         FILE *file;
@@ -47,7 +47,7 @@ class ServerThread{
 
         
     public:
-        ServerThread(RCopySetupPacket setup, ServerArgs &args);
+        ServerThread(RCopySetupPacket setup, ServerConnection &c);
         void processRCopy(RCopySetupPacket setup);
         void join();
 };

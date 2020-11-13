@@ -182,4 +182,12 @@ int safe_fclose(FILE *stream){
     return 1;
 }
 
+pid_t safe_fork(){
+	pid_t pid;
+	if((pid=fork()) < 0){
+		perror("fork() error");
+		exit(0);
+	}
+	return pid;
+}
 

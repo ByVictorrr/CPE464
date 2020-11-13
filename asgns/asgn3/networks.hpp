@@ -61,6 +61,16 @@ class ServerConnection: public Connection{
 		int setup(struct sockaddr_in6 *remote, int portNumber);
 
 
+};
+class ServerThreadConnection: public Connection{
+	public:
+		ServerThreadConnection(ServerConnection &parent){
+			this->remoteLen = *parent.getRemoteLen();
+			this->remote = *parent.getRemote();
+
+    		this->socketNumber = safe_socket(AF_INET6, SOCK_DGRAM, 0);
+
+		}
 
 };
 
