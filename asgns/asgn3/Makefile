@@ -37,13 +37,13 @@ clean:
 	rm -f server rcopy *.o .depend
 
 run_rcopy: rcopy
-	./rcopy $(shell pwd)/tests/from_files/test1 $(shell pwd)/tests/to_files/test1 10 2 .1 localhost 45678
+	./rcopy $(shell pwd)/tests/from_files/test1 $(shell pwd)/tests/to_files/test1 10 100 .1 localhost 45678
 
 run_server: server
 	./server .1 45678
 
 debug_rcopy: rcopy
-	gdb --args ./rcopy $(shell pwd)/tests/from_files/test1 $(shell pwd)/tests/to_files/test1 10 2 .1 localhost 45678
+	gdb --args ./rcopy $(shell pwd)/tests/from_files/test1 $(shell pwd)/tests/to_files/test1 10 100 .1 localhost 45678
 
 debug_server: server
 	gdb --args ./server .1 45678

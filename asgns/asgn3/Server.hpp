@@ -36,7 +36,7 @@ class ServerThread{
         FILE *file;
 
         /* utils */  
-        void readFile(uint8_t *payload) throw (ReadEOFException);
+        void readFile(uint8_t *payload, size_t *lenRead) throw (ReadEOFException);
         RCopyPacket buildDataPacket(uint32_t seqNum) throw (ReadEOFException);
 
         ssize_t sendPacket(RCopyPacket &packet);

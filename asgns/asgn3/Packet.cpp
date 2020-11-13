@@ -184,12 +184,13 @@ RCopySetupPacket RCopyPacketParser::ParseSetup(uint8_t *packet) throw(CorruptPac
 
 RCopyPacket RCopyPacketReciever::Recieve(int payloadLen, Connection &con) throw(CorruptPacketException){
     static uint8_t temp[MAX_PAYLOAD_LEN+HDR_LEN];
+    int recvLen;
     memset(temp, 0, MAX_PAYLOAD_LEN+HDR_LEN);
     // Step 1 - recv packet
-    safeRecvfrom(con.getSocketNumber(), temp, payloadLen+HDR_LEN, 0,con.getRemote(), con.getRemoteLen());
+    recvLen = safeRecvfrom(con.getSocketNumber(), temp, payloadLen+HDR_LEN, 0,con.getRemote(), con.getRemoteLen());
     // Step 2 - parse packet
     try{
-        return RCopyPacketParser::Parse(temp, payloadLen);
+        return RCopyPacketParser::Parse(temp, recvLen-HDR_LEN);
     }catch(CorruptPacketException &e){
         throw e;
     }

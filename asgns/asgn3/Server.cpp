@@ -40,6 +40,7 @@ void Server::serve(){
 
                     ServerThread t(setup, this->gateway);
                     t.join();
+                    std::cout << "client says byte" << std::endl;
                 }
             }catch(CorruptPacketException &e){
                 goto start;
@@ -65,8 +66,8 @@ ServerThread::ServerThread(RCopySetupPacket setup, ServerConnection &c)
 }
        
 /***util funcs****/
-void ServerThread::readFile(uint8_t *payload) throw (ReadEOFException){
-    if(fread(payload, sizeof(uint8_t), this->bufferSize, file) != this->bufferSize){
+ void ServerThread::readFile(uint8_t *payload, size_t *lenRead) throw (ReadEOFException){
+    if((*lenRead = fread(payload, sizeof(uint8_t), this->bufferSize, file)) != this->bufferSize){
         throw ReadEOFException("EOF Packet"); 
     }
 }
@@ -75,12 +76,13 @@ void ServerThread::readFile(uint8_t *payload) throw (ReadEOFException){
 RCopyPacket ServerThread::buildDataPacket(uint32_t seqNum) throw (ReadEOFException){
     uint8_t payload[MAX_PAYLOAD_LEN];
     memset(payload, 0, MAX_PAYLOAD_LEN);
+    size_t lenRead;
     try{
-        readFile(payload);
-        return RCopyPacketBuilder::Build(seqNum, DATA_PACKET, payload, this->bufferSize);
+        readFile(payload, &lenRead);
+        return RCopyPacketBuilder::Build(seqNum, DATA_PACKET, payload, lenRead);
     }catch(ReadEOFException &e){
         // EOF_PACKET may contain data
-        return RCopyPacketBuilder::Build(seqNum, EOF_PACKET, payload, this->bufferSize);
+        return RCopyPacketBuilder::Build(seqNum, EOF_PACKET, payload, lenRead);
     }
 }
 
@@ -117,6 +119,7 @@ state_t ServerThread::sendData(){
             case DATA_PACKET:
             {
                 this->sendPacket(built);
+                this->window->setCurrent(currSeqNum+1);
                 // Case 2.2.1 - see if we recvd any data(rr/srej)
                 if(safeSelectTimeout(this->gateway.getSocketNumber(), 0, 0)) 
                     return RECV_DATA;
@@ -200,12 +203,14 @@ state_t ServerThread::waiting(){
 
     int count = 0;
     start:
+    std::cout << "waiting" << std::endl;
     // Case 1 - timeout occured
     if(!safeSelectTimeout(this->gateway.getSocketNumber(), 1, 0)){
         // send the lowest unacked packet
         RCopyPacket &p = this->window->getPacket(this->window->getLower());
         this->sendPacket(p);
         if(count++ > 9){
+            std::cout << "bye" << std::endl;
             return DONE;
         }
         goto start;
@@ -229,6 +234,7 @@ void ServerThread::processRCopy(RCopySetupPacket setup)
     this->window = new Window(setup.getWindowSize());
     
     // Step 2 - go through the process
+
     while(1){
         switch (state)
         {
@@ -237,7 +243,7 @@ void ServerThread::processRCopy(RCopySetupPacket setup)
                 if((file = safe_fopen(fileName.c_str(), "r+")) == NULL){
                     RCopyPacket p = RCopyPacketBuilder::Build(0, FILENAME_PACKET_BAD, NULL, bufferSize);
                     // send bad filename 
-                    sendPacket(p);
+                    this->sendPacket(p);
                     state = DONE;
                 }else{
                     RCopyPacket p = RCopyPacketBuilder::Build(0, FILENAME_PACKET_OK, NULL, bufferSize);
@@ -245,7 +251,7 @@ void ServerThread::processRCopy(RCopySetupPacket setup)
                     std::cout << "FLAG: " << std::to_string(p.getRawPacket()[6]) << std::endl;
                     */
                     RCopyPacketDebugger::println(p);
-                    sendPacket(p);
+                    this->sendPacket(p);
                     state=SEND_DATA;
                     // fill the window
                 }
@@ -266,7 +272,7 @@ void ServerThread::processRCopy(RCopySetupPacket setup)
             break;
             case RECV_DATA:
             {
-
+                state = receiveData();
             }
             break;
             case DONE:

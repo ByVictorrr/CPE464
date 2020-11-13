@@ -36,6 +36,7 @@ size_t RCopy::writePacketToFile(RCopyPacket &p){
                         std::cerr << "problem writing " << std::endl;
                         return 0;
                     }
+        std::cout << "wrote " << p.getPayloadSize() << std::endl; 
         return len;
 }
 
@@ -80,6 +81,7 @@ state_t RCopy::receieveData(){
     // Case 1 - no data packet waiting
     if(!safeSelectTimeout(this->gateway.getSocketNumber(), 10, 0))
         return DONE;
+
     // Case 2 - data packet waiting
     try{
         RCopyPacket &&recvPacket = recievePacket();
@@ -89,8 +91,10 @@ state_t RCopy::receieveData(){
         // Case 2.1 - if we recieved an eof packet 
         if(flag == EOF_PACKET){
             RCopyPacket &&eof = this->buildPacket(seqNum, EOF_PACKET_ACK);
+            fflush(toFile);
+            std::cout << "IN EOF" << eof.size() << std::endl;
             this->sendPacket(eof);
-            this->writePacketToFile(eof);
+            this->writePacketToFile(recvPacket);
             return DONE;
         }
 
@@ -102,13 +106,17 @@ state_t RCopy::receieveData(){
         // Case 2.3 - expected packet
         }else if(window.getLower() == seqNum){
             // write to disk and slide window
-            this->writePacketToFile(recvPacket);
             RCopyPacket &&rr = this->buildPacket(seqNum, RR_PACKET);
             this->sendPacket(rr);
+            this->window.insert(recvPacket);
             // check if adjacent packet are filled (fill holes)
             for(int i = seqNum; i <= this->window.getUpper(); i++){
                 if(!this->window.inWindow(i))
                     break;
+                RCopyPacket &inwWind = this->window.getPacket(i);
+                this->writePacketToFile(inwWind);
+
+                fflush(toFile);
                 this->window.slide(i+1);
             }
             return RECV_DATA;
