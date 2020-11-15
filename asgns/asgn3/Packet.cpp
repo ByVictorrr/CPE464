@@ -94,7 +94,7 @@ uint16_t RCopyPacket::computeChecksum(RCopyHeader &header, uint8_t *payload, int
 
 /*******RCopySetupPacket***************/
 RCopySetupPacket::RCopySetupPacket(uint32_t bufferSize, uint32_t windowSize, const char *fileName, uint8_t* payload)
-: RCopyPacket(0, FILENAME_PACKET, payload, sizeof(bufferSize)+sizeof(windowSize)+strlen(fileName)+1), 
+: RCopyPacket(-1, FILENAME_PACKET, payload, sizeof(bufferSize)+sizeof(windowSize)+strlen(fileName)+1), 
   bufferSize(bufferSize), windowSize(windowSize), fileName(fileName){}
 
 uint32_t RCopySetupPacket::getBufferSize(){return this->bufferSize;}

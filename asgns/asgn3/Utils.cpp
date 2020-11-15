@@ -57,7 +57,7 @@ RCopyPacket &Window::getPacket(uint32_t seqNum){
 }
 
 bool Window::isClosed(){
-    for(int i=this->lower; i < this->upper+1; i++)
+    for(int i=this->lower; i <= this->upper; i++)
         if(!this->inWindow(i))
             return false;
     return true;

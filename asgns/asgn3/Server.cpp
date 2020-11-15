@@ -110,8 +110,9 @@ ssize_t ServerThread::sendPacket(RCopyPacket &packet){
 /**************state func****************/
 state_t ServerThread::sendData(){
     state_t ret;
+    static bool recvdEOF=false;
     // Case 1 - window is closed (waiting on message/cant send anymore data)
-    if(this->window->isClosed()){
+    if(this->window->isClosed() || recvdEOF){
         std::cout << "window is closed" << std::endl;
         return WAITING;
     }else{                    
@@ -128,6 +129,7 @@ state_t ServerThread::sendData(){
             {
                 std::cout << "IN EOF_PACKET" << std::endl;
                 this->sendPacket(built);
+                recvdEOF=true;
                 return WAITING; //
             }
             break;
@@ -169,7 +171,8 @@ state_t ServerThread::receiveData(){
     case SREJ_PACKET:
     {
         RCopyPacket &p = this->window->getPacket(recvd.getHeader().getSequenceNumber());
-        this->sendPacket(p); // p is not acked yet
+        if(this->window->inWindow(p.getHeader().getSequenceNumber()))
+            this->sendPacket(p); // p is not acked yet
         return SEND_DATA;
         
     }
@@ -184,11 +187,14 @@ state_t ServerThread::receiveData(){
                     If the seqNum is lower part of the window
         */
 
+        if(this->window->inWindow(seqNum)){
+        this->window->setIsAcked(seqNum); // packet with seqNum is acked
         // Case 1 - where left most packet is the revd one
         if(this->window->getLower() == seqNum){
             // Case 2 - check to see if any adjacent are acked
-            this->window->setIsAcked(seqNum); // packet with seqNum is acked
-            for(int i=this->window->getLower(); i<this->window->getUpper()+1; i++){                    
+            int upper=this->window->getUpper();
+            int lower=this->window->getLower();
+            for(int i=lower; i<=upper; i++){                    
                 // Case 2.2 - if the adjacent isnt acked stop slidding
                 if(!this->window->isAcked(i)){
                     break;
@@ -198,6 +204,7 @@ state_t ServerThread::receiveData(){
         // Case 2 - where the packet recvd isnt the leftmost
         }else{
             this->window->setIsAcked(seqNum);
+        }
         }
         return SEND_DATA;
     }
@@ -223,7 +230,13 @@ state_t ServerThread::waiting(){
     // Case 1 - timeout occured
     if(!safeSelectTimeout(this->gateway.getSocketNumber(), 1, 0)){
         // send the lowest unacked packet
+        
+        std::cout << "==========================" << std::endl;
+        std::cout << "SENDING LOWEST unacked packet" << std::endl;
         RCopyPacket &p = this->window->getPacket(this->window->getLower());
+        std::cout << this->window->getLower() << std::endl;
+        std::cout << "=================" << std::endl;
+        std::cout << "" << std::endl;
         this->sendPacket(p);
         if(count++ > 9){
             std::cout << "bye" << std::endl;
@@ -258,12 +271,12 @@ void ServerThread::processRCopy(RCopySetupPacket setup)
             case FILENAME:
             {
                 if((file = open(fileName.c_str(), O_RDONLY)) < NULL){
-                    RCopyPacket p = RCopyPacketBuilder::Build(0, FILENAME_PACKET_BAD, NULL, bufferSize);
+                    RCopyPacket p = RCopyPacketBuilder::Build(-1, FILENAME_PACKET_BAD, NULL, bufferSize);
                     // send bad filename 
                     this->sendPacket(p);
                     state = DONE;
                 }else{
-                    RCopyPacket p = RCopyPacketBuilder::Build(0, FILENAME_PACKET_OK, NULL, bufferSize);
+                    RCopyPacket p = RCopyPacketBuilder::Build(-1, FILENAME_PACKET_OK, NULL, bufferSize);
                     /*
                     std::cout << "FLAG: " << std::to_string(p.getRawPacket()[6]) << std::endl;
                     */

@@ -1,0 +1,149 @@
+** ENV - OVERRIDE ERROR DROP: __List__ **
+14
+Send Err-INIT ErrRate: 0.20 Drop: Y Flip: Y Rand: N Debug: Y
+RECV          SEQ# 4294967295 LEN  115 FLAGS 7  -FNAME    
+Server using Port #: 49628
+packet={header:{seqNum:4294967295,checksum:28804,flag:7},bufferSize:1000,windowSize:10,fromFileName/home/victord/CPE464/asgns/asgn3/tests/from_files/short_binary}
+new server thread
+SEND MSG#   1 SEQ# 4294967295 LEN 1007 FLAGS 8  -FNAME response
+In readfileREAD: 1000bytes
+SEND MSG#   2 SEQ#   0 LEN 1007 FLAGS 3  -Data #:    0
+In readfileREAD: 1000bytes
+SEND MSG#   3 SEQ#   1 LEN 1007 FLAGS 3  -Data #:    1
+RECV          SEQ#   0 LEN 1007 FLAGS 5  -RR #:      0
+recvd a packet of len1007
+In readfileREAD: 1000bytes
+SEND MSG#   4 SEQ#   2 LEN 1007 FLAGS 3  -Data #:    2
+RECV          SEQ#   1 LEN 1007 FLAGS 5  -RR #:      0
+recvd a packet of len1007
+In readfileREAD: 1000bytes
+SEND MSG#   5 SEQ#   3 LEN 1007 FLAGS 3  -Data #:    3
+RECV          SEQ#   2 LEN 1007 FLAGS 5  -RR #:      0
+recvd a packet of len1007
+In readfileREAD: 1000bytes
+SEND MSG#   6 SEQ#   4 LEN 1007 FLAGS 3  -Data #:    4
+RECV          SEQ#   3 LEN 1007 FLAGS 5  -RR #:      0
+recvd a packet of len1007
+In readfileREAD: 1000bytes
+SEND MSG#   7 SEQ#   5 LEN 1007 FLAGS 3  -Data #:    5
+RECV          SEQ#   4 LEN 1007 FLAGS 5  -RR #:      0
+recvd a packet of len1007
+In readfileREAD: 1000bytes
+SEND MSG#   8 SEQ#   6 LEN 1007 FLAGS 3  -Data #:    6
+RECV          SEQ#   5 LEN 1007 FLAGS 5  -RR #:      0
+recvd a packet of len1007
+In readfileREAD: 1000bytes
+SEND MSG#   9 SEQ#   7 LEN 1007 FLAGS 3  -Data #:    7
+RECV          SEQ#   6 LEN 1007 FLAGS 5  -RR #:      0
+recvd a packet of len1007
+In readfileREAD: 1000bytes
+SEND MSG#  10 SEQ#   8 LEN 1007 FLAGS 3  -Data #:    8
+RECV          SEQ#   7 LEN 1007 FLAGS 5  -RR #:      0
+recvd a packet of len1007
+In readfileREAD: 1000bytes
+SEND MSG#  11 SEQ#   9 LEN 1007 FLAGS 3  -Data #:    9
+RECV          SEQ#   8 LEN 1007 FLAGS 5  -RR #:      0
+recvd a packet of len1007
+In readfileREAD: 1000bytes
+SEND MSG#  12 SEQ#  10 LEN 1007 FLAGS 3  -Data #:   10
+RECV          SEQ#   9 LEN 1007 FLAGS 5  -RR #:      0
+recvd a packet of len1007
+In readfileREAD: 1000bytes
+SEND MSG#  13 SEQ#  11 LEN 1007 FLAGS 3  -Data #:   11
+RECV          SEQ#  10 LEN 1007 FLAGS 5  -RR #:      0
+recvd a packet of len1007
+In readfileREAD: 1000bytes
+SEND MSG#  14 SEQ#  12 LEN 1007 FLAGS 3  -Data #:   12 - DROPPED 
+RECV          SEQ#  11 LEN 1007 FLAGS 5  -RR #:      0
+recvd a packet of len1007
+In readfileREAD: 1000bytes
+SEND MSG#  15 SEQ#  13 LEN 1007 FLAGS 3  -Data #:   13
+In readfileREAD: 1000bytes
+SEND MSG#  16 SEQ#  14 LEN 1007 FLAGS 3  -Data #:   14
+In readfileREAD: 1000bytes
+SEND MSG#  17 SEQ#  15 LEN 1007 FLAGS 3  -Data #:   15
+In readfileREAD: 1000bytes
+SEND MSG#  18 SEQ#  16 LEN 1007 FLAGS 3  -Data #:   16
+In readfileREAD: 1000bytes
+SEND MSG#  19 SEQ#  17 LEN 1007 FLAGS 3  -Data #:   17
+In readfileREAD: 1000bytes
+SEND MSG#  20 SEQ#  18 LEN 1007 FLAGS 3  -Data #:   18
+In readfileREAD: 1000bytes
+SEND MSG#  21 SEQ#  19 LEN 1007 FLAGS 3  -Data #:   19 - FLIPPED BITS 
+In readfileREAD: 1000bytes
+SEND MSG#  22 SEQ#  20 LEN 1007 FLAGS 3  -Data #:   20
+RECV          SEQ#  18 LEN 1007 FLAGS 6  -SREJ #:    0
+recvd a packet of len1007
+SEND MSG#  23 SEQ#  18 LEN 1007 FLAGS 3  -Data #:   18
+In readfileREAD: 536bytes
+IN EOF_PACKET
+SEND MSG#  24 SEQ#  21 LEN  543 FLAGS 10  -User defined 
+waiting
+==========================
+SENDING LOWEST unacked packet
+12
+=================
+
+SEND MSG#  25 SEQ#  12 LEN 1007 FLAGS 3  -Data #:   12 - FLIPPED BITS 
+waiting
+RECV          SEQ#  21 LEN 1007 FLAGS 6  -SREJ #:    0
+recvd a packet of len1007
+SEND MSG#  26 SEQ#  21 LEN  543 FLAGS 10  -User defined 
+window is closed
+waiting
+==========================
+SENDING LOWEST unacked packet
+12
+=================
+
+SEND MSG#  27 SEQ#  12 LEN 1007 FLAGS 3  -Data #:   12
+waiting
+RECV          SEQ#  12 LEN 1007 FLAGS 5  -RR #:      0
+recvd a packet of len1007
+window is closed
+waiting
+RECV          SEQ#  13 LEN 1007 FLAGS 5  -RR #:      0
+recvd a packet of len1007
+window is closed
+waiting
+RECV          SEQ#  14 LEN 1007 FLAGS 5  -RR #:      0
+recvd a packet of len1007
+window is closed
+waiting
+RECV          SEQ#  15 LEN 1007 FLAGS 5  -RR #:      0
+recvd a packet of len1007
+window is closed
+waiting
+RECV          SEQ#  16 LEN 1007 FLAGS 5  -RR #:      0
+recvd a packet of len1007
+window is closed
+waiting
+RECV          SEQ#  17 LEN 1007 FLAGS 5  -RR #:      0
+recvd a packet of len1007
+window is closed
+waiting
+RECV          SEQ#  18 LEN 1007 FLAGS 5  -RR #:      0
+recvd a packet of len1007
+window is closed
+waiting
+==========================
+SENDING LOWEST unacked packet
+19
+=================
+
+SEND MSG#  28 SEQ#  19 LEN 1007 FLAGS 3  -Data #:   19
+waiting
+RECV          SEQ#  19 LEN 1007 FLAGS 5  -RR #:      0
+recvd a packet of len1007
+window is closed
+waiting
+RECV          SEQ#  20 LEN 1007 FLAGS 5  -RR #:      0
+recvd a packet of len1007
+window is closed
+waiting
+RECV          SEQ#  21 LEN 1007 FLAGS 11  -User defined 
+recvd a packet of len1007
+======== SeqNo Report ========
+  Msgs (Total)       :    27
+  Msgs (Unique SeqNo):    23
+==============================

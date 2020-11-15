@@ -89,6 +89,8 @@ state_t RCopy::receieveData(){
 
     // Case 2 - data packet waiting
     try{
+        std::cout << "===================================\n";
+        std::cout << this->window.getLower() << std::endl;
         RCopyPacket &&recvPacket = recievePacket();
         seqNum = recvPacket.getHeader().getSequenceNumber();
         flag = recvPacket.getHeader().getFlag();
@@ -111,23 +113,19 @@ state_t RCopy::receieveData(){
             /* TODO: if out of order packet and corrputpino packet */
         // Case 5 - out of order packet (current is next available packet space)
         }else if (this->window.getLower() < seqNum ){ // really just only to send srej
-
             if(!this->window.inWindow(seqNum))
                 this->window.insert(recvPacket);
-
-            std::cout << "lower less to seqNum" << std::endl;
-            for(int i = this->window.getLower(); i < seqNum; i++){
-                // holes
+            for(int i = this->window.getCurrent(); i < seqNum; i++){
+                std::cout << "lower less to seqNum" << std::endl;
                 if(!this->window.inWindow(i)){
                     RCopyPacket &&p = this->buildPacket(i, SREJ_PACKET);
                     this->sendPacket(p);
                 }
-            }
-
+        }
+        this->window.setCurrent(seqNum);
         }
     }catch(CorruptPacketException &e){
-        RCopyPacket &&srej = this->buildPacket(seqNum, SREJ_PACKET);
-        this->sendPacket(srej);
+        return RECV_DATA;
     }
     return RECV_DATA;
 
