@@ -37,7 +37,7 @@ clean:
 	rm -f server rcopy *.o .depend
 
 
-PORT=45680
+PORT=49628
 FROM_DIR=$(shell pwd)/tests/from_files
 TO_DIR=$(shell pwd)/tests/to_files
 REMOTE_MACHINE=localhost
@@ -47,7 +47,7 @@ REMOTE_MACHINE=localhost
 #===========Test 1=================
 
 
-WIND_SIZE=5
+WIND_SIZE=10
 BUFF_SIZE=1000
 RCOPY_ERR_PER=.15
 SERVER_ERR_PER=$(RCOPY_ERR_PER)

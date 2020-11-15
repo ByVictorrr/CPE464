@@ -20,6 +20,9 @@ RCopyPacket RCopy::recievePacket() throw (CorruptPacketException){
     try{
 
         RCopyPacket rr = RCopyPacketReciever::Recieve(this->args.getBufferSize(), this->gateway);
+        if(rr.getHeader().getFlag() == EOF_PACKET){
+            std::cout << "RECV_PACKET : EOF payload length : " << rr.getPayloadSize() << std::endl;
+        }
         return rr;
     }catch(CorruptPacketException &e){
         throw e;
@@ -33,6 +36,7 @@ RCopyPacket RCopy::buildPacket(uint32_t seqNum, uint8_t flag){
 
 size_t RCopy::writePacketToFile(RCopyPacket &p){
     size_t len;
+    std::cout << "PAYLAOD SIZE IN write function "<< p.getPayloadSize() << std::endl;
     if((len=fwrite((void*)p.getPayload(), (size_t)sizeof(uint8_t), p.getPayloadSize(), 
                    this->toFile)) != p.getPayloadSize()){
                         std::cerr << "problem writing " << std::endl;
@@ -106,9 +110,10 @@ state_t RCopy::receieveData(){
             return this->fillHoles();
             /* TODO: if out of order packet and corrputpino packet */
         // Case 5 - out of order packet (current is next available packet space)
-        }else if (this->window.getLower() < seqNum && this->window.getUpper() >= seqNum){ // really just only to send srej
+        }else if (this->window.getLower() < seqNum ){ // really just only to send srej
 
-            this->window.insert(recvPacket);
+         4962
+
             std::cout << "lower less to seqNum" << std::endl;
             for(int i = this->window.getLower(); i < seqNum; i++){
                 // holes
@@ -117,6 +122,7 @@ state_t RCopy::receieveData(){
                     this->sendPacket(p);
                 }
             }
+
         }
     }catch(CorruptPacketException &e){
         RCopyPacket &&srej = this->buildPacket(seqNum, SREJ_PACKET);
@@ -127,22 +133,25 @@ state_t RCopy::receieveData(){
 }
 state_t RCopy::fillHoles(){
     for(int i = this->window.getLower(); i <= this->window.getUpper(); i++){
-        if(!this->window.inWindow(i))
+        if(!this->window.inWindow(i)){
             break;
-        RCopyPacket &inwWind = this->window.getPacket(i);
-        this->writePacketToFile(inwWind);
-        fflush(toFile);
-        // What if the EOF packet is in the window
-        if(inwWind.getHeader().getFlag() == EOF_PACKET){
-            std::cout << "EOF packet" << i << std::endl;
-            RCopyPacket &&eofRR = this->buildPacket(i, EOF_PACKET_ACK);
-            this->sendPacket(eofRR);
-            return DONE;
         }else{
-            RCopyPacket &&rr = this->buildPacket(i, RR_PACKET);
-            this->sendPacket(rr);
+            RCopyPacket inWind = this->window.getPacket(i);
+            this->writePacketToFile(inWind);
+            fflush(toFile);
+            // What if the EOF packet is in the window
+            if(inWind.getHeader().getFlag() == EOF_PACKET){
+                std::cout << "EOF packet seqNum: " << i << std::endl;
+                std::cout << "EOF packet payloadSize" << inWind.getPayloadSize() << std::endl;
+                RCopyPacket &&eofRR = this->buildPacket(i, EOF_PACKET_ACK);
+                this->sendPacket(eofRR);
+                return DONE;
+            }else{
+                RCopyPacket &&rr = this->buildPacket(i, RR_PACKET);
+                this->sendPacket(rr);
+            }
+            this->window.slide(i+1);
         }
-        this->window.slide(i+1);
     }
     return RECV_DATA;
 }
@@ -161,8 +170,7 @@ void RCopy::start(){
                 // send filename
                 if((state = sendFileName()) == FILENAME){
                     safe_close(gateway.getSocketNumber());
-                    gateway.setSocketNumber(gateway.setup(gateway.getRemote(), 
-                                                          args.getRemoteMachine(), 
+                    gateway.setSocketNumber(gateway.setup(args.getRemoteMachine(), 
                                                           args.getPort()));
                     state = count++ > 9 ? DONE: state;
                 }
