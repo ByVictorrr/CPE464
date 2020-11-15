@@ -24,6 +24,8 @@ class RCopy{
         RCopyPacket buildPacket(uint32_t seqNum, uint8_t flag);
         size_t writePacketToFile(RCopyPacket &p);
 
+        state_t fillHoles();
+
         //============= State functions ===============//
         state_t sendFileName();
         state_t receieveData();

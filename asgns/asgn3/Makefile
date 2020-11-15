@@ -43,30 +43,28 @@ TO_DIR=$(shell pwd)/tests/to_files
 REMOTE_MACHINE=localhost
 
 # ./rcopy <from-file> <to-file> <buff-size> <err-per> <win-size> <remote-name> <remote-port>
-#===========Test 0=================
-BUFF_SIZE=1400
-RCOPY_ERR_PER=0
-SERVER_ERR_PER=$(RCOPY_ERR_PER)
-WIND_SIZE=100
-FROM_TEST=test1
-TO_TEST=test1
-
-test0_rcopy: rcopy
-											# <buff-size> <err-per> <wind-size>
-	./rcopy $(FROM_DIR)/$(FROM_TEST) $(TO_DIR)/$(TO_TEST) $(BUFF_SIZE) $(RCOPY_ERR_PER) $(WIND_SIZE) $(REMOTE_MACHINE) $(PORT)
-	diff $(FROM_DIR)/$(FROM_TEST) $(TO_DIR)/$(TO_TEST) 
-
-test0_server: server
-	./server $(SERVER_ERR_PER) $(PORT)
-
-debug0_rcopy: rcopy
-	gdb --args ./rcopy $(FROM_DIR)/$(FROM_TEST) $(TO_DIR)/$(TO_TEST) $(BUFF_SIZE) $(RCOPY_ERR_PER) $(WIND_SIZE) $(REMOTE_MACHINE) $(PORT)
-
-debug0_server: server
-	gdb --args ./server $(SERVER_ERR_PER) $(PORT)
-
 
 #===========Test 1=================
 
 
+WIND_SIZE=5
+BUFF_SIZE=1000
+RCOPY_ERR_PER=.15
+SERVER_ERR_PER=$(RCOPY_ERR_PER)
+FROM_TEST=long_binary
+TO_TEST=$(FROM_TEST)
+
+test_rcopy: rcopy
+											# <buff-size> <err-per> <wind-size>
+	./rcopy $(FROM_DIR)/$(FROM_TEST) $(TO_DIR)/$(TO_TEST) $(BUFF_SIZE) $(RCOPY_ERR_PER) $(WIND_SIZE) $(REMOTE_MACHINE) $(PORT)
+	diff $(FROM_DIR)/$(FROM_TEST) $(TO_DIR)/$(TO_TEST) 
+
+test_server: server
+	./server $(SERVER_ERR_PER) $(PORT)
+
+debug_rcopy: rcopy
+	gdb --args ./rcopy $(FROM_DIR)/$(FROM_TEST) $(TO_DIR)/$(TO_TEST) $(BUFF_SIZE) $(RCOPY_ERR_PER) $(WIND_SIZE) $(REMOTE_MACHINE) $(PORT)
+
+debug_server: server
+	gdb --args ./server $(SERVER_ERR_PER) $(PORT)
 

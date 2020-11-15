@@ -121,7 +121,6 @@ state_t ServerThread::sendData(){
         uint8_t flag = built.getHeader().getFlag();
         this->window->insert(built); // put into the window
 
-
         switch (flag)
         {
             // Case 2.1 - could be the last packet read

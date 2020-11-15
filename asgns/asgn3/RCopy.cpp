@@ -78,8 +78,8 @@ state_t RCopy::receieveData(){
     state_t ret;
     uint8_t flag;
     uint32_t seqNum;
-    
-    // Case 1 - no data packet waiting
+
+       /* Case 1 - no data packet waiting */
     if(!safeSelectTimeout(this->gateway.getSocketNumber(), 10, 0))
         return DONE;
 
@@ -90,42 +90,26 @@ state_t RCopy::receieveData(){
         flag = recvPacket.getHeader().getFlag();
 
         // Case 2.1 - if we recieved an eof packet 
-        if(flag == EOF_PACKET){
-            RCopyPacket &&eof = this->buildPacket(seqNum, EOF_PACKET_ACK);
-            fflush(toFile);
-            std::cout << "IN EOF" << eof.size() << std::endl;
-            this->sendPacket(eof);
-            this->writePacketToFile(recvPacket);
-            return DONE;
-        }
 
+        /* If we get the EOF_Packet and it will be the lower part of window*/
         // Case 2.2 - see if the packet is a duplicate packet 
         if(window.getLower() > seqNum){
+            std::cout << "lower higher than seqNum" << std::endl;
             RCopyPacket &&rr = this->buildPacket(seqNum, RR_PACKET);
             this->sendPacket(rr);
-            return RECV_DATA;
         // Case 2.3 - expected packet
-        }else if(window.getLower() == seqNum){
-            // write to disk and slide window
-            RCopyPacket &&rr = this->buildPacket(seqNum, RR_PACKET);
-            this->sendPacket(rr);
+        }else if(this->window.getLower() == seqNum){
+            /* Case 2.3.1 - if the EOF_PACKET has flag with lower being EOF*/
+
+            std::cout << "lower equal to seqNum" << std::endl;
             this->window.insert(recvPacket);
-            // check if adjacent packet are filled (fill holes)
-            for(int i = seqNum; i <= this->window.getUpper(); i++){
-                if(!this->window.inWindow(i))
-                    break;
-                RCopyPacket &inwWind = this->window.getPacket(i);
-                this->writePacketToFile(inwWind);
-
-                fflush(toFile);
-                this->window.slide(i+1);
-            }
-            return RECV_DATA;
-
-        /* TODO: if out of order packet and corrputpino packet */
-
+            return this->fillHoles();
+            /* TODO: if out of order packet and corrputpino packet */
         // Case 5 - out of order packet (current is next available packet space)
-        }else if (this->window.getLower() < seqNum){ // really just only to send srej
+        }else if (this->window.getLower() < seqNum && this->window.getUpper() >= seqNum){ // really just only to send srej
+
+            this->window.insert(recvPacket);
+            std::cout << "lower less to seqNum" << std::endl;
             for(int i = this->window.getLower(); i < seqNum; i++){
                 // holes
                 if(!this->window.inWindow(i)){
@@ -133,17 +117,34 @@ state_t RCopy::receieveData(){
                     this->sendPacket(p);
                 }
             }
-            this->window.insert(recvPacket);
-            return RECV_DATA;
-
         }
     }catch(CorruptPacketException &e){
-        
         RCopyPacket &&srej = this->buildPacket(seqNum, SREJ_PACKET);
         this->sendPacket(srej);
-        return RECV_DATA;
     }
+    return RECV_DATA;
 
+}
+state_t RCopy::fillHoles(){
+    for(int i = this->window.getLower(); i <= this->window.getUpper(); i++){
+        if(!this->window.inWindow(i))
+            break;
+        RCopyPacket &inwWind = this->window.getPacket(i);
+        this->writePacketToFile(inwWind);
+        fflush(toFile);
+        // What if the EOF packet is in the window
+        if(inwWind.getHeader().getFlag() == EOF_PACKET){
+            std::cout << "EOF packet" << i << std::endl;
+            RCopyPacket &&eofRR = this->buildPacket(i, EOF_PACKET_ACK);
+            this->sendPacket(eofRR);
+            return DONE;
+        }else{
+            RCopyPacket &&rr = this->buildPacket(i, RR_PACKET);
+            this->sendPacket(rr);
+        }
+        this->window.slide(i+1);
+    }
+    return RECV_DATA;
 }
 
 
