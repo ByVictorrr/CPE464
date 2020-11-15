@@ -112,73 +112,65 @@ wrote 1000
 SEND MSG#  13 SEQ#  11 LEN 1007 FLAGS 5  -RR #:      0
 ===================================
 12
-RECV          SEQ#  13 LEN 1007 FLAGS 3  -Data #:   13
-recvd a packet of len1007
-===================================
-12
-RECV          SEQ#  14 LEN 1007 FLAGS 3  -Data #:   14
-recvd a packet of len1007
-===================================
-12
-RECV          SEQ#  15 LEN 1007 FLAGS 3  -Data #:   15
-recvd a packet of len1007
-===================================
-12
-RECV          SEQ#  16 LEN 1007 FLAGS 3  -Data #:   16
-recvd a packet of len1007
-===================================
-12
-RECV          SEQ#  17 LEN 1007 FLAGS 3  -Data #:   17
-recvd a packet of len1007
-===================================
-12
-RECV          SEQ#  18 LEN 1007 FLAGS 3  -Data #:   18
-recvd a packet of len1007
-===================================
-12
-RECV          SEQ#  19 LEN 1007 FLAGS 3  -Data #:   19 - RECV Corrupted packet
-recvd a packet of len1007
-bad crc
-===================================
-12
-RECV          SEQ#  20 LEN 1007 FLAGS 3  -Data #:   20
-recvd a packet of len1007
-===================================
-12
-RECV          SEQ#  21 LEN  543 FLAGS 10  -User defined 
-recvd a packet of len543
-RECV_PACKET : EOF payload length : 536
-===================================
-12
 RECV          SEQ#  12 LEN 1007 FLAGS 3  -Data #:   12
 recvd a packet of len1007
 lower equal to seqNum
 PAYLAOD SIZE IN write function 1000
 wrote 1000
 SEND MSG#  14 SEQ#  12 LEN 1007 FLAGS 5  -RR #:      0
+===================================
+13
+RECV          SEQ#  13 LEN 1007 FLAGS 3  -Data #:   13
+recvd a packet of len1007
+lower equal to seqNum
 PAYLAOD SIZE IN write function 1000
 wrote 1000
 SEND MSG#  15 SEQ#  13 LEN 1007 FLAGS 5  -RR #:      0
+===================================
+14
+RECV          SEQ#  14 LEN 1007 FLAGS 3  -Data #:   14
+recvd a packet of len1007
+lower equal to seqNum
 PAYLAOD SIZE IN write function 1000
 wrote 1000
 SEND MSG#  16 SEQ#  14 LEN 1007 FLAGS 5  -RR #:      0
+===================================
+15
+RECV          SEQ#  15 LEN 1007 FLAGS 3  -Data #:   15
+recvd a packet of len1007
+lower equal to seqNum
 PAYLAOD SIZE IN write function 1000
 wrote 1000
 SEND MSG#  17 SEQ#  15 LEN 1007 FLAGS 5  -RR #:      0
+===================================
+16
+RECV          SEQ#  16 LEN 1007 FLAGS 3  -Data #:   16
+recvd a packet of len1007
+lower equal to seqNum
 PAYLAOD SIZE IN write function 1000
 wrote 1000
 SEND MSG#  18 SEQ#  16 LEN 1007 FLAGS 5  -RR #:      0
+===================================
+17
+RECV          SEQ#  17 LEN 1007 FLAGS 3  -Data #:   17
+recvd a packet of len1007
+lower equal to seqNum
 PAYLAOD SIZE IN write function 1000
 wrote 1000
 SEND MSG#  19 SEQ#  17 LEN 1007 FLAGS 5  -RR #:      0
+===================================
+18
+RECV          SEQ#  18 LEN 1007 FLAGS 3  -Data #:   18
+recvd a packet of len1007
+lower equal to seqNum
 PAYLAOD SIZE IN write function 1000
 wrote 1000
 SEND MSG#  20 SEQ#  18 LEN 1007 FLAGS 5  -RR #:      0
 ===================================
 19
-RECV          SEQ#  19 LEN 1007 FLAGS 3  -Data #:   19 - RECV Corrupted packet
-recvd a packet of len1007
-bad crc
+RECV          SEQ#  21 LEN  543 FLAGS 10  -User defined 
+recvd a packet of len543
+RECV_PACKET : EOF payload length : 536
 ===================================
 19
 RECV          SEQ#  19 LEN 1007 FLAGS 3  -Data #:   19
@@ -187,16 +179,33 @@ lower equal to seqNum
 PAYLAOD SIZE IN write function 1000
 wrote 1000
 SEND MSG#  21 SEQ#  19 LEN 1007 FLAGS 5  -RR #:      0 - DROPPED 
+===================================
+20
+RECV          SEQ#  19 LEN 1007 FLAGS 3  -Data #:   19
+recvd a packet of len1007
+lower higher than seqNum
+SEND MSG#  22 SEQ#  19 LEN 1007 FLAGS 5  -RR #:      0 - DROPPED 
+===================================
+20
+RECV          SEQ#  19 LEN 1007 FLAGS 3  -Data #:   19
+recvd a packet of len1007
+lower higher than seqNum
+SEND MSG#  23 SEQ#  19 LEN 1007 FLAGS 5  -RR #:      0
+===================================
+20
+RECV          SEQ#  20 LEN 1007 FLAGS 3  -Data #:   20
+recvd a packet of len1007
+lower equal to seqNum
 PAYLAOD SIZE IN write function 1000
 wrote 1000
-SEND MSG#  22 SEQ#  20 LEN 1007 FLAGS 5  -RR #:      0 - DROPPED 
+SEND MSG#  24 SEQ#  20 LEN 1007 FLAGS 5  -RR #:      0
 PAYLAOD SIZE IN write function 536
 wrote 536
 EOF packet seqNum: 21
 EOF packet payloadSize536
-SEND MSG#  23 SEQ#  21 LEN 1007 FLAGS 11  -User defined 
+SEND MSG#  25 SEQ#  21 LEN 1007 FLAGS 11  -User defined  - DROPPED 
 ======== SeqNo Report ========
-  Msgs (Total)       :    23
+  Msgs (Total)       :    25
   Msgs (Unique SeqNo):    23
 ==============================
 diff /home/victord/CPE464/asgns/asgn3/tests/from_files/short_binary /home/victord/CPE464/asgns/asgn3/tests/to_files/short_binary 

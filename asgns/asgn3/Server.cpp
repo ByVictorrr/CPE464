@@ -110,9 +110,10 @@ ssize_t ServerThread::sendPacket(RCopyPacket &packet){
 /**************state func****************/
 state_t ServerThread::sendData(){
     state_t ret;
-    static bool recvdEOF=false;
+    static bool sentEOF=false;
     // Case 1 - window is closed (waiting on message/cant send anymore data)
-    if(this->window->isClosed() || recvdEOF){
+    if(this->window->isClosed() || sentEOF){
+
         std::cout << "window is closed" << std::endl;
         return WAITING;
     }else{                    
@@ -129,7 +130,7 @@ state_t ServerThread::sendData(){
             {
                 std::cout << "IN EOF_PACKET" << std::endl;
                 this->sendPacket(built);
-                recvdEOF=true;
+                sentEOF=true;
                 return WAITING; //
             }
             break;
@@ -146,6 +147,7 @@ state_t ServerThread::sendData(){
             }
             break;        
             default:
+                return WAITING;
                 break;
         }
     }
@@ -188,7 +190,7 @@ state_t ServerThread::receiveData(){
         */
 
         if(this->window->inWindow(seqNum)){
-        this->window->setIsAcked(seqNum); // packet with seqNum is acked
+            this->window->setIsAcked(seqNum); // packet with seqNum is acked
         // Case 1 - where left most packet is the revd one
         if(this->window->getLower() == seqNum){
             // Case 2 - check to see if any adjacent are acked
@@ -199,7 +201,13 @@ state_t ServerThread::receiveData(){
                 if(!this->window->isAcked(i)){
                     break;
                 }
+                std::cout << "sliding\n" ;
                 this->window->slide(i+1);
+                std::cout << "new lower: " << this->window->getLower() << std::endl;
+                if(this->window->isClosed()){
+
+                    std::cout << "=====CLOSED===\n";
+                }
             }
         // Case 2 - where the packet recvd isnt the leftmost
         }else{
