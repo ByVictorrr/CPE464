@@ -112,7 +112,8 @@ state_t RCopy::receieveData(){
         // Case 5 - out of order packet (current is next available packet space)
         }else if (this->window.getLower() < seqNum ){ // really just only to send srej
 
-         4962
+            if(!this->window.inWindow(seqNum))
+                this->window.insert(recvPacket);
 
             std::cout << "lower less to seqNum" << std::endl;
             for(int i = this->window.getLower(); i < seqNum; i++){
@@ -132,7 +133,9 @@ state_t RCopy::receieveData(){
 
 }
 state_t RCopy::fillHoles(){
-    for(int i = this->window.getLower(); i <= this->window.getUpper(); i++){
+    int upper=this->window.getUpper();
+    int lower=this->window.getLower();
+    for(int i = lower; i <= upper; i++){
         if(!this->window.inWindow(i)){
             break;
         }else{
