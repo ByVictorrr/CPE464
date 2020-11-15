@@ -18,7 +18,9 @@ ssize_t RCopy::sendSetupPacket(RCopySetupPacket &p){
  */
 RCopyPacket RCopy::recievePacket() throw (CorruptPacketException){
     try{
-        return RCopyPacketReciever::Recieve(this->args.getBufferSize(), this->gateway);
+
+        RCopyPacket rr = RCopyPacketReciever::Recieve(this->args.getBufferSize(), this->gateway);
+        return rr;
     }catch(CorruptPacketException &e){
         throw e;
     }
@@ -36,7 +38,7 @@ size_t RCopy::writePacketToFile(RCopyPacket &p){
                         std::cerr << "problem writing " << std::endl;
                         return 0;
                     }
-        std::cout << "wrote " << p.getPayloadSize() << std::endl; 
+        std::cout << "wrote " << len << std::endl; 
         return len;
 }
 
@@ -53,12 +55,10 @@ state_t RCopy::sendFileName(){
                                                             args.getFromFileName()
                                                             );
     this->sendSetupPacket(builtPacket);
-    std::cout << builtPacket << std::endl; // debug
     if(safeSelectTimeout(this->gateway.getSocketNumber(), 1, 0)){
         // read the packet and check crc
         try{
             recievedPacket = recievePacket();
-            RCopyPacketDebugger::println(recievedPacket);
             if((flag=recievedPacket.getHeader().getFlag()) == FILENAME_PACKET_BAD){
                 std::cerr << "File " + std::string(args.getFromFileName()) + "Not found" << std::endl;
                 ret = DONE;
@@ -66,6 +66,7 @@ state_t RCopy::sendFileName(){
                 ret = FILENAME_OK;
             }
         }catch(CorruptPacketException &e){
+            RCopyPacketDebugger::println(recievedPacket);
             ret = FILENAME;
         }
     }

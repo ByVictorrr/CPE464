@@ -23,5 +23,11 @@ int safe_accept_client(int server_socket, int debugFlag);
 FILE *safe_fopen(const char *filename, const char *mode);
 int safe_fclose(FILE *stream);
 pid_t safe_fork();
+int safe_open(const char *path, int oflags);
+int safe_mopen(const char *path, int oflags, mode_t mode);
+
+size_t safe_read(int fildes, void *buf, size_t nbytes);
+size_t safe_write(int fildes, void *buf, size_t nbytes);
+
 }
 #endif

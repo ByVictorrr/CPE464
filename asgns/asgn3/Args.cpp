@@ -5,16 +5,19 @@ RCopyArgs RCopyArgsParser::parse(int argc, char *argv[]){
     int windowSize, bufferSize, port;
     float errorPer;
     // Step 1 - check to see if right amout of args
+    for(int i=0;i<argc; i++){
+        std::cout << argv[i] << std::endl;
+    }
     if (argc != RCOPY_ARGS+1){
-        std::cout << std::string(argv[0]) + " <from-filename> <to-filename> <window-size> <buffer-size> <error-percent> <remote-machine> <remote-port>" << std::endl;
+        std::cout << std::string(argv[0]) + " <from-filename> <to-filename> <buffer-size> <error-percent> <window-size> <remote-machine> <remote-port>" << std::endl;
         exit(EXIT_FAILURE);
     }
     // step 2 - create RcopyArgs obj
     fromFileName = argv[1];
     toFileName = argv[2];
-    windowSize = std::atoi(argv[3]);
-    bufferSize = std::atoi(argv[4]);
-    errorPer = std::atof(argv[5]);
+    bufferSize = std::atoi(argv[3]);
+    errorPer = std::atof(argv[4]);
+    windowSize = std::atoi(argv[5]);
     remoteMachine = argv[6];
     port = std::atoi(argv[7]);
     // Step 1 - check buffer size
@@ -23,8 +26,8 @@ RCopyArgs RCopyArgsParser::parse(int argc, char *argv[]){
         exit(EXIT_FAILURE);
     }
     // Step 2 - check error percent
-    if(errorPer <= 0 || errorPer >= 1){
-        std::cout << "errorPercent has to be between 0 - 1 exclusive" << std::endl;
+    if(errorPer < 0 || errorPer > 1){
+        std::cout << "errorPercent has to be between 0 - 1 inclusive" << std::endl;
         exit(EXIT_FAILURE);
     }
     // TODO : max window size?
@@ -34,6 +37,7 @@ RCopyArgs RCopyArgsParser::parse(int argc, char *argv[]){
 
 
 ServerArgs ServerArgsParser::parse(int argc, char *argv[]){
+    // Step 1 - check to see if right amout of args
     float errorPer;
     int port;
     if(argc != 2 && argc != 3){

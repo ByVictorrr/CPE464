@@ -9,6 +9,12 @@
 #include <sys/select.h>
 #include <unistd.h>
 #include <string.h>
+
+#include <fcntl.h>
+
+/* Not technically required, but needed on some UNIX distributions */
+#include <sys/types.h>
+#include <sys/stat.h>
 #include "gethostbyname.h"
 #include "safe_sys_calls.h"
 
@@ -191,3 +197,38 @@ pid_t safe_fork(){
 	return pid;
 }
 
+int safe_open(const char *path, int oflags){
+	int fd;
+	if((fd=open(path , oflags)) < 0){
+		perror("error in open");
+		exit(EXIT_FAILURE);
+	}
+	return fd;
+}
+int safe_mopen(const char *path, int oflags, mode_t mode){
+	int fd;
+	if((fd=open(path , oflags, mode)) < 0){
+		perror("error in open");
+		exit(EXIT_FAILURE);
+	}
+	return fd;
+}
+
+size_t safe_read(int fildes, void *buf, size_t nbytes){
+	int bytes_read;
+	if((bytes_read=read(fildes, buf, nbytes)) < 0){
+		perror("read error");
+		exit(EXIT_FAILURE);
+	}
+	return bytes_read;
+}
+
+
+size_t safe_write(int fildes, void *buf, size_t nbytes){
+	int bytes_writen;
+	if((bytes_writen=write(fildes, buf, nbytes)) < 0){
+		perror("write error");
+		exit(EXIT_FAILURE);
+	}
+	return bytes_writen;
+}

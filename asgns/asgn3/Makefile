@@ -36,15 +36,37 @@ include .depend
 clean:
 	rm -f server rcopy *.o .depend
 
-run_rcopy: rcopy
-	./rcopy $(shell pwd)/tests/from_files/test1 $(shell pwd)/tests/to_files/test1 10 100 .1 localhost 45678
 
-run_server: server
-	./server .1 45678
+PORT=45680
+FROM_DIR=$(shell pwd)/tests/from_files
+TO_DIR=$(shell pwd)/tests/to_files
+REMOTE_MACHINE=localhost
 
-debug_rcopy: rcopy
-	gdb --args ./rcopy $(shell pwd)/tests/from_files/test1 $(shell pwd)/tests/to_files/test1 10 100 .1 localhost 45678
+# ./rcopy <from-file> <to-file> <buff-size> <err-per> <win-size> <remote-name> <remote-port>
+#===========Test 0=================
+BUFF_SIZE=1400
+RCOPY_ERR_PER=0
+SERVER_ERR_PER=$(RCOPY_ERR_PER)
+WIND_SIZE=100
+FROM_TEST=test1
+TO_TEST=test1
 
-debug_server: server
-	gdb --args ./server .1 45678
+test0_rcopy: rcopy
+											# <buff-size> <err-per> <wind-size>
+	./rcopy $(FROM_DIR)/$(FROM_TEST) $(TO_DIR)/$(TO_TEST) $(BUFF_SIZE) $(RCOPY_ERR_PER) $(WIND_SIZE) $(REMOTE_MACHINE) $(PORT)
+	diff $(FROM_DIR)/$(FROM_TEST) $(TO_DIR)/$(TO_TEST) 
+
+test0_server: server
+	./server $(SERVER_ERR_PER) $(PORT)
+
+debug0_rcopy: rcopy
+	gdb --args ./rcopy $(FROM_DIR)/$(FROM_TEST) $(TO_DIR)/$(TO_TEST) $(BUFF_SIZE) $(RCOPY_ERR_PER) $(WIND_SIZE) $(REMOTE_MACHINE) $(PORT)
+
+debug0_server: server
+	gdb --args ./server $(SERVER_ERR_PER) $(PORT)
+
+
+#===========Test 1=================
+
+
 

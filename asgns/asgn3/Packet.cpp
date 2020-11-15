@@ -189,6 +189,7 @@ RCopyPacket RCopyPacketReciever::Recieve(int payloadLen, Connection &con) throw(
     // Step 1 - recv packet
     recvLen = safeRecvfrom(con.getSocketNumber(), temp, payloadLen+HDR_LEN, 0,con.getRemote(), con.getRemoteLen());
     // Step 2 - parse packet
+    std::cout << "recvd a packet of len" << recvLen << std::endl;
     try{
         return RCopyPacketParser::Parse(temp, recvLen-HDR_LEN);
     }catch(CorruptPacketException &e){

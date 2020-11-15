@@ -6,6 +6,11 @@
 #include "safe_sys_calls.h"
 #include "Utils.hpp"
 #include "Server.hpp"
+#include <fcntl.h>
+ 
+/* Not technically required, but needed on some UNIX distributions */
+#include <sys/types.h>
+#include <sys/stat.h>
 
 class RCopyPacketReciever;
 class ServerConnection;
@@ -40,15 +45,16 @@ void Server::serve(){
 
                     ServerThread t(setup, this->gateway);
                     t.join();
-                    std::cout << "client says byte" << std::endl;
                 }
             }catch(CorruptPacketException &e){
                 goto start;
             }
         }
+        /*
         while(waitpid(-1, NULL, WNOHANG) > 0){
             std::cout << "processed wait" << std::endl;
         }
+        */
         
     goto start;
 }
@@ -67,9 +73,17 @@ ServerThread::ServerThread(RCopySetupPacket setup, ServerConnection &c)
        
 /***util funcs****/
  void ServerThread::readFile(uint8_t *payload, size_t *lenRead) throw (ReadEOFException){
-    if((*lenRead = fread(payload, sizeof(uint8_t), this->bufferSize, file)) != this->bufferSize){
-        throw ReadEOFException("EOF Packet"); 
+     std::cout << "In readfile";
+    *lenRead = 0;
+    while(*lenRead != this->bufferSize){
+        if(safe_read(this->file, payload+*lenRead, 1) == 0){
+            std::cout << "READ: " << *lenRead << "bytes" << std::endl;
+            throw ReadEOFException("EOF Packet"); 
+
+        }
+        *lenRead+=1;
     }
+    std::cout << "READ: " << *lenRead << "bytes" << std::endl;
 }
 
 
@@ -78,7 +92,8 @@ RCopyPacket ServerThread::buildDataPacket(uint32_t seqNum) throw (ReadEOFExcepti
     memset(payload, 0, MAX_PAYLOAD_LEN);
     size_t lenRead;
     try{
-        readFile(payload, &lenRead);
+        this->readFile(payload, &lenRead);
+
         return RCopyPacketBuilder::Build(seqNum, DATA_PACKET, payload, lenRead);
     }catch(ReadEOFException &e){
         // EOF_PACKET may contain data
@@ -97,6 +112,7 @@ state_t ServerThread::sendData(){
     state_t ret;
     // Case 1 - window is closed (waiting on message/cant send anymore data)
     if(this->window->isClosed()){
+        std::cout << "window is closed" << std::endl;
         return WAITING;
     }else{                    
         // Case 2 - window is open (still can send data)
@@ -111,6 +127,7 @@ state_t ServerThread::sendData(){
             // Case 2.1 - could be the last packet read
             case EOF_PACKET:
             {
+                std::cout << "IN EOF_PACKET" << std::endl;
                 this->sendPacket(built);
                 return WAITING; //
             }
@@ -177,7 +194,7 @@ state_t ServerThread::receiveData(){
                 if(!this->window->isAcked(i)){
                     break;
                 }
-                this->window->slide(i);
+                this->window->slide(i+1);
             }
         // Case 2 - where the packet recvd isnt the leftmost
         }else{
@@ -234,13 +251,14 @@ void ServerThread::processRCopy(RCopySetupPacket setup)
     this->window = new Window(setup.getWindowSize());
     
     // Step 2 - go through the process
+    std::cout << "new server thread" << std::endl;
 
     while(1){
         switch (state)
         {
             case FILENAME:
             {
-                if((file = safe_fopen(fileName.c_str(), "r+")) == NULL){
+                if((file = open(fileName.c_str(), O_RDONLY)) < NULL){
                     RCopyPacket p = RCopyPacketBuilder::Build(0, FILENAME_PACKET_BAD, NULL, bufferSize);
                     // send bad filename 
                     this->sendPacket(p);
@@ -250,7 +268,7 @@ void ServerThread::processRCopy(RCopySetupPacket setup)
                     /*
                     std::cout << "FLAG: " << std::to_string(p.getRawPacket()[6]) << std::endl;
                     */
-                    RCopyPacketDebugger::println(p);
+                    //RCopyPacketDebugger::println(p);
                     this->sendPacket(p);
                     state=SEND_DATA;
                     // fill the window
@@ -277,7 +295,7 @@ void ServerThread::processRCopy(RCopySetupPacket setup)
             break;
             case DONE:
             {
-                safe_fclose(this->file);
+                safe_close(this->file);
                 safe_close(this->gateway.getSocketNumber());
                 return;
             }

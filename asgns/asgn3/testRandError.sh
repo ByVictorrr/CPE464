@@ -120,7 +120,7 @@ echo "========== DIFF (IN | OUT) ==========="
 diff -qs $FILE $FILEOUT
 RETVAL=$?
 
-rm -f $FILEOUT
+#rm -f $FILEOUT
 rm -f $APP_SERVER $APP_CLIENT
 
 clear_defs

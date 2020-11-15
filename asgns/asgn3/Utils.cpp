@@ -9,7 +9,8 @@ Window::Window(int size){
     this->current = 0;
     this->upper = size - 1;
     this->size = size;
-    this->packets = new RCopyPacket[size];
+
+    this->packets = new RCopyPacket[size]; // +1 because of size = 0
     this->_inWindow = new bool[size];
     this->_isAcked = new bool[size];
 }

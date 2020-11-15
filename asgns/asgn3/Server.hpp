@@ -33,7 +33,7 @@ class ServerThread{
         ServerThreadConnection gateway;
         Window *window;
         uint32_t bufferSize; 
-        FILE *file;
+        int file;
 
         /* utils */  
         void readFile(uint8_t *payload, size_t *lenRead) throw (ReadEOFException);

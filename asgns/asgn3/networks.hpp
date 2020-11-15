@@ -36,7 +36,6 @@ class Connection{
 		inline int *getRemoteLen(){return &this->remoteLen;}
 		inline void setSocketNumber(int sock){ this->socketNumber = sock;}
 		inline void setPort(in_port_t port){this->remote.sin6_port = port;}
-		inline void tearDown(){ safe_close(this->socketNumber);}
 
 };
 
@@ -67,7 +66,6 @@ class ServerThreadConnection: public Connection{
 		ServerThreadConnection(ServerConnection &parent){
 			this->remoteLen = *parent.getRemoteLen();
 			this->remote = *parent.getRemote();
-
     		this->socketNumber = safe_socket(AF_INET6, SOCK_DGRAM, 0);
 
 		}
