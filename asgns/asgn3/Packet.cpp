@@ -100,6 +100,11 @@ RCopySetupPacket::RCopySetupPacket(uint32_t bufferSize, uint32_t windowSize, con
 uint32_t RCopySetupPacket::getBufferSize(){return this->bufferSize;}
 uint32_t RCopySetupPacket::getWindowSize(){return this->windowSize;}
 std::string &RCopySetupPacket::getFileName(){return this->fileName;}
+
+
+/*************RCopyACKPacket************/
+RCopyACKPacket::RCopyACKPacket(uint32_t seqNum, uint8_t flag, uint8_t *payload) 
+: RCopyPacket(seqNum, flag, payload, sizeof(uint32_t)){}
 /**************RCopyPacket Utility Functions******************/
 
 RCopyPacket RCopyPacketBuilder::Build(uint32_t seqNum, uint8_t flag, uint8_t *payload, int payloadLen)
@@ -117,6 +122,19 @@ RCopySetupPacket RCopyPacketBuilder::BuildSetup(uint32_t bufferSize, uint32_t wi
     memcpy(payload+sizeof(bufferSize)+sizeof(windowSize), fileName, strlen(fileName)+1); // todo make var for max filename 100
     return RCopySetupPacket(bufferSize, windowSize, fileName, payload);
 }
+
+
+RCopyACKPacket RCopyPacketBuilder::BuildACK(uint32_t seqNum, uint8_t flag)
+{
+    uint8_t payload[MAX_PAYLOAD_LEN];
+    uint32_t rawSeqNum = htonl(seqNum);
+    
+    memset(payload, 0, MAX_PAYLOAD_LEN);
+    memcpy(payload, &rawSeqNum, sizeof(seqNum));
+
+    return RCopyACKPacket(seqNum, flag, payload);
+}
+
 ssize_t RCopyPacketSender::Send(RCopyPacket &packet, Connection &con)
 {
 
@@ -134,6 +152,16 @@ ssize_t RCopyPacketSender::SendSetup(RCopySetupPacket &packet, Connection &con)
     return safeSendToErr(con.getSocketNumber(),
                          packet.getRawPacket(), 
                          packet.MAX_PAYLOAD_SIZE+HDR_LEN,
+                         0, 
+                         con.getRemote(),
+                         *con.getRemoteLen()
+                         );
+}
+ssize_t RCopyPacketSender::SendACK(RCopyACKPacket &packet, Connection &con)
+{
+    return safeSendToErr(con.getSocketNumber(),
+                         packet.getRawPacket(), 
+                         packet.getPayloadSize()+HDR_LEN,
                          0, 
                          con.getRemote(),
                          *con.getRemoteLen()
@@ -182,6 +210,20 @@ RCopySetupPacket RCopyPacketParser::ParseSetup(uint8_t *packet) throw(CorruptPac
 }
 
 
+RCopyACKPacket RCopyPacketParser::ParseACK(uint8_t *packet) throw(CorruptPacketException)
+{
+    uint32_t seqNum;
+    uint8_t flag;
+    uint8_t *payload = packet+HDR_LEN;
+
+    if(in_cksum((unsigned short *)packet, sizeof(uint32_t)+HDR_LEN)!=0)
+        throw CorruptPacketException("CRC error");
+
+    memcpy(&flag, packet+sizeof(uint32_t), sizeof(flag));
+    memcpy(&seqNum, payload, sizeof(uint32_t));
+    return RCopyACKPacket(seqNum, flag, payload);
+}
+
 RCopyPacket RCopyPacketReciever::Recieve(int payloadLen, Connection &con) throw(CorruptPacketException){
     static uint8_t temp[MAX_PAYLOAD_LEN+HDR_LEN];
     int recvLen;
@@ -209,6 +251,20 @@ RCopySetupPacket RCopyPacketReciever::RecieveSetup(Connection &con) throw(Corrup
     }
 }
 
+
+RCopyACKPacket RCopyPacketReciever::RecieveACK(Connection &con) throw(CorruptPacketException)
+{
+    static uint8_t temp[MAX_PAYLOAD_LEN+HDR_LEN];
+    memset(temp, 0, MAX_PAYLOAD_LEN+HDR_LEN);
+    // Step 1 - recv packet
+    safeRecvfrom(con.getSocketNumber(), temp, sizeof(uint32_t)+HDR_LEN, 0,con.getRemote(), con.getRemoteLen());
+    // Step 2 - parse packet
+    try{
+        return RCopyPacketParser::ParseACK(temp);
+    }catch(CorruptPacketException &e){
+        throw e;
+    }
+}
 
 
 

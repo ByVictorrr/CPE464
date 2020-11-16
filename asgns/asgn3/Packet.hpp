@@ -113,6 +113,11 @@ class RCopySetupPacket: public RCopyPacket{
 
 };
 
+class RCopyACKPacket: public RCopyPacket{
+    public:
+        RCopyACKPacket(uint32_t seqNum, uint8_t flag, uint8_t *payload);
+};
+
 /*==================sender/builder===========================================*/
 class RCopyPacketBuilder{
     private:
@@ -120,6 +125,7 @@ class RCopyPacketBuilder{
     public:
         static RCopyPacket Build(uint32_t seqNum, uint8_t flag, uint8_t *payload, int payloadLen);
         static RCopySetupPacket BuildSetup(uint32_t bufferSize, uint32_t windowSize, const char *fileName);
+        static RCopyACKPacket BuildACK(uint32_t seqNum, uint8_t flag);
 };
 
 class RCopyPacketSender{
@@ -128,6 +134,7 @@ class RCopyPacketSender{
     public:
         static ssize_t Send(RCopyPacket &packet, Connection &con);
         static ssize_t SendSetup(RCopySetupPacket &packet, Connection &con);
+        static ssize_t SendACK(RCopyACKPacket &packet, Connection &con);
 };
 
 /*===========================parser/recv========================================*/
@@ -138,7 +145,7 @@ class RCopyPacketParser{
     public:
         static RCopyPacket Parse(uint8_t *packet, int payloadLen)throw(CorruptPacketException);
         static RCopySetupPacket ParseSetup(uint8_t *packet) throw(CorruptPacketException);
-
+        static RCopyACKPacket ParseACK(uint8_t *packet) throw(CorruptPacketException);
 };
 
 class RCopyPacketReciever{
@@ -147,7 +154,7 @@ class RCopyPacketReciever{
     public:
         static RCopyPacket Recieve(int payloadLen, Connection &con) throw(CorruptPacketException);
         static RCopySetupPacket RecieveSetup(Connection &con) throw(CorruptPacketException);
-
+        static RCopyACKPacket RecieveACK(Connection &con) throw(CorruptPacketException);// fixed payloadlen
 };
 
 class RCopyPacketDebugger{
