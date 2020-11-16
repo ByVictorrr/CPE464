@@ -40,7 +40,7 @@ clean:
 PORT=49628
 FROM_DIR=$(shell pwd)/tests/from_files
 TO_DIR=$(shell pwd)/tests/to_files
-REMOTE_MACHINE=localhost
+REMOTE_MACHINE=unix1.csc.calpoly.edu
 
 # ./rcopy <from-file> <to-file> <buff-size> <err-per> <win-size> <remote-name> <remote-port>
 
@@ -51,7 +51,7 @@ WIND_SIZE=1000
 BUFF_SIZE=1000
 RCOPY_ERR_PER=.2
 SERVER_ERR_PER=$(RCOPY_ERR_PER)
-FROM_TEST=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+FROM_TEST=long_binary
 TO_TEST=$(FROM_TEST)
 
 test_rcopy: rcopy
