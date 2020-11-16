@@ -109,7 +109,6 @@ ssize_t ServerThread::sendPacket(RCopyPacket &packet){
 
 /**************state func****************/
 state_t ServerThread::sendData(){
-    state_t ret;
     static bool sentEOF=false;
     // Case 1 - window is closed (waiting on message/cant send anymore data)
     if(this->window->isClosed() || sentEOF){
@@ -192,15 +191,15 @@ state_t ServerThread::receiveData(){
         */
 
        // right here not acking if RR13
-       for(int i=this->window->getLower(); i < seqNum; i++)
+       for(uint32_t i=this->window->getLower(); i < seqNum; i++)
            if(this->window->inWindow(i))
             this->window->setIsAcked(i); // packet with seqNum is acked
         
         // Case 1 - where left most packet is the revd one
         // Case 2 - check to see if any adjacent are acked
-        int upper=this->window->getUpper();
-        int lower=this->window->getLower();
-        for(int i=lower; i<=upper; i++){                    
+        uint32_t upper=this->window->getUpper();
+        uint32_t lower=this->window->getLower();
+        for(uint32_t i=lower; i<=upper; i++){                    
             // Case 2.2 - if the adjacent isnt acked stop slidding
             if(!this->window->isAcked(i))
                 break;
@@ -236,7 +235,6 @@ state_t ServerThread::waiting(){
         
         std::cout << "==========================" << std::endl;
         std::cout << "SENDING LOWEST unacked packet" << std::endl;
-        std::cout << "Index: " << this->window->getLower() % (this->window->getSize() -1) << std::endl;
         RCopyPacket &p = this->window->getPacket(this->window->getLower());
         std::cout << "packet seqNo: " << p.getHeader().getSequenceNumber() << std::endl;
         std::cout << "Window lower: " << this->window->getLower() << std::endl;
@@ -276,17 +274,13 @@ void ServerThread::processRCopy(RCopySetupPacket setup)
         {
             case FILENAME:
             {
-                if((file = open(fileName.c_str(), O_RDONLY)) < NULL){
+                if((file = open(fileName.c_str(), O_RDONLY)) < 0){
                     RCopyPacket p = RCopyPacketBuilder::Build(-1, FILENAME_PACKET_BAD, NULL, bufferSize);
                     // send bad filename 
                     this->sendPacket(p);
                     state = DONE;
                 }else{
                     RCopyPacket p = RCopyPacketBuilder::Build(-1, FILENAME_PACKET_OK, NULL, bufferSize);
-                    /*
-                    std::cout << "FLAG: " << std::to_string(p.getRawPacket()[6]) << std::endl;
-                    */
-                    //RCopyPacketDebugger::println(p);
                     this->sendPacket(p);
                     state=SEND_DATA;
                     // fill the window

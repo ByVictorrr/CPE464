@@ -24,7 +24,6 @@
 
 int main ( int argc, char *argv[]  )
 {
-	int socketNum = 0;
 	ServerArgs args = ServerArgsParser::parse(argc, argv);
 
 	Server server(args);

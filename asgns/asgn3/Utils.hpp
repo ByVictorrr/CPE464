@@ -3,7 +3,6 @@
 
 #include "Packet.hpp"
 
-class RCopyPacket;
 class Window{
     private:
         uint32_t upper, lower, current;
@@ -44,7 +43,7 @@ class Window{
             os << ", lower: " << w.lower << std::endl;
             os << ", current: " << w.current << std::endl;
             os << "packets: {"; 
-            for(int i=w.lower; i <=  w.upper; i++){
+            for(uint32_t i=w.lower; i <=  w.upper; i++){
                 os << w.getPacket(i) 
                    << ",inWindow: " << w.inWindow(i)
                    << ",isAcked: " << w.isAcked(i) 

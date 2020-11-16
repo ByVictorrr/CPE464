@@ -39,7 +39,7 @@ size_t RCopy::writePacketToFile(RCopyPacket &p){
     size_t len;
     std::cout << "PAYLAOD SIZE IN write function "<< p.getPayloadSize() << std::endl;
     if((len=fwrite((void*)p.getPayload(), (size_t)sizeof(uint8_t), p.getPayloadSize(), 
-                   this->toFile)) != p.getPayloadSize()){
+                   this->toFile)) != (size_t)p.getPayloadSize()){
                         std::cerr << "problem writing " << std::endl;
                         return 0;
                     }
@@ -81,10 +81,7 @@ state_t RCopy::sendFileName(){
 }
 
 state_t RCopy::receieveData(){
-    state_t ret;
-    uint8_t flag;
     uint32_t seqNum;
-
        /* Case 1 - no data packet waiting */
     if(!safeSelectTimeout(this->gateway.getSocketNumber(), 10, 0))
         return DONE;
@@ -94,7 +91,6 @@ state_t RCopy::receieveData(){
         std::cout << this->window.getLower() << std::endl;
         RCopyPacket &&recvPacket = recievePacket();
         seqNum = recvPacket.getHeader().getSequenceNumber();
-        flag = recvPacket.getHeader().getFlag();
         std::cout << this->window << std::endl;
         // Case 2.1 - if we recieved an eof packet 
 
@@ -120,7 +116,7 @@ state_t RCopy::receieveData(){
                 this->window.insert(recvPacket);
             }
             /* give the highest ack sendsrej*/
-            for(int i = this->window.getCurrent(); i < seqNum; i++){
+            for(uint32_t i = this->window.getCurrent(); i < seqNum; i++){
                 if(!this->window.inWindow(i)){
                     RCopyACKPacket &&p = this->buildACKPacket(i, SREJ_PACKET);
                     this->window.setCurrent(i+1);

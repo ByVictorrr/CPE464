@@ -1,4 +1,3 @@
-#include "Packet.hpp"
 #include "Utils.hpp"
 
 int Window::getIndex(uint32_t seqNum){
@@ -7,13 +6,15 @@ int Window::getIndex(uint32_t seqNum){
 Window::Window(int size){
     this->lower = 1;
     this->current = 1;
-    this->upper = size - 1;
+    this->upper = size == 1 ? 1 : size - 1;
     this->size = size;
 
     this->packets = new RCopyPacket[size]; // +1 because of size = 0
     this->_inWindow = new bool[size];
     this->_isAcked = new bool[size];
-    memset(this->packets, 0, size*sizeof(RCopyACKPacket));
+    for(int i =0 ; i < size; i++){
+        this->packets[i].clear();
+    }
     memset(this->_inWindow, 0, size*sizeof(bool));
     memset(this->_isAcked, 0, size*sizeof(bool));
 }
@@ -51,6 +52,7 @@ void Window::remove(uint32_t seqNum){
     int index = getIndex(seqNum);
     this->_inWindow[index] = false;
     this->_isAcked[index] = false;
+    this->packets[index].clear();
 }
 
 RCopyPacket &Window::getPacket(uint32_t seqNum){
@@ -60,17 +62,22 @@ RCopyPacket &Window::getPacket(uint32_t seqNum){
 
 bool Window::isClosed(){
     // Never closed if window is size of 1
-    if(this->size == 1){
-        return false;
+    if(size == 1){
+        int index = getIndex(this->lower);
+        if(!_isAcked[index] && _inWindow[index]){
+            return true;
+        }else{
+            return false;
+        }
     }
-    for(int i=this->lower; i <= this->upper; i++)
+    for(uint32_t i=this->lower; i <= this->upper; i++)
         if(!this->inWindow(i))
             return false;
     return true;
 }
 
 void Window::slide(uint32_t toSeqNum){
-    for(int i= this->lower; i < toSeqNum; i++){
+    for(uint32_t i= this->lower; i < toSeqNum; i++){
         this->remove(i);
     }
     this->lower = toSeqNum;

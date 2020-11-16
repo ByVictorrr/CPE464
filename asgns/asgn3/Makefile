@@ -2,7 +2,7 @@
 # written by Hugh Smith - April 2017
 SHELL := /bin/bash
 CC = g++
-CFLAGS= -g -Wall --std=c++14 -pthread
+CFLAGS= -g -Wall --std=c++11 -Wno-deprecated
 LIBS+= libcpe464.2.20.a
 
 C_FILES = $(shell find . -maxdepth 1 -name "*.c*")
