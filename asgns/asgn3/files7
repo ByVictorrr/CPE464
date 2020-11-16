@@ -1,0 +1,4086 @@
+** ENV - OVERRIDE ERROR DROP: ENABLED **
+Send Err-INIT ErrRate: 0.20 Drop: Y Flip: Y Rand: N Debug: Y
+RECV          SEQ# 4294967295 LEN  115 FLAGS 7  -FNAME    
+Server using Port #: 49628
+parsesetup: 4294967295
+packet={header:{seqNum:4294967295,checksum:36072,flag:7},bufferSize:1000,windowSize:10,fromFileName/home/victord/CPE464/asgns/asgn3/tests/from_files/long_binary}
+
+new server thread
+SEND MSG#   1 SEQ# 4294967295 LEN 1007 FLAGS 8  -FNAME response
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 9
+, lower: 1
+, current: 1
+packets: {packet={header:{seqNum:1,checksum:3336,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 0
+SEND MSG#   2 SEQ#   1 LEN 1007 FLAGS 3  -Data #:    1
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 9
+, lower: 1
+, current: 2
+packets: {packet={header:{seqNum:1,checksum:3336,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:2,checksum:21771,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 1
+SEND MSG#   3 SEQ#   2 LEN 1007 FLAGS 3  -Data #:    2
+RECV          SEQ#   2 LEN   11 FLAGS 5  -RR #:      2
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 2
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 11
+, lower: 2
+, current: 3
+packets: {packet={header:{seqNum:2,checksum:21771,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:3,checksum:30714,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:1,checksum:3336,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 2
+SEND MSG#   4 SEQ#   3 LEN 1007 FLAGS 3  -Data #:    3
+RECV          SEQ#   3 LEN   11 FLAGS 5  -RR #:      3
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 3
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 12
+, lower: 3
+, current: 4
+packets: {packet={header:{seqNum:3,checksum:30714,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:4,checksum:5880,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:1,checksum:3336,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:2,checksum:21771,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 3
+SEND MSG#   5 SEQ#   4 LEN 1007 FLAGS 3  -Data #:    4
+RECV          SEQ#   4 LEN   11 FLAGS 5  -RR #:      4
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 4
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 13
+, lower: 4
+, current: 5
+packets: {packet={header:{seqNum:4,checksum:5880,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:5,checksum:50315,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:1,checksum:3336,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:2,checksum:21771,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:3,checksum:30714,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 4
+SEND MSG#   6 SEQ#   5 LEN 1007 FLAGS 3  -Data #:    5
+RECV          SEQ#   5 LEN   11 FLAGS 5  -RR #:      5
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 5
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 14
+, lower: 5
+, current: 6
+packets: {packet={header:{seqNum:5,checksum:50315,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:6,checksum:10716,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:1,checksum:3336,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:2,checksum:21771,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:3,checksum:30714,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:4,checksum:5880,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 5
+SEND MSG#   7 SEQ#   6 LEN 1007 FLAGS 3  -Data #:    6
+RECV          SEQ#   6 LEN   11 FLAGS 5  -RR #:      6
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 6
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 15
+, lower: 6
+, current: 7
+packets: {packet={header:{seqNum:6,checksum:10716,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:7,checksum:18050,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:1,checksum:3336,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:2,checksum:21771,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:3,checksum:30714,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:4,checksum:5880,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:5,checksum:50315,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 6
+SEND MSG#   8 SEQ#   7 LEN 1007 FLAGS 3  -Data #:    7
+RECV          SEQ#   7 LEN   11 FLAGS 5  -RR #:      7
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 7
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 16
+, lower: 7
+, current: 8
+packets: {packet={header:{seqNum:7,checksum:18050,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:8,checksum:52523,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:1,checksum:3336,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:2,checksum:21771,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:3,checksum:30714,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:4,checksum:5880,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:5,checksum:50315,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:6,checksum:10716,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 7
+SEND MSG#   9 SEQ#   8 LEN 1007 FLAGS 3  -Data #:    8
+RECV          SEQ#   8 LEN   11 FLAGS 5  -RR #:      8
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 8
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 17
+, lower: 8
+, current: 9
+packets: {packet={header:{seqNum:8,checksum:52523,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:9,checksum:25620,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:1,checksum:3336,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:2,checksum:21771,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:3,checksum:30714,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:4,checksum:5880,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:5,checksum:50315,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:6,checksum:10716,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:7,checksum:18050,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 8
+SEND MSG#  10 SEQ#   9 LEN 1007 FLAGS 3  -Data #:    9
+RECV          SEQ#   9 LEN   11 FLAGS 5  -RR #:      9
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 9
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 18
+, lower: 9
+, current: 10
+packets: {packet={header:{seqNum:9,checksum:25620,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:10,checksum:60708,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:1,checksum:3336,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:2,checksum:21771,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:3,checksum:30714,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:4,checksum:5880,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:5,checksum:50315,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:6,checksum:10716,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:7,checksum:18050,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:8,checksum:52523,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 9
+SEND MSG#  11 SEQ#  10 LEN 1007 FLAGS 3  -Data #:   10
+RECV          SEQ#  10 LEN   11 FLAGS 5  -RR #:     10
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 10
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 19
+, lower: 10
+, current: 11
+packets: {packet={header:{seqNum:10,checksum:60708,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:11,checksum:2372,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:2,checksum:21771,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:3,checksum:30714,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:4,checksum:5880,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:5,checksum:50315,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:6,checksum:10716,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:7,checksum:18050,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:8,checksum:52523,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:9,checksum:25620,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 0
+SEND MSG#  12 SEQ#  11 LEN 1007 FLAGS 3  -Data #:   11
+RECV          SEQ#  11 LEN   11 FLAGS 5  -RR #:     11
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 11
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 20
+, lower: 11
+, current: 12
+packets: {packet={header:{seqNum:11,checksum:2372,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:12,checksum:62460,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:3,checksum:30714,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:4,checksum:5880,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:5,checksum:50315,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:6,checksum:10716,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:7,checksum:18050,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:8,checksum:52523,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:9,checksum:25620,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:10,checksum:60708,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 1
+SEND MSG#  13 SEQ#  12 LEN 1007 FLAGS 3  -Data #:   12
+RECV          SEQ#  12 LEN   11 FLAGS 5  -RR #:     12
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 12
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 21
+, lower: 12
+, current: 13
+packets: {packet={header:{seqNum:12,checksum:62460,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:13,checksum:41929,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:4,checksum:5880,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:5,checksum:50315,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:6,checksum:10716,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:7,checksum:18050,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:8,checksum:52523,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:9,checksum:25620,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:10,checksum:60708,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:11,checksum:2372,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 2
+SEND MSG#  14 SEQ#  13 LEN 1007 FLAGS 3  -Data #:   13
+RECV          SEQ#  13 LEN   11 FLAGS 5  -RR #:     13
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 13
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 22
+, lower: 13
+, current: 14
+packets: {packet={header:{seqNum:13,checksum:41929,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:14,checksum:60406,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:5,checksum:50315,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:6,checksum:10716,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:7,checksum:18050,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:8,checksum:52523,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:9,checksum:25620,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:10,checksum:60708,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:11,checksum:2372,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:12,checksum:62460,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 3
+SEND MSG#  15 SEQ#  14 LEN 1007 FLAGS 3  -Data #:   14
+RECV          SEQ#  14 LEN   11 FLAGS 5  -RR #:     14
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 14
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 23
+, lower: 14
+, current: 15
+packets: {packet={header:{seqNum:14,checksum:60406,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:15,checksum:22481,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:6,checksum:10716,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:7,checksum:18050,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:8,checksum:52523,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:9,checksum:25620,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:10,checksum:60708,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:11,checksum:2372,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:12,checksum:62460,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:13,checksum:41929,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 4
+SEND MSG#  16 SEQ#  15 LEN 1007 FLAGS 3  -Data #:   15
+RECV          SEQ#  15 LEN   11 FLAGS 5  -RR #:     15
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 15
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 24
+, lower: 15
+, current: 16
+packets: {packet={header:{seqNum:15,checksum:22481,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:16,checksum:44107,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:7,checksum:18050,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:8,checksum:52523,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:9,checksum:25620,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:10,checksum:60708,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:11,checksum:2372,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:12,checksum:62460,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:13,checksum:41929,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:14,checksum:60406,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 5
+SEND MSG#  17 SEQ#  16 LEN 1007 FLAGS 3  -Data #:   16
+RECV          SEQ#  16 LEN   11 FLAGS 5  -RR #:     16
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 16
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 25
+, lower: 16
+, current: 17
+packets: {packet={header:{seqNum:16,checksum:44107,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:17,checksum:8373,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:8,checksum:52523,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:9,checksum:25620,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:10,checksum:60708,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:11,checksum:2372,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:12,checksum:62460,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:13,checksum:41929,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:14,checksum:60406,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:15,checksum:22481,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 6
+SEND MSG#  18 SEQ#  17 LEN 1007 FLAGS 3  -Data #:   17
+RECV          SEQ#  17 LEN   11 FLAGS 5  -RR #:     17
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 17
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 26
+, lower: 17
+, current: 18
+packets: {packet={header:{seqNum:17,checksum:8373,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:18,checksum:44912,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:9,checksum:25620,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:10,checksum:60708,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:11,checksum:2372,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:12,checksum:62460,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:13,checksum:41929,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:14,checksum:60406,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:15,checksum:22481,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:16,checksum:44107,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 7
+SEND MSG#  19 SEQ#  18 LEN 1007 FLAGS 3  -Data #:   18
+RECV          SEQ#  18 LEN   11 FLAGS 5  -RR #:     18
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 18
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 27
+, lower: 18
+, current: 19
+packets: {packet={header:{seqNum:18,checksum:44912,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:19,checksum:51549,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:10,checksum:60708,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:11,checksum:2372,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:12,checksum:62460,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:13,checksum:41929,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:14,checksum:60406,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:15,checksum:22481,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:16,checksum:44107,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:17,checksum:8373,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 8
+SEND MSG#  20 SEQ#  19 LEN 1007 FLAGS 3  -Data #:   19
+RECV          SEQ#  19 LEN   11 FLAGS 5  -RR #:     19
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 19
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 28
+, lower: 19
+, current: 20
+packets: {packet={header:{seqNum:19,checksum:51549,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:20,checksum:47624,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:11,checksum:2372,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:12,checksum:62460,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:13,checksum:41929,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:14,checksum:60406,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:15,checksum:22481,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:16,checksum:44107,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:17,checksum:8373,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:18,checksum:44912,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 9
+SEND MSG#  21 SEQ#  20 LEN 1007 FLAGS 3  -Data #:   20 - DROPPED 
+RECV          SEQ#  20 LEN   11 FLAGS 5  -RR #:     20
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 20
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 29
+, lower: 20
+, current: 21
+packets: {packet={header:{seqNum:20,checksum:47624,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:21,checksum:56944,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:12,checksum:62460,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:13,checksum:41929,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:14,checksum:60406,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:15,checksum:22481,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:16,checksum:44107,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:17,checksum:8373,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:18,checksum:44912,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:19,checksum:51549,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 0
+SEND MSG#  22 SEQ#  21 LEN 1007 FLAGS 3  -Data #:   21 - DROPPED 
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 29
+, lower: 20
+, current: 22
+packets: {packet={header:{seqNum:20,checksum:47624,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:21,checksum:56944,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:22,checksum:8481,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:13,checksum:41929,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:14,checksum:60406,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:15,checksum:22481,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:16,checksum:44107,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:17,checksum:8373,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:18,checksum:44912,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:19,checksum:51549,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 1
+SEND MSG#  23 SEQ#  22 LEN 1007 FLAGS 3  -Data #:   22
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 29
+, lower: 20
+, current: 23
+packets: {packet={header:{seqNum:20,checksum:47624,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:21,checksum:56944,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:22,checksum:8481,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:23,checksum:40536,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:14,checksum:60406,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:15,checksum:22481,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:16,checksum:44107,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:17,checksum:8373,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:18,checksum:44912,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:19,checksum:51549,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 2
+SEND MSG#  24 SEQ#  23 LEN 1007 FLAGS 3  -Data #:   23
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 29
+, lower: 20
+, current: 24
+packets: {packet={header:{seqNum:20,checksum:47624,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:21,checksum:56944,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:22,checksum:8481,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:23,checksum:40536,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:24,checksum:26939,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:15,checksum:22481,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:16,checksum:44107,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:17,checksum:8373,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:18,checksum:44912,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:19,checksum:51549,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 3
+SEND MSG#  25 SEQ#  24 LEN 1007 FLAGS 3  -Data #:   24 - DROPPED 
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 29
+, lower: 20
+, current: 25
+packets: {packet={header:{seqNum:20,checksum:47624,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:21,checksum:56944,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:22,checksum:8481,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:23,checksum:40536,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:24,checksum:26939,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:25,checksum:37473,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:16,checksum:44107,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:17,checksum:8373,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:18,checksum:44912,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:19,checksum:51549,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 4
+SEND MSG#  26 SEQ#  25 LEN 1007 FLAGS 3  -Data #:   25
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 29
+, lower: 20
+, current: 26
+packets: {packet={header:{seqNum:20,checksum:47624,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:21,checksum:56944,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:22,checksum:8481,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:23,checksum:40536,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:24,checksum:26939,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:25,checksum:37473,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:26,checksum:29001,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:17,checksum:8373,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:18,checksum:44912,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:19,checksum:51549,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 5
+SEND MSG#  27 SEQ#  26 LEN 1007 FLAGS 3  -Data #:   26
+RECV          SEQ#  24 LEN   11 FLAGS 6  -SREJ #:   24
+recvd a packet of len11
+SEND MSG#  28 SEQ#  24 LEN 1007 FLAGS 3  -Data #:   24
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 29
+, lower: 20
+, current: 27
+packets: {packet={header:{seqNum:20,checksum:47624,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:21,checksum:56944,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:22,checksum:8481,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:23,checksum:40536,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:24,checksum:26939,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:25,checksum:37473,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:26,checksum:29001,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:27,checksum:15299,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:18,checksum:44912,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:19,checksum:51549,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 6
+SEND MSG#  29 SEQ#  27 LEN 1007 FLAGS 3  -Data #:   27
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 29
+, lower: 20
+, current: 28
+packets: {packet={header:{seqNum:20,checksum:47624,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:21,checksum:56944,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:22,checksum:8481,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:23,checksum:40536,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:24,checksum:26939,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:25,checksum:37473,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:26,checksum:29001,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:27,checksum:15299,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:28,checksum:6045,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:19,checksum:51549,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 7
+SEND MSG#  30 SEQ#  28 LEN 1007 FLAGS 3  -Data #:   28
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 29
+, lower: 20
+, current: 29
+packets: {packet={header:{seqNum:20,checksum:47624,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:21,checksum:56944,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:22,checksum:8481,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:23,checksum:40536,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:24,checksum:26939,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:25,checksum:37473,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:26,checksum:29001,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:27,checksum:15299,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:28,checksum:6045,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:29,checksum:49327,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 8
+SEND MSG#  31 SEQ#  29 LEN 1007 FLAGS 3  -Data #:   29
+window is closed
+waiting
+==========================
+SENDING LOWEST unacked packet
+Index: 2
+packet seqNo: 20
+Window lower: 20
+=================
+window={upper: 29
+, lower: 20
+, current: 30
+packets: {packet={header:{seqNum:20,checksum:47624,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:21,checksum:56944,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:22,checksum:8481,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:23,checksum:40536,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:24,checksum:26939,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:25,checksum:37473,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:26,checksum:29001,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:27,checksum:15299,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:28,checksum:6045,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:29,checksum:49327,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+SEND MSG#  32 SEQ#  20 LEN 1007 FLAGS 3  -Data #:   20
+waiting
+RECV          SEQ#  21 LEN   11 FLAGS 5  -RR #:     21
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 21
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 30
+, lower: 21
+, current: 30
+packets: {packet={header:{seqNum:21,checksum:56944,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:22,checksum:8481,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:23,checksum:40536,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:24,checksum:26939,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:25,checksum:37473,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:26,checksum:29001,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:27,checksum:15299,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:28,checksum:6045,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:29,checksum:49327,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:30,checksum:34444,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 9
+SEND MSG#  33 SEQ#  30 LEN 1007 FLAGS 3  -Data #:   30
+window is closed
+waiting
+==========================
+SENDING LOWEST unacked packet
+Index: 3
+packet seqNo: 21
+Window lower: 21
+=================
+window={upper: 30
+, lower: 21
+, current: 31
+packets: {packet={header:{seqNum:21,checksum:56944,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:22,checksum:8481,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:23,checksum:40536,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:24,checksum:26939,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:25,checksum:37473,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:26,checksum:29001,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:27,checksum:15299,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:28,checksum:6045,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:29,checksum:49327,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:30,checksum:34444,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+SEND MSG#  34 SEQ#  21 LEN 1007 FLAGS 3  -Data #:   21
+waiting
+RECV          SEQ#  22 LEN   11 FLAGS 5  -RR #:     22
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 22
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 31
+, lower: 22
+, current: 31
+packets: {packet={header:{seqNum:22,checksum:8481,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:23,checksum:40536,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:24,checksum:26939,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:25,checksum:37473,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:26,checksum:29001,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:27,checksum:15299,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:28,checksum:6045,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:29,checksum:49327,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:30,checksum:34444,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:31,checksum:10691,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 0
+SEND MSG#  35 SEQ#  31 LEN 1007 FLAGS 3  -Data #:   31 - FLIPPED BITS 
+RECV          SEQ#  23 LEN   11 FLAGS 5  -RR #:     23
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 23
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 32
+, lower: 23
+, current: 32
+packets: {packet={header:{seqNum:23,checksum:40536,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:24,checksum:26939,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:25,checksum:37473,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:26,checksum:29001,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:27,checksum:15299,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:28,checksum:6045,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:29,checksum:49327,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:30,checksum:34444,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:31,checksum:10691,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:32,checksum:56852,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 1
+SEND MSG#  36 SEQ#  32 LEN 1007 FLAGS 3  -Data #:   32
+RECV          SEQ#  24 LEN   11 FLAGS 5  -RR #:     24
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 24
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 33
+, lower: 24
+, current: 33
+packets: {packet={header:{seqNum:24,checksum:26939,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:25,checksum:37473,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:26,checksum:29001,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:27,checksum:15299,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:28,checksum:6045,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:29,checksum:49327,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:30,checksum:34444,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:31,checksum:10691,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:32,checksum:56852,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:33,checksum:29402,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 2
+SEND MSG#  37 SEQ#  33 LEN 1007 FLAGS 3  -Data #:   33 - DROPPED 
+RECV          SEQ#  25 LEN   11 FLAGS 5  -RR #:     25
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 25
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 34
+, lower: 25
+, current: 34
+packets: {packet={header:{seqNum:25,checksum:37473,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:26,checksum:29001,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:27,checksum:15299,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:28,checksum:6045,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:29,checksum:49327,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:30,checksum:34444,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:31,checksum:10691,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:32,checksum:56852,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:33,checksum:29402,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:34,checksum:37332,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 3
+SEND MSG#  38 SEQ#  34 LEN 1007 FLAGS 3  -Data #:   34
+RECV          SEQ#  26 LEN   11 FLAGS 5  -RR #:     26
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 26
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 35
+, lower: 26
+, current: 35
+packets: {packet={header:{seqNum:26,checksum:29001,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:27,checksum:15299,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:28,checksum:6045,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:29,checksum:49327,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:30,checksum:34444,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:31,checksum:10691,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:32,checksum:56852,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:33,checksum:29402,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:34,checksum:37332,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:35,checksum:59248,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 4
+SEND MSG#  39 SEQ#  35 LEN 1007 FLAGS 3  -Data #:   35
+RECV          SEQ#  27 LEN   11 FLAGS 5  -RR #:     27
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 27
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 36
+, lower: 27
+, current: 36
+packets: {packet={header:{seqNum:27,checksum:15299,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:28,checksum:6045,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:29,checksum:49327,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:30,checksum:34444,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:31,checksum:10691,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:32,checksum:56852,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:33,checksum:29402,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:34,checksum:37332,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:35,checksum:59248,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:36,checksum:40122,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 5
+SEND MSG#  40 SEQ#  36 LEN 1007 FLAGS 3  -Data #:   36 - FLIPPED BITS 
+RECV          SEQ#  28 LEN   11 FLAGS 5  -RR #:     28
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 28
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 37
+, lower: 28
+, current: 37
+packets: {packet={header:{seqNum:28,checksum:6045,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:29,checksum:49327,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:30,checksum:34444,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:31,checksum:10691,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:32,checksum:56852,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:33,checksum:29402,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:34,checksum:37332,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:35,checksum:59248,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:36,checksum:40122,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:37,checksum:59278,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 6
+SEND MSG#  41 SEQ#  37 LEN 1007 FLAGS 3  -Data #:   37
+RECV          SEQ#  29 LEN   11 FLAGS 5  -RR #:     29
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 29
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 38
+, lower: 29
+, current: 38
+packets: {packet={header:{seqNum:29,checksum:49327,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:30,checksum:34444,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:31,checksum:10691,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:32,checksum:56852,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:33,checksum:29402,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:34,checksum:37332,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:35,checksum:59248,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:36,checksum:40122,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:37,checksum:59278,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:38,checksum:46316,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 7
+SEND MSG#  42 SEQ#  38 LEN 1007 FLAGS 3  -Data #:   38
+RECV          SEQ#  30 LEN   11 FLAGS 5  -RR #:     30
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 30
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 39
+, lower: 30
+, current: 39
+packets: {packet={header:{seqNum:30,checksum:34444,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:31,checksum:10691,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:32,checksum:56852,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:33,checksum:29402,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:34,checksum:37332,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:35,checksum:59248,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:36,checksum:40122,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:37,checksum:59278,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:38,checksum:46316,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:39,checksum:53887,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 8
+SEND MSG#  43 SEQ#  39 LEN 1007 FLAGS 3  -Data #:   39
+RECV          SEQ# 4278190111 LEN   11 FLAGS 5  -RR #:     31 - RECV Corrupted packet
+recvd a packet of len11
+bad crc
+waiting
+RECV          SEQ#  31 LEN   11 FLAGS 6  -SREJ #:   31
+recvd a packet of len11
+SEND MSG#  44 SEQ#  31 LEN 1007 FLAGS 3  -Data #:   31
+window is closed
+waiting
+RECV          SEQ#  36 LEN   11 FLAGS 6  -SREJ #:   36
+recvd a packet of len11
+SEND MSG#  45 SEQ#  36 LEN 1007 FLAGS 3  -Data #:   36
+window is closed
+waiting
+RECV          SEQ#  32 LEN   11 FLAGS 5  -RR #:     32
+recvd a packet of len11
+In RR_PACKET
+window is closed
+waiting
+RECV          SEQ# 65313 LEN   11 FLAGS 5  -RR #:     33 - RECV Corrupted packet
+recvd a packet of len11
+bad crc
+waiting
+RECV          SEQ#  33 LEN   11 FLAGS 6  -SREJ #:   33
+recvd a packet of len11
+SEND MSG#  46 SEQ#  33 LEN 1007 FLAGS 3  -Data #:   33
+window is closed
+waiting
+RECV          SEQ#  34 LEN   11 FLAGS 5  -RR #:     34
+recvd a packet of len11
+In RR_PACKET
+window is closed
+waiting
+RECV          SEQ#  35 LEN   11 FLAGS 5  -RR #:     35
+recvd a packet of len11
+In RR_PACKET
+window is closed
+waiting
+RECV          SEQ#  36 LEN   11 FLAGS 5  -RR #:     36
+recvd a packet of len11
+In RR_PACKET
+window is closed
+waiting
+RECV          SEQ#  37 LEN   11 FLAGS 5  -RR #:     37
+recvd a packet of len11
+In RR_PACKET
+window is closed
+waiting
+RECV          SEQ#  38 LEN   11 FLAGS 5  -RR #:     38
+recvd a packet of len11
+In RR_PACKET
+window is closed
+waiting
+RECV          SEQ#  39 LEN   11 FLAGS 5  -RR #:     39
+recvd a packet of len11
+In RR_PACKET
+window is closed
+waiting
+RECV          SEQ#  40 LEN   11 FLAGS 5  -RR #:     40
+recvd a packet of len11
+In RR_PACKET
+window is closed
+waiting
+==========================
+SENDING LOWEST unacked packet
+Index: 3
+packet seqNo: 30
+Window lower: 30
+=================
+window={upper: 39
+, lower: 30
+, current: 40
+packets: {packet={header:{seqNum:30,checksum:34444,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:31,checksum:10691,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:32,checksum:56852,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:33,checksum:29402,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:34,checksum:37332,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:35,checksum:59248,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:36,checksum:40122,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:37,checksum:59278,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:38,checksum:46316,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:39,checksum:53887,flag:3}},inWindow: 1,isAcked: 1
+}
+}
+
+SEND MSG#  47 SEQ#  30 LEN 1007 FLAGS 3  -Data #:   30
+waiting
+RECV          SEQ#  31 LEN   11 FLAGS 5  -RR #:     31
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 31
+sliding
+new lower: 32
+sliding
+new lower: 33
+sliding
+new lower: 34
+sliding
+new lower: 35
+sliding
+new lower: 36
+sliding
+new lower: 37
+sliding
+new lower: 38
+sliding
+new lower: 39
+sliding
+new lower: 40
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 49
+, lower: 40
+, current: 40
+packets: {packet={header:{seqNum:40,checksum:42034,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:31,checksum:10691,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:32,checksum:56852,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:33,checksum:29402,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:34,checksum:37332,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:35,checksum:59248,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:36,checksum:40122,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:37,checksum:59278,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:38,checksum:46316,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:39,checksum:53887,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 9
+SEND MSG#  48 SEQ#  40 LEN 1007 FLAGS 3  -Data #:   40
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 49
+, lower: 40
+, current: 41
+packets: {packet={header:{seqNum:40,checksum:42034,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:41,checksum:24478,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:32,checksum:56852,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:33,checksum:29402,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:34,checksum:37332,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:35,checksum:59248,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:36,checksum:40122,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:37,checksum:59278,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:38,checksum:46316,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:39,checksum:53887,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 0
+SEND MSG#  49 SEQ#  41 LEN 1007 FLAGS 3  -Data #:   41
+RECV          SEQ#  41 LEN   11 FLAGS 5  -RR #:     41
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 41
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 50
+, lower: 41
+, current: 42
+packets: {packet={header:{seqNum:41,checksum:24478,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:42,checksum:34721,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:33,checksum:29402,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:34,checksum:37332,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:35,checksum:59248,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:36,checksum:40122,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:37,checksum:59278,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:38,checksum:46316,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:39,checksum:53887,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:40,checksum:42034,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 1
+SEND MSG#  50 SEQ#  42 LEN 1007 FLAGS 3  -Data #:   42
+RECV          SEQ#  42 LEN   11 FLAGS 5  -RR #:     42
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 42
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 51
+, lower: 42
+, current: 43
+packets: {packet={header:{seqNum:42,checksum:34721,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:43,checksum:16376,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:34,checksum:37332,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:35,checksum:59248,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:36,checksum:40122,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:37,checksum:59278,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:38,checksum:46316,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:39,checksum:53887,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:40,checksum:42034,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:41,checksum:24478,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 2
+SEND MSG#  51 SEQ#  43 LEN 1007 FLAGS 3  -Data #:   43
+RECV          SEQ#  43 LEN   11 FLAGS 5  -RR #:     43
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 43
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 52
+, lower: 43
+, current: 44
+packets: {packet={header:{seqNum:43,checksum:16376,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:44,checksum:34942,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:35,checksum:59248,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:36,checksum:40122,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:37,checksum:59278,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:38,checksum:46316,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:39,checksum:53887,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:40,checksum:42034,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:41,checksum:24478,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:42,checksum:34721,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 3
+SEND MSG#  52 SEQ#  44 LEN 1007 FLAGS 3  -Data #:   44
+RECV          SEQ#  44 LEN   11 FLAGS 5  -RR #:     44
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 44
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 53
+, lower: 44
+, current: 45
+packets: {packet={header:{seqNum:44,checksum:34942,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:45,checksum:25532,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:36,checksum:40122,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:37,checksum:59278,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:38,checksum:46316,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:39,checksum:53887,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:40,checksum:42034,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:41,checksum:24478,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:42,checksum:34721,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:43,checksum:16376,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 4
+SEND MSG#  53 SEQ#  45 LEN 1007 FLAGS 3  -Data #:   45
+RECV          SEQ#  45 LEN   11 FLAGS 5  -RR #:     45
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 45
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 54
+, lower: 45
+, current: 46
+packets: {packet={header:{seqNum:45,checksum:25532,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:46,checksum:19439,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:37,checksum:59278,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:38,checksum:46316,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:39,checksum:53887,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:40,checksum:42034,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:41,checksum:24478,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:42,checksum:34721,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:43,checksum:16376,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:44,checksum:34942,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 5
+SEND MSG#  54 SEQ#  46 LEN 1007 FLAGS 3  -Data #:   46
+RECV          SEQ#  46 LEN   11 FLAGS 5  -RR #:     46
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 46
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 55
+, lower: 46
+, current: 47
+packets: {packet={header:{seqNum:46,checksum:19439,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:47,checksum:43127,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:38,checksum:46316,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:39,checksum:53887,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:40,checksum:42034,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:41,checksum:24478,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:42,checksum:34721,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:43,checksum:16376,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:44,checksum:34942,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:45,checksum:25532,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 6
+SEND MSG#  55 SEQ#  47 LEN 1007 FLAGS 3  -Data #:   47
+RECV          SEQ#  47 LEN   11 FLAGS 5  -RR #:     47
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 47
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 56
+, lower: 47
+, current: 48
+packets: {packet={header:{seqNum:47,checksum:43127,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:48,checksum:35297,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:39,checksum:53887,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:40,checksum:42034,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:41,checksum:24478,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:42,checksum:34721,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:43,checksum:16376,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:44,checksum:34942,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:45,checksum:25532,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:46,checksum:19439,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 7
+SEND MSG#  56 SEQ#  48 LEN 1007 FLAGS 3  -Data #:   48
+RECV          SEQ#  48 LEN   11 FLAGS 5  -RR #:     48
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 48
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 57
+, lower: 48
+, current: 49
+packets: {packet={header:{seqNum:48,checksum:35297,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:49,checksum:51705,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:40,checksum:42034,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:41,checksum:24478,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:42,checksum:34721,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:43,checksum:16376,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:44,checksum:34942,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:45,checksum:25532,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:46,checksum:19439,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:47,checksum:43127,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 8
+SEND MSG#  57 SEQ#  49 LEN 1007 FLAGS 3  -Data #:   49
+RECV          SEQ#  49 LEN   11 FLAGS 5  -RR #:     49
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 49
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 58
+, lower: 49
+, current: 50
+packets: {packet={header:{seqNum:49,checksum:51705,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:50,checksum:56457,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:41,checksum:24478,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:42,checksum:34721,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:43,checksum:16376,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:44,checksum:34942,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:45,checksum:25532,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:46,checksum:19439,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:47,checksum:43127,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:48,checksum:35297,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 9
+SEND MSG#  58 SEQ#  50 LEN 1007 FLAGS 3  -Data #:   50
+RECV          SEQ#  50 LEN   11 FLAGS 5  -RR #:     50
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 50
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 59
+, lower: 50
+, current: 51
+packets: {packet={header:{seqNum:50,checksum:56457,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:51,checksum:27680,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:42,checksum:34721,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:43,checksum:16376,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:44,checksum:34942,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:45,checksum:25532,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:46,checksum:19439,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:47,checksum:43127,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:48,checksum:35297,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:49,checksum:51705,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 0
+SEND MSG#  59 SEQ#  51 LEN 1007 FLAGS 3  -Data #:   51
+RECV          SEQ#  51 LEN   11 FLAGS 5  -RR #:     51
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 51
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 60
+, lower: 51
+, current: 52
+packets: {packet={header:{seqNum:51,checksum:27680,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:52,checksum:21149,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:43,checksum:16376,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:44,checksum:34942,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:45,checksum:25532,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:46,checksum:19439,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:47,checksum:43127,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:48,checksum:35297,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:49,checksum:51705,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:50,checksum:56457,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 1
+SEND MSG#  60 SEQ#  52 LEN 1007 FLAGS 3  -Data #:   52
+RECV          SEQ#  52 LEN   11 FLAGS 5  -RR #:     52
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 52
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 61
+, lower: 52
+, current: 53
+packets: {packet={header:{seqNum:52,checksum:21149,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:53,checksum:61848,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:44,checksum:34942,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:45,checksum:25532,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:46,checksum:19439,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:47,checksum:43127,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:48,checksum:35297,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:49,checksum:51705,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:50,checksum:56457,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:51,checksum:27680,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 2
+SEND MSG#  61 SEQ#  53 LEN 1007 FLAGS 3  -Data #:   53
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 61
+, lower: 52
+, current: 54
+packets: {packet={header:{seqNum:52,checksum:21149,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:53,checksum:61848,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:54,checksum:62234,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:45,checksum:25532,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:46,checksum:19439,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:47,checksum:43127,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:48,checksum:35297,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:49,checksum:51705,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:50,checksum:56457,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:51,checksum:27680,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 3
+SEND MSG#  62 SEQ#  54 LEN 1007 FLAGS 3  -Data #:   54 - DROPPED 
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 61
+, lower: 52
+, current: 55
+packets: {packet={header:{seqNum:52,checksum:21149,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:53,checksum:61848,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:54,checksum:62234,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:55,checksum:47035,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:46,checksum:19439,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:47,checksum:43127,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:48,checksum:35297,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:49,checksum:51705,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:50,checksum:56457,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:51,checksum:27680,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 4
+SEND MSG#  63 SEQ#  55 LEN 1007 FLAGS 3  -Data #:   55 - DROPPED 
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 61
+, lower: 52
+, current: 56
+packets: {packet={header:{seqNum:52,checksum:21149,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:53,checksum:61848,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:54,checksum:62234,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:55,checksum:47035,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:56,checksum:19456,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:47,checksum:43127,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:48,checksum:35297,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:49,checksum:51705,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:50,checksum:56457,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:51,checksum:27680,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 5
+SEND MSG#  64 SEQ#  56 LEN 1007 FLAGS 3  -Data #:   56
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 61
+, lower: 52
+, current: 57
+packets: {packet={header:{seqNum:52,checksum:21149,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:53,checksum:61848,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:54,checksum:62234,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:55,checksum:47035,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:56,checksum:19456,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:57,checksum:19540,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:48,checksum:35297,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:49,checksum:51705,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:50,checksum:56457,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:51,checksum:27680,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 6
+SEND MSG#  65 SEQ#  57 LEN 1007 FLAGS 3  -Data #:   57
+RECV          SEQ#  54 LEN   11 FLAGS 6  -SREJ #:   54
+recvd a packet of len11
+SEND MSG#  66 SEQ#  54 LEN 1007 FLAGS 3  -Data #:   54 - FLIPPED BITS 
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 61
+, lower: 52
+, current: 58
+packets: {packet={header:{seqNum:52,checksum:21149,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:53,checksum:61848,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:54,checksum:62234,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:55,checksum:47035,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:56,checksum:19456,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:57,checksum:19540,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:58,checksum:48168,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:49,checksum:51705,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:50,checksum:56457,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:51,checksum:27680,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 7
+SEND MSG#  67 SEQ#  58 LEN 1007 FLAGS 3  -Data #:   58
+RECV          SEQ#  55 LEN   11 FLAGS 6  -SREJ #:   55
+recvd a packet of len11
+SEND MSG#  68 SEQ#  55 LEN 1007 FLAGS 3  -Data #:   55 - FLIPPED BITS 
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 61
+, lower: 52
+, current: 59
+packets: {packet={header:{seqNum:52,checksum:21149,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:53,checksum:61848,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:54,checksum:62234,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:55,checksum:47035,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:56,checksum:19456,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:57,checksum:19540,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:58,checksum:48168,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:59,checksum:28296,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:50,checksum:56457,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:51,checksum:27680,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 8
+SEND MSG#  69 SEQ#  59 LEN 1007 FLAGS 3  -Data #:   59 - FLIPPED BITS 
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 61
+, lower: 52
+, current: 60
+packets: {packet={header:{seqNum:52,checksum:21149,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:53,checksum:61848,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:54,checksum:62234,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:55,checksum:47035,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:56,checksum:19456,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:57,checksum:19540,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:58,checksum:48168,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:59,checksum:28296,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:51,checksum:27680,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 9
+SEND MSG#  70 SEQ#  60 LEN 1007 FLAGS 3  -Data #:   60 - DROPPED 
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 61
+, lower: 52
+, current: 61
+packets: {packet={header:{seqNum:52,checksum:21149,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:53,checksum:61848,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:54,checksum:62234,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:55,checksum:47035,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:56,checksum:19456,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:57,checksum:19540,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:58,checksum:48168,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:59,checksum:28296,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:61,checksum:28198,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 0
+SEND MSG#  71 SEQ#  61 LEN 1007 FLAGS 3  -Data #:   61
+window is closed
+waiting
+RECV          SEQ# 4278190139 LEN   11 FLAGS 6  -SREJ #:   59 - RECV Corrupted packet
+recvd a packet of len11
+bad crc
+waiting
+RECV          SEQ#  60 LEN   11 FLAGS 6  -SREJ #:   60
+recvd a packet of len11
+SEND MSG#  72 SEQ#  60 LEN 1007 FLAGS 3  -Data #:   60
+window is closed
+waiting
+==========================
+SENDING LOWEST unacked packet
+Index: 7
+packet seqNo: 52
+Window lower: 52
+=================
+window={upper: 61
+, lower: 52
+, current: 62
+packets: {packet={header:{seqNum:52,checksum:21149,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:53,checksum:61848,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:54,checksum:62234,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:55,checksum:47035,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:56,checksum:19456,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:57,checksum:19540,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:58,checksum:48168,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:59,checksum:28296,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:61,checksum:28198,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+SEND MSG#  73 SEQ#  52 LEN 1007 FLAGS 3  -Data #:   52
+waiting
+RECV          SEQ#  53 LEN   11 FLAGS 5  -RR #:     53 - RECV Corrupted packet
+recvd a packet of len11
+bad crc
+waiting
+==========================
+SENDING LOWEST unacked packet
+Index: 7
+packet seqNo: 52
+Window lower: 52
+=================
+window={upper: 61
+, lower: 52
+, current: 62
+packets: {packet={header:{seqNum:52,checksum:21149,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:53,checksum:61848,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:54,checksum:62234,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:55,checksum:47035,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:56,checksum:19456,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:57,checksum:19540,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:58,checksum:48168,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:59,checksum:28296,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:61,checksum:28198,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+SEND MSG#  74 SEQ#  52 LEN 1007 FLAGS 3  -Data #:   52 - FLIPPED BITS 
+waiting
+==========================
+SENDING LOWEST unacked packet
+Index: 7
+packet seqNo: 52
+Window lower: 52
+=================
+window={upper: 61
+, lower: 52
+, current: 62
+packets: {packet={header:{seqNum:52,checksum:21149,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:53,checksum:61848,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:54,checksum:62234,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:55,checksum:47035,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:56,checksum:19456,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:57,checksum:19540,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:58,checksum:48168,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:59,checksum:28296,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:61,checksum:28198,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+SEND MSG#  75 SEQ#  52 LEN 1007 FLAGS 3  -Data #:   52
+waiting
+RECV          SEQ#  53 LEN   11 FLAGS 5  -RR #:   65333 - RECV Corrupted packet
+recvd a packet of len11
+bad crc
+waiting
+==========================
+SENDING LOWEST unacked packet
+Index: 7
+packet seqNo: 52
+Window lower: 52
+=================
+window={upper: 61
+, lower: 52
+, current: 62
+packets: {packet={header:{seqNum:52,checksum:21149,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:53,checksum:61848,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:54,checksum:62234,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:55,checksum:47035,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:56,checksum:19456,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:57,checksum:19540,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:58,checksum:48168,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:59,checksum:28296,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:61,checksum:28198,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+SEND MSG#  76 SEQ#  52 LEN 1007 FLAGS 3  -Data #:   52
+waiting
+==========================
+SENDING LOWEST unacked packet
+Index: 7
+packet seqNo: 52
+Window lower: 52
+=================
+window={upper: 61
+, lower: 52
+, current: 62
+packets: {packet={header:{seqNum:52,checksum:21149,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:53,checksum:61848,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:54,checksum:62234,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:55,checksum:47035,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:56,checksum:19456,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:57,checksum:19540,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:58,checksum:48168,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:59,checksum:28296,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:61,checksum:28198,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+SEND MSG#  77 SEQ#  52 LEN 1007 FLAGS 3  -Data #:   52
+waiting
+RECV          SEQ#  53 LEN   11 FLAGS 5  -RR #:     53
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 53
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 62
+, lower: 53
+, current: 62
+packets: {packet={header:{seqNum:53,checksum:61848,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:54,checksum:62234,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:55,checksum:47035,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:56,checksum:19456,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:57,checksum:19540,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:58,checksum:48168,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:59,checksum:28296,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:61,checksum:28198,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:62,checksum:3688,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 1
+SEND MSG#  78 SEQ#  62 LEN 1007 FLAGS 3  -Data #:   62
+window is closed
+waiting
+==========================
+SENDING LOWEST unacked packet
+Index: 8
+packet seqNo: 53
+Window lower: 53
+=================
+window={upper: 62
+, lower: 53
+, current: 63
+packets: {packet={header:{seqNum:53,checksum:61848,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:54,checksum:62234,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:55,checksum:47035,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:56,checksum:19456,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:57,checksum:19540,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:58,checksum:48168,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:59,checksum:28296,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:61,checksum:28198,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:62,checksum:3688,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+SEND MSG#  79 SEQ#  53 LEN 1007 FLAGS 3  -Data #:   53
+waiting
+RECV          SEQ#  54 LEN   11 FLAGS 5  -RR #:     54
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 54
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 63
+, lower: 54
+, current: 63
+packets: {packet={header:{seqNum:54,checksum:62234,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:55,checksum:47035,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:56,checksum:19456,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:57,checksum:19540,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:58,checksum:48168,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:59,checksum:28296,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:61,checksum:28198,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:62,checksum:3688,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:63,checksum:18016,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 2
+SEND MSG#  80 SEQ#  63 LEN 1007 FLAGS 3  -Data #:   63
+window is closed
+waiting
+==========================
+SENDING LOWEST unacked packet
+Index: 0
+packet seqNo: 54
+Window lower: 54
+=================
+window={upper: 63
+, lower: 54
+, current: 64
+packets: {packet={header:{seqNum:54,checksum:62234,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:55,checksum:47035,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:56,checksum:19456,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:57,checksum:19540,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:58,checksum:48168,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:59,checksum:28296,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:61,checksum:28198,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:62,checksum:3688,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:63,checksum:18016,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+SEND MSG#  81 SEQ#  54 LEN 1007 FLAGS 3  -Data #:   54
+waiting
+RECV          SEQ#  55 LEN   11 FLAGS 5  -RR #:     55
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 55
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 64
+, lower: 55
+, current: 64
+packets: {packet={header:{seqNum:55,checksum:47035,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:56,checksum:19456,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:57,checksum:19540,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:58,checksum:48168,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:59,checksum:28296,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:61,checksum:28198,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:62,checksum:3688,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:63,checksum:18016,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:64,checksum:18600,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 3
+SEND MSG#  82 SEQ#  64 LEN 1007 FLAGS 3  -Data #:   64
+window is closed
+waiting
+RECV          SEQ#  55 LEN   11 FLAGS 249  -User defined  - RECV Corrupted packet
+recvd a packet of len11
+bad crc
+waiting
+RECV          SEQ#  59 LEN   11 FLAGS 6  -SREJ #:   59
+recvd a packet of len11
+SEND MSG#  83 SEQ#  59 LEN 1007 FLAGS 3  -Data #:   59
+window is closed
+waiting
+==========================
+SENDING LOWEST unacked packet
+Index: 1
+packet seqNo: 55
+Window lower: 55
+=================
+window={upper: 64
+, lower: 55
+, current: 65
+packets: {packet={header:{seqNum:55,checksum:47035,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:56,checksum:19456,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:57,checksum:19540,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:58,checksum:48168,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:59,checksum:28296,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:61,checksum:28198,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:62,checksum:3688,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:63,checksum:18016,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:64,checksum:18600,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+SEND MSG#  84 SEQ#  55 LEN 1007 FLAGS 3  -Data #:   55
+waiting
+RECV          SEQ#  56 LEN   11 FLAGS 5  -RR #:     56
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 56
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 65
+, lower: 56
+, current: 65
+packets: {packet={header:{seqNum:56,checksum:19456,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:57,checksum:19540,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:58,checksum:48168,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:59,checksum:28296,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:61,checksum:28198,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:62,checksum:3688,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:63,checksum:18016,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:64,checksum:18600,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:65,checksum:25082,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 4
+SEND MSG#  85 SEQ#  65 LEN 1007 FLAGS 3  -Data #:   65
+RECV          SEQ#  57 LEN   11 FLAGS 5  -RR #:     57
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 57
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 66
+, lower: 57
+, current: 66
+packets: {packet={header:{seqNum:57,checksum:19540,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:58,checksum:48168,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:59,checksum:28296,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:61,checksum:28198,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:62,checksum:3688,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:63,checksum:18016,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:64,checksum:18600,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:65,checksum:25082,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:66,checksum:4668,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 5
+SEND MSG#  86 SEQ#  66 LEN 1007 FLAGS 3  -Data #:   66
+RECV          SEQ#  58 LEN   11 FLAGS 5  -RR #:     58
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 58
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 67
+, lower: 58
+, current: 67
+packets: {packet={header:{seqNum:58,checksum:48168,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:59,checksum:28296,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:61,checksum:28198,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:62,checksum:3688,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:63,checksum:18016,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:64,checksum:18600,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:65,checksum:25082,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:66,checksum:4668,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:67,checksum:29573,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 6
+SEND MSG#  87 SEQ#  67 LEN 1007 FLAGS 3  -Data #:   67
+RECV          SEQ#  59 LEN   11 FLAGS 5  -RR #:     59
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 59
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 68
+, lower: 59
+, current: 68
+packets: {packet={header:{seqNum:59,checksum:28296,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:61,checksum:28198,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:62,checksum:3688,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:63,checksum:18016,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:64,checksum:18600,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:65,checksum:25082,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:66,checksum:4668,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:67,checksum:29573,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:68,checksum:59491,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 7
+SEND MSG#  88 SEQ#  68 LEN 1007 FLAGS 3  -Data #:   68
+RECV          SEQ#  60 LEN   11 FLAGS 5  -RR #:     60
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 60
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 69
+, lower: 60
+, current: 69
+packets: {packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:61,checksum:28198,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:62,checksum:3688,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:63,checksum:18016,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:64,checksum:18600,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:65,checksum:25082,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:66,checksum:4668,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:67,checksum:29573,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:68,checksum:59491,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:69,checksum:56069,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 8
+SEND MSG#  89 SEQ#  69 LEN 1007 FLAGS 3  -Data #:   69
+RECV          SEQ#  61 LEN   11 FLAGS 5  -RR #:     61
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 61
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 70
+, lower: 61
+, current: 70
+packets: {packet={header:{seqNum:61,checksum:28198,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:62,checksum:3688,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:63,checksum:18016,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:64,checksum:18600,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:65,checksum:25082,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:66,checksum:4668,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:67,checksum:29573,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:68,checksum:59491,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:69,checksum:56069,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:70,checksum:16994,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 9
+SEND MSG#  90 SEQ#  70 LEN 1007 FLAGS 3  -Data #:   70 - FLIPPED BITS 
+RECV          SEQ#  62 LEN   11 FLAGS 5  -RR #:     62
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 62
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 71
+, lower: 62
+, current: 71
+packets: {packet={header:{seqNum:62,checksum:3688,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:63,checksum:18016,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:64,checksum:18600,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:65,checksum:25082,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:66,checksum:4668,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:67,checksum:29573,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:68,checksum:59491,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:69,checksum:56069,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:70,checksum:16994,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:71,checksum:41835,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 0
+SEND MSG#  91 SEQ#  71 LEN 1007 FLAGS 3  -Data #:   71
+RECV          SEQ#  63 LEN   11 FLAGS 5  -RR #:     63
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 63
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 72
+, lower: 63
+, current: 72
+packets: {packet={header:{seqNum:63,checksum:18016,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:64,checksum:18600,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:65,checksum:25082,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:66,checksum:4668,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:67,checksum:29573,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:68,checksum:59491,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:69,checksum:56069,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:70,checksum:16994,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:71,checksum:41835,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:72,checksum:47100,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 1
+SEND MSG#  92 SEQ#  72 LEN 1007 FLAGS 3  -Data #:   72
+RECV          SEQ#  64 LEN   11 FLAGS 5  -RR #:     64
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 64
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 73
+, lower: 64
+, current: 73
+packets: {packet={header:{seqNum:64,checksum:18600,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:65,checksum:25082,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:66,checksum:4668,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:67,checksum:29573,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:68,checksum:59491,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:69,checksum:56069,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:70,checksum:16994,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:71,checksum:41835,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:72,checksum:47100,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:73,checksum:46844,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 2
+SEND MSG#  93 SEQ#  73 LEN 1007 FLAGS 3  -Data #:   73
+RECV          SEQ#  65 LEN   11 FLAGS 5  -RR #:     65
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 65
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 74
+, lower: 65
+, current: 74
+packets: {packet={header:{seqNum:65,checksum:25082,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:66,checksum:4668,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:67,checksum:29573,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:68,checksum:59491,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:69,checksum:56069,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:70,checksum:16994,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:71,checksum:41835,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:72,checksum:47100,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:73,checksum:46844,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:74,checksum:36101,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 3
+SEND MSG#  94 SEQ#  74 LEN 1007 FLAGS 3  -Data #:   74
+RECV          SEQ#  66 LEN   11 FLAGS 5  -RR #:     66
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 66
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 75
+, lower: 66
+, current: 75
+packets: {packet={header:{seqNum:66,checksum:4668,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:67,checksum:29573,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:68,checksum:59491,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:69,checksum:56069,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:70,checksum:16994,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:71,checksum:41835,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:72,checksum:47100,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:73,checksum:46844,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:74,checksum:36101,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:75,checksum:22446,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 4
+SEND MSG#  95 SEQ#  75 LEN 1007 FLAGS 3  -Data #:   75 - DROPPED 
+RECV          SEQ#  67 LEN   11 FLAGS 5  -RR #:     67
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 67
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 76
+, lower: 67
+, current: 76
+packets: {packet={header:{seqNum:67,checksum:29573,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:68,checksum:59491,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:69,checksum:56069,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:70,checksum:16994,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:71,checksum:41835,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:72,checksum:47100,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:73,checksum:46844,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:74,checksum:36101,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:75,checksum:22446,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:76,checksum:58347,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 5
+SEND MSG#  96 SEQ#  76 LEN 1007 FLAGS 3  -Data #:   76
+RECV          SEQ#  68 LEN   11 FLAGS 5  -RR #:     68
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 68
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 77
+, lower: 68
+, current: 77
+packets: {packet={header:{seqNum:68,checksum:59491,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:69,checksum:56069,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:70,checksum:16994,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:71,checksum:41835,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:72,checksum:47100,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:73,checksum:46844,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:74,checksum:36101,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:75,checksum:22446,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:76,checksum:58347,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:77,checksum:30123,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 6
+SEND MSG#  97 SEQ#  77 LEN 1007 FLAGS 3  -Data #:   77
+RECV          SEQ#  69 LEN   11 FLAGS 5  -RR #:     69
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 69
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 78
+, lower: 69
+, current: 78
+packets: {packet={header:{seqNum:69,checksum:56069,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:70,checksum:16994,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:71,checksum:41835,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:72,checksum:47100,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:73,checksum:46844,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:74,checksum:36101,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:75,checksum:22446,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:76,checksum:58347,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:77,checksum:30123,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 7
+SEND MSG#  98 SEQ#  78 LEN 1007 FLAGS 3  -Data #:   78 - DROPPED 
+RECV          SEQ# 4278190150 LEN   11 FLAGS 5  -RR #:     70 - RECV Corrupted packet
+recvd a packet of len11
+bad crc
+waiting
+RECV          SEQ#  70 LEN   11 FLAGS 6  -SREJ #:   70
+recvd a packet of len11
+SEND MSG#  99 SEQ#  70 LEN 1007 FLAGS 3  -Data #:   70 - DROPPED 
+window is closed
+waiting
+RECV          SEQ#  75 LEN   11 FLAGS 6  -SREJ #:   75
+recvd a packet of len11
+SEND MSG# 100 SEQ#  75 LEN 1007 FLAGS 3  -Data #:   75
+window is closed
+waiting
+==========================
+SENDING LOWEST unacked packet
+Index: 6
+packet seqNo: 69
+Window lower: 69
+=================
+window={upper: 78
+, lower: 69
+, current: 79
+packets: {packet={header:{seqNum:69,checksum:56069,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:70,checksum:16994,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:71,checksum:41835,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:72,checksum:47100,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:73,checksum:46844,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:74,checksum:36101,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:75,checksum:22446,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:76,checksum:58347,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:77,checksum:30123,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+SEND MSG# 101 SEQ#  69 LEN 1007 FLAGS 3  -Data #:   69
+waiting
+RECV          SEQ#  70 LEN   11 FLAGS 5  -RR #:     70
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 70
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 79
+, lower: 70
+, current: 79
+packets: {packet={header:{seqNum:70,checksum:16994,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:71,checksum:41835,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:72,checksum:47100,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:73,checksum:46844,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:74,checksum:36101,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:75,checksum:22446,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:76,checksum:58347,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:77,checksum:30123,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 8
+SEND MSG# 102 SEQ#  79 LEN 1007 FLAGS 3  -Data #:   79
+window is closed
+waiting
+RECV          SEQ#  78 LEN   11 FLAGS 6  -SREJ #:   78
+recvd a packet of len11
+SEND MSG# 103 SEQ#  78 LEN 1007 FLAGS 3  -Data #:   78
+window is closed
+waiting
+==========================
+SENDING LOWEST unacked packet
+Index: 7
+packet seqNo: 70
+Window lower: 70
+=================
+window={upper: 79
+, lower: 70
+, current: 80
+packets: {packet={header:{seqNum:70,checksum:16994,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:71,checksum:41835,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:72,checksum:47100,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:73,checksum:46844,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:74,checksum:36101,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:75,checksum:22446,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:76,checksum:58347,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:77,checksum:30123,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+SEND MSG# 104 SEQ#  70 LEN 1007 FLAGS 3  -Data #:   70
+waiting
+RECV          SEQ#  72 LEN   11 FLAGS 5  -RR #:     72
+recvd a packet of len11
+In RR_PACKET
+window is closed
+waiting
+RECV          SEQ#  73 LEN   11 FLAGS 5  -RR #:     73
+recvd a packet of len11
+In RR_PACKET
+window is closed
+waiting
+RECV          SEQ#  76 LEN   11 FLAGS 5  -RR #:     76
+recvd a packet of len11
+In RR_PACKET
+window is closed
+waiting
+RECV          SEQ#  77 LEN   11 FLAGS 5  -RR #:     77
+recvd a packet of len11
+In RR_PACKET
+window is closed
+waiting
+RECV          SEQ#  78 LEN   11 FLAGS 5  -RR #:     78
+recvd a packet of len11
+In RR_PACKET
+window is closed
+waiting
+RECV          SEQ#  79 LEN   11 FLAGS 5  -RR #:     79
+recvd a packet of len11
+In RR_PACKET
+window is closed
+waiting
+RECV          SEQ#  80 LEN   11 FLAGS 5  -RR #:     80
+recvd a packet of len11
+In RR_PACKET
+window is closed
+waiting
+==========================
+SENDING LOWEST unacked packet
+Index: 7
+packet seqNo: 70
+Window lower: 70
+=================
+window={upper: 79
+, lower: 70
+, current: 80
+packets: {packet={header:{seqNum:70,checksum:16994,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:71,checksum:41835,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:72,checksum:47100,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:73,checksum:46844,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:74,checksum:36101,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:75,checksum:22446,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:76,checksum:58347,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:77,checksum:30123,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 1,isAcked: 1
+}
+}
+
+SEND MSG# 105 SEQ#  70 LEN 1007 FLAGS 3  -Data #:   70 - DROPPED 
+waiting
+==========================
+SENDING LOWEST unacked packet
+Index: 7
+packet seqNo: 70
+Window lower: 70
+=================
+window={upper: 79
+, lower: 70
+, current: 80
+packets: {packet={header:{seqNum:70,checksum:16994,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:71,checksum:41835,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:72,checksum:47100,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:73,checksum:46844,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:74,checksum:36101,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:75,checksum:22446,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:76,checksum:58347,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:77,checksum:30123,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 1,isAcked: 1
+}
+}
+
+SEND MSG# 106 SEQ#  70 LEN 1007 FLAGS 3  -Data #:   70
+waiting
+==========================
+SENDING LOWEST unacked packet
+Index: 7
+packet seqNo: 70
+Window lower: 70
+=================
+window={upper: 79
+, lower: 70
+, current: 80
+packets: {packet={header:{seqNum:70,checksum:16994,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:71,checksum:41835,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:72,checksum:47100,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:73,checksum:46844,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:74,checksum:36101,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:75,checksum:22446,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:76,checksum:58347,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:77,checksum:30123,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 1,isAcked: 1
+}
+}
+
+SEND MSG# 107 SEQ#  70 LEN 1007 FLAGS 3  -Data #:   70
+waiting
+RECV          SEQ#  71 LEN   11 FLAGS 5  -RR #:     71
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 71
+sliding
+new lower: 72
+sliding
+new lower: 73
+sliding
+new lower: 74
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 83
+, lower: 74
+, current: 80
+packets: {packet={header:{seqNum:74,checksum:36101,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:75,checksum:22446,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:76,checksum:58347,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:77,checksum:30123,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:80,checksum:62302,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:71,checksum:41835,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:72,checksum:47100,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:73,checksum:46844,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 9
+SEND MSG# 108 SEQ#  80 LEN 1007 FLAGS 3  -Data #:   80
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 83
+, lower: 74
+, current: 81
+packets: {packet={header:{seqNum:74,checksum:36101,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:75,checksum:22446,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:76,checksum:58347,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:77,checksum:30123,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:80,checksum:62302,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:81,checksum:16253,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:72,checksum:47100,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:73,checksum:46844,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 0
+SEND MSG# 109 SEQ#  81 LEN 1007 FLAGS 3  -Data #:   81
+RECV          SEQ#  81 LEN   11 FLAGS 5  -RR #:     81
+recvd a packet of len11
+In RR_PACKET
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 83
+, lower: 74
+, current: 82
+packets: {packet={header:{seqNum:74,checksum:36101,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:75,checksum:22446,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:76,checksum:58347,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:77,checksum:30123,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:80,checksum:62302,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:81,checksum:16253,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:82,checksum:33129,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:73,checksum:46844,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 1
+SEND MSG# 110 SEQ#  82 LEN 1007 FLAGS 3  -Data #:   82
+RECV          SEQ#  82 LEN   11 FLAGS 5  -RR #:     82
+recvd a packet of len11
+In RR_PACKET
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 83
+, lower: 74
+, current: 83
+packets: {packet={header:{seqNum:74,checksum:36101,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:75,checksum:22446,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:76,checksum:58347,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:77,checksum:30123,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:80,checksum:62302,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:81,checksum:16253,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:82,checksum:33129,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:83,checksum:51510,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 2
+SEND MSG# 111 SEQ#  83 LEN 1007 FLAGS 3  -Data #:   83
+RECV          SEQ#  83 LEN   11 FLAGS 5  -RR #:     83
+recvd a packet of len11
+In RR_PACKET
+window is closed
+waiting
+RECV          SEQ#  84 LEN   11 FLAGS 5  -RR #:     84
+recvd a packet of len11
+In RR_PACKET
+window is closed
+waiting
+==========================
+SENDING LOWEST unacked packet
+Index: 2
+packet seqNo: 74
+Window lower: 74
+=================
+window={upper: 83
+, lower: 74
+, current: 84
+packets: {packet={header:{seqNum:74,checksum:36101,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:75,checksum:22446,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:76,checksum:58347,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:77,checksum:30123,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:80,checksum:62302,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:81,checksum:16253,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:82,checksum:33129,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:83,checksum:51510,flag:3}},inWindow: 1,isAcked: 1
+}
+}
+
+SEND MSG# 112 SEQ#  74 LEN 1007 FLAGS 3  -Data #:   74
+waiting
+RECV          SEQ#  75 LEN   11 FLAGS 5  -RR #:     75
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 75
+sliding
+new lower: 76
+sliding
+new lower: 77
+sliding
+new lower: 78
+sliding
+new lower: 79
+sliding
+new lower: 80
+sliding
+new lower: 81
+sliding
+new lower: 82
+sliding
+new lower: 83
+sliding
+new lower: 84
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 93
+, lower: 84
+, current: 84
+packets: {packet={header:{seqNum:84,checksum:20501,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:75,checksum:22446,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:76,checksum:58347,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:77,checksum:30123,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:80,checksum:62302,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:81,checksum:16253,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:82,checksum:33129,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:83,checksum:51510,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 3
+SEND MSG# 113 SEQ#  84 LEN 1007 FLAGS 3  -Data #:   84
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 93
+, lower: 84
+, current: 85
+packets: {packet={header:{seqNum:84,checksum:20501,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:85,checksum:56002,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:76,checksum:58347,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:77,checksum:30123,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:80,checksum:62302,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:81,checksum:16253,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:82,checksum:33129,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:83,checksum:51510,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 4
+SEND MSG# 114 SEQ#  85 LEN 1007 FLAGS 3  -Data #:   85
+RECV          SEQ#  85 LEN   11 FLAGS 5  -RR #:     85
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 85
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 94
+, lower: 85
+, current: 86
+packets: {packet={header:{seqNum:85,checksum:56002,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:86,checksum:64963,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:77,checksum:30123,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:80,checksum:62302,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:81,checksum:16253,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:82,checksum:33129,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:83,checksum:51510,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:84,checksum:20501,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 5
+SEND MSG# 115 SEQ#  86 LEN 1007 FLAGS 3  -Data #:   86
+RECV          SEQ#  86 LEN   11 FLAGS 5  -RR #:     86
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 86
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 95
+, lower: 86
+, current: 87
+packets: {packet={header:{seqNum:86,checksum:64963,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:87,checksum:27600,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:80,checksum:62302,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:81,checksum:16253,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:82,checksum:33129,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:83,checksum:51510,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:84,checksum:20501,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:85,checksum:56002,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 6
+SEND MSG# 116 SEQ#  87 LEN 1007 FLAGS 3  -Data #:   87 - DROPPED 
+RECV          SEQ#  87 LEN   11 FLAGS 5  -RR #:     87
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 87
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 96
+, lower: 87
+, current: 88
+packets: {packet={header:{seqNum:87,checksum:27600,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:88,checksum:10905,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:80,checksum:62302,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:81,checksum:16253,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:82,checksum:33129,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:83,checksum:51510,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:84,checksum:20501,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:85,checksum:56002,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:86,checksum:64963,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 7
+SEND MSG# 117 SEQ#  88 LEN 1007 FLAGS 3  -Data #:   88 - DROPPED 
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 96
+, lower: 87
+, current: 89
+packets: {packet={header:{seqNum:87,checksum:27600,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:88,checksum:10905,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:89,checksum:62908,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:80,checksum:62302,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:81,checksum:16253,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:82,checksum:33129,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:83,checksum:51510,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:84,checksum:20501,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:85,checksum:56002,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:86,checksum:64963,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 8
+SEND MSG# 118 SEQ#  89 LEN 1007 FLAGS 3  -Data #:   89 - FLIPPED BITS 
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 96
+, lower: 87
+, current: 90
+packets: {packet={header:{seqNum:87,checksum:27600,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:88,checksum:10905,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:89,checksum:62908,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:90,checksum:52930,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:81,checksum:16253,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:82,checksum:33129,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:83,checksum:51510,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:84,checksum:20501,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:85,checksum:56002,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:86,checksum:64963,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 9
+SEND MSG# 119 SEQ#  90 LEN 1007 FLAGS 3  -Data #:   90
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 96
+, lower: 87
+, current: 91
+packets: {packet={header:{seqNum:87,checksum:27600,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:88,checksum:10905,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:89,checksum:62908,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:90,checksum:52930,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:91,checksum:53019,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:82,checksum:33129,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:83,checksum:51510,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:84,checksum:20501,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:85,checksum:56002,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:86,checksum:64963,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 0
+SEND MSG# 120 SEQ#  91 LEN 1007 FLAGS 3  -Data #:   91 - DROPPED 
+RECV          SEQ#  87 LEN   11 FLAGS 6  -SREJ #:   87
+recvd a packet of len11
+SEND MSG# 121 SEQ#  87 LEN 1007 FLAGS 3  -Data #:   87
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 96
+, lower: 87
+, current: 92
+packets: {packet={header:{seqNum:87,checksum:27600,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:88,checksum:10905,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:89,checksum:62908,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:90,checksum:52930,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:91,checksum:53019,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:92,checksum:43351,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:83,checksum:51510,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:84,checksum:20501,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:85,checksum:56002,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:86,checksum:64963,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 1
+SEND MSG# 122 SEQ#  92 LEN 1007 FLAGS 3  -Data #:   92
+RECV          SEQ#  88 LEN   11 FLAGS 5  -RR #:   16711768 - RECV Corrupted packet
+recvd a packet of len11
+bad crc
+waiting
+RECV          SEQ#  88 LEN   11 FLAGS 6  -SREJ #:   88
+recvd a packet of len11
+SEND MSG# 123 SEQ#  88 LEN 1007 FLAGS 3  -Data #:   88 - DROPPED 
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 96
+, lower: 87
+, current: 93
+packets: {packet={header:{seqNum:87,checksum:27600,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:88,checksum:10905,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:89,checksum:62908,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:90,checksum:52930,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:91,checksum:53019,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:92,checksum:43351,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:93,checksum:15312,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:84,checksum:20501,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:85,checksum:56002,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:86,checksum:64963,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 2
+SEND MSG# 124 SEQ#  93 LEN 1007 FLAGS 3  -Data #:   93
+RECV          SEQ#  91 LEN   11 FLAGS 6  -SREJ #:   91
+recvd a packet of len11
+SEND MSG# 125 SEQ#  91 LEN 1007 FLAGS 3  -Data #:   91
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 96
+, lower: 87
+, current: 94
+packets: {packet={header:{seqNum:87,checksum:27600,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:88,checksum:10905,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:89,checksum:62908,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:90,checksum:52930,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:91,checksum:53019,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:92,checksum:43351,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:93,checksum:15312,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:94,checksum:7987,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:85,checksum:56002,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:86,checksum:64963,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 3
+SEND MSG# 126 SEQ#  94 LEN 1007 FLAGS 3  -Data #:   94 - DROPPED 
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 96
+, lower: 87
+, current: 95
+packets: {packet={header:{seqNum:87,checksum:27600,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:88,checksum:10905,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:89,checksum:62908,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:90,checksum:52930,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:91,checksum:53019,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:92,checksum:43351,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:93,checksum:15312,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:94,checksum:7987,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:95,checksum:58739,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:86,checksum:64963,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 4
+SEND MSG# 127 SEQ#  95 LEN 1007 FLAGS 3  -Data #:   95
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 96
+, lower: 87
+, current: 96
+packets: {packet={header:{seqNum:87,checksum:27600,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:88,checksum:10905,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:89,checksum:62908,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:90,checksum:52930,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:91,checksum:53019,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:92,checksum:43351,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:93,checksum:15312,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:94,checksum:7987,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:95,checksum:58739,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:96,checksum:41834,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 5
+SEND MSG# 128 SEQ#  96 LEN 1007 FLAGS 3  -Data #:   96
+RECV          SEQ#  94 LEN   11 FLAGS 6  -SREJ #:   94
+recvd a packet of len11
+SEND MSG# 129 SEQ#  94 LEN 1007 FLAGS 3  -Data #:   94 - FLIPPED BITS 
+window is closed
+waiting
+==========================
+SENDING LOWEST unacked packet
+Index: 6
+packet seqNo: 87
+Window lower: 87
+=================
+window={upper: 96
+, lower: 87
+, current: 97
+packets: {packet={header:{seqNum:87,checksum:27600,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:88,checksum:10905,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:89,checksum:62908,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:90,checksum:52930,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:91,checksum:53019,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:92,checksum:43351,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:93,checksum:15312,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:94,checksum:7987,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:95,checksum:58739,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:96,checksum:41834,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+SEND MSG# 130 SEQ#  87 LEN 1007 FLAGS 3  -Data #:   87
+waiting
+==========================
+SENDING LOWEST unacked packet
+Index: 6
+packet seqNo: 87
+Window lower: 87
+=================
+window={upper: 96
+, lower: 87
+, current: 97
+packets: {packet={header:{seqNum:87,checksum:27600,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:88,checksum:10905,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:89,checksum:62908,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:90,checksum:52930,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:91,checksum:53019,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:92,checksum:43351,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:93,checksum:15312,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:94,checksum:7987,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:95,checksum:58739,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:96,checksum:41834,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+SEND MSG# 131 SEQ#  87 LEN 1007 FLAGS 3  -Data #:   87
+waiting
+RECV          SEQ#  88 LEN   11 FLAGS 5  -RR #:     88
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 88
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 97
+, lower: 88
+, current: 97
+packets: {packet={header:{seqNum:88,checksum:10905,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:89,checksum:62908,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:90,checksum:52930,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:91,checksum:53019,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:92,checksum:43351,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:93,checksum:15312,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:94,checksum:7987,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:95,checksum:58739,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:96,checksum:41834,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:97,checksum:43689,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 6
+SEND MSG# 132 SEQ#  97 LEN 1007 FLAGS 3  -Data #:   97
+window is closed
+waiting
+==========================
+SENDING LOWEST unacked packet
+Index: 7
+packet seqNo: 88
+Window lower: 88
+=================
+window={upper: 97
+, lower: 88
+, current: 98
+packets: {packet={header:{seqNum:88,checksum:10905,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:89,checksum:62908,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:90,checksum:52930,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:91,checksum:53019,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:92,checksum:43351,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:93,checksum:15312,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:94,checksum:7987,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:95,checksum:58739,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:96,checksum:41834,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:97,checksum:43689,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+SEND MSG# 133 SEQ#  88 LEN 1007 FLAGS 3  -Data #:   88
+waiting
+RECV          SEQ#  89 LEN   11 FLAGS 5  -RR #:     89
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 89
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 98
+, lower: 89
+, current: 98
+packets: {packet={header:{seqNum:89,checksum:62908,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:90,checksum:52930,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:91,checksum:53019,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:92,checksum:43351,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:93,checksum:15312,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:94,checksum:7987,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:95,checksum:58739,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:96,checksum:41834,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:97,checksum:43689,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:98,checksum:3488,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 7
+SEND MSG# 134 SEQ#  98 LEN 1007 FLAGS 3  -Data #:   98
+window is closed
+waiting
+RECV          SEQ#  94 LEN   11 FLAGS 6  -SREJ #:   94
+recvd a packet of len11
+SEND MSG# 135 SEQ#  94 LEN 1007 FLAGS 3  -Data #:   94
+window is closed
+waiting
+==========================
+SENDING LOWEST unacked packet
+Index: 8
+packet seqNo: 89
+Window lower: 89
+=================
+window={upper: 98
+, lower: 89
+, current: 99
+packets: {packet={header:{seqNum:89,checksum:62908,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:90,checksum:52930,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:91,checksum:53019,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:92,checksum:43351,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:93,checksum:15312,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:94,checksum:7987,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:95,checksum:58739,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:96,checksum:41834,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:97,checksum:43689,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:98,checksum:3488,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+SEND MSG# 136 SEQ#  89 LEN 1007 FLAGS 3  -Data #:   89
+waiting
+RECV          SEQ#  90 LEN   11 FLAGS 5  -RR #:     90
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 90
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 99
+, lower: 90
+, current: 99
+packets: {packet={header:{seqNum:90,checksum:52930,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:91,checksum:53019,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:92,checksum:43351,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:93,checksum:15312,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:94,checksum:7987,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:95,checksum:58739,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:96,checksum:41834,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:97,checksum:43689,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:98,checksum:3488,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:99,checksum:57037,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 8
+SEND MSG# 137 SEQ#  99 LEN 1007 FLAGS 3  -Data #:   99
+RECV          SEQ#  91 LEN   11 FLAGS 5  -RR #:     91 - RECV Corrupted packet
+recvd a packet of len11
+bad crc
+waiting
+RECV          SEQ#  92 LEN   11 FLAGS 5  -RR #:     92
+recvd a packet of len11
+In RR_PACKET
+window is closed
+waiting
+RECV          SEQ#  93 LEN   11 FLAGS 5  -RR #:     93
+recvd a packet of len11
+In RR_PACKET
+window is closed
+waiting
+RECV          SEQ#  94 LEN   11 FLAGS 5  -RR #:     94
+recvd a packet of len11
+In RR_PACKET
+window is closed
+waiting
+RECV          SEQ#  95 LEN   11 FLAGS 5  -RR #:     95
+recvd a packet of len11
+In RR_PACKET
+window is closed
+waiting
+RECV          SEQ#  96 LEN   11 FLAGS 5  -RR #:     96
+recvd a packet of len11
+In RR_PACKET
+window is closed
+waiting
+RECV          SEQ#  97 LEN   11 FLAGS 5  -RR #:     97
+recvd a packet of len11
+In RR_PACKET
+window is closed
+waiting
+RECV          SEQ#  98 LEN   11 FLAGS 5  -RR #:     98
+recvd a packet of len11
+In RR_PACKET
+window is closed
+waiting
+RECV          SEQ#  99 LEN   11 FLAGS 5  -RR #:     99
+recvd a packet of len11
+In RR_PACKET
+window is closed
+waiting
+RECV          SEQ# 100 LEN   11 FLAGS 5  -RR #:    100
+recvd a packet of len11
+In RR_PACKET
+window is closed
+waiting
+==========================
+SENDING LOWEST unacked packet
+Index: 0
+packet seqNo: 90
+Window lower: 90
+=================
+window={upper: 99
+, lower: 90
+, current: 100
+packets: {packet={header:{seqNum:90,checksum:52930,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:91,checksum:53019,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:92,checksum:43351,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:93,checksum:15312,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:94,checksum:7987,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:95,checksum:58739,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:96,checksum:41834,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:97,checksum:43689,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:98,checksum:3488,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:99,checksum:57037,flag:3}},inWindow: 1,isAcked: 1
+}
+}
+
+SEND MSG# 138 SEQ#  90 LEN 1007 FLAGS 3  -Data #:   90
+waiting
+RECV          SEQ#  91 LEN   11 FLAGS 5  -RR #:     91
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 91
+sliding
+new lower: 92
+sliding
+new lower: 93
+sliding
+new lower: 94
+sliding
+new lower: 95
+sliding
+new lower: 96
+sliding
+new lower: 97
+sliding
+new lower: 98
+sliding
+new lower: 99
+sliding
+new lower: 100
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 109
+, lower: 100
+, current: 100
+packets: {packet={header:{seqNum:100,checksum:48039,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:91,checksum:53019,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:92,checksum:43351,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:93,checksum:15312,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:94,checksum:7987,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:95,checksum:58739,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:96,checksum:41834,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:97,checksum:43689,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:98,checksum:3488,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:99,checksum:57037,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 9
+SEND MSG# 139 SEQ# 100 LEN 1007 FLAGS 3  -Data #:  100
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 109
+, lower: 100
+, current: 101
+packets: {packet={header:{seqNum:100,checksum:48039,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:101,checksum:50203,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:92,checksum:43351,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:93,checksum:15312,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:94,checksum:7987,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:95,checksum:58739,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:96,checksum:41834,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:97,checksum:43689,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:98,checksum:3488,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:99,checksum:57037,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 0
+SEND MSG# 140 SEQ# 101 LEN 1007 FLAGS 3  -Data #:  101
+RECV          SEQ# 101 LEN   11 FLAGS 5  -RR #:    101
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 101
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 110
+, lower: 101
+, current: 102
+packets: {packet={header:{seqNum:101,checksum:50203,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:102,checksum:55160,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:93,checksum:15312,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:94,checksum:7987,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:95,checksum:58739,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:96,checksum:41834,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:97,checksum:43689,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:98,checksum:3488,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:99,checksum:57037,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:100,checksum:48039,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 1
+SEND MSG# 141 SEQ# 102 LEN 1007 FLAGS 3  -Data #:  102
+RECV          SEQ# 102 LEN   11 FLAGS 5  -RR #:    102
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 102
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 111
+, lower: 102
+, current: 103
+packets: {packet={header:{seqNum:102,checksum:55160,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:103,checksum:34621,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:94,checksum:7987,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:95,checksum:58739,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:96,checksum:41834,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:97,checksum:43689,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:98,checksum:3488,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:99,checksum:57037,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:100,checksum:48039,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:101,checksum:50203,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 2
+SEND MSG# 142 SEQ# 103 LEN 1007 FLAGS 3  -Data #:  103
+RECV          SEQ# 103 LEN   11 FLAGS 5  -RR #:    103
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 103
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 112
+, lower: 103
+, current: 104
+packets: {packet={header:{seqNum:103,checksum:34621,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:104,checksum:49980,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:95,checksum:58739,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:96,checksum:41834,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:97,checksum:43689,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:98,checksum:3488,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:99,checksum:57037,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:100,checksum:48039,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:101,checksum:50203,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:102,checksum:55160,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 3
+SEND MSG# 143 SEQ# 104 LEN 1007 FLAGS 3  -Data #:  104
+RECV          SEQ# 104 LEN   11 FLAGS 5  -RR #:    104
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 104
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 113
+, lower: 104
+, current: 105
+packets: {packet={header:{seqNum:104,checksum:49980,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:105,checksum:5981,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:96,checksum:41834,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:97,checksum:43689,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:98,checksum:3488,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:99,checksum:57037,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:100,checksum:48039,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:101,checksum:50203,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:102,checksum:55160,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:103,checksum:34621,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 4
+SEND MSG# 144 SEQ# 105 LEN 1007 FLAGS 3  -Data #:  105
+RECV          SEQ# 105 LEN   11 FLAGS 5  -RR #:    105
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 105
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 114
+, lower: 105
+, current: 106
+packets: {packet={header:{seqNum:105,checksum:5981,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:106,checksum:45695,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:97,checksum:43689,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:98,checksum:3488,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:99,checksum:57037,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:100,checksum:48039,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:101,checksum:50203,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:102,checksum:55160,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:103,checksum:34621,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:104,checksum:49980,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 5
+SEND MSG# 145 SEQ# 106 LEN 1007 FLAGS 3  -Data #:  106
+RECV          SEQ# 106 LEN   11 FLAGS 5  -RR #:    106
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 106
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 115
+, lower: 106
+, current: 107
+packets: {packet={header:{seqNum:106,checksum:45695,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:107,checksum:45352,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:98,checksum:3488,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:99,checksum:57037,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:100,checksum:48039,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:101,checksum:50203,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:102,checksum:55160,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:103,checksum:34621,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:104,checksum:49980,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:105,checksum:5981,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 6
+SEND MSG# 146 SEQ# 107 LEN 1007 FLAGS 3  -Data #:  107
+RECV          SEQ# 107 LEN   11 FLAGS 5  -RR #:    107
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 107
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 116
+, lower: 107
+, current: 108
+packets: {packet={header:{seqNum:107,checksum:45352,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:108,checksum:37884,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:99,checksum:57037,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:100,checksum:48039,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:101,checksum:50203,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:102,checksum:55160,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:103,checksum:34621,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:104,checksum:49980,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:105,checksum:5981,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:106,checksum:45695,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 7
+SEND MSG# 147 SEQ# 108 LEN 1007 FLAGS 3  -Data #:  108
+RECV          SEQ# 108 LEN   11 FLAGS 5  -RR #:    108
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 108
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 117
+, lower: 108
+, current: 109
+packets: {packet={header:{seqNum:108,checksum:37884,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:109,checksum:37628,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:100,checksum:48039,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:101,checksum:50203,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:102,checksum:55160,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:103,checksum:34621,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:104,checksum:49980,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:105,checksum:5981,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:106,checksum:45695,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:107,checksum:45352,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 8
+SEND MSG# 148 SEQ# 109 LEN 1007 FLAGS 3  -Data #:  109
+RECV          SEQ# 109 LEN   11 FLAGS 5  -RR #:    109
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 109
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 118
+, lower: 109
+, current: 110
+packets: {packet={header:{seqNum:109,checksum:37628,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:110,checksum:26558,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:101,checksum:50203,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:102,checksum:55160,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:103,checksum:34621,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:104,checksum:49980,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:105,checksum:5981,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:106,checksum:45695,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:107,checksum:45352,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:108,checksum:37884,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 9
+SEND MSG# 149 SEQ# 110 LEN 1007 FLAGS 3  -Data #:  110
+RECV          SEQ# 110 LEN   11 FLAGS 5  -RR #:    110
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 110
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 119
+, lower: 110
+, current: 111
+packets: {packet={header:{seqNum:110,checksum:26558,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:111,checksum:61970,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:102,checksum:55160,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:103,checksum:34621,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:104,checksum:49980,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:105,checksum:5981,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:106,checksum:45695,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:107,checksum:45352,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:108,checksum:37884,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:109,checksum:37628,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 0
+SEND MSG# 150 SEQ# 111 LEN 1007 FLAGS 3  -Data #:  111 - DROPPED 
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 119
+, lower: 110
+, current: 112
+packets: {packet={header:{seqNum:110,checksum:26558,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:111,checksum:61970,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:112,checksum:15157,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:103,checksum:34621,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:104,checksum:49980,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:105,checksum:5981,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:106,checksum:45695,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:107,checksum:45352,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:108,checksum:37884,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:109,checksum:37628,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 1
+SEND MSG# 151 SEQ# 112 LEN 1007 FLAGS 3  -Data #:  112
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 119
+, lower: 110
+, current: 113
+packets: {packet={header:{seqNum:110,checksum:26558,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:111,checksum:61970,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:112,checksum:15157,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:113,checksum:7875,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:104,checksum:49980,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:105,checksum:5981,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:106,checksum:45695,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:107,checksum:45352,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:108,checksum:37884,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:109,checksum:37628,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 2
+SEND MSG# 152 SEQ# 113 LEN 1007 FLAGS 3  -Data #:  113 - DROPPED 
+RECV          SEQ# 111 LEN   11 FLAGS 6  -SREJ #:  111
+recvd a packet of len11
+SEND MSG# 153 SEQ# 111 LEN 1007 FLAGS 3  -Data #:  111
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 119
+, lower: 110
+, current: 114
+packets: {packet={header:{seqNum:110,checksum:26558,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:111,checksum:61970,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:112,checksum:15157,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:113,checksum:7875,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:105,checksum:5981,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:106,checksum:45695,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:107,checksum:45352,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:108,checksum:37884,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:109,checksum:37628,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 3
+SEND MSG# 154 SEQ# 114 LEN 1007 FLAGS 3  -Data #:  114
+RECV          SEQ# 113 LEN   11 FLAGS 5  -RR #:    113
+recvd a packet of len11
+In RR_PACKET
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 119
+, lower: 110
+, current: 115
+packets: {packet={header:{seqNum:110,checksum:26558,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:111,checksum:61970,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:112,checksum:15157,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:113,checksum:7875,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:106,checksum:45695,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:107,checksum:45352,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:108,checksum:37884,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:109,checksum:37628,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 4
+SEND MSG# 155 SEQ# 115 LEN 1007 FLAGS 3  -Data #:  115
+RECV          SEQ# 113 LEN   11 FLAGS 6  -SREJ #:  113
+recvd a packet of len11
+SEND MSG# 156 SEQ# 113 LEN 1007 FLAGS 3  -Data #:  113 - FLIPPED BITS 
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 119
+, lower: 110
+, current: 116
+packets: {packet={header:{seqNum:110,checksum:26558,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:111,checksum:61970,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:112,checksum:15157,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:113,checksum:7875,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:107,checksum:45352,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:108,checksum:37884,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:109,checksum:37628,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 5
+SEND MSG# 157 SEQ# 116 LEN 1007 FLAGS 3  -Data #:  116
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 119
+, lower: 110
+, current: 117
+packets: {packet={header:{seqNum:110,checksum:26558,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:111,checksum:61970,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:112,checksum:15157,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:113,checksum:7875,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:108,checksum:37884,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:109,checksum:37628,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 6
+SEND MSG# 158 SEQ# 117 LEN 1007 FLAGS 3  -Data #:  117
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 119
+, lower: 110
+, current: 118
+packets: {packet={header:{seqNum:110,checksum:26558,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:111,checksum:61970,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:112,checksum:15157,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:113,checksum:7875,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:118,checksum:44424,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:109,checksum:37628,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 7
+SEND MSG# 159 SEQ# 118 LEN 1007 FLAGS 3  -Data #:  118 - DROPPED 
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 119
+, lower: 110
+, current: 119
+packets: {packet={header:{seqNum:110,checksum:26558,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:111,checksum:61970,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:112,checksum:15157,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:113,checksum:7875,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:118,checksum:44424,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:119,checksum:37602,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 8
+SEND MSG# 160 SEQ# 119 LEN 1007 FLAGS 3  -Data #:  119
+window is closed
+waiting
+RECV          SEQ# 118 LEN   11 FLAGS 6  -SREJ #:  118
+recvd a packet of len11
+SEND MSG# 161 SEQ# 118 LEN 1007 FLAGS 3  -Data #:  118
+window is closed
+waiting
+==========================
+SENDING LOWEST unacked packet
+Index: 2
+packet seqNo: 110
+Window lower: 110
+=================
+window={upper: 119
+, lower: 110
+, current: 120
+packets: {packet={header:{seqNum:110,checksum:26558,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:111,checksum:61970,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:112,checksum:15157,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:113,checksum:7875,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:118,checksum:44424,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:119,checksum:37602,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+SEND MSG# 162 SEQ# 110 LEN 1007 FLAGS 3  -Data #:  110
+waiting
+RECV          SEQ# 111 LEN   11 FLAGS 5  -RR #:    144 - RECV Corrupted packet
+recvd a packet of len11
+bad crc
+waiting
+==========================
+SENDING LOWEST unacked packet
+Index: 2
+packet seqNo: 110
+Window lower: 110
+=================
+window={upper: 119
+, lower: 110
+, current: 120
+packets: {packet={header:{seqNum:110,checksum:26558,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:111,checksum:61970,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:112,checksum:15157,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:113,checksum:7875,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:118,checksum:44424,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:119,checksum:37602,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+SEND MSG# 163 SEQ# 110 LEN 1007 FLAGS 3  -Data #:  110
+waiting
+RECV          SEQ# 111 LEN   11 FLAGS 5  -RR #:    111
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 111
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 120
+, lower: 111
+, current: 120
+packets: {packet={header:{seqNum:111,checksum:61970,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:112,checksum:15157,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:113,checksum:7875,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:118,checksum:44424,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:119,checksum:37602,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:120,checksum:43363,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 9
+SEND MSG# 164 SEQ# 120 LEN 1007 FLAGS 3  -Data #:  120
+window is closed
+waiting
+==========================
+SENDING LOWEST unacked packet
+Index: 3
+packet seqNo: 111
+Window lower: 111
+=================
+window={upper: 120
+, lower: 111
+, current: 121
+packets: {packet={header:{seqNum:111,checksum:61970,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:112,checksum:15157,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:113,checksum:7875,flag:3}},inWindow: 1,isAcked: 1
+packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:118,checksum:44424,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:119,checksum:37602,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:120,checksum:43363,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+SEND MSG# 165 SEQ# 111 LEN 1007 FLAGS 3  -Data #:  111
+waiting
+RECV          SEQ# 112 LEN   11 FLAGS 5  -RR #:    112
+recvd a packet of len11
+In RR_PACKET
+sliding
+new lower: 112
+sliding
+new lower: 113
+sliding
+new lower: 114
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 123
+, lower: 114
+, current: 121
+packets: {packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:118,checksum:44424,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:119,checksum:37602,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:120,checksum:43363,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:121,checksum:6737,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:112,checksum:15157,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:113,checksum:7875,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 0
+SEND MSG# 166 SEQ# 121 LEN 1007 FLAGS 3  -Data #:  121
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 123
+, lower: 114
+, current: 122
+packets: {packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:118,checksum:44424,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:119,checksum:37602,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:120,checksum:43363,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:121,checksum:6737,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:122,checksum:17389,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:113,checksum:7875,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+index: 1
+SEND MSG# 167 SEQ# 122 LEN 1007 FLAGS 3  -Data #:  122
+In readfileREAD: 1000bytes
+=======before insert========
+window={upper: 123
+, lower: 114
+, current: 123
+packets: {packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:118,checksum:44424,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:119,checksum:37602,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:120,checksum:43363,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:121,checksum:6737,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:122,checksum:17389,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:123,checksum:36171,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+index: 2
+SEND MSG# 168 SEQ# 123 LEN 1007 FLAGS 3  -Data #:  123
+window is closed
+waiting
+==========================
+SENDING LOWEST unacked packet
+Index: 6
+packet seqNo: 114
+Window lower: 114
+=================
+window={upper: 123
+, lower: 114
+, current: 124
+packets: {packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:118,checksum:44424,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:119,checksum:37602,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:120,checksum:43363,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:121,checksum:6737,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:122,checksum:17389,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:123,checksum:36171,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+SEND MSG# 169 SEQ# 114 LEN 1007 FLAGS 3  -Data #:  114
+waiting
+==========================
+SENDING LOWEST unacked packet
+Index: 6
+packet seqNo: 114
+Window lower: 114
+=================
+window={upper: 123
+, lower: 114
+, current: 124
+packets: {packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:118,checksum:44424,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:119,checksum:37602,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:120,checksum:43363,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:121,checksum:6737,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:122,checksum:17389,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:123,checksum:36171,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+SEND MSG# 170 SEQ# 114 LEN 1007 FLAGS 3  -Data #:  114
+waiting
+==========================
+SENDING LOWEST unacked packet
+Index: 6
+packet seqNo: 114
+Window lower: 114
+=================
+window={upper: 123
+, lower: 114
+, current: 124
+packets: {packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:118,checksum:44424,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:119,checksum:37602,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:120,checksum:43363,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:121,checksum:6737,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:122,checksum:17389,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:123,checksum:36171,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+SEND MSG# 171 SEQ# 114 LEN 1007 FLAGS 3  -Data #:  114 - FLIPPED BITS 
+waiting
+==========================
+SENDING LOWEST unacked packet
+Index: 6
+packet seqNo: 114
+Window lower: 114
+=================
+window={upper: 123
+, lower: 114
+, current: 124
+packets: {packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:118,checksum:44424,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:119,checksum:37602,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:120,checksum:43363,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:121,checksum:6737,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:122,checksum:17389,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:123,checksum:36171,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+SEND MSG# 172 SEQ# 114 LEN 1007 FLAGS 3  -Data #:  114
+waiting
+==========================
+SENDING LOWEST unacked packet
+Index: 6
+packet seqNo: 114
+Window lower: 114
+=================
+window={upper: 123
+, lower: 114
+, current: 124
+packets: {packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:118,checksum:44424,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:119,checksum:37602,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:120,checksum:43363,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:121,checksum:6737,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:122,checksum:17389,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:123,checksum:36171,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+SEND MSG# 173 SEQ# 114 LEN 1007 FLAGS 3  -Data #:  114
+waiting
+==========================
+SENDING LOWEST unacked packet
+Index: 6
+packet seqNo: 114
+Window lower: 114
+=================
+window={upper: 123
+, lower: 114
+, current: 124
+packets: {packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:118,checksum:44424,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:119,checksum:37602,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:120,checksum:43363,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:121,checksum:6737,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:122,checksum:17389,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:123,checksum:36171,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+SEND MSG# 174 SEQ# 114 LEN 1007 FLAGS 3  -Data #:  114 - FLIPPED BITS 
+waiting
+==========================
+SENDING LOWEST unacked packet
+Index: 6
+packet seqNo: 114
+Window lower: 114
+=================
+window={upper: 123
+, lower: 114
+, current: 124
+packets: {packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:118,checksum:44424,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:119,checksum:37602,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:120,checksum:43363,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:121,checksum:6737,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:122,checksum:17389,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:123,checksum:36171,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+SEND MSG# 175 SEQ# 114 LEN 1007 FLAGS 3  -Data #:  114
+waiting
+==========================
+SENDING LOWEST unacked packet
+Index: 6
+packet seqNo: 114
+Window lower: 114
+=================
+window={upper: 123
+, lower: 114
+, current: 124
+packets: {packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:118,checksum:44424,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:119,checksum:37602,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:120,checksum:43363,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:121,checksum:6737,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:122,checksum:17389,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:123,checksum:36171,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+SEND MSG# 176 SEQ# 114 LEN 1007 FLAGS 3  -Data #:  114
+waiting
+==========================
+SENDING LOWEST unacked packet
+Index: 6
+packet seqNo: 114
+Window lower: 114
+=================
+window={upper: 123
+, lower: 114
+, current: 124
+packets: {packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:118,checksum:44424,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:119,checksum:37602,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:120,checksum:43363,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:121,checksum:6737,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:122,checksum:17389,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:123,checksum:36171,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+SEND MSG# 177 SEQ# 114 LEN 1007 FLAGS 3  -Data #:  114
+waiting
+==========================
+SENDING LOWEST unacked packet
+Index: 6
+packet seqNo: 114
+Window lower: 114
+=================
+window={upper: 123
+, lower: 114
+, current: 124
+packets: {packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:118,checksum:44424,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:119,checksum:37602,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:120,checksum:43363,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:121,checksum:6737,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:122,checksum:17389,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:123,checksum:36171,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+SEND MSG# 178 SEQ# 114 LEN 1007 FLAGS 3  -Data #:  114
+waiting
+==========================
+SENDING LOWEST unacked packet
+Index: 6
+packet seqNo: 114
+Window lower: 114
+=================
+window={upper: 123
+, lower: 114
+, current: 124
+packets: {packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:118,checksum:44424,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:119,checksum:37602,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:120,checksum:43363,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:121,checksum:6737,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:122,checksum:17389,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:123,checksum:36171,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+SEND MSG# 179 SEQ# 114 LEN 1007 FLAGS 3  -Data #:  114
+bye
+======== SeqNo Report ========
+  Msgs (Total)       :   179
+  Msgs (Unique SeqNo):   124
+==============================

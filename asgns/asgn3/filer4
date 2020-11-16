@@ -1,0 +1,203 @@
+# <buff-size> <err-per> <wind-size>
+./rcopy /home/victord/CPE464/asgns/asgn3/tests/from_files/short_binary /home/victord/CPE464/asgns/asgn3/tests/to_files/short_binary 1000 .2 10 localhost 49628
+./rcopy
+/home/victord/CPE464/asgns/asgn3/tests/from_files/short_binary
+/home/victord/CPE464/asgns/asgn3/tests/to_files/short_binary
+1000
+.2
+10
+localhost
+49628
+Send Err-INIT ErrRate: 0.20 Drop: Y Flip: Y Rand: N Debug: Y
+SEND MSG#   1 SEQ# 4294967295 LEN  115 FLAGS 7  -FNAME    
+RECV          SEQ# 4294967295 LEN 1007 FLAGS 8  -FNAME response
+Server info - IP: ::1 Port: 49628 
+recvd a packet of len1007
+in FILENAME_OK
+===================================
+1
+RECV          SEQ#   1 LEN 1007 FLAGS 3  -Data #:    1
+recvd a packet of len1007
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#   2 SEQ#   2 LEN   11 FLAGS 5  -RR #:      2
+===================================
+2
+RECV          SEQ#   2 LEN 1007 FLAGS 3  -Data #:    2
+recvd a packet of len1007
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#   3 SEQ#   3 LEN   11 FLAGS 5  -RR #:      3
+===================================
+3
+RECV          SEQ#   3 LEN 1007 FLAGS 3  -Data #:    3
+recvd a packet of len1007
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#   4 SEQ#   4 LEN   11 FLAGS 5  -RR #:      4
+===================================
+4
+RECV          SEQ#   4 LEN 1007 FLAGS 3  -Data #:    4
+recvd a packet of len1007
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#   5 SEQ#   5 LEN   11 FLAGS 5  -RR #:      5
+===================================
+5
+RECV          SEQ#   5 LEN 1007 FLAGS 3  -Data #:    5
+recvd a packet of len1007
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#   6 SEQ#   6 LEN   11 FLAGS 5  -RR #:      6
+===================================
+6
+RECV          SEQ#   6 LEN 1007 FLAGS 3  -Data #:    6
+recvd a packet of len1007
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#   7 SEQ#   7 LEN   11 FLAGS 5  -RR #:      7
+===================================
+7
+RECV          SEQ#   7 LEN 1007 FLAGS 3  -Data #:    7
+recvd a packet of len1007
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#   8 SEQ#   8 LEN   11 FLAGS 5  -RR #:      8
+===================================
+8
+RECV          SEQ#   8 LEN 1007 FLAGS 3  -Data #:    8
+recvd a packet of len1007
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#   9 SEQ#   9 LEN   11 FLAGS 5  -RR #:      9
+===================================
+9
+RECV          SEQ#   9 LEN 1007 FLAGS 3  -Data #:    9
+recvd a packet of len1007
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  10 SEQ#  10 LEN   11 FLAGS 5  -RR #:     10
+===================================
+10
+RECV          SEQ#  10 LEN 1007 FLAGS 3  -Data #:   10
+recvd a packet of len1007
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  11 SEQ#  11 LEN   11 FLAGS 5  -RR #:     11
+===================================
+11
+RECV          SEQ#  11 LEN 1007 FLAGS 3  -Data #:   11
+recvd a packet of len1007
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  12 SEQ#  12 LEN   11 FLAGS 5  -RR #:     12
+===================================
+12
+RECV          SEQ#  12 LEN 1007 FLAGS 3  -Data #:   12
+recvd a packet of len1007
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  13 SEQ#  13 LEN   11 FLAGS 5  -RR #:     13
+===================================
+13
+RECV          SEQ#  13 LEN 1007 FLAGS 3  -Data #:   13
+recvd a packet of len1007
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  14 SEQ#  14 LEN   11 FLAGS 5  -RR #:     14
+===================================
+14
+RECV          SEQ#  14 LEN 1007 FLAGS 3  -Data #:   14
+recvd a packet of len1007
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  15 SEQ#  15 LEN   11 FLAGS 5  -RR #:     15
+===================================
+15
+RECV          SEQ#  15 LEN 1007 FLAGS 3  -Data #:   15
+recvd a packet of len1007
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  16 SEQ#  16 LEN   11 FLAGS 5  -RR #:     16
+===================================
+16
+RECV          SEQ#  16 LEN 1007 FLAGS 3  -Data #:   16
+recvd a packet of len1007
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  17 SEQ#  17 LEN   11 FLAGS 5  -RR #:     17
+===================================
+17
+RECV          SEQ#  17 LEN 1007 FLAGS 3  -Data #:   17
+recvd a packet of len1007
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  18 SEQ#  18 LEN   11 FLAGS 5  -RR #:     18
+===================================
+18
+RECV          SEQ#  18 LEN 1007 FLAGS 3  -Data #:   18
+recvd a packet of len1007
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  19 SEQ#  19 LEN   11 FLAGS 5  -RR #:     19
+===================================
+19
+RECV          SEQ#  19 LEN 1007 FLAGS 3  -Data #:   19
+recvd a packet of len1007
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  20 SEQ#  20 LEN   11 FLAGS 5  -RR #:     20
+===================================
+20
+RECV          SEQ#  22 LEN  543 FLAGS 10  -User defined 
+recvd a packet of len543
+RECV_PACKET : EOF payload length : 536
+lower less to seqNum
+SEND MSG#  21 SEQ#  20 LEN   11 FLAGS 6  -SREJ #:   20 - DROPPED 
+lower less to seqNum
+SEND MSG#  22 SEQ#  21 LEN   11 FLAGS 6  -SREJ #:   21 - DROPPED 
+===================================
+20
+RECV          SEQ#  20 LEN 1007 FLAGS 3  -Data #:   20
+recvd a packet of len1007
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  23 SEQ#  21 LEN   11 FLAGS 5  -RR #:     21
+===================================
+21
+RECV          SEQ#  21 LEN 1007 FLAGS 3  -Data #:   21
+recvd a packet of len1007
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  24 SEQ#  22 LEN   11 FLAGS 5  -RR #:     22
+PAYLAOD SIZE IN write function 536
+wrote 536
+EOF packet seqNum: 22
+EOF packet payloadSize536
+SEND MSG#  25 SEQ#  23 LEN   11 FLAGS 11  -User defined  - DROPPED 
+======== SeqNo Report ========
+  Msgs (Total)       :    25
+  Msgs (Unique SeqNo):    23
+==============================
+diff /home/victord/CPE464/asgns/asgn3/tests/from_files/short_binary /home/victord/CPE464/asgns/asgn3/tests/to_files/short_binary 

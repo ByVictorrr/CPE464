@@ -18,10 +18,11 @@ class RCopy{
         RCopyConnection gateway;
         FILE *toFile;
         //================Two main functions===========================//
-        ssize_t sendPacket(RCopyPacket &packet);
+        RCopyACKPacket buildACKPacket(uint32_t seqNum, uint8_t flag);
         ssize_t sendSetupPacket(RCopySetupPacket &packet);
+        ssize_t sendACKPacket(RCopyACKPacket &packet);
+
         RCopyPacket recievePacket() throw (CorruptPacketException);
-        RCopyPacket buildPacket(uint32_t seqNum, uint8_t flag);
         size_t writePacketToFile(RCopyPacket &p);
 
         state_t fillHoles();

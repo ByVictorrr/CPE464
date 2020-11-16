@@ -200,6 +200,7 @@ RCopySetupPacket RCopyPacketParser::ParseSetup(uint8_t *packet) throw(CorruptPac
     // step 2 - fill the RcopyPacket (assume correct)
     // TODO : check if setup packet
     memcpy(&seqNum, packet, sizeof(seqNum));
+    std::cout << "parsesetup: " << std::to_string(seqNum) << std::endl;
     memcpy(&flag, packet+sizeof(seqNum)+sizeof(uint16_t), sizeof(flag));
     payload = packet + HDR_LEN;
     memcpy(&bufferSize, payload, sizeof(bufferSize));
@@ -242,7 +243,7 @@ RCopySetupPacket RCopyPacketReciever::RecieveSetup(Connection &con) throw(Corrup
     static uint8_t temp[MAX_PAYLOAD_LEN+HDR_LEN];
     memset(temp, 0, MAX_PAYLOAD_LEN+HDR_LEN);
     // Step 1 - recv packet
-    safeRecvfrom(con.getSocketNumber(), temp, MAX_SETUP_PAYLOAD_LEN+HDR_LEN, 0,con.getRemote(), con.getRemoteLen());
+    safeRecvfrom(con.getSocketNumber(), temp, RCopySetupPacket::MAX_PAYLOAD_SIZE+HDR_LEN, 0,con.getRemote(), con.getRemoteLen());
     // Step 2 - parse packet
     try{
         return RCopyPacketParser::ParseSetup(temp);
@@ -257,7 +258,7 @@ RCopyACKPacket RCopyPacketReciever::RecieveACK(Connection &con) throw(CorruptPac
     static uint8_t temp[MAX_PAYLOAD_LEN+HDR_LEN];
     memset(temp, 0, MAX_PAYLOAD_LEN+HDR_LEN);
     // Step 1 - recv packet
-    safeRecvfrom(con.getSocketNumber(), temp, sizeof(uint32_t)+HDR_LEN, 0,con.getRemote(), con.getRemoteLen());
+    safeRecvfrom(con.getSocketNumber(), temp, RCopyACKPacket::MAX_PAYLOAD_SIZE+HDR_LEN, 0,con.getRemote(), con.getRemoteLen());
     // Step 2 - parse packet
     try{
         return RCopyPacketParser::ParseACK(temp);

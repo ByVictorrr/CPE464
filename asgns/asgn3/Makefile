@@ -47,11 +47,11 @@ REMOTE_MACHINE=localhost
 #===========Test 1=================
 
 
-WIND_SIZE=10
+WIND_SIZE=1
 BUFF_SIZE=1000
 RCOPY_ERR_PER=.2
 SERVER_ERR_PER=$(RCOPY_ERR_PER)
-FROM_TEST=short_binary
+FROM_TEST=long_binary
 TO_TEST=$(FROM_TEST)
 
 test_rcopy: rcopy

@@ -39,7 +39,22 @@ class Window{
         void slide(uint32_t toSeqNum);
         int getSize();
 
-        
+        friend std::ostream &operator<<(std::ostream &os, Window &w) {
+            os << "window={upper: " <<  w.upper << std::endl;
+            os << ", lower: " << w.lower << std::endl;
+            os << ", current: " << w.current << std::endl;
+            os << "packets: {"; 
+            for(int i=w.lower; i <=  w.upper; i++){
+                os << w.getPacket(i) 
+                   << ",inWindow: " << w.inWindow(i)
+                   << ",isAcked: " << w.isAcked(i) 
+                   << std::endl;
+            }
+            os << "}\n}\n"; 
+            return os;
+        }
+
+       
 };
 
 

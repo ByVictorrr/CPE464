@@ -113,16 +113,17 @@ state_t ServerThread::sendData(){
     static bool sentEOF=false;
     // Case 1 - window is closed (waiting on message/cant send anymore data)
     if(this->window->isClosed() || sentEOF){
-
         std::cout << "window is closed" << std::endl;
         return WAITING;
     }else{                    
         // Case 2 - window is open (still can send data)
         uint32_t currSeqNum = this->window->getCurrent();
-        RCopyPacket &&built = this->buildDataPacket(currSeqNum);
+        RCopyPacket built = this->buildDataPacket(currSeqNum);
         uint8_t flag = built.getHeader().getFlag();
         this->window->insert(built); // put into the window
-
+        std::cout << "=======before insert========" << std::endl;
+        std::cout << *this->window << std::endl;
+        std::cout << "index: " << (currSeqNum-1) % this->window->getSize()<< std::endl;
         switch (flag)
         {
             // Case 2.1 - could be the last packet read
@@ -181,6 +182,7 @@ state_t ServerThread::receiveData(){
     break; 
     case RR_PACKET:
     {
+        std::cout << "In RR_PACKET" << std::endl;
         /* Note: if all packets are in the window and the window is closed
             from: 
                 The sliding of the window clears up the spot and {isAcked = false, inWindow=false}
@@ -189,31 +191,24 @@ state_t ServerThread::receiveData(){
                     If the seqNum is lower part of the window
         */
 
-        if(this->window->inWindow(seqNum)){
-            this->window->setIsAcked(seqNum); // packet with seqNum is acked
+       // right here not acking if RR13
+       for(int i=this->window->getLower(); i < seqNum; i++)
+           if(this->window->inWindow(i))
+            this->window->setIsAcked(i); // packet with seqNum is acked
+        
         // Case 1 - where left most packet is the revd one
-        if(this->window->getLower() == seqNum){
-            // Case 2 - check to see if any adjacent are acked
-            int upper=this->window->getUpper();
-            int lower=this->window->getLower();
-            for(int i=lower; i<=upper; i++){                    
-                // Case 2.2 - if the adjacent isnt acked stop slidding
-                if(!this->window->isAcked(i)){
-                    break;
-                }
-                std::cout << "sliding\n" ;
-                this->window->slide(i+1);
-                std::cout << "new lower: " << this->window->getLower() << std::endl;
-                if(this->window->isClosed()){
-
-                    std::cout << "=====CLOSED===\n";
-                }
-            }
+        // Case 2 - check to see if any adjacent are acked
+        int upper=this->window->getUpper();
+        int lower=this->window->getLower();
+        for(int i=lower; i<=upper; i++){                    
+            // Case 2.2 - if the adjacent isnt acked stop slidding
+            if(!this->window->isAcked(i))
+                break;
+            std::cout << "sliding\n" ;
+            this->window->slide(i+1); // opens up the dinwo
+            std::cout << "new lower: " << this->window->getLower() << std::endl;
+        }
         // Case 2 - where the packet recvd isnt the leftmost
-        }else{
-            this->window->setIsAcked(seqNum);
-        }
-        }
         return SEND_DATA;
     }
     break;
@@ -241,9 +236,12 @@ state_t ServerThread::waiting(){
         
         std::cout << "==========================" << std::endl;
         std::cout << "SENDING LOWEST unacked packet" << std::endl;
+        std::cout << "Index: " << this->window->getLower() % (this->window->getSize() -1) << std::endl;
         RCopyPacket &p = this->window->getPacket(this->window->getLower());
-        std::cout << this->window->getLower() << std::endl;
+        std::cout << "packet seqNo: " << p.getHeader().getSequenceNumber() << std::endl;
+        std::cout << "Window lower: " << this->window->getLower() << std::endl;
         std::cout << "=================" << std::endl;
+        std::cout << *window;
         std::cout << "" << std::endl;
         this->sendPacket(p);
         if(count++ > 9){

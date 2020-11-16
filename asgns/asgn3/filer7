@@ -1,0 +1,3549 @@
+# <buff-size> <err-per> <wind-size>
+./rcopy /home/victord/CPE464/asgns/asgn3/tests/from_files/long_binary /home/victord/CPE464/asgns/asgn3/tests/to_files/long_binary 1000 .2 10 localhost 49628
+./rcopy
+/home/victord/CPE464/asgns/asgn3/tests/from_files/long_binary
+/home/victord/CPE464/asgns/asgn3/tests/to_files/long_binary
+1000
+.2
+10
+localhost
+49628
+Send Err-INIT ErrRate: 0.20 Drop: Y Flip: Y Rand: N Debug: Y
+SEND MSG#   1 SEQ# 4294967295 LEN  115 FLAGS 7  -FNAME    
+RECV          SEQ# 4294967295 LEN 1007 FLAGS 8  -FNAME response
+Server info - IP: ::1 Port: 49628 
+recvd a packet of len1007
+in FILENAME_OK
+===================================
+1
+RECV          SEQ#   1 LEN 1007 FLAGS 3  -Data #:    1
+recvd a packet of len1007
+window={upper: 9
+, lower: 1
+, current: 1
+packets: {packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#   2 SEQ#   2 LEN   11 FLAGS 5  -RR #:      2
+===================================
+2
+RECV          SEQ#   2 LEN 1007 FLAGS 3  -Data #:    2
+recvd a packet of len1007
+window={upper: 11
+, lower: 2
+, current: 2
+packets: {packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:1,checksum:3336,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#   3 SEQ#   3 LEN   11 FLAGS 5  -RR #:      3
+===================================
+3
+RECV          SEQ#   3 LEN 1007 FLAGS 3  -Data #:    3
+recvd a packet of len1007
+window={upper: 12
+, lower: 3
+, current: 3
+packets: {packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:1,checksum:3336,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:2,checksum:21771,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#   4 SEQ#   4 LEN   11 FLAGS 5  -RR #:      4
+===================================
+4
+RECV          SEQ#   4 LEN 1007 FLAGS 3  -Data #:    4
+recvd a packet of len1007
+window={upper: 13
+, lower: 4
+, current: 4
+packets: {packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:1,checksum:3336,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:2,checksum:21771,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:3,checksum:30714,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#   5 SEQ#   5 LEN   11 FLAGS 5  -RR #:      5
+===================================
+5
+RECV          SEQ#   5 LEN 1007 FLAGS 3  -Data #:    5
+recvd a packet of len1007
+window={upper: 14
+, lower: 5
+, current: 5
+packets: {packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:1,checksum:3336,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:2,checksum:21771,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:3,checksum:30714,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:4,checksum:5880,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#   6 SEQ#   6 LEN   11 FLAGS 5  -RR #:      6
+===================================
+6
+RECV          SEQ#   6 LEN 1007 FLAGS 3  -Data #:    6
+recvd a packet of len1007
+window={upper: 15
+, lower: 6
+, current: 6
+packets: {packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:1,checksum:3336,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:2,checksum:21771,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:3,checksum:30714,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:4,checksum:5880,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:5,checksum:50315,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#   7 SEQ#   7 LEN   11 FLAGS 5  -RR #:      7
+===================================
+7
+RECV          SEQ#   7 LEN 1007 FLAGS 3  -Data #:    7
+recvd a packet of len1007
+window={upper: 16
+, lower: 7
+, current: 7
+packets: {packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:1,checksum:3336,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:2,checksum:21771,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:3,checksum:30714,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:4,checksum:5880,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:5,checksum:50315,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:6,checksum:10716,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#   8 SEQ#   8 LEN   11 FLAGS 5  -RR #:      8
+===================================
+8
+RECV          SEQ#   8 LEN 1007 FLAGS 3  -Data #:    8
+recvd a packet of len1007
+window={upper: 17
+, lower: 8
+, current: 8
+packets: {packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:1,checksum:3336,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:2,checksum:21771,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:3,checksum:30714,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:4,checksum:5880,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:5,checksum:50315,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:6,checksum:10716,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:7,checksum:18050,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#   9 SEQ#   9 LEN   11 FLAGS 5  -RR #:      9
+===================================
+9
+RECV          SEQ#   9 LEN 1007 FLAGS 3  -Data #:    9
+recvd a packet of len1007
+window={upper: 18
+, lower: 9
+, current: 9
+packets: {packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:1,checksum:3336,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:2,checksum:21771,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:3,checksum:30714,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:4,checksum:5880,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:5,checksum:50315,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:6,checksum:10716,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:7,checksum:18050,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:8,checksum:52523,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  10 SEQ#  10 LEN   11 FLAGS 5  -RR #:     10
+===================================
+10
+RECV          SEQ#  10 LEN 1007 FLAGS 3  -Data #:   10
+recvd a packet of len1007
+window={upper: 19
+, lower: 10
+, current: 10
+packets: {packet={header:{seqNum:0,checksum:0,flag:0}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:1,checksum:3336,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:2,checksum:21771,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:3,checksum:30714,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:4,checksum:5880,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:5,checksum:50315,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:6,checksum:10716,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:7,checksum:18050,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:8,checksum:52523,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:9,checksum:25620,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  11 SEQ#  11 LEN   11 FLAGS 5  -RR #:     11
+===================================
+11
+RECV          SEQ#  11 LEN 1007 FLAGS 3  -Data #:   11
+recvd a packet of len1007
+window={upper: 20
+, lower: 11
+, current: 11
+packets: {packet={header:{seqNum:1,checksum:3336,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:2,checksum:21771,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:3,checksum:30714,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:4,checksum:5880,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:5,checksum:50315,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:6,checksum:10716,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:7,checksum:18050,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:8,checksum:52523,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:9,checksum:25620,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:10,checksum:60708,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  12 SEQ#  12 LEN   11 FLAGS 5  -RR #:     12
+===================================
+12
+RECV          SEQ#  12 LEN 1007 FLAGS 3  -Data #:   12
+recvd a packet of len1007
+window={upper: 21
+, lower: 12
+, current: 12
+packets: {packet={header:{seqNum:2,checksum:21771,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:3,checksum:30714,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:4,checksum:5880,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:5,checksum:50315,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:6,checksum:10716,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:7,checksum:18050,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:8,checksum:52523,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:9,checksum:25620,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:10,checksum:60708,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:11,checksum:2372,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  13 SEQ#  13 LEN   11 FLAGS 5  -RR #:     13
+===================================
+13
+RECV          SEQ#  13 LEN 1007 FLAGS 3  -Data #:   13
+recvd a packet of len1007
+window={upper: 22
+, lower: 13
+, current: 13
+packets: {packet={header:{seqNum:3,checksum:30714,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:4,checksum:5880,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:5,checksum:50315,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:6,checksum:10716,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:7,checksum:18050,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:8,checksum:52523,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:9,checksum:25620,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:10,checksum:60708,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:11,checksum:2372,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:12,checksum:62460,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  14 SEQ#  14 LEN   11 FLAGS 5  -RR #:     14
+===================================
+14
+RECV          SEQ#  14 LEN 1007 FLAGS 3  -Data #:   14
+recvd a packet of len1007
+window={upper: 23
+, lower: 14
+, current: 14
+packets: {packet={header:{seqNum:4,checksum:5880,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:5,checksum:50315,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:6,checksum:10716,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:7,checksum:18050,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:8,checksum:52523,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:9,checksum:25620,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:10,checksum:60708,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:11,checksum:2372,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:12,checksum:62460,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:13,checksum:41929,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  15 SEQ#  15 LEN   11 FLAGS 5  -RR #:     15
+===================================
+15
+RECV          SEQ#  15 LEN 1007 FLAGS 3  -Data #:   15
+recvd a packet of len1007
+window={upper: 24
+, lower: 15
+, current: 15
+packets: {packet={header:{seqNum:5,checksum:50315,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:6,checksum:10716,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:7,checksum:18050,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:8,checksum:52523,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:9,checksum:25620,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:10,checksum:60708,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:11,checksum:2372,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:12,checksum:62460,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:13,checksum:41929,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:14,checksum:60406,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  16 SEQ#  16 LEN   11 FLAGS 5  -RR #:     16
+===================================
+16
+RECV          SEQ#  16 LEN 1007 FLAGS 3  -Data #:   16
+recvd a packet of len1007
+window={upper: 25
+, lower: 16
+, current: 16
+packets: {packet={header:{seqNum:6,checksum:10716,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:7,checksum:18050,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:8,checksum:52523,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:9,checksum:25620,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:10,checksum:60708,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:11,checksum:2372,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:12,checksum:62460,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:13,checksum:41929,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:14,checksum:60406,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:15,checksum:22481,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  17 SEQ#  17 LEN   11 FLAGS 5  -RR #:     17
+===================================
+17
+RECV          SEQ#  17 LEN 1007 FLAGS 3  -Data #:   17
+recvd a packet of len1007
+window={upper: 26
+, lower: 17
+, current: 17
+packets: {packet={header:{seqNum:7,checksum:18050,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:8,checksum:52523,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:9,checksum:25620,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:10,checksum:60708,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:11,checksum:2372,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:12,checksum:62460,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:13,checksum:41929,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:14,checksum:60406,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:15,checksum:22481,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:16,checksum:44107,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  18 SEQ#  18 LEN   11 FLAGS 5  -RR #:     18
+===================================
+18
+RECV          SEQ#  18 LEN 1007 FLAGS 3  -Data #:   18
+recvd a packet of len1007
+window={upper: 27
+, lower: 18
+, current: 18
+packets: {packet={header:{seqNum:8,checksum:52523,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:9,checksum:25620,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:10,checksum:60708,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:11,checksum:2372,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:12,checksum:62460,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:13,checksum:41929,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:14,checksum:60406,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:15,checksum:22481,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:16,checksum:44107,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:17,checksum:8373,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  19 SEQ#  19 LEN   11 FLAGS 5  -RR #:     19
+===================================
+19
+RECV          SEQ#  19 LEN 1007 FLAGS 3  -Data #:   19
+recvd a packet of len1007
+window={upper: 28
+, lower: 19
+, current: 19
+packets: {packet={header:{seqNum:9,checksum:25620,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:10,checksum:60708,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:11,checksum:2372,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:12,checksum:62460,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:13,checksum:41929,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:14,checksum:60406,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:15,checksum:22481,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:16,checksum:44107,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:17,checksum:8373,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:18,checksum:44912,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  20 SEQ#  20 LEN   11 FLAGS 5  -RR #:     20
+===================================
+20
+RECV          SEQ#  22 LEN 1007 FLAGS 3  -Data #:   22
+recvd a packet of len1007
+window={upper: 29
+, lower: 20
+, current: 20
+packets: {packet={header:{seqNum:10,checksum:60708,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:11,checksum:2372,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:12,checksum:62460,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:13,checksum:41929,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:14,checksum:60406,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:15,checksum:22481,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:16,checksum:44107,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:17,checksum:8373,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:18,checksum:44912,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:19,checksum:51549,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower less to seqNum
+SEND MSG#  21 SEQ#  20 LEN   11 FLAGS 6  -SREJ #:   20 - DROPPED 
+lower less to seqNum
+SEND MSG#  22 SEQ#  21 LEN   11 FLAGS 6  -SREJ #:   21 - DROPPED 
+===================================
+20
+RECV          SEQ#  23 LEN 1007 FLAGS 3  -Data #:   23
+recvd a packet of len1007
+window={upper: 29
+, lower: 20
+, current: 23
+packets: {packet={header:{seqNum:10,checksum:60708,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:11,checksum:2372,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:22,checksum:8481,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:13,checksum:41929,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:14,checksum:60406,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:15,checksum:22481,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:16,checksum:44107,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:17,checksum:8373,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:18,checksum:44912,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:19,checksum:51549,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+===================================
+20
+RECV          SEQ#  25 LEN 1007 FLAGS 3  -Data #:   25
+recvd a packet of len1007
+window={upper: 29
+, lower: 20
+, current: 24
+packets: {packet={header:{seqNum:10,checksum:60708,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:11,checksum:2372,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:22,checksum:8481,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:23,checksum:40536,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:14,checksum:60406,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:15,checksum:22481,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:16,checksum:44107,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:17,checksum:8373,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:18,checksum:44912,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:19,checksum:51549,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower less to seqNum
+SEND MSG#  23 SEQ#  24 LEN   11 FLAGS 6  -SREJ #:   24
+===================================
+20
+RECV          SEQ#  26 LEN 1007 FLAGS 3  -Data #:   26
+recvd a packet of len1007
+window={upper: 29
+, lower: 20
+, current: 26
+packets: {packet={header:{seqNum:10,checksum:60708,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:11,checksum:2372,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:22,checksum:8481,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:23,checksum:40536,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:14,checksum:60406,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:25,checksum:37473,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:16,checksum:44107,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:17,checksum:8373,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:18,checksum:44912,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:19,checksum:51549,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+===================================
+20
+RECV          SEQ#  24 LEN 1007 FLAGS 3  -Data #:   24
+recvd a packet of len1007
+window={upper: 29
+, lower: 20
+, current: 27
+packets: {packet={header:{seqNum:10,checksum:60708,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:11,checksum:2372,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:22,checksum:8481,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:23,checksum:40536,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:14,checksum:60406,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:25,checksum:37473,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:26,checksum:29001,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:17,checksum:8373,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:18,checksum:44912,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:19,checksum:51549,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+===================================
+20
+RECV          SEQ#  27 LEN 1007 FLAGS 3  -Data #:   27
+recvd a packet of len1007
+window={upper: 29
+, lower: 20
+, current: 25
+packets: {packet={header:{seqNum:10,checksum:60708,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:11,checksum:2372,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:22,checksum:8481,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:23,checksum:40536,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:24,checksum:26939,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:25,checksum:37473,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:26,checksum:29001,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:17,checksum:8373,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:18,checksum:44912,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:19,checksum:51549,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower less to seqNum
+lower less to seqNum
+===================================
+20
+RECV          SEQ#  28 LEN 1007 FLAGS 3  -Data #:   28
+recvd a packet of len1007
+window={upper: 29
+, lower: 20
+, current: 28
+packets: {packet={header:{seqNum:10,checksum:60708,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:11,checksum:2372,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:22,checksum:8481,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:23,checksum:40536,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:24,checksum:26939,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:25,checksum:37473,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:26,checksum:29001,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:27,checksum:15299,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:18,checksum:44912,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:19,checksum:51549,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+===================================
+20
+RECV          SEQ#  29 LEN 1007 FLAGS 3  -Data #:   29
+recvd a packet of len1007
+window={upper: 29
+, lower: 20
+, current: 29
+packets: {packet={header:{seqNum:10,checksum:60708,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:11,checksum:2372,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:22,checksum:8481,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:23,checksum:40536,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:24,checksum:26939,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:25,checksum:37473,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:26,checksum:29001,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:27,checksum:15299,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:28,checksum:6045,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:19,checksum:51549,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+===================================
+20
+RECV          SEQ#  20 LEN 1007 FLAGS 3  -Data #:   20
+recvd a packet of len1007
+window={upper: 29
+, lower: 20
+, current: 30
+packets: {packet={header:{seqNum:10,checksum:60708,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:11,checksum:2372,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:22,checksum:8481,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:23,checksum:40536,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:24,checksum:26939,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:25,checksum:37473,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:26,checksum:29001,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:27,checksum:15299,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:28,checksum:6045,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:29,checksum:49327,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  24 SEQ#  21 LEN   11 FLAGS 5  -RR #:     21
+===================================
+21
+RECV          SEQ#  30 LEN 1007 FLAGS 3  -Data #:   30
+recvd a packet of len1007
+window={upper: 30
+, lower: 21
+, current: 21
+packets: {packet={header:{seqNum:11,checksum:2372,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:22,checksum:8481,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:23,checksum:40536,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:24,checksum:26939,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:25,checksum:37473,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:26,checksum:29001,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:27,checksum:15299,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:28,checksum:6045,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:29,checksum:49327,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:20,checksum:47624,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower less to seqNum
+SEND MSG#  25 SEQ#  21 LEN   11 FLAGS 6  -SREJ #:   21 - DROPPED 
+lower less to seqNum
+lower less to seqNum
+lower less to seqNum
+lower less to seqNum
+lower less to seqNum
+lower less to seqNum
+lower less to seqNum
+lower less to seqNum
+===================================
+21
+RECV          SEQ#  21 LEN 1007 FLAGS 3  -Data #:   21
+recvd a packet of len1007
+window={upper: 30
+, lower: 21
+, current: 31
+packets: {packet={header:{seqNum:11,checksum:2372,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:22,checksum:8481,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:23,checksum:40536,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:24,checksum:26939,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:25,checksum:37473,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:26,checksum:29001,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:27,checksum:15299,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:28,checksum:6045,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:29,checksum:49327,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:30,checksum:34444,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  26 SEQ#  22 LEN   11 FLAGS 5  -RR #:     22
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  27 SEQ#  23 LEN   11 FLAGS 5  -RR #:     23
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  28 SEQ#  24 LEN   11 FLAGS 5  -RR #:     24
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  29 SEQ#  25 LEN   11 FLAGS 5  -RR #:     25
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  30 SEQ#  26 LEN   11 FLAGS 5  -RR #:     26
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  31 SEQ#  27 LEN   11 FLAGS 5  -RR #:     27
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  32 SEQ#  28 LEN   11 FLAGS 5  -RR #:     28
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  33 SEQ#  29 LEN   11 FLAGS 5  -RR #:     29
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  34 SEQ#  30 LEN   11 FLAGS 5  -RR #:     30
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  35 SEQ#  31 LEN   11 FLAGS 5  -RR #:     31 - FLIPPED BITS 
+===================================
+31
+RECV          SEQ#  31 LEN 1007 FLAGS 3  -Data #:   31 - RECV Corrupted packet
+recvd a packet of len1007
+bad crc
+===================================
+31
+RECV          SEQ#  32 LEN 1007 FLAGS 3  -Data #:   32
+recvd a packet of len1007
+window={upper: 40
+, lower: 31
+, current: 31
+packets: {packet={header:{seqNum:21,checksum:56944,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:22,checksum:8481,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:23,checksum:40536,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:24,checksum:26939,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:25,checksum:37473,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:26,checksum:29001,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:27,checksum:15299,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:28,checksum:6045,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:29,checksum:49327,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:30,checksum:34444,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower less to seqNum
+SEND MSG#  36 SEQ#  31 LEN   11 FLAGS 6  -SREJ #:   31
+===================================
+31
+RECV          SEQ#  34 LEN 1007 FLAGS 3  -Data #:   34
+recvd a packet of len1007
+window={upper: 40
+, lower: 31
+, current: 33
+packets: {packet={header:{seqNum:21,checksum:56944,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:32,checksum:56852,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:23,checksum:40536,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:24,checksum:26939,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:25,checksum:37473,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:26,checksum:29001,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:27,checksum:15299,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:28,checksum:6045,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:29,checksum:49327,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:30,checksum:34444,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower less to seqNum
+SEND MSG#  37 SEQ#  33 LEN   11 FLAGS 6  -SREJ #:   33 - DROPPED 
+===================================
+31
+RECV          SEQ#  35 LEN 1007 FLAGS 3  -Data #:   35
+recvd a packet of len1007
+window={upper: 40
+, lower: 31
+, current: 35
+packets: {packet={header:{seqNum:21,checksum:56944,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:32,checksum:56852,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:23,checksum:40536,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:34,checksum:37332,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:25,checksum:37473,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:26,checksum:29001,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:27,checksum:15299,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:28,checksum:6045,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:29,checksum:49327,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:30,checksum:34444,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+===================================
+31
+RECV          SEQ#  36 LEN 1007 FLAGS 3  -Data #:   36 - RECV Corrupted packet
+recvd a packet of len1007
+bad crc
+===================================
+31
+RECV          SEQ#  37 LEN 1007 FLAGS 3  -Data #:   37
+recvd a packet of len1007
+window={upper: 40
+, lower: 31
+, current: 36
+packets: {packet={header:{seqNum:21,checksum:56944,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:32,checksum:56852,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:23,checksum:40536,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:34,checksum:37332,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:35,checksum:59248,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:26,checksum:29001,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:27,checksum:15299,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:28,checksum:6045,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:29,checksum:49327,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:30,checksum:34444,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower less to seqNum
+SEND MSG#  38 SEQ#  36 LEN   11 FLAGS 6  -SREJ #:   36
+===================================
+31
+RECV          SEQ#  38 LEN 1007 FLAGS 3  -Data #:   38
+recvd a packet of len1007
+window={upper: 40
+, lower: 31
+, current: 38
+packets: {packet={header:{seqNum:21,checksum:56944,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:32,checksum:56852,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:23,checksum:40536,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:34,checksum:37332,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:35,checksum:59248,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:26,checksum:29001,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:37,checksum:59278,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:28,checksum:6045,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:29,checksum:49327,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:30,checksum:34444,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+===================================
+31
+RECV          SEQ#  39 LEN 1007 FLAGS 3  -Data #:   39
+recvd a packet of len1007
+window={upper: 40
+, lower: 31
+, current: 39
+packets: {packet={header:{seqNum:21,checksum:56944,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:32,checksum:56852,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:23,checksum:40536,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:34,checksum:37332,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:35,checksum:59248,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:26,checksum:29001,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:37,checksum:59278,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:38,checksum:46316,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:29,checksum:49327,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:30,checksum:34444,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+===================================
+31
+RECV          SEQ#  31 LEN 1007 FLAGS 3  -Data #:   31
+recvd a packet of len1007
+window={upper: 40
+, lower: 31
+, current: 40
+packets: {packet={header:{seqNum:21,checksum:56944,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:32,checksum:56852,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:23,checksum:40536,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:34,checksum:37332,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:35,checksum:59248,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:26,checksum:29001,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:37,checksum:59278,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:38,checksum:46316,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:39,checksum:53887,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:30,checksum:34444,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  39 SEQ#  32 LEN   11 FLAGS 5  -RR #:     32
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  40 SEQ#  33 LEN   11 FLAGS 5  -RR #:     33 - FLIPPED BITS 
+===================================
+33
+RECV          SEQ#  36 LEN 1007 FLAGS 3  -Data #:   36
+recvd a packet of len1007
+window={upper: 42
+, lower: 33
+, current: 33
+packets: {packet={header:{seqNum:23,checksum:40536,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:34,checksum:37332,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:35,checksum:59248,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:26,checksum:29001,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:37,checksum:59278,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:38,checksum:46316,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:39,checksum:53887,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:30,checksum:34444,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:31,checksum:10691,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:32,checksum:56852,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower less to seqNum
+SEND MSG#  41 SEQ#  33 LEN   11 FLAGS 6  -SREJ #:   33
+lower less to seqNum
+lower less to seqNum
+===================================
+33
+RECV          SEQ#  33 LEN 1007 FLAGS 3  -Data #:   33
+recvd a packet of len1007
+window={upper: 42
+, lower: 33
+, current: 37
+packets: {packet={header:{seqNum:23,checksum:40536,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:34,checksum:37332,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:35,checksum:59248,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:36,checksum:40122,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:37,checksum:59278,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:38,checksum:46316,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:39,checksum:53887,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:30,checksum:34444,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:31,checksum:10691,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:32,checksum:56852,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  42 SEQ#  34 LEN   11 FLAGS 5  -RR #:     34
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  43 SEQ#  35 LEN   11 FLAGS 5  -RR #:     35
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  44 SEQ#  36 LEN   11 FLAGS 5  -RR #:     36
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  45 SEQ#  37 LEN   11 FLAGS 5  -RR #:     37
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  46 SEQ#  38 LEN   11 FLAGS 5  -RR #:     38
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  47 SEQ#  39 LEN   11 FLAGS 5  -RR #:     39
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  48 SEQ#  40 LEN   11 FLAGS 5  -RR #:     40
+===================================
+40
+RECV          SEQ#  30 LEN 1007 FLAGS 3  -Data #:   30
+recvd a packet of len1007
+window={upper: 49
+, lower: 40
+, current: 40
+packets: {packet={header:{seqNum:30,checksum:34444,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:31,checksum:10691,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:32,checksum:56852,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:33,checksum:29402,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:34,checksum:37332,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:35,checksum:59248,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:36,checksum:40122,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:37,checksum:59278,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:38,checksum:46316,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:39,checksum:53887,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower higher than seqNum
+SEND MSG#  49 SEQ#  31 LEN   11 FLAGS 5  -RR #:     31
+===================================
+40
+RECV          SEQ#  40 LEN 1007 FLAGS 3  -Data #:   40
+recvd a packet of len1007
+window={upper: 49
+, lower: 40
+, current: 40
+packets: {packet={header:{seqNum:30,checksum:34444,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:31,checksum:10691,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:32,checksum:56852,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:33,checksum:29402,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:34,checksum:37332,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:35,checksum:59248,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:36,checksum:40122,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:37,checksum:59278,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:38,checksum:46316,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:39,checksum:53887,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  50 SEQ#  41 LEN   11 FLAGS 5  -RR #:     41
+===================================
+41
+RECV          SEQ#  41 LEN 1007 FLAGS 3  -Data #:   41
+recvd a packet of len1007
+window={upper: 50
+, lower: 41
+, current: 41
+packets: {packet={header:{seqNum:31,checksum:10691,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:32,checksum:56852,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:33,checksum:29402,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:34,checksum:37332,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:35,checksum:59248,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:36,checksum:40122,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:37,checksum:59278,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:38,checksum:46316,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:39,checksum:53887,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:40,checksum:42034,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  51 SEQ#  42 LEN   11 FLAGS 5  -RR #:     42
+===================================
+42
+RECV          SEQ#  42 LEN 1007 FLAGS 3  -Data #:   42
+recvd a packet of len1007
+window={upper: 51
+, lower: 42
+, current: 42
+packets: {packet={header:{seqNum:32,checksum:56852,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:33,checksum:29402,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:34,checksum:37332,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:35,checksum:59248,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:36,checksum:40122,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:37,checksum:59278,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:38,checksum:46316,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:39,checksum:53887,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:40,checksum:42034,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:41,checksum:24478,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  52 SEQ#  43 LEN   11 FLAGS 5  -RR #:     43
+===================================
+43
+RECV          SEQ#  43 LEN 1007 FLAGS 3  -Data #:   43
+recvd a packet of len1007
+window={upper: 52
+, lower: 43
+, current: 43
+packets: {packet={header:{seqNum:33,checksum:29402,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:34,checksum:37332,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:35,checksum:59248,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:36,checksum:40122,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:37,checksum:59278,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:38,checksum:46316,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:39,checksum:53887,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:40,checksum:42034,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:41,checksum:24478,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:42,checksum:34721,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  53 SEQ#  44 LEN   11 FLAGS 5  -RR #:     44
+===================================
+44
+RECV          SEQ#  44 LEN 1007 FLAGS 3  -Data #:   44
+recvd a packet of len1007
+window={upper: 53
+, lower: 44
+, current: 44
+packets: {packet={header:{seqNum:34,checksum:37332,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:35,checksum:59248,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:36,checksum:40122,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:37,checksum:59278,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:38,checksum:46316,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:39,checksum:53887,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:40,checksum:42034,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:41,checksum:24478,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:42,checksum:34721,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:43,checksum:16376,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  54 SEQ#  45 LEN   11 FLAGS 5  -RR #:     45
+===================================
+45
+RECV          SEQ#  45 LEN 1007 FLAGS 3  -Data #:   45
+recvd a packet of len1007
+window={upper: 54
+, lower: 45
+, current: 45
+packets: {packet={header:{seqNum:35,checksum:59248,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:36,checksum:40122,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:37,checksum:59278,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:38,checksum:46316,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:39,checksum:53887,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:40,checksum:42034,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:41,checksum:24478,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:42,checksum:34721,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:43,checksum:16376,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:44,checksum:34942,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  55 SEQ#  46 LEN   11 FLAGS 5  -RR #:     46
+===================================
+46
+RECV          SEQ#  46 LEN 1007 FLAGS 3  -Data #:   46
+recvd a packet of len1007
+window={upper: 55
+, lower: 46
+, current: 46
+packets: {packet={header:{seqNum:36,checksum:40122,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:37,checksum:59278,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:38,checksum:46316,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:39,checksum:53887,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:40,checksum:42034,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:41,checksum:24478,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:42,checksum:34721,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:43,checksum:16376,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:44,checksum:34942,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:45,checksum:25532,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  56 SEQ#  47 LEN   11 FLAGS 5  -RR #:     47
+===================================
+47
+RECV          SEQ#  47 LEN 1007 FLAGS 3  -Data #:   47
+recvd a packet of len1007
+window={upper: 56
+, lower: 47
+, current: 47
+packets: {packet={header:{seqNum:37,checksum:59278,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:38,checksum:46316,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:39,checksum:53887,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:40,checksum:42034,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:41,checksum:24478,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:42,checksum:34721,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:43,checksum:16376,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:44,checksum:34942,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:45,checksum:25532,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:46,checksum:19439,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  57 SEQ#  48 LEN   11 FLAGS 5  -RR #:     48
+===================================
+48
+RECV          SEQ#  48 LEN 1007 FLAGS 3  -Data #:   48
+recvd a packet of len1007
+window={upper: 57
+, lower: 48
+, current: 48
+packets: {packet={header:{seqNum:38,checksum:46316,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:39,checksum:53887,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:40,checksum:42034,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:41,checksum:24478,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:42,checksum:34721,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:43,checksum:16376,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:44,checksum:34942,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:45,checksum:25532,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:46,checksum:19439,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:47,checksum:43127,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  58 SEQ#  49 LEN   11 FLAGS 5  -RR #:     49
+===================================
+49
+RECV          SEQ#  49 LEN 1007 FLAGS 3  -Data #:   49
+recvd a packet of len1007
+window={upper: 58
+, lower: 49
+, current: 49
+packets: {packet={header:{seqNum:39,checksum:53887,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:40,checksum:42034,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:41,checksum:24478,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:42,checksum:34721,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:43,checksum:16376,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:44,checksum:34942,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:45,checksum:25532,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:46,checksum:19439,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:47,checksum:43127,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:48,checksum:35297,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  59 SEQ#  50 LEN   11 FLAGS 5  -RR #:     50
+===================================
+50
+RECV          SEQ#  50 LEN 1007 FLAGS 3  -Data #:   50
+recvd a packet of len1007
+window={upper: 59
+, lower: 50
+, current: 50
+packets: {packet={header:{seqNum:40,checksum:42034,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:41,checksum:24478,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:42,checksum:34721,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:43,checksum:16376,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:44,checksum:34942,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:45,checksum:25532,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:46,checksum:19439,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:47,checksum:43127,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:48,checksum:35297,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:49,checksum:51705,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  60 SEQ#  51 LEN   11 FLAGS 5  -RR #:     51
+===================================
+51
+RECV          SEQ#  51 LEN 1007 FLAGS 3  -Data #:   51
+recvd a packet of len1007
+window={upper: 60
+, lower: 51
+, current: 51
+packets: {packet={header:{seqNum:41,checksum:24478,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:42,checksum:34721,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:43,checksum:16376,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:44,checksum:34942,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:45,checksum:25532,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:46,checksum:19439,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:47,checksum:43127,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:48,checksum:35297,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:49,checksum:51705,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:50,checksum:56457,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  61 SEQ#  52 LEN   11 FLAGS 5  -RR #:     52
+===================================
+52
+RECV          SEQ#  52 LEN 1007 FLAGS 3  -Data #:   52
+recvd a packet of len1007
+window={upper: 61
+, lower: 52
+, current: 52
+packets: {packet={header:{seqNum:42,checksum:34721,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:43,checksum:16376,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:44,checksum:34942,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:45,checksum:25532,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:46,checksum:19439,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:47,checksum:43127,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:48,checksum:35297,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:49,checksum:51705,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:50,checksum:56457,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:51,checksum:27680,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  62 SEQ#  53 LEN   11 FLAGS 5  -RR #:     53 - DROPPED 
+===================================
+53
+RECV          SEQ#  53 LEN 1007 FLAGS 3  -Data #:   53
+recvd a packet of len1007
+window={upper: 62
+, lower: 53
+, current: 53
+packets: {packet={header:{seqNum:43,checksum:16376,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:44,checksum:34942,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:45,checksum:25532,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:46,checksum:19439,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:47,checksum:43127,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:48,checksum:35297,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:49,checksum:51705,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:50,checksum:56457,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:51,checksum:27680,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:52,checksum:21149,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  63 SEQ#  54 LEN   11 FLAGS 5  -RR #:     54 - DROPPED 
+===================================
+54
+RECV          SEQ#  56 LEN 1007 FLAGS 3  -Data #:   56
+recvd a packet of len1007
+window={upper: 63
+, lower: 54
+, current: 54
+packets: {packet={header:{seqNum:44,checksum:34942,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:45,checksum:25532,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:46,checksum:19439,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:47,checksum:43127,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:48,checksum:35297,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:49,checksum:51705,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:50,checksum:56457,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:51,checksum:27680,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:52,checksum:21149,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:53,checksum:61848,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower less to seqNum
+SEND MSG#  64 SEQ#  54 LEN   11 FLAGS 6  -SREJ #:   54
+lower less to seqNum
+SEND MSG#  65 SEQ#  55 LEN   11 FLAGS 6  -SREJ #:   55
+===================================
+54
+RECV          SEQ#  57 LEN 1007 FLAGS 3  -Data #:   57
+recvd a packet of len1007
+window={upper: 63
+, lower: 54
+, current: 57
+packets: {packet={header:{seqNum:44,checksum:34942,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:45,checksum:25532,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:56,checksum:19456,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:47,checksum:43127,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:48,checksum:35297,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:49,checksum:51705,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:50,checksum:56457,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:51,checksum:27680,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:52,checksum:21149,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:53,checksum:61848,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+===================================
+54
+RECV          SEQ#  54 LEN 1007 FLAGS 3  -Data #:   54 - RECV Corrupted packet
+recvd a packet of len1007
+bad crc
+===================================
+54
+RECV          SEQ#  58 LEN 1007 FLAGS 3  -Data #:   58
+recvd a packet of len1007
+window={upper: 63
+, lower: 54
+, current: 58
+packets: {packet={header:{seqNum:44,checksum:34942,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:45,checksum:25532,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:56,checksum:19456,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:57,checksum:19540,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:48,checksum:35297,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:49,checksum:51705,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:50,checksum:56457,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:51,checksum:27680,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:52,checksum:21149,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:53,checksum:61848,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+===================================
+54
+RECV          SEQ#  55 LEN 1007 FLAGS 3  -Data #:   55 - RECV Corrupted packet
+recvd a packet of len1007
+bad crc
+===================================
+54
+RECV          SEQ#  59 LEN 1007 FLAGS 3  -Data #:   59 - RECV Corrupted packet
+recvd a packet of len1007
+bad crc
+===================================
+54
+RECV          SEQ#  61 LEN 1007 FLAGS 3  -Data #:   61
+recvd a packet of len1007
+window={upper: 63
+, lower: 54
+, current: 59
+packets: {packet={header:{seqNum:44,checksum:34942,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:45,checksum:25532,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:56,checksum:19456,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:57,checksum:19540,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:58,checksum:48168,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:49,checksum:51705,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:50,checksum:56457,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:51,checksum:27680,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:52,checksum:21149,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:53,checksum:61848,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower less to seqNum
+SEND MSG#  66 SEQ#  59 LEN   11 FLAGS 6  -SREJ #:   59 - FLIPPED BITS 
+lower less to seqNum
+SEND MSG#  67 SEQ#  60 LEN   11 FLAGS 6  -SREJ #:   60
+===================================
+54
+RECV          SEQ#  60 LEN 1007 FLAGS 3  -Data #:   60
+recvd a packet of len1007
+window={upper: 63
+, lower: 54
+, current: 62
+packets: {packet={header:{seqNum:44,checksum:34942,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:45,checksum:25532,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:56,checksum:19456,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:57,checksum:19540,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:58,checksum:48168,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:49,checksum:51705,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:50,checksum:56457,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:61,checksum:28198,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:52,checksum:21149,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:53,checksum:61848,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+===================================
+54
+RECV          SEQ#  52 LEN 1007 FLAGS 3  -Data #:   52
+recvd a packet of len1007
+window={upper: 63
+, lower: 54
+, current: 61
+packets: {packet={header:{seqNum:44,checksum:34942,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:45,checksum:25532,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:56,checksum:19456,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:57,checksum:19540,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:58,checksum:48168,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:49,checksum:51705,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:61,checksum:28198,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:52,checksum:21149,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:53,checksum:61848,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower higher than seqNum
+SEND MSG#  68 SEQ#  53 LEN   11 FLAGS 5  -RR #:     53 - FLIPPED BITS 
+===================================
+54
+RECV          SEQ#  52 LEN 1007 FLAGS 3  -Data #:   52 - RECV Corrupted packet
+recvd a packet of len1007
+bad crc
+===================================
+54
+RECV          SEQ#  52 LEN 1007 FLAGS 3  -Data #:   52
+recvd a packet of len1007
+window={upper: 63
+, lower: 54
+, current: 61
+packets: {packet={header:{seqNum:44,checksum:34942,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:45,checksum:25532,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:56,checksum:19456,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:57,checksum:19540,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:58,checksum:48168,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:49,checksum:51705,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:61,checksum:28198,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:52,checksum:21149,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:53,checksum:61848,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower higher than seqNum
+SEND MSG#  69 SEQ#  53 LEN   11 FLAGS 5  -RR #:     53 - FLIPPED BITS 
+===================================
+54
+RECV          SEQ#  52 LEN 1007 FLAGS 3  -Data #:   52
+recvd a packet of len1007
+window={upper: 63
+, lower: 54
+, current: 61
+packets: {packet={header:{seqNum:44,checksum:34942,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:45,checksum:25532,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:56,checksum:19456,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:57,checksum:19540,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:58,checksum:48168,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:49,checksum:51705,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:61,checksum:28198,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:52,checksum:21149,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:53,checksum:61848,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower higher than seqNum
+SEND MSG#  70 SEQ#  53 LEN   11 FLAGS 5  -RR #:     53 - DROPPED 
+===================================
+54
+RECV          SEQ#  52 LEN 1007 FLAGS 3  -Data #:   52
+recvd a packet of len1007
+window={upper: 63
+, lower: 54
+, current: 61
+packets: {packet={header:{seqNum:44,checksum:34942,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:45,checksum:25532,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:56,checksum:19456,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:57,checksum:19540,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:58,checksum:48168,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:49,checksum:51705,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:61,checksum:28198,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:52,checksum:21149,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:53,checksum:61848,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower higher than seqNum
+SEND MSG#  71 SEQ#  53 LEN   11 FLAGS 5  -RR #:     53
+===================================
+54
+RECV          SEQ#  62 LEN 1007 FLAGS 3  -Data #:   62
+recvd a packet of len1007
+window={upper: 63
+, lower: 54
+, current: 61
+packets: {packet={header:{seqNum:44,checksum:34942,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:45,checksum:25532,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:56,checksum:19456,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:57,checksum:19540,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:58,checksum:48168,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:49,checksum:51705,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:61,checksum:28198,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:52,checksum:21149,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:53,checksum:61848,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower less to seqNum
+===================================
+54
+RECV          SEQ#  53 LEN 1007 FLAGS 3  -Data #:   53
+recvd a packet of len1007
+window={upper: 63
+, lower: 54
+, current: 63
+packets: {packet={header:{seqNum:44,checksum:34942,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:45,checksum:25532,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:56,checksum:19456,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:57,checksum:19540,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:58,checksum:48168,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:49,checksum:51705,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:61,checksum:28198,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:62,checksum:3688,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:53,checksum:61848,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower higher than seqNum
+SEND MSG#  72 SEQ#  54 LEN   11 FLAGS 5  -RR #:     54
+===================================
+54
+RECV          SEQ#  63 LEN 1007 FLAGS 3  -Data #:   63
+recvd a packet of len1007
+window={upper: 63
+, lower: 54
+, current: 63
+packets: {packet={header:{seqNum:44,checksum:34942,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:45,checksum:25532,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:56,checksum:19456,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:57,checksum:19540,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:58,checksum:48168,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:49,checksum:51705,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:61,checksum:28198,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:62,checksum:3688,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:53,checksum:61848,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+===================================
+54
+RECV          SEQ#  54 LEN 1007 FLAGS 3  -Data #:   54
+recvd a packet of len1007
+window={upper: 63
+, lower: 54
+, current: 64
+packets: {packet={header:{seqNum:44,checksum:34942,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:45,checksum:25532,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:56,checksum:19456,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:57,checksum:19540,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:58,checksum:48168,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:49,checksum:51705,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:61,checksum:28198,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:62,checksum:3688,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:63,checksum:18016,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  73 SEQ#  55 LEN   11 FLAGS 5  -RR #:     55
+===================================
+55
+RECV          SEQ#  64 LEN 1007 FLAGS 3  -Data #:   64
+recvd a packet of len1007
+window={upper: 64
+, lower: 55
+, current: 55
+packets: {packet={header:{seqNum:45,checksum:25532,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:56,checksum:19456,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:57,checksum:19540,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:58,checksum:48168,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:49,checksum:51705,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:61,checksum:28198,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:62,checksum:3688,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:63,checksum:18016,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:54,checksum:62234,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower less to seqNum
+SEND MSG#  74 SEQ#  55 LEN   11 FLAGS 6  -SREJ #:   55 - FLIPPED BITS 
+lower less to seqNum
+lower less to seqNum
+lower less to seqNum
+lower less to seqNum
+SEND MSG#  75 SEQ#  59 LEN   11 FLAGS 6  -SREJ #:   59
+lower less to seqNum
+lower less to seqNum
+lower less to seqNum
+lower less to seqNum
+===================================
+55
+RECV          SEQ#  59 LEN 1007 FLAGS 3  -Data #:   59
+recvd a packet of len1007
+window={upper: 64
+, lower: 55
+, current: 65
+packets: {packet={header:{seqNum:45,checksum:25532,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:56,checksum:19456,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:57,checksum:19540,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:58,checksum:48168,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:49,checksum:51705,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:61,checksum:28198,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:62,checksum:3688,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:63,checksum:18016,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:64,checksum:18600,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+===================================
+55
+RECV          SEQ#  55 LEN 1007 FLAGS 3  -Data #:   55
+recvd a packet of len1007
+window={upper: 64
+, lower: 55
+, current: 60
+packets: {packet={header:{seqNum:45,checksum:25532,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:56,checksum:19456,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:57,checksum:19540,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:58,checksum:48168,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:59,checksum:28296,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:61,checksum:28198,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:62,checksum:3688,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:63,checksum:18016,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:64,checksum:18600,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  76 SEQ#  56 LEN   11 FLAGS 5  -RR #:     56
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  77 SEQ#  57 LEN   11 FLAGS 5  -RR #:     57
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  78 SEQ#  58 LEN   11 FLAGS 5  -RR #:     58
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  79 SEQ#  59 LEN   11 FLAGS 5  -RR #:     59
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  80 SEQ#  60 LEN   11 FLAGS 5  -RR #:     60
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  81 SEQ#  61 LEN   11 FLAGS 5  -RR #:     61
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  82 SEQ#  62 LEN   11 FLAGS 5  -RR #:     62
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  83 SEQ#  63 LEN   11 FLAGS 5  -RR #:     63
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  84 SEQ#  64 LEN   11 FLAGS 5  -RR #:     64
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  85 SEQ#  65 LEN   11 FLAGS 5  -RR #:     65
+===================================
+65
+RECV          SEQ#  65 LEN 1007 FLAGS 3  -Data #:   65
+recvd a packet of len1007
+window={upper: 74
+, lower: 65
+, current: 65
+packets: {packet={header:{seqNum:55,checksum:47035,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:56,checksum:19456,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:57,checksum:19540,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:58,checksum:48168,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:59,checksum:28296,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:61,checksum:28198,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:62,checksum:3688,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:63,checksum:18016,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:64,checksum:18600,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  86 SEQ#  66 LEN   11 FLAGS 5  -RR #:     66
+===================================
+66
+RECV          SEQ#  66 LEN 1007 FLAGS 3  -Data #:   66
+recvd a packet of len1007
+window={upper: 75
+, lower: 66
+, current: 66
+packets: {packet={header:{seqNum:56,checksum:19456,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:57,checksum:19540,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:58,checksum:48168,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:59,checksum:28296,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:61,checksum:28198,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:62,checksum:3688,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:63,checksum:18016,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:64,checksum:18600,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:65,checksum:25082,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  87 SEQ#  67 LEN   11 FLAGS 5  -RR #:     67
+===================================
+67
+RECV          SEQ#  67 LEN 1007 FLAGS 3  -Data #:   67
+recvd a packet of len1007
+window={upper: 76
+, lower: 67
+, current: 67
+packets: {packet={header:{seqNum:57,checksum:19540,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:58,checksum:48168,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:59,checksum:28296,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:61,checksum:28198,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:62,checksum:3688,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:63,checksum:18016,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:64,checksum:18600,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:65,checksum:25082,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:66,checksum:4668,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  88 SEQ#  68 LEN   11 FLAGS 5  -RR #:     68
+===================================
+68
+RECV          SEQ#  68 LEN 1007 FLAGS 3  -Data #:   68
+recvd a packet of len1007
+window={upper: 77
+, lower: 68
+, current: 68
+packets: {packet={header:{seqNum:58,checksum:48168,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:59,checksum:28296,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:61,checksum:28198,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:62,checksum:3688,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:63,checksum:18016,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:64,checksum:18600,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:65,checksum:25082,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:66,checksum:4668,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:67,checksum:29573,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  89 SEQ#  69 LEN   11 FLAGS 5  -RR #:     69
+===================================
+69
+RECV          SEQ#  69 LEN 1007 FLAGS 3  -Data #:   69
+recvd a packet of len1007
+window={upper: 78
+, lower: 69
+, current: 69
+packets: {packet={header:{seqNum:59,checksum:28296,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:61,checksum:28198,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:62,checksum:3688,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:63,checksum:18016,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:64,checksum:18600,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:65,checksum:25082,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:66,checksum:4668,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:67,checksum:29573,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:68,checksum:59491,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  90 SEQ#  70 LEN   11 FLAGS 5  -RR #:     70 - FLIPPED BITS 
+===================================
+70
+RECV          SEQ#  70 LEN 1007 FLAGS 3  -Data #:   70 - RECV Corrupted packet
+recvd a packet of len1007
+bad crc
+===================================
+70
+RECV          SEQ#  71 LEN 1007 FLAGS 3  -Data #:   71
+recvd a packet of len1007
+window={upper: 79
+, lower: 70
+, current: 70
+packets: {packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:61,checksum:28198,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:62,checksum:3688,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:63,checksum:18016,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:64,checksum:18600,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:65,checksum:25082,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:66,checksum:4668,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:67,checksum:29573,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:68,checksum:59491,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:69,checksum:56069,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower less to seqNum
+SEND MSG#  91 SEQ#  70 LEN   11 FLAGS 6  -SREJ #:   70
+===================================
+70
+RECV          SEQ#  72 LEN 1007 FLAGS 3  -Data #:   72
+recvd a packet of len1007
+window={upper: 79
+, lower: 70
+, current: 72
+packets: {packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:71,checksum:41835,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:62,checksum:3688,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:63,checksum:18016,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:64,checksum:18600,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:65,checksum:25082,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:66,checksum:4668,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:67,checksum:29573,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:68,checksum:59491,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:69,checksum:56069,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+===================================
+70
+RECV          SEQ#  73 LEN 1007 FLAGS 3  -Data #:   73
+recvd a packet of len1007
+window={upper: 79
+, lower: 70
+, current: 73
+packets: {packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:71,checksum:41835,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:72,checksum:47100,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:63,checksum:18016,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:64,checksum:18600,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:65,checksum:25082,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:66,checksum:4668,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:67,checksum:29573,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:68,checksum:59491,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:69,checksum:56069,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+===================================
+70
+RECV          SEQ#  74 LEN 1007 FLAGS 3  -Data #:   74
+recvd a packet of len1007
+window={upper: 79
+, lower: 70
+, current: 74
+packets: {packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:71,checksum:41835,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:72,checksum:47100,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:73,checksum:46844,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:64,checksum:18600,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:65,checksum:25082,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:66,checksum:4668,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:67,checksum:29573,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:68,checksum:59491,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:69,checksum:56069,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+===================================
+70
+RECV          SEQ#  76 LEN 1007 FLAGS 3  -Data #:   76
+recvd a packet of len1007
+window={upper: 79
+, lower: 70
+, current: 75
+packets: {packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:71,checksum:41835,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:72,checksum:47100,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:73,checksum:46844,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:74,checksum:36101,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:65,checksum:25082,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:66,checksum:4668,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:67,checksum:29573,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:68,checksum:59491,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:69,checksum:56069,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower less to seqNum
+SEND MSG#  92 SEQ#  75 LEN   11 FLAGS 6  -SREJ #:   75
+===================================
+70
+RECV          SEQ#  77 LEN 1007 FLAGS 3  -Data #:   77
+recvd a packet of len1007
+window={upper: 79
+, lower: 70
+, current: 77
+packets: {packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:71,checksum:41835,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:72,checksum:47100,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:73,checksum:46844,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:74,checksum:36101,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:65,checksum:25082,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:76,checksum:58347,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:67,checksum:29573,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:68,checksum:59491,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:69,checksum:56069,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+===================================
+70
+RECV          SEQ#  75 LEN 1007 FLAGS 3  -Data #:   75
+recvd a packet of len1007
+window={upper: 79
+, lower: 70
+, current: 78
+packets: {packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:71,checksum:41835,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:72,checksum:47100,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:73,checksum:46844,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:74,checksum:36101,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:65,checksum:25082,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:76,checksum:58347,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:77,checksum:30123,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:68,checksum:59491,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:69,checksum:56069,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+===================================
+70
+RECV          SEQ#  69 LEN 1007 FLAGS 3  -Data #:   69
+recvd a packet of len1007
+window={upper: 79
+, lower: 70
+, current: 76
+packets: {packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:71,checksum:41835,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:72,checksum:47100,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:73,checksum:46844,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:74,checksum:36101,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:75,checksum:22446,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:76,checksum:58347,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:77,checksum:30123,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:68,checksum:59491,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:69,checksum:56069,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower higher than seqNum
+SEND MSG#  93 SEQ#  70 LEN   11 FLAGS 5  -RR #:     70
+===================================
+70
+RECV          SEQ#  79 LEN 1007 FLAGS 3  -Data #:   79
+recvd a packet of len1007
+window={upper: 79
+, lower: 70
+, current: 76
+packets: {packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:71,checksum:41835,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:72,checksum:47100,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:73,checksum:46844,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:74,checksum:36101,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:75,checksum:22446,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:76,checksum:58347,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:77,checksum:30123,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:68,checksum:59491,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:69,checksum:56069,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower less to seqNum
+lower less to seqNum
+lower less to seqNum
+SEND MSG#  94 SEQ#  78 LEN   11 FLAGS 6  -SREJ #:   78
+===================================
+70
+RECV          SEQ#  78 LEN 1007 FLAGS 3  -Data #:   78
+recvd a packet of len1007
+window={upper: 79
+, lower: 70
+, current: 80
+packets: {packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:71,checksum:41835,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:72,checksum:47100,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:73,checksum:46844,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:74,checksum:36101,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:75,checksum:22446,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:76,checksum:58347,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:77,checksum:30123,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:68,checksum:59491,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+===================================
+70
+RECV          SEQ#  70 LEN 1007 FLAGS 3  -Data #:   70
+recvd a packet of len1007
+window={upper: 79
+, lower: 70
+, current: 79
+packets: {packet={header:{seqNum:60,checksum:56893,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:71,checksum:41835,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:72,checksum:47100,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:73,checksum:46844,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:74,checksum:36101,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:75,checksum:22446,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:76,checksum:58347,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:77,checksum:30123,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  95 SEQ#  71 LEN   11 FLAGS 5  -RR #:     71 - DROPPED 
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  96 SEQ#  72 LEN   11 FLAGS 5  -RR #:     72
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  97 SEQ#  73 LEN   11 FLAGS 5  -RR #:     73
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  98 SEQ#  74 LEN   11 FLAGS 5  -RR #:     74 - DROPPED 
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG#  99 SEQ#  75 LEN   11 FLAGS 5  -RR #:     75 - DROPPED 
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 100 SEQ#  76 LEN   11 FLAGS 5  -RR #:     76
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 101 SEQ#  77 LEN   11 FLAGS 5  -RR #:     77
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 102 SEQ#  78 LEN   11 FLAGS 5  -RR #:     78
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 103 SEQ#  79 LEN   11 FLAGS 5  -RR #:     79
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 104 SEQ#  80 LEN   11 FLAGS 5  -RR #:     80
+===================================
+80
+RECV          SEQ#  70 LEN 1007 FLAGS 3  -Data #:   70
+recvd a packet of len1007
+window={upper: 89
+, lower: 80
+, current: 80
+packets: {packet={header:{seqNum:70,checksum:16994,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:71,checksum:41835,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:72,checksum:47100,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:73,checksum:46844,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:74,checksum:36101,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:75,checksum:22446,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:76,checksum:58347,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:77,checksum:30123,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower higher than seqNum
+SEND MSG# 105 SEQ#  71 LEN   11 FLAGS 5  -RR #:     71 - DROPPED 
+===================================
+80
+RECV          SEQ#  70 LEN 1007 FLAGS 3  -Data #:   70
+recvd a packet of len1007
+window={upper: 89
+, lower: 80
+, current: 80
+packets: {packet={header:{seqNum:70,checksum:16994,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:71,checksum:41835,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:72,checksum:47100,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:73,checksum:46844,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:74,checksum:36101,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:75,checksum:22446,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:76,checksum:58347,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:77,checksum:30123,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower higher than seqNum
+SEND MSG# 106 SEQ#  71 LEN   11 FLAGS 5  -RR #:     71
+===================================
+80
+RECV          SEQ#  80 LEN 1007 FLAGS 3  -Data #:   80
+recvd a packet of len1007
+window={upper: 89
+, lower: 80
+, current: 80
+packets: {packet={header:{seqNum:70,checksum:16994,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:71,checksum:41835,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:72,checksum:47100,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:73,checksum:46844,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:74,checksum:36101,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:75,checksum:22446,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:76,checksum:58347,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:77,checksum:30123,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 107 SEQ#  81 LEN   11 FLAGS 5  -RR #:     81
+===================================
+81
+RECV          SEQ#  81 LEN 1007 FLAGS 3  -Data #:   81
+recvd a packet of len1007
+window={upper: 90
+, lower: 81
+, current: 81
+packets: {packet={header:{seqNum:71,checksum:41835,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:72,checksum:47100,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:73,checksum:46844,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:74,checksum:36101,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:75,checksum:22446,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:76,checksum:58347,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:77,checksum:30123,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:80,checksum:62302,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 108 SEQ#  82 LEN   11 FLAGS 5  -RR #:     82
+===================================
+82
+RECV          SEQ#  82 LEN 1007 FLAGS 3  -Data #:   82
+recvd a packet of len1007
+window={upper: 91
+, lower: 82
+, current: 82
+packets: {packet={header:{seqNum:72,checksum:47100,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:73,checksum:46844,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:74,checksum:36101,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:75,checksum:22446,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:76,checksum:58347,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:77,checksum:30123,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:80,checksum:62302,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:81,checksum:16253,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 109 SEQ#  83 LEN   11 FLAGS 5  -RR #:     83
+===================================
+83
+RECV          SEQ#  83 LEN 1007 FLAGS 3  -Data #:   83
+recvd a packet of len1007
+window={upper: 92
+, lower: 83
+, current: 83
+packets: {packet={header:{seqNum:73,checksum:46844,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:74,checksum:36101,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:75,checksum:22446,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:76,checksum:58347,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:77,checksum:30123,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:80,checksum:62302,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:81,checksum:16253,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:82,checksum:33129,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 110 SEQ#  84 LEN   11 FLAGS 5  -RR #:     84
+===================================
+84
+RECV          SEQ#  74 LEN 1007 FLAGS 3  -Data #:   74
+recvd a packet of len1007
+window={upper: 93
+, lower: 84
+, current: 84
+packets: {packet={header:{seqNum:74,checksum:36101,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:75,checksum:22446,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:76,checksum:58347,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:77,checksum:30123,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:80,checksum:62302,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:81,checksum:16253,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:82,checksum:33129,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:83,checksum:51510,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower higher than seqNum
+SEND MSG# 111 SEQ#  75 LEN   11 FLAGS 5  -RR #:     75
+===================================
+84
+RECV          SEQ#  84 LEN 1007 FLAGS 3  -Data #:   84
+recvd a packet of len1007
+window={upper: 93
+, lower: 84
+, current: 84
+packets: {packet={header:{seqNum:74,checksum:36101,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:75,checksum:22446,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:76,checksum:58347,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:77,checksum:30123,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:80,checksum:62302,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:81,checksum:16253,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:82,checksum:33129,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:83,checksum:51510,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 112 SEQ#  85 LEN   11 FLAGS 5  -RR #:     85
+===================================
+85
+RECV          SEQ#  85 LEN 1007 FLAGS 3  -Data #:   85
+recvd a packet of len1007
+window={upper: 94
+, lower: 85
+, current: 85
+packets: {packet={header:{seqNum:75,checksum:22446,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:76,checksum:58347,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:77,checksum:30123,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:80,checksum:62302,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:81,checksum:16253,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:82,checksum:33129,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:83,checksum:51510,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:84,checksum:20501,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 113 SEQ#  86 LEN   11 FLAGS 5  -RR #:     86
+===================================
+86
+RECV          SEQ#  86 LEN 1007 FLAGS 3  -Data #:   86
+recvd a packet of len1007
+window={upper: 95
+, lower: 86
+, current: 86
+packets: {packet={header:{seqNum:76,checksum:58347,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:77,checksum:30123,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:80,checksum:62302,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:81,checksum:16253,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:82,checksum:33129,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:83,checksum:51510,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:84,checksum:20501,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:85,checksum:56002,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 114 SEQ#  87 LEN   11 FLAGS 5  -RR #:     87
+===================================
+87
+RECV          SEQ#  89 LEN 1007 FLAGS 3  -Data #:   89 - RECV Corrupted packet
+recvd a packet of len1007
+bad crc
+===================================
+87
+RECV          SEQ#  90 LEN 1007 FLAGS 3  -Data #:   90
+recvd a packet of len1007
+window={upper: 96
+, lower: 87
+, current: 87
+packets: {packet={header:{seqNum:77,checksum:30123,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:80,checksum:62302,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:81,checksum:16253,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:82,checksum:33129,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:83,checksum:51510,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:84,checksum:20501,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:85,checksum:56002,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:86,checksum:64963,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower less to seqNum
+SEND MSG# 115 SEQ#  87 LEN   11 FLAGS 6  -SREJ #:   87
+lower less to seqNum
+SEND MSG# 116 SEQ#  88 LEN   11 FLAGS 6  -SREJ #:   88 - DROPPED 
+lower less to seqNum
+SEND MSG# 117 SEQ#  89 LEN   11 FLAGS 6  -SREJ #:   89 - DROPPED 
+===================================
+87
+RECV          SEQ#  87 LEN 1007 FLAGS 3  -Data #:   87
+recvd a packet of len1007
+window={upper: 96
+, lower: 87
+, current: 91
+packets: {packet={header:{seqNum:77,checksum:30123,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:90,checksum:52930,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:81,checksum:16253,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:82,checksum:33129,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:83,checksum:51510,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:84,checksum:20501,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:85,checksum:56002,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:86,checksum:64963,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 118 SEQ#  88 LEN   11 FLAGS 5  -RR #:     88 - FLIPPED BITS 
+===================================
+88
+RECV          SEQ#  92 LEN 1007 FLAGS 3  -Data #:   92
+recvd a packet of len1007
+window={upper: 97
+, lower: 88
+, current: 88
+packets: {packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:90,checksum:52930,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:81,checksum:16253,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:82,checksum:33129,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:83,checksum:51510,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:84,checksum:20501,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:85,checksum:56002,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:86,checksum:64963,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:87,checksum:27600,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower less to seqNum
+SEND MSG# 119 SEQ#  88 LEN   11 FLAGS 6  -SREJ #:   88
+lower less to seqNum
+SEND MSG# 120 SEQ#  89 LEN   11 FLAGS 6  -SREJ #:   89 - DROPPED 
+lower less to seqNum
+lower less to seqNum
+SEND MSG# 121 SEQ#  91 LEN   11 FLAGS 6  -SREJ #:   91
+===================================
+88
+RECV          SEQ#  93 LEN 1007 FLAGS 3  -Data #:   93
+recvd a packet of len1007
+window={upper: 97
+, lower: 88
+, current: 93
+packets: {packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:90,checksum:52930,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:81,checksum:16253,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:92,checksum:43351,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:83,checksum:51510,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:84,checksum:20501,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:85,checksum:56002,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:86,checksum:64963,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:87,checksum:27600,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+===================================
+88
+RECV          SEQ#  91 LEN 1007 FLAGS 3  -Data #:   91
+recvd a packet of len1007
+window={upper: 97
+, lower: 88
+, current: 94
+packets: {packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:90,checksum:52930,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:81,checksum:16253,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:92,checksum:43351,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:93,checksum:15312,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:84,checksum:20501,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:85,checksum:56002,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:86,checksum:64963,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:87,checksum:27600,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+===================================
+88
+RECV          SEQ#  95 LEN 1007 FLAGS 3  -Data #:   95
+recvd a packet of len1007
+window={upper: 97
+, lower: 88
+, current: 92
+packets: {packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:90,checksum:52930,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:91,checksum:53019,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:92,checksum:43351,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:93,checksum:15312,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:84,checksum:20501,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:85,checksum:56002,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:86,checksum:64963,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:87,checksum:27600,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower less to seqNum
+lower less to seqNum
+lower less to seqNum
+SEND MSG# 122 SEQ#  94 LEN   11 FLAGS 6  -SREJ #:   94
+===================================
+88
+RECV          SEQ#  96 LEN 1007 FLAGS 3  -Data #:   96
+recvd a packet of len1007
+window={upper: 97
+, lower: 88
+, current: 96
+packets: {packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:90,checksum:52930,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:91,checksum:53019,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:92,checksum:43351,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:93,checksum:15312,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:84,checksum:20501,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:95,checksum:58739,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:86,checksum:64963,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:87,checksum:27600,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+===================================
+88
+RECV          SEQ#  94 LEN 1007 FLAGS 3  -Data #:   94 - RECV Corrupted packet
+recvd a packet of len1007
+bad crc
+===================================
+88
+RECV          SEQ#  87 LEN 1007 FLAGS 3  -Data #:   87
+recvd a packet of len1007
+window={upper: 97
+, lower: 88
+, current: 97
+packets: {packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:90,checksum:52930,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:91,checksum:53019,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:92,checksum:43351,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:93,checksum:15312,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:84,checksum:20501,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:95,checksum:58739,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:96,checksum:41834,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:87,checksum:27600,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower higher than seqNum
+SEND MSG# 123 SEQ#  88 LEN   11 FLAGS 5  -RR #:     88 - DROPPED 
+===================================
+88
+RECV          SEQ#  87 LEN 1007 FLAGS 3  -Data #:   87
+recvd a packet of len1007
+window={upper: 97
+, lower: 88
+, current: 97
+packets: {packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:90,checksum:52930,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:91,checksum:53019,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:92,checksum:43351,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:93,checksum:15312,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:84,checksum:20501,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:95,checksum:58739,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:96,checksum:41834,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:87,checksum:27600,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower higher than seqNum
+SEND MSG# 124 SEQ#  88 LEN   11 FLAGS 5  -RR #:     88
+===================================
+88
+RECV          SEQ#  97 LEN 1007 FLAGS 3  -Data #:   97
+recvd a packet of len1007
+window={upper: 97
+, lower: 88
+, current: 97
+packets: {packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:90,checksum:52930,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:91,checksum:53019,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:92,checksum:43351,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:93,checksum:15312,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:84,checksum:20501,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:95,checksum:58739,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:96,checksum:41834,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:87,checksum:27600,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+===================================
+88
+RECV          SEQ#  88 LEN 1007 FLAGS 3  -Data #:   88
+recvd a packet of len1007
+window={upper: 97
+, lower: 88
+, current: 98
+packets: {packet={header:{seqNum:78,checksum:17603,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:90,checksum:52930,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:91,checksum:53019,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:92,checksum:43351,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:93,checksum:15312,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:84,checksum:20501,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:95,checksum:58739,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:96,checksum:41834,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:97,checksum:43689,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 125 SEQ#  89 LEN   11 FLAGS 5  -RR #:     89
+===================================
+89
+RECV          SEQ#  98 LEN 1007 FLAGS 3  -Data #:   98
+recvd a packet of len1007
+window={upper: 98
+, lower: 89
+, current: 89
+packets: {packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:90,checksum:52930,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:91,checksum:53019,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:92,checksum:43351,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:93,checksum:15312,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:84,checksum:20501,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:95,checksum:58739,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:96,checksum:41834,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:97,checksum:43689,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:88,checksum:10905,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower less to seqNum
+SEND MSG# 126 SEQ#  89 LEN   11 FLAGS 6  -SREJ #:   89 - DROPPED 
+lower less to seqNum
+lower less to seqNum
+lower less to seqNum
+lower less to seqNum
+lower less to seqNum
+SEND MSG# 127 SEQ#  94 LEN   11 FLAGS 6  -SREJ #:   94
+lower less to seqNum
+lower less to seqNum
+lower less to seqNum
+===================================
+89
+RECV          SEQ#  94 LEN 1007 FLAGS 3  -Data #:   94
+recvd a packet of len1007
+window={upper: 98
+, lower: 89
+, current: 99
+packets: {packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:90,checksum:52930,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:91,checksum:53019,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:92,checksum:43351,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:93,checksum:15312,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:84,checksum:20501,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:95,checksum:58739,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:96,checksum:41834,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:97,checksum:43689,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:98,checksum:3488,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+===================================
+89
+RECV          SEQ#  89 LEN 1007 FLAGS 3  -Data #:   89
+recvd a packet of len1007
+window={upper: 98
+, lower: 89
+, current: 95
+packets: {packet={header:{seqNum:79,checksum:65323,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:90,checksum:52930,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:91,checksum:53019,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:92,checksum:43351,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:93,checksum:15312,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:94,checksum:7987,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:95,checksum:58739,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:96,checksum:41834,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:97,checksum:43689,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:98,checksum:3488,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 128 SEQ#  90 LEN   11 FLAGS 5  -RR #:     90
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 129 SEQ#  91 LEN   11 FLAGS 5  -RR #:     91 - FLIPPED BITS 
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 130 SEQ#  92 LEN   11 FLAGS 5  -RR #:     92
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 131 SEQ#  93 LEN   11 FLAGS 5  -RR #:     93
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 132 SEQ#  94 LEN   11 FLAGS 5  -RR #:     94
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 133 SEQ#  95 LEN   11 FLAGS 5  -RR #:     95
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 134 SEQ#  96 LEN   11 FLAGS 5  -RR #:     96
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 135 SEQ#  97 LEN   11 FLAGS 5  -RR #:     97
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 136 SEQ#  98 LEN   11 FLAGS 5  -RR #:     98
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 137 SEQ#  99 LEN   11 FLAGS 5  -RR #:     99
+===================================
+99
+RECV          SEQ#  99 LEN 1007 FLAGS 3  -Data #:   99
+recvd a packet of len1007
+window={upper: 108
+, lower: 99
+, current: 99
+packets: {packet={header:{seqNum:89,checksum:62908,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:90,checksum:52930,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:91,checksum:53019,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:92,checksum:43351,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:93,checksum:15312,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:94,checksum:7987,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:95,checksum:58739,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:96,checksum:41834,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:97,checksum:43689,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:98,checksum:3488,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 138 SEQ# 100 LEN   11 FLAGS 5  -RR #:    100
+===================================
+100
+RECV          SEQ#  90 LEN 1007 FLAGS 3  -Data #:   90
+recvd a packet of len1007
+window={upper: 109
+, lower: 100
+, current: 100
+packets: {packet={header:{seqNum:90,checksum:52930,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:91,checksum:53019,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:92,checksum:43351,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:93,checksum:15312,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:94,checksum:7987,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:95,checksum:58739,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:96,checksum:41834,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:97,checksum:43689,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:98,checksum:3488,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:99,checksum:57037,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower higher than seqNum
+SEND MSG# 139 SEQ#  91 LEN   11 FLAGS 5  -RR #:     91
+===================================
+100
+RECV          SEQ# 100 LEN 1007 FLAGS 3  -Data #:  100
+recvd a packet of len1007
+window={upper: 109
+, lower: 100
+, current: 100
+packets: {packet={header:{seqNum:90,checksum:52930,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:91,checksum:53019,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:92,checksum:43351,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:93,checksum:15312,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:94,checksum:7987,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:95,checksum:58739,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:96,checksum:41834,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:97,checksum:43689,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:98,checksum:3488,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:99,checksum:57037,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 140 SEQ# 101 LEN   11 FLAGS 5  -RR #:    101
+===================================
+101
+RECV          SEQ# 101 LEN 1007 FLAGS 3  -Data #:  101
+recvd a packet of len1007
+window={upper: 110
+, lower: 101
+, current: 101
+packets: {packet={header:{seqNum:91,checksum:53019,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:92,checksum:43351,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:93,checksum:15312,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:94,checksum:7987,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:95,checksum:58739,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:96,checksum:41834,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:97,checksum:43689,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:98,checksum:3488,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:99,checksum:57037,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:100,checksum:48039,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 141 SEQ# 102 LEN   11 FLAGS 5  -RR #:    102
+===================================
+102
+RECV          SEQ# 102 LEN 1007 FLAGS 3  -Data #:  102
+recvd a packet of len1007
+window={upper: 111
+, lower: 102
+, current: 102
+packets: {packet={header:{seqNum:92,checksum:43351,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:93,checksum:15312,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:94,checksum:7987,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:95,checksum:58739,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:96,checksum:41834,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:97,checksum:43689,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:98,checksum:3488,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:99,checksum:57037,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:100,checksum:48039,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:101,checksum:50203,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 142 SEQ# 103 LEN   11 FLAGS 5  -RR #:    103
+===================================
+103
+RECV          SEQ# 103 LEN 1007 FLAGS 3  -Data #:  103
+recvd a packet of len1007
+window={upper: 112
+, lower: 103
+, current: 103
+packets: {packet={header:{seqNum:93,checksum:15312,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:94,checksum:7987,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:95,checksum:58739,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:96,checksum:41834,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:97,checksum:43689,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:98,checksum:3488,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:99,checksum:57037,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:100,checksum:48039,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:101,checksum:50203,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:102,checksum:55160,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 143 SEQ# 104 LEN   11 FLAGS 5  -RR #:    104
+===================================
+104
+RECV          SEQ# 104 LEN 1007 FLAGS 3  -Data #:  104
+recvd a packet of len1007
+window={upper: 113
+, lower: 104
+, current: 104
+packets: {packet={header:{seqNum:94,checksum:7987,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:95,checksum:58739,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:96,checksum:41834,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:97,checksum:43689,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:98,checksum:3488,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:99,checksum:57037,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:100,checksum:48039,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:101,checksum:50203,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:102,checksum:55160,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:103,checksum:34621,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 144 SEQ# 105 LEN   11 FLAGS 5  -RR #:    105
+===================================
+105
+RECV          SEQ# 105 LEN 1007 FLAGS 3  -Data #:  105
+recvd a packet of len1007
+window={upper: 114
+, lower: 105
+, current: 105
+packets: {packet={header:{seqNum:95,checksum:58739,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:96,checksum:41834,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:97,checksum:43689,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:98,checksum:3488,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:99,checksum:57037,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:100,checksum:48039,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:101,checksum:50203,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:102,checksum:55160,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:103,checksum:34621,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:104,checksum:49980,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 145 SEQ# 106 LEN   11 FLAGS 5  -RR #:    106
+===================================
+106
+RECV          SEQ# 106 LEN 1007 FLAGS 3  -Data #:  106
+recvd a packet of len1007
+window={upper: 115
+, lower: 106
+, current: 106
+packets: {packet={header:{seqNum:96,checksum:41834,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:97,checksum:43689,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:98,checksum:3488,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:99,checksum:57037,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:100,checksum:48039,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:101,checksum:50203,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:102,checksum:55160,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:103,checksum:34621,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:104,checksum:49980,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:105,checksum:5981,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 146 SEQ# 107 LEN   11 FLAGS 5  -RR #:    107
+===================================
+107
+RECV          SEQ# 107 LEN 1007 FLAGS 3  -Data #:  107
+recvd a packet of len1007
+window={upper: 116
+, lower: 107
+, current: 107
+packets: {packet={header:{seqNum:97,checksum:43689,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:98,checksum:3488,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:99,checksum:57037,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:100,checksum:48039,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:101,checksum:50203,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:102,checksum:55160,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:103,checksum:34621,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:104,checksum:49980,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:105,checksum:5981,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:106,checksum:45695,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 147 SEQ# 108 LEN   11 FLAGS 5  -RR #:    108
+===================================
+108
+RECV          SEQ# 108 LEN 1007 FLAGS 3  -Data #:  108
+recvd a packet of len1007
+window={upper: 117
+, lower: 108
+, current: 108
+packets: {packet={header:{seqNum:98,checksum:3488,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:99,checksum:57037,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:100,checksum:48039,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:101,checksum:50203,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:102,checksum:55160,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:103,checksum:34621,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:104,checksum:49980,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:105,checksum:5981,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:106,checksum:45695,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:107,checksum:45352,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 148 SEQ# 109 LEN   11 FLAGS 5  -RR #:    109
+===================================
+109
+RECV          SEQ# 109 LEN 1007 FLAGS 3  -Data #:  109
+recvd a packet of len1007
+window={upper: 118
+, lower: 109
+, current: 109
+packets: {packet={header:{seqNum:99,checksum:57037,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:100,checksum:48039,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:101,checksum:50203,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:102,checksum:55160,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:103,checksum:34621,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:104,checksum:49980,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:105,checksum:5981,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:106,checksum:45695,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:107,checksum:45352,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:108,checksum:37884,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 149 SEQ# 110 LEN   11 FLAGS 5  -RR #:    110
+===================================
+110
+RECV          SEQ# 110 LEN 1007 FLAGS 3  -Data #:  110
+recvd a packet of len1007
+window={upper: 119
+, lower: 110
+, current: 110
+packets: {packet={header:{seqNum:100,checksum:48039,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:101,checksum:50203,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:102,checksum:55160,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:103,checksum:34621,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:104,checksum:49980,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:105,checksum:5981,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:106,checksum:45695,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:107,checksum:45352,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:108,checksum:37884,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:109,checksum:37628,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 150 SEQ# 111 LEN   11 FLAGS 5  -RR #:    111 - DROPPED 
+===================================
+111
+RECV          SEQ# 112 LEN 1007 FLAGS 3  -Data #:  112
+recvd a packet of len1007
+window={upper: 120
+, lower: 111
+, current: 111
+packets: {packet={header:{seqNum:101,checksum:50203,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:102,checksum:55160,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:103,checksum:34621,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:104,checksum:49980,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:105,checksum:5981,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:106,checksum:45695,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:107,checksum:45352,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:108,checksum:37884,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:109,checksum:37628,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:110,checksum:26558,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower less to seqNum
+SEND MSG# 151 SEQ# 111 LEN   11 FLAGS 6  -SREJ #:  111
+===================================
+111
+RECV          SEQ# 111 LEN 1007 FLAGS 3  -Data #:  111
+recvd a packet of len1007
+window={upper: 120
+, lower: 111
+, current: 113
+packets: {packet={header:{seqNum:101,checksum:50203,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:112,checksum:15157,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:103,checksum:34621,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:104,checksum:49980,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:105,checksum:5981,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:106,checksum:45695,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:107,checksum:45352,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:108,checksum:37884,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:109,checksum:37628,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:110,checksum:26558,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower equal to seqNum
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 152 SEQ# 112 LEN   11 FLAGS 5  -RR #:    112 - DROPPED 
+PAYLAOD SIZE IN write function 1000
+wrote 1000
+SEND MSG# 153 SEQ# 113 LEN   11 FLAGS 5  -RR #:    113
+===================================
+113
+RECV          SEQ# 114 LEN 1007 FLAGS 3  -Data #:  114
+recvd a packet of len1007
+window={upper: 122
+, lower: 113
+, current: 113
+packets: {packet={header:{seqNum:103,checksum:34621,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:104,checksum:49980,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:105,checksum:5981,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:106,checksum:45695,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:107,checksum:45352,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:108,checksum:37884,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:109,checksum:37628,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:110,checksum:26558,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:111,checksum:61970,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:112,checksum:15157,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower less to seqNum
+SEND MSG# 154 SEQ# 113 LEN   11 FLAGS 6  -SREJ #:  113
+===================================
+113
+RECV          SEQ# 115 LEN 1007 FLAGS 3  -Data #:  115
+recvd a packet of len1007
+window={upper: 122
+, lower: 113
+, current: 115
+packets: {packet={header:{seqNum:103,checksum:34621,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:105,checksum:5981,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:106,checksum:45695,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:107,checksum:45352,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:108,checksum:37884,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:109,checksum:37628,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:110,checksum:26558,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:111,checksum:61970,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:112,checksum:15157,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+===================================
+113
+RECV          SEQ# 113 LEN 1007 FLAGS 3  -Data #:  113 - RECV Corrupted packet
+recvd a packet of len1007
+bad crc
+===================================
+113
+RECV          SEQ# 116 LEN 1007 FLAGS 3  -Data #:  116
+recvd a packet of len1007
+window={upper: 122
+, lower: 113
+, current: 116
+packets: {packet={header:{seqNum:103,checksum:34621,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:106,checksum:45695,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:107,checksum:45352,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:108,checksum:37884,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:109,checksum:37628,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:110,checksum:26558,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:111,checksum:61970,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:112,checksum:15157,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+===================================
+113
+RECV          SEQ# 117 LEN 1007 FLAGS 3  -Data #:  117
+recvd a packet of len1007
+window={upper: 122
+, lower: 113
+, current: 117
+packets: {packet={header:{seqNum:103,checksum:34621,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:107,checksum:45352,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:108,checksum:37884,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:109,checksum:37628,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:110,checksum:26558,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:111,checksum:61970,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:112,checksum:15157,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+===================================
+113
+RECV          SEQ# 119 LEN 1007 FLAGS 3  -Data #:  119
+recvd a packet of len1007
+window={upper: 122
+, lower: 113
+, current: 118
+packets: {packet={header:{seqNum:103,checksum:34621,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:108,checksum:37884,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:109,checksum:37628,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:110,checksum:26558,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:111,checksum:61970,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:112,checksum:15157,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower less to seqNum
+SEND MSG# 155 SEQ# 118 LEN   11 FLAGS 6  -SREJ #:  118
+===================================
+113
+RECV          SEQ# 118 LEN 1007 FLAGS 3  -Data #:  118
+recvd a packet of len1007
+window={upper: 122
+, lower: 113
+, current: 120
+packets: {packet={header:{seqNum:103,checksum:34621,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:108,checksum:37884,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:119,checksum:37602,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:110,checksum:26558,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:111,checksum:61970,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:112,checksum:15157,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+===================================
+113
+RECV          SEQ# 110 LEN 1007 FLAGS 3  -Data #:  110
+recvd a packet of len1007
+window={upper: 122
+, lower: 113
+, current: 119
+packets: {packet={header:{seqNum:103,checksum:34621,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:118,checksum:44424,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:119,checksum:37602,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:110,checksum:26558,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:111,checksum:61970,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:112,checksum:15157,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower higher than seqNum
+SEND MSG# 156 SEQ# 111 LEN   11 FLAGS 5  -RR #:    111 - FLIPPED BITS 
+===================================
+113
+RECV          SEQ# 110 LEN 1007 FLAGS 3  -Data #:  110
+recvd a packet of len1007
+window={upper: 122
+, lower: 113
+, current: 119
+packets: {packet={header:{seqNum:103,checksum:34621,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:118,checksum:44424,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:119,checksum:37602,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:110,checksum:26558,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:111,checksum:61970,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:112,checksum:15157,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower higher than seqNum
+SEND MSG# 157 SEQ# 111 LEN   11 FLAGS 5  -RR #:    111
+===================================
+113
+RECV          SEQ# 120 LEN 1007 FLAGS 3  -Data #:  120
+recvd a packet of len1007
+window={upper: 122
+, lower: 113
+, current: 119
+packets: {packet={header:{seqNum:103,checksum:34621,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:118,checksum:44424,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:119,checksum:37602,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:110,checksum:26558,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:111,checksum:61970,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:112,checksum:15157,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower less to seqNum
+===================================
+113
+RECV          SEQ# 111 LEN 1007 FLAGS 3  -Data #:  111
+recvd a packet of len1007
+window={upper: 122
+, lower: 113
+, current: 121
+packets: {packet={header:{seqNum:103,checksum:34621,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:118,checksum:44424,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:119,checksum:37602,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:120,checksum:43363,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:111,checksum:61970,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:112,checksum:15157,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+lower higher than seqNum
+SEND MSG# 158 SEQ# 112 LEN   11 FLAGS 5  -RR #:    112
+===================================
+113
+RECV          SEQ# 121 LEN 1007 FLAGS 3  -Data #:  121
+recvd a packet of len1007
+window={upper: 122
+, lower: 113
+, current: 121
+packets: {packet={header:{seqNum:103,checksum:34621,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:118,checksum:44424,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:119,checksum:37602,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:120,checksum:43363,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:111,checksum:61970,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:112,checksum:15157,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+===================================
+113
+RECV          SEQ# 122 LEN 1007 FLAGS 3  -Data #:  122
+recvd a packet of len1007
+window={upper: 122
+, lower: 113
+, current: 122
+packets: {packet={header:{seqNum:103,checksum:34621,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:118,checksum:44424,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:119,checksum:37602,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:120,checksum:43363,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:121,checksum:6737,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:112,checksum:15157,flag:3}},inWindow: 0,isAcked: 0
+}
+}
+
+===================================
+113
+RECV          SEQ# 123 LEN 1007 FLAGS 3  -Data #:  123
+recvd a packet of len1007
+window={upper: 122
+, lower: 113
+, current: 123
+packets: {packet={header:{seqNum:103,checksum:34621,flag:3}},inWindow: 0,isAcked: 0
+packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:118,checksum:44424,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:119,checksum:37602,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:120,checksum:43363,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:121,checksum:6737,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:122,checksum:17389,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+===================================
+113
+RECV          SEQ# 114 LEN 1007 FLAGS 3  -Data #:  114
+recvd a packet of len1007
+window={upper: 122
+, lower: 113
+, current: 124
+packets: {packet={header:{seqNum:123,checksum:36171,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:118,checksum:44424,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:119,checksum:37602,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:120,checksum:43363,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:121,checksum:6737,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:122,checksum:17389,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+===================================
+113
+RECV          SEQ# 114 LEN 1007 FLAGS 3  -Data #:  114
+recvd a packet of len1007
+window={upper: 122
+, lower: 113
+, current: 115
+packets: {packet={header:{seqNum:123,checksum:36171,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:118,checksum:44424,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:119,checksum:37602,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:120,checksum:43363,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:121,checksum:6737,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:122,checksum:17389,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+===================================
+113
+RECV          SEQ# 114 LEN 1007 FLAGS 3  -Data #:  114 - RECV Corrupted packet
+recvd a packet of len1007
+bad crc
+===================================
+113
+RECV          SEQ# 114 LEN 1007 FLAGS 3  -Data #:  114
+recvd a packet of len1007
+window={upper: 122
+, lower: 113
+, current: 115
+packets: {packet={header:{seqNum:123,checksum:36171,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:118,checksum:44424,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:119,checksum:37602,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:120,checksum:43363,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:121,checksum:6737,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:122,checksum:17389,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+===================================
+113
+RECV          SEQ# 114 LEN 1007 FLAGS 3  -Data #:  114
+recvd a packet of len1007
+window={upper: 122
+, lower: 113
+, current: 115
+packets: {packet={header:{seqNum:123,checksum:36171,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:118,checksum:44424,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:119,checksum:37602,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:120,checksum:43363,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:121,checksum:6737,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:122,checksum:17389,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+===================================
+113
+RECV          SEQ# 114 LEN 1007 FLAGS 3  -Data #:  114 - RECV Corrupted packet
+recvd a packet of len1007
+bad crc
+===================================
+113
+RECV          SEQ# 114 LEN 1007 FLAGS 3  -Data #:  114
+recvd a packet of len1007
+window={upper: 122
+, lower: 113
+, current: 115
+packets: {packet={header:{seqNum:123,checksum:36171,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:118,checksum:44424,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:119,checksum:37602,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:120,checksum:43363,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:121,checksum:6737,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:122,checksum:17389,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+===================================
+113
+RECV          SEQ# 114 LEN 1007 FLAGS 3  -Data #:  114
+recvd a packet of len1007
+window={upper: 122
+, lower: 113
+, current: 115
+packets: {packet={header:{seqNum:123,checksum:36171,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:118,checksum:44424,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:119,checksum:37602,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:120,checksum:43363,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:121,checksum:6737,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:122,checksum:17389,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+===================================
+113
+RECV          SEQ# 114 LEN 1007 FLAGS 3  -Data #:  114
+recvd a packet of len1007
+window={upper: 122
+, lower: 113
+, current: 115
+packets: {packet={header:{seqNum:123,checksum:36171,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:118,checksum:44424,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:119,checksum:37602,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:120,checksum:43363,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:121,checksum:6737,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:122,checksum:17389,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+===================================
+113
+RECV          SEQ# 114 LEN 1007 FLAGS 3  -Data #:  114
+recvd a packet of len1007
+window={upper: 122
+, lower: 113
+, current: 115
+packets: {packet={header:{seqNum:123,checksum:36171,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:118,checksum:44424,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:119,checksum:37602,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:120,checksum:43363,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:121,checksum:6737,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:122,checksum:17389,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+===================================
+113
+RECV          SEQ# 114 LEN 1007 FLAGS 3  -Data #:  114
+recvd a packet of len1007
+window={upper: 122
+, lower: 113
+, current: 115
+packets: {packet={header:{seqNum:123,checksum:36171,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:114,checksum:37024,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:115,checksum:41985,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:116,checksum:38724,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:117,checksum:59539,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:118,checksum:44424,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:119,checksum:37602,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:120,checksum:43363,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:121,checksum:6737,flag:3}},inWindow: 1,isAcked: 0
+packet={header:{seqNum:122,checksum:17389,flag:3}},inWindow: 1,isAcked: 0
+}
+}
+
+======== SeqNo Report ========
+  Msgs (Total)       :   158
+  Msgs (Unique SeqNo):   114
+==============================
+diff /home/victord/CPE464/asgns/asgn3/tests/from_files/long_binary /home/victord/CPE464/asgns/asgn3/tests/to_files/long_binary 
+Binary files /home/victord/CPE464/asgns/asgn3/tests/from_files/long_binary and /home/victord/CPE464/asgns/asgn3/tests/to_files/long_binary differ
+make: *** [Makefile:60: test_rcopy] Error 1

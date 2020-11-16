@@ -1,0 +1,853 @@
+# <buff-size> <err-per> <wind-size>
+./rcopy /home/victord/CPE464/asgns/asgn3/tests/from_files/long_binary /home/victord/CPE464/asgns/asgn3/tests/to_files/long_binary 1000 .2 1 localhost 49628
+./rcopy
+/home/victord/CPE464/asgns/asgn3/tests/from_files/long_binary
+/home/victord/CPE464/asgns/asgn3/tests/to_files/long_binary
+1000
+.2
+1
+localhost
+49628
+Send Err-INIT ErrRate: 0.20 Drop: Y Flip: Y Rand: N Debug: Y
+SEND MSG#   1 SEQ# 4294967295 LEN  115 FLAGS 7  -FNAME    
+RECV          SEQ# 4294967295 LEN 1007 FLAGS 8  -FNAME response
+Server info - IP: ::1 Port: 49628 
+recvd a packet of len1007
+in FILENAME_OK
+===================================
+1
+RECV          SEQ#   1 LEN 1007 FLAGS 3  -Data #:    1
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 1
+packets: {}
+}
+
+lower equal to seqNum
+===================================
+1
+RECV          SEQ#   2 LEN 1007 FLAGS 3  -Data #:    2
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 1
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#   2 SEQ#   1 LEN   11 FLAGS 6  -SREJ #:    1
+===================================
+1
+RECV          SEQ#   3 LEN 1007 FLAGS 3  -Data #:    3
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 2
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#   3 SEQ#   2 LEN   11 FLAGS 6  -SREJ #:    2
+===================================
+1
+RECV          SEQ#   4 LEN 1007 FLAGS 3  -Data #:    4
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 3
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#   4 SEQ#   3 LEN   11 FLAGS 6  -SREJ #:    3
+===================================
+1
+RECV          SEQ#   5 LEN 1007 FLAGS 3  -Data #:    5
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 4
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#   5 SEQ#   4 LEN   11 FLAGS 6  -SREJ #:    4
+===================================
+1
+RECV          SEQ#   6 LEN 1007 FLAGS 3  -Data #:    6
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 5
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#   6 SEQ#   5 LEN   11 FLAGS 6  -SREJ #:    5
+===================================
+1
+RECV          SEQ#   7 LEN 1007 FLAGS 3  -Data #:    7
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 6
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#   7 SEQ#   6 LEN   11 FLAGS 6  -SREJ #:    6
+===================================
+1
+RECV          SEQ#   8 LEN 1007 FLAGS 3  -Data #:    8
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 7
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#   8 SEQ#   7 LEN   11 FLAGS 6  -SREJ #:    7
+===================================
+1
+RECV          SEQ#   9 LEN 1007 FLAGS 3  -Data #:    9
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 8
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#   9 SEQ#   8 LEN   11 FLAGS 6  -SREJ #:    8
+===================================
+1
+RECV          SEQ#  10 LEN 1007 FLAGS 3  -Data #:   10
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 9
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  10 SEQ#   9 LEN   11 FLAGS 6  -SREJ #:    9
+===================================
+1
+RECV          SEQ#  11 LEN 1007 FLAGS 3  -Data #:   11
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 10
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  11 SEQ#  10 LEN   11 FLAGS 6  -SREJ #:   10
+===================================
+1
+RECV          SEQ#  12 LEN 1007 FLAGS 3  -Data #:   12
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 11
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  12 SEQ#  11 LEN   11 FLAGS 6  -SREJ #:   11
+===================================
+1
+RECV          SEQ#  13 LEN 1007 FLAGS 3  -Data #:   13
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 12
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  13 SEQ#  12 LEN   11 FLAGS 6  -SREJ #:   12
+===================================
+1
+RECV          SEQ#  14 LEN 1007 FLAGS 3  -Data #:   14
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 13
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  14 SEQ#  13 LEN   11 FLAGS 6  -SREJ #:   13
+===================================
+1
+RECV          SEQ#  15 LEN 1007 FLAGS 3  -Data #:   15
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 14
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  15 SEQ#  14 LEN   11 FLAGS 6  -SREJ #:   14
+===================================
+1
+RECV          SEQ#  16 LEN 1007 FLAGS 3  -Data #:   16
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 15
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  16 SEQ#  15 LEN   11 FLAGS 6  -SREJ #:   15
+===================================
+1
+RECV          SEQ#  17 LEN 1007 FLAGS 3  -Data #:   17
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 16
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  17 SEQ#  16 LEN   11 FLAGS 6  -SREJ #:   16
+===================================
+1
+RECV          SEQ#  18 LEN 1007 FLAGS 3  -Data #:   18
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 17
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  18 SEQ#  17 LEN   11 FLAGS 6  -SREJ #:   17
+===================================
+1
+RECV          SEQ#  19 LEN 1007 FLAGS 3  -Data #:   19
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 18
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  19 SEQ#  18 LEN   11 FLAGS 6  -SREJ #:   18
+===================================
+1
+RECV          SEQ#  20 LEN 1007 FLAGS 3  -Data #:   20
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 19
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  20 SEQ#  19 LEN   11 FLAGS 6  -SREJ #:   19
+===================================
+1
+RECV          SEQ#  21 LEN 1007 FLAGS 3  -Data #:   21
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 20
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  21 SEQ#  20 LEN   11 FLAGS 6  -SREJ #:   20 - DROPPED 
+===================================
+1
+RECV          SEQ#  22 LEN 1007 FLAGS 3  -Data #:   22
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 21
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  22 SEQ#  21 LEN   11 FLAGS 6  -SREJ #:   21 - DROPPED 
+===================================
+1
+RECV          SEQ#  23 LEN 1007 FLAGS 3  -Data #:   23
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 22
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  23 SEQ#  22 LEN   11 FLAGS 6  -SREJ #:   22
+===================================
+1
+RECV          SEQ#  24 LEN 1007 FLAGS 3  -Data #:   24
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 23
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  24 SEQ#  23 LEN   11 FLAGS 6  -SREJ #:   23
+===================================
+1
+RECV          SEQ#  25 LEN 1007 FLAGS 3  -Data #:   25
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 24
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  25 SEQ#  24 LEN   11 FLAGS 6  -SREJ #:   24 - DROPPED 
+===================================
+1
+RECV          SEQ#  26 LEN 1007 FLAGS 3  -Data #:   26
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 25
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  26 SEQ#  25 LEN   11 FLAGS 6  -SREJ #:   25
+===================================
+1
+RECV          SEQ#  27 LEN 1007 FLAGS 3  -Data #:   27
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 26
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  27 SEQ#  26 LEN   11 FLAGS 6  -SREJ #:   26
+===================================
+1
+RECV          SEQ#  28 LEN 1007 FLAGS 3  -Data #:   28
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 27
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  28 SEQ#  27 LEN   11 FLAGS 6  -SREJ #:   27
+===================================
+1
+RECV          SEQ#  29 LEN 1007 FLAGS 3  -Data #:   29
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 28
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  29 SEQ#  28 LEN   11 FLAGS 6  -SREJ #:   28
+===================================
+1
+RECV          SEQ#  30 LEN 1007 FLAGS 3  -Data #:   30
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 29
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  30 SEQ#  29 LEN   11 FLAGS 6  -SREJ #:   29
+===================================
+1
+RECV          SEQ#  31 LEN 1007 FLAGS 3  -Data #:   31
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 30
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  31 SEQ#  30 LEN   11 FLAGS 6  -SREJ #:   30
+===================================
+1
+RECV          SEQ#  32 LEN 1007 FLAGS 3  -Data #:   32
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 31
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  32 SEQ#  31 LEN   11 FLAGS 6  -SREJ #:   31
+===================================
+1
+RECV          SEQ#  33 LEN 1007 FLAGS 3  -Data #:   33
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 32
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  33 SEQ#  32 LEN   11 FLAGS 6  -SREJ #:   32
+===================================
+1
+RECV          SEQ#  34 LEN 1007 FLAGS 3  -Data #:   34
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 33
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  34 SEQ#  33 LEN   11 FLAGS 6  -SREJ #:   33
+===================================
+1
+RECV          SEQ#  35 LEN 1007 FLAGS 3  -Data #:   35
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 34
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  35 SEQ#  34 LEN   11 FLAGS 6  -SREJ #:   34 - FLIPPED BITS 
+===================================
+1
+RECV          SEQ#  36 LEN 1007 FLAGS 3  -Data #:   36
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 35
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  36 SEQ#  35 LEN   11 FLAGS 6  -SREJ #:   35
+===================================
+1
+RECV          SEQ#  37 LEN 1007 FLAGS 3  -Data #:   37
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 36
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  37 SEQ#  36 LEN   11 FLAGS 6  -SREJ #:   36 - DROPPED 
+===================================
+1
+RECV          SEQ#  38 LEN 1007 FLAGS 3  -Data #:   38
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 37
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  38 SEQ#  37 LEN   11 FLAGS 6  -SREJ #:   37
+===================================
+1
+RECV          SEQ#  39 LEN 1007 FLAGS 3  -Data #:   39 - RECV Corrupted packet
+recvd a packet of len1007
+bad crc
+===================================
+1
+RECV          SEQ#  40 LEN 1007 FLAGS 3  -Data #:   40
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 38
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  39 SEQ#  38 LEN   11 FLAGS 6  -SREJ #:   38
+===================================
+1
+RECV          SEQ#  41 LEN 1007 FLAGS 3  -Data #:   41
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 39
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  40 SEQ#  39 LEN   11 FLAGS 6  -SREJ #:   39 - FLIPPED BITS 
+===================================
+1
+RECV          SEQ#  42 LEN 1007 FLAGS 3  -Data #:   42
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 40
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  41 SEQ#  40 LEN   11 FLAGS 6  -SREJ #:   40
+===================================
+1
+RECV          SEQ#  43 LEN 1007 FLAGS 3  -Data #:   43 - RECV Corrupted packet
+recvd a packet of len1007
+bad crc
+===================================
+1
+RECV          SEQ#  44 LEN 1007 FLAGS 3  -Data #:   44
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 41
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  42 SEQ#  41 LEN   11 FLAGS 6  -SREJ #:   41
+===================================
+1
+RECV          SEQ#  45 LEN 1007 FLAGS 3  -Data #:   45
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 42
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  43 SEQ#  42 LEN   11 FLAGS 6  -SREJ #:   42
+===================================
+1
+RECV          SEQ#  46 LEN 1007 FLAGS 3  -Data #:   46
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 43
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  44 SEQ#  43 LEN   11 FLAGS 6  -SREJ #:   43
+===================================
+1
+RECV          SEQ#  47 LEN 1007 FLAGS 3  -Data #:   47
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 44
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  45 SEQ#  44 LEN   11 FLAGS 6  -SREJ #:   44
+===================================
+1
+RECV          SEQ#  48 LEN 1007 FLAGS 3  -Data #:   48
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 45
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  46 SEQ#  45 LEN   11 FLAGS 6  -SREJ #:   45
+===================================
+1
+RECV          SEQ#  49 LEN 1007 FLAGS 3  -Data #:   49
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 46
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  47 SEQ#  46 LEN   11 FLAGS 6  -SREJ #:   46
+===================================
+1
+RECV          SEQ#  50 LEN 1007 FLAGS 3  -Data #:   50
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 47
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  48 SEQ#  47 LEN   11 FLAGS 6  -SREJ #:   47
+===================================
+1
+RECV          SEQ#  51 LEN 1007 FLAGS 3  -Data #:   51
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 48
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  49 SEQ#  48 LEN   11 FLAGS 6  -SREJ #:   48
+===================================
+1
+RECV          SEQ#  52 LEN 1007 FLAGS 3  -Data #:   52
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 49
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  50 SEQ#  49 LEN   11 FLAGS 6  -SREJ #:   49
+===================================
+1
+RECV          SEQ#  53 LEN 1007 FLAGS 3  -Data #:   53
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 50
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  51 SEQ#  50 LEN   11 FLAGS 6  -SREJ #:   50
+===================================
+1
+RECV          SEQ#  54 LEN 1007 FLAGS 3  -Data #:   54
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 51
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  52 SEQ#  51 LEN   11 FLAGS 6  -SREJ #:   51
+===================================
+1
+RECV          SEQ#  55 LEN 1007 FLAGS 3  -Data #:   55
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 52
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  53 SEQ#  52 LEN   11 FLAGS 6  -SREJ #:   52
+===================================
+1
+RECV          SEQ#  56 LEN 1007 FLAGS 3  -Data #:   56
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 53
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  54 SEQ#  53 LEN   11 FLAGS 6  -SREJ #:   53
+===================================
+1
+RECV          SEQ#  57 LEN 1007 FLAGS 3  -Data #:   57
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 54
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  55 SEQ#  54 LEN   11 FLAGS 6  -SREJ #:   54
+===================================
+1
+RECV          SEQ#  58 LEN 1007 FLAGS 3  -Data #:   58
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 55
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  56 SEQ#  55 LEN   11 FLAGS 6  -SREJ #:   55
+===================================
+1
+RECV          SEQ#  59 LEN 1007 FLAGS 3  -Data #:   59
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 56
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  57 SEQ#  56 LEN   11 FLAGS 6  -SREJ #:   56
+===================================
+1
+RECV          SEQ#  60 LEN 1007 FLAGS 3  -Data #:   60
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 57
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  58 SEQ#  57 LEN   11 FLAGS 6  -SREJ #:   57
+===================================
+1
+RECV          SEQ#  61 LEN 1007 FLAGS 3  -Data #:   61
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 58
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  59 SEQ#  58 LEN   11 FLAGS 6  -SREJ #:   58
+===================================
+1
+RECV          SEQ#  62 LEN 1007 FLAGS 3  -Data #:   62
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 59
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  60 SEQ#  59 LEN   11 FLAGS 6  -SREJ #:   59
+===================================
+1
+RECV          SEQ#  63 LEN 1007 FLAGS 3  -Data #:   63
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 60
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  61 SEQ#  60 LEN   11 FLAGS 6  -SREJ #:   60
+===================================
+1
+RECV          SEQ#  64 LEN 1007 FLAGS 3  -Data #:   64
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 61
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  62 SEQ#  61 LEN   11 FLAGS 6  -SREJ #:   61 - DROPPED 
+===================================
+1
+RECV          SEQ#  65 LEN 1007 FLAGS 3  -Data #:   65
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 62
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  63 SEQ#  62 LEN   11 FLAGS 6  -SREJ #:   62 - DROPPED 
+===================================
+1
+RECV          SEQ#  66 LEN 1007 FLAGS 3  -Data #:   66
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 63
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  64 SEQ#  63 LEN   11 FLAGS 6  -SREJ #:   63
+===================================
+1
+RECV          SEQ#  67 LEN 1007 FLAGS 3  -Data #:   67
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 64
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  65 SEQ#  64 LEN   11 FLAGS 6  -SREJ #:   64
+===================================
+1
+RECV          SEQ#  68 LEN 1007 FLAGS 3  -Data #:   68
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 65
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  66 SEQ#  65 LEN   11 FLAGS 6  -SREJ #:   65 - FLIPPED BITS 
+===================================
+1
+RECV          SEQ#  69 LEN 1007 FLAGS 3  -Data #:   69
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 66
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  67 SEQ#  66 LEN   11 FLAGS 6  -SREJ #:   66
+===================================
+1
+RECV          SEQ#  70 LEN 1007 FLAGS 3  -Data #:   70
+recvd a packet of len1007
+window={upper: 0
+, lower: 1
+, current: 67
+packets: {}
+}
+
+lower less to seqNum
+SEND MSG#  68 SEQ#  67 LEN   11 FLAGS 6  -SREJ #:   67 - FLIPPED BITS 
+===================================
+1
+RECV          SEQ#  71 LEN 1007 FLAGS 3  -Data #:   71 - RECV Corrupted packet
+recvd a packet of len1007
+bad crc
+======== SeqNo Report ========
+  Msgs (Total)       :    68
+  Msgs (Unique SeqNo):    68
+==============================
+diff /home/victord/CPE464/asgns/asgn3/tests/from_files/long_binary /home/victord/CPE464/asgns/asgn3/tests/to_files/long_binary 
+Binary files /home/victord/CPE464/asgns/asgn3/tests/from_files/long_binary and /home/victord/CPE464/asgns/asgn3/tests/to_files/long_binary differ
+make: *** [Makefile:60: test_rcopy] Error 1
