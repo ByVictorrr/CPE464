@@ -1,0 +1,25 @@
+Victor Delaplaine
+
+Flags:
+typedef enum FLAGS{
+    NOT_USED,
+    OPTIONAL1,
+    OPTIONAL2,
+    DATA_PACKET,
+    NOT_USED2,
+    RR_PACKET,
+    SREJ_PACKET,
+    FILENAME_PACKET,
+    FILENAME_PACKET_OK,
+    FILENAME_PACKET_BAD,
+    EOF_PACKET,
+    EOF_PACKET_ACK
+}flag_t;
+
+FILENAME_PACKET_OK is a good file that can be read or opened (server->rcopy)
+FILENAME_PACKET_BAD if a the file couldnt be opened or read (server->rcopy)
+
+EOF_PACKET is used from rcopy -> server to tell rcopy this is EOF packet with maybe some data
+EOF_PACKET_ACK is used from rcopy -> server to ack the EOF
+
+

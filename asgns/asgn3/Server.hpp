@@ -31,8 +31,8 @@ typedef enum STATES{FILENAME, SEND_DATA, WAITING, RECV_DATA, DONE} state_t;
 class ServerThread{
     private:
         ServerThreadConnection gateway;
-        Window *window;
         uint32_t bufferSize; 
+        Window window;
         int file;
 
         /* utils */  
@@ -47,8 +47,9 @@ class ServerThread{
 
         
     public:
-        ServerThread(RCopySetupPacket setup, ServerConnection &c);
-        void processRCopy(RCopySetupPacket setup);
+
+        ServerThread(RCopySetupPacket &setup, ServerConnection &c);
+        void processRCopy(std::string &fileName);
         void join();
 };
 #endif

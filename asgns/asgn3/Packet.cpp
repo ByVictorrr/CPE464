@@ -176,7 +176,6 @@ RCopyPacket RCopyPacketParser::Parse(uint8_t *packet, int payloadLen)throw(Corru
     uint8_t *payload ;
     // step 1 - extract fields and tests checksum
     if(in_cksum((unsigned short *)packet, payloadLen+HDR_LEN)!=0){
-        std::cout << "bad crc" << std::endl;
         throw CorruptPacketException("CRC error");
     }
     // step 2 - fill the RcopyPacket (assume correct)
@@ -200,7 +199,6 @@ RCopySetupPacket RCopyPacketParser::ParseSetup(uint8_t *packet) throw(CorruptPac
     // step 2 - fill the RcopyPacket (assume correct)
     // TODO : check if setup packet
     memcpy(&seqNum, packet, sizeof(seqNum));
-    std::cout << "parsesetup: " << std::to_string(seqNum) << std::endl;
     memcpy(&flag, packet+sizeof(seqNum)+sizeof(uint16_t), sizeof(flag));
     payload = packet + HDR_LEN;
     memcpy(&bufferSize, payload, sizeof(bufferSize));
@@ -232,7 +230,6 @@ RCopyPacket RCopyPacketReciever::Recieve(int payloadLen, Connection &con) throw(
     // Step 1 - recv packet
     recvLen = safeRecvfrom(con.getSocketNumber(), temp, payloadLen+HDR_LEN, 0,con.getRemote(), con.getRemoteLen());
     // Step 2 - parse packet
-    std::cout << "recvd a packet of len" << recvLen << std::endl;
     try{
         return RCopyPacketParser::Parse(temp, recvLen-HDR_LEN);
     }catch(CorruptPacketException &e){

@@ -21,9 +21,6 @@ RCopyPacket RCopy::recievePacket() throw (CorruptPacketException){
     try{
 
         RCopyPacket rr = RCopyPacketReciever::Recieve(this->args.getBufferSize(), this->gateway);
-        if(rr.getHeader().getFlag() == EOF_PACKET){
-            std::cout << "RECV_PACKET : EOF payload length : " << rr.getPayloadSize() << std::endl;
-        }
         return rr;
     }catch(CorruptPacketException &e){
         throw e;
@@ -37,13 +34,11 @@ RCopyACKPacket RCopy::buildACKPacket(uint32_t seqNum, uint8_t flag){
 
 size_t RCopy::writePacketToFile(RCopyPacket &p){
     size_t len;
-    std::cout << "PAYLAOD SIZE IN write function "<< p.getPayloadSize() << std::endl;
     if((len=fwrite((void*)p.getPayload(), (size_t)sizeof(uint8_t), p.getPayloadSize(), 
                    this->toFile)) != (size_t)p.getPayloadSize()){
                         std::cerr << "problem writing " << std::endl;
                         return 0;
                     }
-        std::cout << "wrote " << len << std::endl; 
         return len;
 }
 
@@ -66,7 +61,7 @@ state_t RCopy::sendFileName(){
             recievedPacket = recievePacket();
             
             if((flag=recievedPacket.getHeader().getFlag()) == FILENAME_PACKET_BAD){
-                std::cerr << "File " + std::string(args.getFromFileName()) + "Not found" << std::endl;
+                std::cerr << "File " + std::string(args.getFromFileName()) + "Not found/able to open" << std::endl;
                 ret = DONE;
             }else if(flag == FILENAME_PACKET_OK){
                 ret = FILENAME_OK;
@@ -87,31 +82,23 @@ state_t RCopy::receieveData(){
         return DONE;
     // Case 2 - data packet waiting
     try{
-        std::cout << "===================================\n";
-        std::cout << this->window.getLower() << std::endl;
         RCopyPacket &&recvPacket = recievePacket();
         seqNum = recvPacket.getHeader().getSequenceNumber();
-        std::cout << this->window << std::endl;
-        // Case 2.1 - if we recieved an eof packet 
 
         /* If we get the EOF_Packet and it will be the lower part of window*/
         // Case 2.2 - see if the packet is a duplicate packet 
         if(window.getLower() > seqNum){
-            std::cout << "lower higher than seqNum" << std::endl;
             RCopyACKPacket &&rr = this->buildACKPacket(this->window.getLower(), RR_PACKET);
             this->sendACKPacket(rr);
         // Case 2.3 - expected packet
         }else if(this->window.getLower() == seqNum){
             /* Case 2.3.1 - if the EOF_PACKET has flag with lower being EOF*/
-
-            std::cout << "lower equal to seqNum" << std::endl;
             this->window.insert(recvPacket);
             return this->fillHoles();
             /* TODO: if out of order packet and corrputpino packet */
         // Case 5 - out of order packet (current is next available packet space)
         }else if (this->window.getLower() < seqNum ){ // really just only to send srej
 
-            std::cout << "lower less to seqNum" << std::endl;
             if(!this->window.inWindow(seqNum)){
                 this->window.insert(recvPacket);
             }
@@ -143,8 +130,10 @@ state_t RCopy::fillHoles(){
             this->writePacketToFile(inWind);
             // What if the EOF packet is in the window
             if(inWind.getHeader().getFlag() == EOF_PACKET){
+                /*
                 std::cout << "EOF packet seqNum: " << i << std::endl;
                 std::cout << "EOF packet payloadSize" << inWind.getPayloadSize() << std::endl;
+                */
                 RCopyACKPacket &&eofRR = this->buildACKPacket(i+1, EOF_PACKET_ACK);
                 this->sendACKPacket(eofRR);
                 return DONE;
@@ -192,7 +181,6 @@ void RCopy::start(){
                 }else{
                     state = RECV_DATA;
                 }
-                std::cout << "in FILENAME_OK"  << std::endl;
 
             } 
             break;
