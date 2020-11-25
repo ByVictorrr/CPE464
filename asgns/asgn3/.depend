@@ -1,17 +1,18 @@
 Args.o: Args.cpp Args.hpp
-networks.o: networks.cpp cpe464.h networks.hpp Args.hpp gethostbyname.h \
- safe_sys_calls.h
 Packet.o: Packet.cpp networks.hpp cpe464.h Args.hpp gethostbyname.h \
  safe_sys_calls.h Packet.hpp Exception.hpp
-Server.o: Server.cpp networks.hpp cpe464.h Args.hpp gethostbyname.h \
- safe_sys_calls.h Packet.hpp Exception.hpp Utils.hpp Server.hpp
-server.o: server.cpp gethostbyname.h networks.hpp cpe464.h Args.hpp \
- safe_sys_calls.h Packet.hpp Exception.hpp Server.hpp Utils.hpp
-gethostbyname.o: gethostbyname.c gethostbyname.h
-safe_sys_calls.o: safe_sys_calls.c gethostbyname.h safe_sys_calls.h
-Utils.o: Utils.cpp Packet.hpp Exception.hpp cpe464.h networks.hpp \
- Args.hpp gethostbyname.h safe_sys_calls.h Utils.hpp
-rcopy.o: rcopy.cpp gethostbyname.h networks.hpp cpe464.h Args.hpp \
- safe_sys_calls.h Packet.hpp Exception.hpp RCopy.hpp Utils.hpp
 RCopy.o: RCopy.cpp RCopy.hpp Packet.hpp Exception.hpp cpe464.h \
  networks.hpp Args.hpp gethostbyname.h safe_sys_calls.h Utils.hpp
+Server.o: Server.cpp networks.hpp cpe464.h Args.hpp gethostbyname.h \
+ safe_sys_calls.h Packet.hpp Exception.hpp Utils.hpp Server.hpp
+Utils.o: Utils.cpp Utils.hpp Packet.hpp Exception.hpp cpe464.h \
+ networks.hpp Args.hpp gethostbyname.h safe_sys_calls.h
+gethostbyname.o: gethostbyname.c gethostbyname.h
+networks.o: networks.cpp cpe464.h networks.hpp Args.hpp gethostbyname.h \
+ safe_sys_calls.h
+rcopy.o: rcopy.cpp gethostbyname.h networks.hpp cpe464.h Args.hpp \
+ safe_sys_calls.h Packet.hpp Exception.hpp RCopy.hpp Utils.hpp
+safe_sys_calls.o: safe_sys_calls.c gethostbyname.h safe_sys_calls.h
+server.o: server.cpp gethostbyname.h networks.hpp cpe464.h Args.hpp \
+ safe_sys_calls.h Packet.hpp Exception.hpp Server.hpp Utils.hpp
+rcopy.copy.o: rcopy.copy.cpp
