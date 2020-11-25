@@ -6,15 +6,15 @@ RCopyArgs RCopyArgsParser::parse(int argc, char *argv[]){
     float errorPer;
     // Step 1 - check to see if right amout of args
     if (argc != RCOPY_ARGS+1){
-        std::cerr << std::string(argv[0]) + " <from-filename> <to-filename> <buffer-size> <error-percent> <window-size> <remote-machine> <remote-port>" << std::endl;
+        std::cerr << std::string(argv[0]) + " <from-filename> <to-filename> <window-size> <buffer-size> <error-percent> <remote-machine> <remote-port>" << std::endl;
         exit(EXIT_FAILURE);
     }
     // step 2 - create RcopyArgs obj
     fromFileName = argv[1];
     toFileName = argv[2];
-    bufferSize = std::atoi(argv[3]);
-    errorPer = std::atof(argv[4]);
-    windowSize = std::atoi(argv[5]);
+    windowSize = std::atoi(argv[3]);
+    bufferSize = std::atoi(argv[4]);
+    errorPer = std::atof(argv[5]);
     remoteMachine = argv[6];
     port = std::atoi(argv[7]);
     // Step 1 - check buffer size

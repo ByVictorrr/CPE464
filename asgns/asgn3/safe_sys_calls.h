@@ -1,6 +1,5 @@
 #ifndef SAFE_SYS_CALLS_H
 #define SAFE_SYS_CALLS_H
-extern "C"{
 
 #include <stdio.h>
 void *safe_calloc(size_t nmemb, int size);
@@ -29,5 +28,4 @@ int safe_mopen(const char *path, int oflags, mode_t mode);
 size_t safe_read(int fildes, void *buf, size_t nbytes);
 size_t safe_write(int fildes, void *buf, size_t nbytes);
 
-}
 #endif

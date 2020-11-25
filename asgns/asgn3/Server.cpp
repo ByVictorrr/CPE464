@@ -1,4 +1,3 @@
-#include <thread>
 #include <iostream>
 #include <string>
 #include "networks.hpp"
@@ -50,11 +49,9 @@ void Server::serve(){
                 goto start;
             }
         }
-        /*
         while(waitpid(-1, NULL, WNOHANG) > 0){
             std::cout << "processed wait" << std::endl;
         }
-        */
         
     goto start;
 }
@@ -148,23 +145,22 @@ state_t ServerThread::sendData(){
 /* Only called if select is called and its true */
 state_t ServerThread::receiveData(){
 
-    RCopyACKPacket recvd;
     uint8_t flag;
     uint32_t seqNum;
     try{
-        recvd = RCopyPacketReciever::RecieveACK(this->gateway);
+        RCopyACKPacket recvd = RCopyPacketReciever::RecieveACK(this->gateway);
+        flag=recvd.getHeader().getFlag();
+        seqNum=recvd.getHeader().getSequenceNumber();
     }catch(CorruptPacketException &e){
         return WAITING; 
     }
 
-    flag=recvd.getHeader().getFlag();
-    seqNum=recvd.getHeader().getSequenceNumber();
-    // Case 1 - if the flag if srej, send pkt again and goto sendData
+   // Case 1 - if the flag if srej, send pkt again and goto sendData
     switch (flag)
     {
     case SREJ_PACKET:
     {
-        RCopyPacket &p = this->window.getPacket(recvd.getHeader().getSequenceNumber());
+        RCopyPacket &p = this->window.getPacket(seqNum);
         if(this->window.inWindow(p.getHeader().getSequenceNumber()))
             this->sendPacket(p); // p is not acked yet
         return SEND_DATA;
@@ -206,7 +202,7 @@ state_t ServerThread::receiveData(){
     }
     break;
     default:
-        ;
+        return SEND_DATA;
         break;
     }
     return SEND_DATA;
@@ -220,6 +216,7 @@ state_t ServerThread::waiting(){
     // Case 1 - timeout occured
     if(!safeSelectTimeout(this->gateway.getSocketNumber(), 1, 0)){
         // send the lowest unacked packet
+        std::cout << "waiting" << std::endl;
         RCopyPacket &p = this->window.getPacket(this->window.getLower());
         this->sendPacket(p);
         if(count++ > 9){

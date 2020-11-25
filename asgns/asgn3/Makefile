@@ -2,26 +2,37 @@
 # written by Hugh Smith - April 2017
 SHELL := /bin/bash
 CC = g++
-CFLAGS= -g -Wall --std=c++11 -Wno-deprecated
+CFLAGS= -g -Wall -static-libstdc++ --std=c++11 -Wno-deprecated
 LIBS+= libcpe464.2.20.a
 
-C_FILES = $(shell find . -maxdepth 1 -name "*.c*")
-OBJS = Packet.o gethostbyname.o networks.o safe_sys_calls.o Args.o Utils.o
 
 
-all: .depend server rcopy
+all: server rcopy
 
 
 rcopy: rcopy.o RCopy.o Packet.o gethostbyname.o networks.o safe_sys_calls.o Args.o Utils.o 
 server: server.o Server.o Packet.o gethostbyname.o networks.o safe_sys_calls.o Args.o Utils.o 
 
+Args.o: Args.cpp Args.hpp
+Packet.o: Packet.cpp networks.hpp cpe464.h Args.hpp gethostbyname.h \
+ safe_sys_calls.h Packet.hpp Exception.hpp
+RCopy.o: RCopy.cpp RCopy.hpp Packet.hpp Exception.hpp cpe464.h \
+ networks.hpp Args.hpp gethostbyname.h safe_sys_calls.h Utils.hpp
+Server.o: Server.cpp networks.hpp cpe464.h Args.hpp gethostbyname.h \
+ safe_sys_calls.h Packet.hpp Exception.hpp Utils.hpp Server.hpp
+Utils.o: Utils.cpp Utils.hpp Packet.hpp Exception.hpp cpe464.h \
+ networks.hpp Args.hpp gethostbyname.h safe_sys_calls.h
+gethostbyname.o: gethostbyname.c gethostbyname.h
+networks.o: networks.cpp cpe464.h networks.hpp Args.hpp gethostbyname.h \
+ safe_sys_calls.h
+rcopy.o: rcopy.cpp gethostbyname.h networks.hpp cpe464.h Args.hpp \
+ safe_sys_calls.h Packet.hpp Exception.hpp RCopy.hpp Utils.hpp
+safe_sys_calls.o: safe_sys_calls.c gethostbyname.h safe_sys_calls.h
+server.o: server.cpp gethostbyname.h networks.hpp cpe464.h Args.hpp \
+ safe_sys_calls.h Packet.hpp Exception.hpp Server.hpp Utils.hpp
 
 
-.depend: $(C_FILES)
-	rm -f ./.depend
-	$(CC) -MM $^ > ./.depend;
 
-include .depend
 
 %.o: %.c
 	$(CC) $(CFLAGS)  -c -o $@ $<

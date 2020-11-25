@@ -220,7 +220,7 @@ RCopyACKPacket RCopyPacketParser::ParseACK(uint8_t *packet) throw(CorruptPacketE
 
     memcpy(&flag, packet+sizeof(uint32_t)+sizeof(uint16_t), sizeof(flag));
     memcpy(&seqNum, payload, sizeof(uint32_t));
-    return RCopyACKPacket(seqNum, flag, payload);
+    return RCopyACKPacket(ntohl(seqNum), flag, payload);
 }
 
 RCopyPacket RCopyPacketReciever::Recieve(int payloadLen, Connection &con) throw(CorruptPacketException){

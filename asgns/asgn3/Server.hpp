@@ -1,6 +1,5 @@
 #ifndef SERVER_H_
 #define SERVER_H_
-#include <thread>
 #include <string>
 #include <list>
 #include <sys/types.h>

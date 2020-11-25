@@ -9,7 +9,6 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
-#include <thread>
 
 #include "gethostbyname.h"
 #include "networks.hpp"
