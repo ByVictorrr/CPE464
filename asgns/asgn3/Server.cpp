@@ -156,17 +156,23 @@ state_t ServerThread::sendData(){
 /* Only called if select is called and its true */
 state_t ServerThread::receiveData(){
 
-    RCopyPacket recvd;
+    RCopyACKPacket recvd;
     uint8_t flag;
     uint32_t seqNum;
+    std::cout << "===================" << std::endl;
+    std::cout << *window << std::endl;
+    std::cout << "===================" << std::endl;
     try{
-        recvd = RCopyPacketReciever::Recieve(this->bufferSize, this->gateway);
+        recvd = RCopyPacketReciever::RecieveACK(this->gateway);
     }catch(CorruptPacketException &e){
         return WAITING; 
     }
 
     flag=recvd.getHeader().getFlag();
     seqNum=recvd.getHeader().getSequenceNumber();
+    std::cout  << " SEQ NUMBER+++++: " << seqNum << std::endl;
+    std::cout  << " flag+++++: " << std::to_string(flag) << std::endl;
+
     // Case 1 - if the flag if srej, send pkt again and goto sendData
     switch (flag)
     {
@@ -191,9 +197,13 @@ state_t ServerThread::receiveData(){
         */
 
        // right here not acking if RR13
-       for(uint32_t i=this->window->getLower(); i < seqNum; i++)
-           if(this->window->inWindow(i))
+       for(uint32_t i=this->window->getLower(); i < seqNum; i++){
+           std::cout << i << " in window: " << (window->inWindow(i)==true ? 1: 0) << std::endl;
+           if(this->window->inWindow(i)){
+               std::cout << "is acked" << std::endl;
             this->window->setIsAcked(i); // packet with seqNum is acked
+           }
+       }
         
         // Case 1 - where left most packet is the revd one
         // Case 2 - check to see if any adjacent are acked
@@ -239,8 +249,10 @@ state_t ServerThread::waiting(){
         std::cout << "packet seqNo: " << p.getHeader().getSequenceNumber() << std::endl;
         std::cout << "Window lower: " << this->window->getLower() << std::endl;
         std::cout << "=================" << std::endl;
+        /*
         std::cout << *window;
         std::cout << "" << std::endl;
+        */
         this->sendPacket(p);
         if(count++ > 9){
             std::cout << "bye" << std::endl;
