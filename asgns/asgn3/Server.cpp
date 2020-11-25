@@ -148,11 +148,11 @@ state_t ServerThread::sendData(){
 /* Only called if select is called and its true */
 state_t ServerThread::receiveData(){
 
-    RCopyPacket recvd;
+    RCopyACKPacket recvd;
     uint8_t flag;
     uint32_t seqNum;
     try{
-        recvd = RCopyPacketReciever::Recieve(this->bufferSize, this->gateway);
+        recvd = RCopyPacketReciever::RecieveACK(this->gateway);
     }catch(CorruptPacketException &e){
         return WAITING; 
     }

@@ -117,6 +117,7 @@ class RCopyACKPacket: public RCopyPacket{
     public:
         static const int MAX_PAYLOAD_SIZE = sizeof(uint32_t);
         RCopyACKPacket(uint32_t seqNum, uint8_t flag, uint8_t *payload);
+        RCopyACKPacket(){}
 };
 
 /*==================sender/builder===========================================*/

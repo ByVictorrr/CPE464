@@ -218,7 +218,7 @@ RCopyACKPacket RCopyPacketParser::ParseACK(uint8_t *packet) throw(CorruptPacketE
     if(in_cksum((unsigned short *)packet, sizeof(uint32_t)+HDR_LEN)!=0)
         throw CorruptPacketException("CRC error");
 
-    memcpy(&flag, packet+sizeof(uint32_t), sizeof(flag));
+    memcpy(&flag, packet+sizeof(uint32_t)+sizeof(uint16_t), sizeof(flag));
     memcpy(&seqNum, payload, sizeof(uint32_t));
     return RCopyACKPacket(seqNum, flag, payload);
 }
